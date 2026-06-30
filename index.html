@@ -166,6 +166,66 @@
     #pinError   { font-size:12px; color:var(--red); margin-top:12px; min-height:18px; }
     #pinReset   { display:block; font-size:11px; color:var(--t3); margin-top:28px; cursor:pointer; text-decoration:underline; background:none; border:none; }
 
+    /* === TRANSITIONS & ANIMATIONS === */
+
+    /* Card hover lift */
+    .card, .acct-card, .metric {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: default;
+    }
+    .card:hover, .acct-card:hover, .metric:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.11);
+    }
+    .alert-card {
+      transition: transform 0.2s ease, background 0.2s ease;
+      cursor: default;
+    }
+    .alert-card:hover {
+      transform: translateX(4px);
+      background: var(--surface2);
+    }
+
+    /* Progress bar reveal */
+    .pb-fill, .b-fill {
+      animation: barReveal 0.72s cubic-bezier(0.4, 0, 0.2, 1) 0.12s both;
+    }
+    @keyframes barReveal {
+      from { clip-path: inset(0 100% 0 0 round 99px); }
+      to   { clip-path: inset(0 0%   0 0 round 99px); }
+    }
+
+    /* Status dot pulse */
+    .dot-red   { animation: dotPulse 1.8s ease-in-out infinite; }
+    .dot-amber { animation: dotPulse 2.5s ease-in-out 0.5s infinite; }
+    @keyframes dotPulse {
+      0%, 100% { transform: scale(1);   opacity: 1; }
+      50%       { transform: scale(1.7); opacity: 0.4; }
+    }
+
+    /* Section entrance (class toggled by JS observer) */
+    .sec-anim { opacity: 0; transform: translateY(12px); transition: opacity 0.42s ease, transform 0.42s ease; }
+    .sec-anim.in { opacity: 1; transform: none; }
+
+    /* Header slide-down */
+    .hdr { animation: hdrIn 0.38s ease both; }
+    @keyframes hdrIn {
+      from { opacity: 0; transform: translateY(-8px); }
+    }
+
+    /* Touch tap feedback (mobile only) */
+    @media (hover: none) {
+      .card:active, .acct-card:active, .metric:active {
+        transform: scale(0.97);
+        transition: transform 0.1s ease;
+      }
+      .alert-card:active {
+        transform: translateX(2px) scale(0.99);
+        background: var(--surface2);
+        transition: transform 0.1s ease, background 0.1s ease;
+      }
+    }
+
     /* === MOBILE ≤600px === */
     @media (max-width: 600px) {
       body      { overflow-x: hidden; }
@@ -917,6 +977,40 @@ if (!hasData) {
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js');
 }
+
+// === ENTRANCE ANIMATIONS ===
+
+// Section fade-in via IntersectionObserver
+document.querySelectorAll('.sec').forEach(el => el.classList.add('sec-anim'));
+const secObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); secObs.unobserve(e.target); }
+  });
+}, { threshold: 0.05 });
+document.querySelectorAll('.sec').forEach((el, i) => {
+  el.style.transitionDelay = Math.min(i * 0.055, 0.25) + 's';
+  secObs.observe(el);
+});
+
+// Count-up for key metric values
+function countUp(el, end, dur) {
+  if (!el || !end) return;
+  dur = dur || 700;
+  const fmtN = v => '₱' + v.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const t0 = performance.now();
+  (function tick() {
+    const p = Math.min((performance.now() - t0) / dur, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = fmtN(end * ease);
+    if (p < 1) requestAnimationFrame(tick); else el.textContent = fmtN(end);
+  })();
+}
+setTimeout(function() {
+  countUp(document.getElementById('netWorth'),         netWorth);
+  countUp(document.getElementById('totalAssets'),      totalAssets);
+  countUp(document.getElementById('totalLiabilities'), totalLiabilities);
+  if (totalSpent > 0) countUp(document.getElementById('spentTotal'), totalSpent);
+}, 300);
 
 // PIN auth — change PIN value to personalise
 (function() {
