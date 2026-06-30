@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edge · Finance Dashboard</title>
+  <link rel="icon" id="favicon" type="image/png" href="volcanis.png">
+  <link rel="manifest" href="manifest.json">
+  <style>
+    :root {
+      --bg:       #f7f7f5;
+      --surface:  #ffffff;
+      --surface2: #f1f0ee;
+      --t1: #1c1c1a;
+      --t2: #5f5e5a;
+      --t3: #9a9893;
+      --border:   rgba(0,0,0,0.09);
+      --border2:  rgba(0,0,0,0.18);
+      --green:      #1D9E75; --green-bg:  #e1f5ee; --green-t:  #085041;
+      --red:        #E24B4A; --red-bg:    #fcebeb; --red-t:    #791f1f;
+      --amber:      #BA7517; --amber-bg:  #faeeda; --amber-t:  #633806;
+      --blue:       #378ADD; --blue-bg:   #e6f1fb; --blue-t:   #0c447c;
+      --purple:     #534AB7;
+      --gray:       #888780;
+      --r: 10px; --rl: 14px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:      #161614;
+        --surface: #222220;
+        --surface2:#2c2c2a;
+        --t1: #f0eeea; --t2: #b4b2a9; --t3: #5f5e5a;
+        --border:  rgba(255,255,255,0.09);
+        --border2: rgba(255,255,255,0.18);
+        --green:   #5DCAA5; --green-bg:  #04342c; --green-t:  #9fe1cb;
+        --red:     #F09595; --red-bg:    #501313; --red-t:    #f7c1c1;
+        --amber:   #EF9F27; --amber-bg:  #412402; --amber-t:  #fac775;
+        --blue:    #85B7EB; --blue-bg:   #042c53; --blue-t:   #b5d4f4;
+        --purple:  #AFA9EC;
+      }
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--t1);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 28px 20px 48px; }
+
+    /* Header */
+    .hdr { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 28px; }
+    .hdr-title { font-size: 17px; font-weight: 500; }
+    .hdr-meta { font-size: 12px; color: var(--t3); }
+
+    /* Section */
+    .sec { margin-bottom: 28px; }
+    .sec-title { font-size: 11px; font-weight: 500; color: var(--t3); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 12px; }
+
+    /* Card */
+    .card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--rl); padding: 16px 20px; }
+
+    /* Grids */
+    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .g3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+    .g4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+    .ga { display: grid; grid-template-columns: repeat(auto-fill,minmax(160px,1fr)); gap: 10px; }
+
+    /* Metric */
+    .metric { background: var(--surface2); border-radius: var(--r); padding: 14px 16px; }
+    .m-lbl { font-size: 11px; color: var(--t3); margin-bottom: 4px; }
+    .m-val { font-size: 22px; font-weight: 500; line-height: 1.2; color: var(--t1); }
+    .m-sub { font-size: 11px; color: var(--t3); margin-top: 3px; }
+
+    /* Colors */
+    .c-green { color: var(--green); }
+    .c-red   { color: var(--red); }
+    .c-amber { color: var(--amber); }
+    .c-blue  { color: var(--blue); }
+    .c-mute  { color: var(--t2); }
+
+    /* Progress bar */
+    .pb { background: var(--surface2); border-radius: 99px; height: 10px; overflow: hidden; margin: 8px 0; }
+    .pb-fill { height: 100%; border-radius: 99px; }
+    .pb-lbls { display: flex; justify-content: space-between; font-size: 11px; color: var(--t3); }
+
+    /* Budget bars */
+    .b-item { margin-bottom: 16px; }
+    .b-item:last-child { margin-bottom: 0; }
+    .b-meta { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 5px; }
+    .b-name { color: var(--t1); font-weight: 500; }
+    .b-nums { color: var(--t2); }
+    .b-track { background: var(--surface2); border-radius: 99px; height: 7px; overflow: hidden; }
+    .b-fill  { height: 100%; border-radius: 99px; }
+    .b-sub   { font-size: 11px; color: var(--t3); margin-top: 3px; }
+
+    /* Accounts */
+    .acct-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--r); padding: 12px 14px; }
+    .acct-name { font-size: 11px; color: var(--t3); margin-bottom: 4px; }
+    .acct-bal  { font-size: 17px; font-weight: 500; color: var(--t1); }
+    .tag { display: inline-block; font-size: 10px; padding: 2px 7px; border-radius: 99px; margin-top: 5px; }
+    .tag-spend  { background: var(--blue-bg);  color: var(--blue-t);  }
+    .tag-save   { background: var(--green-bg); color: var(--green-t); }
+    .tag-crypto { background: var(--amber-bg); color: var(--amber-t); }
+    .tag-cash   { background: var(--surface2); color: var(--t2); border: 0.5px solid var(--border); }
+
+    /* Rows */
+    .row { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 0.5px solid var(--border); }
+    .row:last-child { border-bottom: none; }
+    .row-name { font-size: 13px; color: var(--t1); }
+    .row-sub  { font-size: 11px; color: var(--t3); margin-top: 2px; }
+    .row-amt  { font-size: 13px; font-weight: 500; }
+
+    /* Alert cards */
+    .alert-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--r); padding: 12px 14px; display: flex; gap: 10px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+    .dot-green { background: var(--green); }
+    .dot-amber { background: var(--amber); }
+    .dot-red   { background: var(--red); }
+    .dot-gray  { background: var(--t3); }
+    .al-title { font-size: 12px; font-weight: 500; color: var(--t1); margin-bottom: 2px; }
+    .al-sub   { font-size: 11px; color: var(--t2); line-height: 1.4; }
+
+    /* Cash log */
+    .log-row { display: flex; align-items: center; gap: 8px; padding: 7px 0; border-bottom: 0.5px solid var(--border); font-size: 12px; }
+    .log-row:last-child { border-bottom: none; }
+    .log-date { color: var(--t3); min-width: 44px; }
+    .log-pill { font-size: 10px; padding: 2px 6px; border-radius: 99px; }
+    .lp-food  { background: var(--amber-bg); color: var(--amber-t); }
+    .lp-trans { background: var(--blue-bg);  color: var(--blue-t);  }
+    .lp-misc    { background: var(--surface2); color: var(--t2); }
+    .lp-charity { background: #ede9fc; color: #3b35a0; }
+    @media (prefers-color-scheme: dark) { .lp-charity { background: #1e1a3f; color: var(--purple); } }
+    .lp-family  { background: #fce7f3; color: #9d174d; }
+    @media (prefers-color-scheme: dark) { .lp-family { background: #2d0a1a; color: #f9a8d4; } }
+    .lp-groc  { background: var(--green-bg); color: var(--green-t); }
+    .log-amt  { font-weight: 500; margin-left: auto; }
+
+    /* Source chip */
+    .src { font-size: 10px; padding: 1px 5px; border-radius: 4px; background: var(--surface2); color: var(--t3); margin-left: 5px; border: 0.5px solid var(--border); vertical-align: middle; }
+
+    /* Totals */
+    .total-row { display: flex; justify-content: space-between; padding-top: 10px; border-top: 0.5px solid var(--border2); margin-top: 6px; font-size: 13px; }
+    .total-lbl { color: var(--t2); }
+    .total-val { font-weight: 500; }
+
+    /* Chart wrapper */
+    .ch { position: relative; width: 100%; }
+
+    /* Period bar */
+    .period-meta { display: flex; justify-content: space-between; font-size: 12px; color: var(--t2); margin-bottom: 6px; }
+
+    /* Empty state */
+    .empty { font-size: 12px; color: var(--t3); text-align: center; padding: 36px 0; line-height: 1.8; }
+
+    /* Footer */
+    .footer { margin-top: 40px; padding-top: 16px; border-top: 0.5px solid var(--border); font-size: 11px; color: var(--t3); display: flex; justify-content: space-between; }
+
+    /* PIN overlay */
+    #pinOverlay { position:fixed; inset:0; z-index:9999; background:var(--bg); display:flex; align-items:center; justify-content:center; }
+    #pinBox     { text-align:center; }
+    #pinTitle   { font-size:22px; font-weight:600; color:var(--t1); margin-bottom:4px; }
+    #pinSub     { font-size:13px; color:var(--t3); margin-bottom:24px; }
+    #pinInput   { font-size:32px; letter-spacing:10px; width:140px; text-align:center; border:none; border-bottom:2px solid var(--border2); background:transparent; color:var(--t1); padding:8px 0; outline:none; caret-color:transparent; }
+    #pinError   { font-size:12px; color:var(--red); margin-top:12px; min-height:18px; }
+    #pinReset   { display:block; font-size:11px; color:var(--t3); margin-top:28px; cursor:pointer; text-decoration:underline; background:none; border:none; }
+
+    /* === MOBILE ≤600px === */
+    @media (max-width: 600px) {
+      .wrap     { padding: 16px 14px 32px; }
+      .g2       { grid-template-columns: 1fr; }
+      .g3       { grid-template-columns: 1fr 1fr; }
+      .g4       { grid-template-columns: 1fr 1fr; }
+      .ga       { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+      .acct-bal { font-size: 15px; }
+      .m-val    { font-size: 18px; }
+      canvas    { max-height: 130px !important; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="pinOverlay">
+  <div id="pinBox">
+    <div id="pinTitle">FinDash</div>
+    <div id="pinSub">Enter PIN to continue</div>
+    <input id="pinInput" type="password" inputmode="numeric" maxlength="4" autofocus placeholder="••••">
+    <div id="pinError"></div>
+    <button id="pinReset" onclick="localStorage.removeItem('findash_pin_ok'); location.reload()">Forget this device</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="hdr">
+    <div class="hdr-title">Edge · Finance Dashboard</div>
+    <div class="hdr-meta" id="lastUpdated"></div>
+  </div>
+
+  <!-- Net Worth -->
+  <div class="sec">
+    <div class="sec-title">Net worth</div>
+    <div class="g3">
+      <div class="metric">
+        <div class="m-lbl">Net worth</div>
+        <div class="m-val c-green" id="netWorth"></div>
+        <div class="m-sub" id="snapshotDate"></div>
+        <div class="m-sub" id="receivableNote" style="margin-top:2px"></div>
+      </div>
+      <div class="metric">
+        <div class="m-lbl">Total assets</div>
+        <div class="m-val" id="totalAssets"></div>
+        <div class="m-sub">all accounts + cash</div>
+      </div>
+      <div class="metric">
+        <div class="m-lbl">Total liabilities</div>
+        <div class="m-val c-red" id="totalLiabilities"></div>
+        <div class="m-sub">SPayLater + bike</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Monitoring -->
+  <div class="sec">
+    <div class="sec-title">Monitoring</div>
+    <div class="ga" id="alertGrid"></div>
+  </div>
+
+  <!-- MacBook Goal -->
+  <div class="sec">
+    <div class="sec-title">MacBook Pro M5 goal</div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
+        <span style="font-size:14px;font-weight:500">GCash savings</span>
+        <span style="font-size:12px;color:var(--t2)" id="mbTargetLabel"></span>
+      </div>
+      <div class="pb"><div class="pb-fill" id="mbBar" style="background:var(--green)"></div></div>
+      <div class="pb-lbls">
+        <span id="mbSaved"></span>
+        <span id="mbRemaining"></span>
+      </div>
+      <div style="margin-top:10px;font-size:12px;color:var(--t2)" id="mbNote"></div>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="g2 sec">
+    <div>
+      <div class="sec-title">Salary trend</div>
+      <div class="card" style="padding:14px">
+        <div class="ch" style="height:190px">
+          <canvas id="salaryChart" role="img" aria-label="Salary trend chart showing actual and projected paychecks"></canvas>
+        </div>
+        <div style="font-size:11px;color:var(--t3);margin-top:8px;text-align:center">Faded = projected · updates each paycheck</div>
+      </div>
+    </div>
+    <div>
+      <div class="sec-title">Monthly allocation</div>
+      <div class="card" style="padding:14px">
+        <div id="allocLegend" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;font-size:11px;color:var(--t2)"></div>
+        <div class="ch" style="height:180px">
+          <canvas id="allocChart" role="img" aria-label="Donut chart of monthly budget allocation by category"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Period Spending -->
+  <div class="sec">
+    <div class="sec-title">Period spending · <span id="periodLabel"></span></div>
+    <div class="g4" style="margin-bottom:12px">
+      <div class="metric">
+        <div class="m-lbl">Spent so far</div>
+        <div class="m-val" id="spentTotal"></div>
+        <div class="m-sub" id="dayLabel"></div>
+      </div>
+      <div class="metric">
+        <div class="m-lbl">Remaining</div>
+        <div class="m-val" id="spentRemaining"></div>
+        <div class="m-sub">of period budget</div>
+      </div>
+      <div class="metric">
+        <div class="m-lbl">Daily pace</div>
+        <div class="m-val" id="dailyPace"></div>
+        <div class="m-sub">per day so far</div>
+      </div>
+      <div class="metric">
+        <div class="m-lbl">Projected total</div>
+        <div class="m-val" id="projTotal"></div>
+        <div class="m-sub" id="projStatus"></div>
+      </div>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <div style="font-size:12px;font-weight:500;color:var(--t2);margin-bottom:14px">Budget vs actual</div>
+        <div id="budgetBars"></div>
+      </div>
+      <div class="card">
+        <div style="font-size:12px;font-weight:500;color:var(--t2);margin-bottom:10px">Cash log <span class="src">Option B</span></div>
+        <div id="cashLog"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category Chart -->
+  <div class="sec">
+    <div class="sec-title">Spending by category · this period</div>
+    <div class="card" style="padding:14px">
+      <div id="catLegend" style="display:flex;gap:16px;margin-bottom:10px;font-size:11px;color:var(--t2)"></div>
+      <div class="ch" style="height:180px">
+        <canvas id="catChart" role="img" aria-label="Horizontal stacked bar chart of spending by category"></canvas>
+      </div>
+      <div id="catEmpty" class="empty" style="display:none">No spending data yet this period.<br>Updates after each check-in.</div>
+    </div>
+  </div>
+
+  <!-- Transaction Log -->
+  <div class="sec">
+    <div class="sec-title">Transaction log · this period</div>
+    <div class="card" style="padding:0;max-height:420px;overflow-x:hidden;overflow-y:auto">
+      <div id="txnLog"></div>
+    </div>
+  </div>
+
+  <!-- Accounts -->
+  <div class="sec">
+    <div class="sec-title">Accounts</div>
+    <div class="ga" id="accountsGrid"></div>
+  </div>
+
+  <!-- Salary Period -->
+  <div class="sec">
+    <div class="sec-title">Salary period</div>
+    <div class="card">
+      <div class="period-meta">
+        <span id="periodRange"></span>
+        <span id="periodDay"></span>
+      </div>
+      <div class="pb"><div class="pb-fill" id="periodBar" style="background:var(--blue)"></div></div>
+      <div class="pb-lbls">
+        <span id="periodReceived"></span>
+        <span id="periodNext"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Upcoming + SPayLater -->
+  <div class="g2 sec">
+    <div>
+      <div class="sec-title">Upcoming payments</div>
+      <div class="card">
+        <div id="upcomingList"></div>
+        <div class="total-row">
+          <span class="total-lbl">Subscriptions / month</span>
+          <span class="total-val" id="subTotal"></span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="sec-title">SPayLater schedule</div>
+      <div class="card">
+        <div id="spaylaterList"></div>
+        <div class="total-row">
+          <span class="total-lbl">Total outstanding</span>
+          <span class="total-val c-red" id="spayTotal"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Edge · Personal Finance Dashboard</span>
+    <span id="footerDate"></span>
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+// ================================================================
+// DATA — update this block each check-in
+// ================================================================
+const DATA = {
+
+  lastUpdated: "Jun 30, 2026",
+
+  // Account balances (update each salary period)
+  accounts: [
+    { label: "GCash wallet",   balance: 10878.95, tag: "spend",  tagLabel: "spending"      },
+    { label: "GCash savings",  balance: 31061.49, tag: "save",   tagLabel: "MacBook fund"  },
+    { label: "RCBC savings",   balance: 5610.75,  tag: "spend",  tagLabel: "groceries/cash"},
+    { label: "Maya wallet",    balance: 1642.54,  tag: "spend",  tagLabel: "personal"      },
+    { label: "GoTyme savings", balance: 9000.00,  tag: "save",   tagLabel: "rent/utilities"},
+    { label: "Coins.ph PHP",   balance: 4485.64,  tag: "save",   tagLabel: "charity/tithes"},
+    { label: "Bitget BTC",     balance: 11840.45, tag: "crypto", tagLabel: "crypto", btcAmount: 0.003287 },
+    { label: "Maya savings",   balance: 1841.63,  tag: "save",   tagLabel: "emergency fund"},
+    { label: "GoTyme wallet",  balance: 0.00,     tag: "spend",  tagLabel: "no plan yet"   },
+    { label: "Tonik Bank",     balance: 52.66,    tag: "save",   tagLabel: "no plan yet"   },
+    { label: "Cash on hand",   balance: 1292.00,  tag: "cash",   tagLabel: "cash"          },
+    { label: "Alkansya",       balance: 479.75,   tag: "save",   tagLabel: "piggy bank"    }
+  ],
+
+  liabilities: {
+    spaylater: 29733.07,
+    bike: 1000.00
+  },
+
+  receivables: {
+    jr: 250.00
+  },
+
+  macbook: {
+    target: 145000,
+    targetDate: "Dec 12, 2026",
+    perPaycheck: 10000,
+    shortfall: 3939
+  },
+
+  salary: {
+    recent: 27856.36,
+    periodStart: "Jun 25",
+    periodEnd: "Jul 10",
+    nextDate: "Jul 10, 2026",
+    dayOfPeriod: 5,
+    totalDays: 15
+  },
+
+  // Add a new entry each paycheck; set actual: false for future projections
+  salaryHistory: [
+    { period: "Jun 10", amount: 37000, actual: true  },
+    { period: "Jun 25", amount: 27856.36, actual: true  },
+    { period: "Jul 10", amount: 37000, actual: false },
+    { period: "Jul 25", amount: 37000, actual: false },
+    { period: "Aug 10", amount: 37000, actual: false },
+    { period: "Aug 25", amount: 37000, actual: false }
+  ],
+
+  // Update from transaction history each check-in — add spent amounts per wallet
+  periodSpending: {
+    wallets: [
+      { id: "gcash",  label: "GCash wallet",  src: "txn history", budget: 4464 },
+      { id: "rcbc",   label: "RCBC savings",  src: "txn history", budget: 4464 },
+      { id: "maya",   label: "Maya wallet",   src: "txn history", budget: 1643 },
+      { id: "coins",  label: "Coins.ph PHP",  src: "txn history", budget: 2786 }
+    ]
+  },
+
+  categoryOrder: ["Food & dining", "Groceries", "Transport", "Load / comms", "Subscriptions", "Charity", "Family", "Misc"],
+
+  // All transactions this period — type: "income" | "expense"
+  // wallet: "gcash" | "rcbc" | "maya" | "coins" | "cash"
+  // cat must match a value in categoryOrder (or "Income" for income entries)
+  transactions: [
+    { date: "Jun 25", desc: "Salary received",    cat: "Income",        amount: 27856.36, wallet: "rcbc",  type: "income"  },
+    { date: "Jun 25", desc: "Coffee",             cat: "Food & dining", amount: 108.00,   wallet: "gcash", type: "expense" },
+    { date: "Jun 25", desc: "Milk",               cat: "Groceries",     amount: 130.00,   wallet: "gcash", type: "expense" },
+    { date: "Jun 25", desc: "Breakfast",          cat: "Food & dining", amount: 80.00,    wallet: "gcash", type: "expense" },
+    { date: "Jun 26", desc: "Milk",               cat: "Groceries",     amount: 325.00,   wallet: "gcash", type: "expense" },
+    { date: "Jun 26", desc: "Coffee",             cat: "Food & dining", amount: 185.00,   wallet: "cash",  type: "expense" },
+    { date: "Jun 26", desc: "Shirt",              cat: "Misc",          amount: 150.00,   wallet: "gcash", type: "expense" },
+    { date: "Jun 27", desc: "Fare",               cat: "Transport",     amount: 13.00,    wallet: "cash",  type: "expense" },
+    { date: "Jun 27", desc: "Fare",               cat: "Transport",     amount: 67.00,    wallet: "cash",  type: "expense" },
+    { date: "Jun 27", desc: "Fare",               cat: "Transport",     amount: 13.00,    wallet: "cash",  type: "expense" },
+    { date: "Jun 27", desc: "Tithes (Victory)",   cat: "Charity",       amount: 500.00,   wallet: "coins", type: "expense" },
+    { date: "Jun 27", desc: "Fare",               cat: "Transport",     amount: 13.00,    wallet: "cash",  type: "expense" },
+    { date: "Jun 27", desc: "Milk",               cat: "Groceries",     amount: 170.00,   wallet: "gcash", type: "expense" },
+    { date: "Jun 29", desc: "Charity (via RCBC)", cat: "Charity",       amount: 500.00,   wallet: "rcbc",  type: "expense" },
+    { date: "Jun 29", desc: "TikTok coins",       cat: "Misc",          amount: 5.00,     wallet: "gcash", type: "expense" },
+    { date: "Jun 29", desc: "RJ45 cable (Shopee)",cat: "Misc",          amount: 322.00,   wallet: "rcbc",  type: "expense" },
+    { date: "Jun 30", desc: "Laundry",           cat: "Misc",          amount: 166.25,   wallet: "gcash", type: "expense" },
+    { date: "Jun 30", desc: "Lunch",             cat: "Food & dining", amount: 748.00,   wallet: "gcash", type: "expense" },
+    { date: "Jun 30", desc: "Meds (sore throat)",cat: "Misc",          amount: 480.50,   wallet: "gcash", type: "expense" },
+    { date: "Jun 30", desc: "Lunch",             cat: "Food & dining", amount: 160.00,   wallet: "cash",  type: "expense" },
+    { date: "Jun 30", desc: "Lunch",             cat: "Food & dining", amount: 392.00,   wallet: "cash",  type: "expense" },
+    { date: "Jun 30", desc: "Lunch",             cat: "Food & dining", amount: 240.00,   wallet: "cash",  type: "expense" },
+    { date: "Jun 30", desc: "Shopee order",      cat: "Misc",          amount: 327.00,   wallet: "rcbc",  type: "expense" },
+    { date: "Jun 30", desc: "Lunch",             cat: "Food & dining", amount: 162.00,   wallet: "cash",  type: "expense" }
+  ],
+
+  spaylaterSchedule: [
+    { month: "Jun bill", amount: 7059.16, due: "Jul 15, 2026",  urgent: true  },
+    { month: "Jul bill", amount: 6985.74, due: "Aug 15, 2026",  urgent: false },
+    { month: "Aug bill", amount: 6969.87, due: "Sep 15, 2026",  urgent: false },
+    { month: "Sep bill", amount: 6969.87, due: "Oct 15, 2026",  urgent: false },
+    { month: "Oct bill", amount: 994.89,  due: "Nov 15, 2026",  urgent: false },
+    { month: "Nov bill", amount: 293.93,  due: "Dec 15, 2026",  urgent: false },
+    { month: "Dec bill", amount: 294.01,  due: "Jan 15, 2027",  urgent: false },
+    { month: "Jan bill", amount: 165.60,  due: "Feb 15, 2027",  urgent: false }
+  ],
+
+  upcomingPayments: [
+    { name: "Bryan (bike)",  amount: 1000.00,  due: "Jul 21", isSub: false, urgent: false },
+    { name: "Canva Pro",     amount: 300.00,   due: "Jul 3",  isSub: true,  urgent: false },
+    { name: "CapCut",        amount: 359.00,   due: "Jul 3",  isSub: true,  urgent: false },
+    { name: "Google One",    amount: 1100.00,  due: "Jul 7",  isSub: true,  urgent: false },
+    { name: "Claude Pro",    amount: 1300.00,  due: "Jul 10", isSub: true,  urgent: false },
+    { name: "SPayLater",     amount: 7059.16,  due: "Jul 15", isSub: false, urgent: true  }
+  ],
+
+  monthlyAllocation: [
+    { label: "MacBook savings", amount: 20000, color: "#1D9E75" },
+    { label: "RCBC spending",   amount: 18500, color: "#888780" },
+    { label: "GoTyme rent",     amount: 9000,  color: "#378ADD" },
+    { label: "Personal funds",  amount: 10600, color: "#5DCAA5" },
+    { label: "SPayLater",       amount: 7059,  color: "#E24B4A" },
+    { label: "Charity",         amount: 7400,  color: "#534AB7" },
+    { label: "Subscriptions",   amount: 3059,  color: "#BA7517" }
+  ]
+};
+
+// ================================================================
+// HELPERS
+// ================================================================
+const fmt = n => '₱' + Number(n).toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const pct = (a, b) => b > 0 ? Math.min(100, Math.round(a / b * 100)) : 0;
+const daysLeft = d => DATA.salary.totalDays - d;
+
+// ================================================================
+// COMPUTED
+// ================================================================
+const totalAssets      = DATA.accounts.reduce((s, a) => s + a.balance, 0);
+const totalReceivables = Object.values(DATA.receivables || {}).reduce((s, v) => s + v, 0);
+const totalLiabilities = DATA.liabilities.spaylater + DATA.liabilities.bike;
+const netWorth         = totalAssets + totalReceivables - totalLiabilities;
+const gcashSavingsBal  = DATA.accounts.find(a => a.label === "GCash savings").balance;
+const gcashWalletBal   = DATA.accounts.find(a => a.label === "GCash wallet").balance;
+
+const ps = DATA.periodSpending;
+// Derive wallet spending and category breakdown from transactions (single source of truth)
+const txExpenses = DATA.transactions.filter(t => t.type === 'expense');
+ps.wallets.forEach(w => { w.spent = txExpenses.filter(t => t.wallet === w.id).reduce((s, t) => s + t.amount, 0); });
+const cashTotal = txExpenses.filter(t => t.wallet === 'cash').reduce((s, t) => s + t.amount, 0);
+const cats = {};
+DATA.categoryOrder.forEach(cat => { cats[cat] = { gcash: 0, rcbc: 0, maya: 0, coins: 0, cash: 0 }; });
+txExpenses.forEach(t => { if (cats[t.cat]) cats[t.cat][t.wallet] = (cats[t.cat][t.wallet] || 0) + t.amount; });
+const walletSpent = ps.wallets.reduce((s, w) => s + w.spent, 0);
+const totalSpent  = walletSpent + cashTotal;
+const totalBudget = ps.wallets.reduce((s, w) => s + w.budget, 0);
+const remaining   = totalBudget - walletSpent;
+const sal         = DATA.salary;
+const dailyPace   = sal.dayOfPeriod > 0 && totalSpent > 0 ? totalSpent / sal.dayOfPeriod : 0;
+const projected   = dailyPace > 0 ? dailyPace * sal.totalDays : 0;
+const onTrack     = projected > 0 && projected <= totalBudget;
+const SUB_THRESHOLD = 3059;
+
+// Theme colors — used in both render and charts sections
+const dark       = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const txtClr     = dark ? '#888780' : '#9a9893';
+const gridClr    = dark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.06)';
+const greenSolid = dark ? '#5DCAA5' : '#1D9E75';
+const blueSolid  = dark ? '#85B7EB' : '#378ADD';
+
+// ================================================================
+// RENDER — Static fields
+// ================================================================
+document.getElementById('lastUpdated').textContent   = 'Last updated: ' + DATA.lastUpdated;
+document.getElementById('footerDate').textContent    = DATA.lastUpdated;
+document.getElementById('snapshotDate').textContent  = 'as of ' + DATA.lastUpdated;
+document.getElementById('netWorth').textContent      = fmt(netWorth);
+document.getElementById('totalAssets').textContent   = fmt(totalAssets);
+document.getElementById('totalLiabilities').textContent = fmt(totalLiabilities);
+if (totalReceivables > 0) {
+  document.getElementById('receivableNote').textContent = '+' + fmt(totalReceivables) + ' receivable (JR)';
+  document.getElementById('receivableNote').style.color = 'var(--green)';
+}
+
+// MacBook
+const mbPct = pct(gcashSavingsBal, DATA.macbook.target);
+document.getElementById('mbBar').style.width        = mbPct + '%';
+document.getElementById('mbTargetLabel').textContent = 'target ' + fmt(DATA.macbook.target) + ' · ' + DATA.macbook.targetDate;
+document.getElementById('mbSaved').textContent      = fmt(gcashSavingsBal) + ' saved (' + mbPct + '%)';
+document.getElementById('mbRemaining').textContent  = fmt(DATA.macbook.target - gcashSavingsBal) + ' to go';
+document.getElementById('mbNote').textContent       = '+' + fmt(DATA.macbook.perPaycheck) + '/paycheck · ~' + fmt(DATA.macbook.shortfall) + ' short at Dec 10 — supplement via SPayLater';
+
+// Salary period
+document.getElementById('periodLabel').textContent    = sal.periodStart + ' – ' + sal.periodEnd;
+document.getElementById('periodRange').textContent    = sal.periodStart + ' – ' + sal.periodEnd;
+document.getElementById('periodDay').textContent      = 'Day ' + sal.dayOfPeriod + ' of ' + sal.totalDays;
+document.getElementById('periodReceived').textContent = 'Received ' + sal.periodStart;
+document.getElementById('periodNext').textContent     = 'Next: ' + sal.nextDate;
+document.getElementById('periodBar').style.width      = pct(sal.dayOfPeriod, sal.totalDays) + '%';
+
+// Period spending
+document.getElementById('spentTotal').textContent    = totalSpent > 0 ? fmt(totalSpent) : '₱0';
+document.getElementById('dayLabel').textContent      = 'day ' + sal.dayOfPeriod + ' of ' + sal.totalDays;
+document.getElementById('spentRemaining').textContent = totalSpent > 0 ? fmt(remaining) : '—';
+document.getElementById('spentRemaining').className  = 'metric m-val ' + (remaining < 2000 ? 'c-red' : 'c-green');
+document.getElementById('dailyPace').textContent     = dailyPace > 0 ? fmt(dailyPace) : '—';
+document.getElementById('projTotal').textContent     = projected > 0 ? fmt(projected) : '—';
+document.getElementById('projTotal').className       = 'metric m-val ' + (projected > 0 ? (onTrack ? 'c-green' : 'c-red') : '');
+document.getElementById('projStatus').textContent    = projected > 0 ? (onTrack ? 'under budget' : 'over pace') : 'no data yet';
+
+// Budget bars (dynamic — all wallets)
+const wKeyClr    = { gcash: blueSolid, rcbc: blueSolid, maya: dark ? '#AFA9EC' : '#534AB7', coins: dark ? '#EF9F27' : '#BA7517' };
+const budgetBarsEl = document.getElementById('budgetBars');
+
+ps.wallets.forEach(w => {
+  const wPct  = pct(w.spent, w.budget);
+  const wPace = sal.dayOfPeriod > 0 && w.spent > 0 ? w.spent / sal.dayOfPeriod : 0;
+  const wProj = wPace > 0 ? wPace * sal.totalDays : 0;
+  const barClr = wPct >= 100 ? 'var(--red)' : wPct > 80 ? 'var(--amber)' : 'var(--blue)';
+
+  const catBreakdown = Object.entries(cats)
+    .filter(([, v]) => (v[w.id] || 0) > 0)
+    .map(([name, v]) => ({ name, amount: v[w.id] }));
+
+  const catHtml = catBreakdown.length > 0
+    ? `<div style="margin-top:8px;padding-top:8px;border-top:0.5px solid var(--border)">
+        ${catBreakdown.map(c => `
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;font-size:11px">
+            <span style="color:var(--t3);min-width:90px;flex-shrink:0">${c.name}</span>
+            <div style="flex:1;background:var(--surface2);border-radius:99px;height:4px;overflow:hidden">
+              <div style="width:${pct(c.amount, w.spent)}%;height:100%;background:${wKeyClr[w.id] || blueSolid};border-radius:99px"></div>
+            </div>
+            <span style="color:var(--t2);min-width:65px;text-align:right">${fmt(c.amount)}</span>
+          </div>`).join('')}
+      </div>`
+    : '';
+
+  budgetBarsEl.innerHTML += `
+    <div class="b-item">
+      <div class="b-meta">
+        <span class="b-name">${w.label} <span class="src">${w.src}</span></span>
+        <span class="b-nums">${fmt(w.spent)} / ${fmt(w.budget)}</span>
+      </div>
+      <div class="b-track"><div class="b-fill" style="width:${wPct}%;background:${barClr}"></div></div>
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--t3);margin-top:3px">
+        <span>${wPct}% used · ${daysLeft(sal.dayOfPeriod)} days left</span>
+        <span>${wPace > 0 ? fmt(wPace) + '/day · proj ' + fmt(wProj) : '—'}</span>
+      </div>
+      ${catHtml}
+    </div>`;
+});
+
+budgetBarsEl.innerHTML += `
+  <div class="b-item">
+    <div class="b-meta">
+      <span class="b-name">Cash <span class="src">manual log</span></span>
+      <span class="b-nums">${fmt(cashTotal)} logged</span>
+    </div>
+    <div class="b-track"><div class="b-fill" style="width:100%;background:var(--gray)"></div></div>
+    <div class="b-sub">no cap · tracking only</div>
+  </div>`;
+
+// Cash log (derived from transactions where wallet === 'cash')
+const logEl    = document.getElementById('cashLog');
+const catPill  = { 'Food & dining':'lp-food', 'Transport':'lp-trans', 'Groceries':'lp-groc', 'Charity':'lp-charity', 'Family':'lp-family', 'Misc':'lp-misc', 'Load / comms':'lp-misc', 'Subscriptions':'lp-misc' };
+const cashTxns = DATA.transactions.filter(t => t.wallet === 'cash' && t.type === 'expense');
+if (cashTxns.length > 0) {
+  logEl.innerHTML = cashTxns.map(e =>
+    `<div class="log-row">
+      <span class="log-date">${e.date}</span>
+      <span style="flex:1;color:var(--t1)">${e.desc}</span>
+      <span class="log-pill ${catPill[e.cat] || 'lp-misc'}">${e.cat}</span>
+      <span class="log-amt">${fmt(e.amount)}</span>
+    </div>`
+  ).join('') + `<div class="total-row">
+    <span class="total-lbl">${cashTxns.length} entr${cashTxns.length === 1 ? 'y' : 'ies'}</span>
+    <span class="total-val">${fmt(cashTotal)}</span>
+  </div>`;
+} else {
+  logEl.innerHTML = '<div class="empty">No cash entries yet.<br>Add to transactions[] with wallet: "cash"</div>';
+}
+
+// Transaction log
+const walletLbl  = { gcash: 'GCash', rcbc: 'RCBC', maya: 'Maya', coins: 'Coins.ph', cash: 'Cash' };
+const catPillTxn = { 'Food & dining':'lp-food', 'Transport':'lp-trans', 'Groceries':'lp-groc', 'Income':'lp-groc', 'Charity':'lp-charity', 'Family':'lp-family', 'Misc':'lp-misc', 'Load / comms':'lp-misc', 'Subscriptions':'lp-misc' };
+const txnLogEl   = document.getElementById('txnLog');
+const totalIncome = DATA.transactions.filter(t => t.type === 'income').reduce((s, t) => s + t.amount, 0);
+
+txnLogEl.innerHTML = [...DATA.transactions].reverse().map(t => `
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 20px;border-bottom:0.5px solid var(--border)">
+    <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0">
+      <span style="color:var(--t3);font-size:11px;min-width:44px;flex-shrink:0">${t.date}</span>
+      <div style="min-width:0">
+        <div class="row-name" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${t.desc}</div>
+        <div style="display:flex;gap:5px;margin-top:3px;align-items:center">
+          <span class="log-pill ${catPillTxn[t.cat] || 'lp-misc'}">${t.cat}</span>
+          <span class="src">${walletLbl[t.wallet] || t.wallet}</span>
+        </div>
+      </div>
+    </div>
+    <div class="row-amt" style="color:${t.type === 'income' ? 'var(--green)' : 'var(--t1)'}">
+      ${t.type === 'income' ? '+' : '−'}${fmt(t.amount)}
+    </div>
+  </div>`).join('');
+
+txnLogEl.innerHTML += `
+  <div style="display:flex;justify-content:space-between;padding:10px 20px;font-size:13px">
+    <span style="color:var(--t2)">Total expenses this period</span>
+    <span style="font-weight:500;color:var(--red)">${fmt(totalSpent)}</span>
+  </div>`;
+
+// Accounts grid
+const acctGrid = document.getElementById('accountsGrid');
+DATA.accounts.forEach(a => {
+  const balDisplay = (a.tag === 'crypto' && a.btcAmount != null) ? `${a.btcAmount} BTC` : fmt(a.balance);
+  const subBal    = (a.tag === 'crypto' && a.btcAmount != null) ? `<div class="m-sub">≈ ${fmt(a.balance)}</div>` : '';
+  acctGrid.innerHTML += `<div class="acct-card">
+    <div class="acct-name">${a.label}</div>
+    <div class="acct-bal">${balDisplay}</div>
+    ${subBal}
+    <span class="tag tag-${a.tag}">${a.tagLabel}</span>
+  </div>`;
+});
+
+// Upcoming payments
+const upList = document.getElementById('upcomingList');
+DATA.upcomingPayments.forEach(p => {
+  upList.innerHTML += `<div class="row">
+    <div>
+      <div class="row-name">${p.name}</div>
+      <div class="row-sub" style="${p.urgent ? 'color:var(--red)' : ''}">${p.due}${p.urgent ? ' — urgent' : ''}</div>
+    </div>
+    <div class="row-amt" style="${p.urgent ? 'color:var(--red)' : ''}">${fmt(p.amount)}</div>
+  </div>`;
+});
+const subTotal = DATA.upcomingPayments.filter(p => p.isSub).reduce((s, p) => s + p.amount, 0);
+document.getElementById('subTotal').textContent = fmt(subTotal) + '/mo';
+
+// SPayLater schedule
+const spList = document.getElementById('spaylaterList');
+DATA.spaylaterSchedule.forEach(s => {
+  spList.innerHTML += `<div class="row">
+    <span style="color:var(--t2)">${s.month}</span>
+    <div style="text-align:right">
+      <div class="row-amt" style="${s.urgent ? 'color:var(--red)' : ''}">${fmt(s.amount)}</div>
+      <div class="row-sub">${s.due}</div>
+    </div>
+  </div>`;
+});
+document.getElementById('spayTotal').textContent = fmt(DATA.liabilities.spaylater);
+
+// Monitoring alerts
+const alerts = [
+  {
+    dot: gcashWalletBal >= SUB_THRESHOLD ? 'green' : 'red',
+    title: 'GCash ' + (gcashWalletBal >= SUB_THRESHOLD ? 'safe' : 'LOW'),
+    sub: fmt(gcashWalletBal) + ' — ' + (gcashWalletBal >= SUB_THRESHOLD ? 'above ₱3,059 sub threshold' : 'below subscription minimum!')
+  },
+  {
+    dot: 'green',
+    title: 'MacBook on track',
+    sub: '₱141K projected by Dec 10'
+  },
+  {
+    dot: 'amber',
+    title: 'SPayLater due',
+    sub: fmt(DATA.spaylaterSchedule[0].amount) + ' · ' + DATA.spaylaterSchedule[0].due
+  },
+  {
+    dot: 'amber',
+    title: 'Sub cluster Jul 3',
+    sub: 'Canva + CapCut = ₱659 same day'
+  },
+  {
+    dot: totalSpent > 0 ? (onTrack ? 'green' : 'red') : 'gray',
+    title: totalSpent > 0 ? (onTrack ? 'Spending on pace' : 'Over pace') : 'No spend data yet',
+    sub: totalSpent > 0 ? (fmt(projected) + ' projected this period') : 'Update after next check-in'
+  },
+  {
+    dot: 'gray',
+    title: 'Period vs period',
+    sub: 'Available after 2nd check-in'
+  },
+  {
+    dot: 'amber',
+    title: 'JR owes ₱250',
+    sub: 'Lent Jun 15 — receivable pending'
+  }
+];
+const alertGrid = document.getElementById('alertGrid');
+alerts.forEach(a => {
+  alertGrid.innerHTML += `<div class="alert-card">
+    <div class="dot dot-${a.dot}"></div>
+    <div>
+      <div class="al-title">${a.title}</div>
+      <div class="al-sub">${a.sub}</div>
+    </div>
+  </div>`;
+});
+
+// ================================================================
+// CHARTS
+// ================================================================
+Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
+Chart.defaults.font.size   = 11;
+
+// Salary trend
+new Chart(document.getElementById('salaryChart'), {
+  type: 'bar',
+  data: {
+    labels: DATA.salaryHistory.map(s => s.period),
+    datasets: [
+      { label: 'Actual',    data: DATA.salaryHistory.map(s => s.actual ? s.amount : null), backgroundColor: greenSolid, borderRadius: 4, barPercentage: 0.6 },
+      { label: 'Projected', data: DATA.salaryHistory.map(s => s.actual ? null : s.amount), backgroundColor: dark ? 'rgba(93,202,165,0.25)' : 'rgba(29,158,117,0.2)', borderRadius: 4, barPercentage: 0.6 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: true, position: 'top', align: 'end', labels: { color: txtClr, boxWidth: 10, boxHeight: 10, padding: 8 } },
+      tooltip: { callbacks: { label: c => c.parsed.y != null ? ' ' + fmt(c.parsed.y) : ' no data yet' } }
+    },
+    scales: {
+      y: { min: 0, max: 45000, ticks: { callback: v => '₱' + v/1000 + 'K', color: txtClr, maxTicksLimit: 5 }, grid: { color: gridClr }, border: { display: false } },
+      x: { ticks: { color: txtClr, autoSkip: false }, grid: { display: false }, border: { display: false } }
+    }
+  }
+});
+
+// Monthly allocation donut
+const alloc = DATA.monthlyAllocation;
+const allocLegend = document.getElementById('allocLegend');
+alloc.forEach(a => {
+  allocLegend.innerHTML += `<span style="display:flex;align-items:center;gap:4px">
+    <span style="width:10px;height:10px;border-radius:2px;background:${a.color};display:inline-block;flex-shrink:0"></span>${a.label}
+  </span>`;
+});
+const allocTotal = alloc.reduce((s, a) => s + a.amount, 0);
+new Chart(document.getElementById('allocChart'), {
+  type: 'doughnut',
+  data: {
+    labels: alloc.map(a => a.label),
+    datasets: [{ data: alloc.map(a => a.amount), backgroundColor: alloc.map(a => a.color), borderWidth: 0, hoverOffset: 6 }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false, cutout: '62%',
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: c => ' ' + fmt(c.parsed) + '/mo (' + Math.round(c.parsed / allocTotal * 100) + '%)' } }
+    }
+  }
+});
+
+// Category chart
+const catLabels = DATA.categoryOrder;
+const hasData   = catLabels.some(k => cats[k] && (cats[k].gcash||0)+(cats[k].rcbc||0)+(cats[k].maya||0)+(cats[k].coins||0)+(cats[k].cash||0) > 0);
+const catCanvas = document.getElementById('catChart');
+const catEmpty  = document.getElementById('catEmpty');
+
+if (!hasData) {
+  catCanvas.style.display = 'none';
+  catEmpty.style.display  = 'block';
+} else {
+  const catChartClrs = [greenSolid, blueSolid, dark ? '#AFA9EC' : '#534AB7', dark ? '#EF9F27' : '#BA7517', '#888780'];
+  const catLegend = document.getElementById('catLegend');
+  ['GCash', 'RCBC', 'Maya', 'Coins.ph', 'Cash'].forEach((l, i) => {
+    catLegend.innerHTML += `<span style="display:flex;align-items:center;gap:4px">
+      <span style="width:10px;height:10px;border-radius:2px;background:${catChartClrs[i]};display:inline-block"></span>${l}
+    </span>`;
+  });
+  new Chart(catCanvas, {
+    type: 'bar',
+    data: {
+      labels: catLabels,
+      datasets: [
+        { label: 'GCash',    data: catLabels.map(k => cats[k].gcash  || 0), backgroundColor: catChartClrs[0], borderRadius: 3, stack: 'a' },
+        { label: 'RCBC',     data: catLabels.map(k => cats[k].rcbc   || 0), backgroundColor: catChartClrs[1], borderRadius: 3, stack: 'a' },
+        { label: 'Maya',     data: catLabels.map(k => cats[k].maya   || 0), backgroundColor: catChartClrs[2], borderRadius: 3, stack: 'a' },
+        { label: 'Coins.ph', data: catLabels.map(k => cats[k].coins  || 0), backgroundColor: catChartClrs[3], borderRadius: 3, stack: 'a' },
+        { label: 'Cash',     data: catLabels.map(k => cats[k].cash   || 0), backgroundColor: catChartClrs[4], borderRadius: 3, stack: 'a' }
+      ]
+    },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: c => ' ' + fmt(c.parsed.x) + ' (' + c.dataset.label + ')' } }
+      },
+      scales: {
+        x: { stacked: true, ticks: { callback: v => '₱' + Math.round(v).toLocaleString(), color: txtClr, maxTicksLimit: 5 }, grid: { color: gridClr }, border: { display: false } },
+        y: { stacked: true, ticks: { color: txtClr }, grid: { display: false }, border: { display: false } }
+      }
+    }
+  });
+}
+
+
+// Rounded favicon from volcanis.png
+(function() {
+  const img = new Image();
+  img.onload = function() {
+    const size = 64;
+    const canvas = document.createElement('canvas');
+    canvas.width = size;
+    canvas.height = size;
+    const ctx = canvas.getContext('2d');
+    const r = size * 0.22;
+    ctx.beginPath();
+    ctx.moveTo(r, 0);
+    ctx.arcTo(size, 0,    size, size, r);
+    ctx.arcTo(size, size, 0,    size, r);
+    ctx.arcTo(0,    size, 0,    0,    r);
+    ctx.arcTo(0,    0,    size, 0,    r);
+    ctx.closePath();
+    ctx.clip();
+    ctx.drawImage(img, 0, 0, size, size);
+    const link = document.getElementById('favicon');
+    link.href = canvas.toDataURL('image/png');
+  };
+  img.src = 'volcanis.png';
+})();
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js');
+}
+
+// PIN auth — change PIN value to personalise
+(function() {
+  const PIN = '1234';
+  const KEY = 'findash_pin_ok';
+  const overlay = document.getElementById('pinOverlay');
+  const input   = document.getElementById('pinInput');
+  const errEl   = document.getElementById('pinError');
+  if (localStorage.getItem(KEY)) { overlay.remove(); return; }
+  input.focus();
+  input.addEventListener('input', function() {
+    errEl.textContent = '';
+    if (input.value.length === 4) {
+      if (input.value === PIN) {
+        localStorage.setItem(KEY, '1');
+        overlay.style.opacity = '0';
+        overlay.style.transition = 'opacity 0.2s';
+        setTimeout(function() { overlay.remove(); }, 200);
+      } else {
+        errEl.textContent = 'Incorrect PIN — try again';
+        input.value = '';
+        input.focus();
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>

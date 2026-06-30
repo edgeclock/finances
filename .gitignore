@@ -1,0 +1,20 @@
+# Personal images — not needed for deployment
+*.ico
+Finna*
+CHANGELOG.md
+finna-*/
+.claude/
+Rj*.png
+RJ*.webp
+Finance Dashboard Icon.*
+
+# Wallet screenshots
+GCash*.png
+RCBC*.png
+Maya*.png
+GoTyme*.png
+Shopee*.png
+Coins*.png
+Bitget*.png
+*Screenshot*.png
+*screenshot*.png
