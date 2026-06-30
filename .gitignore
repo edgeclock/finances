@@ -8,7 +8,7 @@ Rj*.png
 RJ*.webp
 Finance Dashboard Icon.*
 
-# Wallet screenshots
+# Wallet screenshots (png and jpg)
 GCash*.png
 RCBC*.png
 Maya*.png
@@ -18,3 +18,5 @@ Coins*.png
 Bitget*.png
 *Screenshot*.png
 *screenshot*.png
+*.jpg
+*.jpeg
