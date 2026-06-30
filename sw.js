@@ -18,8 +18,8 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
 
-  // dashboard.html — network first, fall back to cache when offline
-  if (url.pathname === '/dashboard.html' || url.pathname === '/') {
+  // index.html — network first, fall back to cache when offline
+  if (url.pathname === '/index.html' || url.pathname === '/') {
     e.respondWith(
       fetch(e.request)
         .then(res => {

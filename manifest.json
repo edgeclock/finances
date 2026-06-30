@@ -2,7 +2,7 @@
   "name": "Edge · Finance Dashboard",
   "short_name": "FinDash",
   "description": "Personal finance monitoring dashboard",
-  "start_url": "/dashboard.html",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#f7f7f5",
   "theme_color": "#1D9E75",
