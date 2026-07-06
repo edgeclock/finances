@@ -461,7 +461,7 @@ const DATA = {
 
   // Account balances (update each salary period)
   accounts: [
-    { label: "GCash wallet",   balance: 2924.83,  tag: "spend",  tagLabel: "spending"      },
+    { label: "GCash wallet",   balance: 1571.08,  tag: "spend",  tagLabel: "spending"      },
     { label: "GCash savings",  balance: 31061.49, tag: "save",   tagLabel: "MacBook fund"  },
     { label: "RCBC savings",   balance: 3621.60,  tag: "spend",  tagLabel: "groceries/cash"},
     { label: "Maya wallet",    balance: 1642.54,  tag: "spend",  tagLabel: "personal"      },
@@ -564,7 +564,9 @@ const DATA = {
     { date: "Jul 5",  desc: "Fare",                cat: "Transport",     amount: 26.00,    wallet: "cash",  type: "expense" },
     { date: "Jul 5",  desc: "Medicine",            cat: "Misc",          amount: 27.50,    wallet: "cash",  type: "expense" },
     { date: "Jul 6",  desc: "Breakfast",           cat: "Food & dining", amount: 50.00,    wallet: "gcash", type: "expense" },
-    { date: "Jul 6",  desc: "Lunch",               cat: "Food & dining", amount: 185.00,   wallet: "cash",  type: "expense" }
+    { date: "Jul 6",  desc: "Lunch",               cat: "Food & dining", amount: 185.00,   wallet: "cash",  type: "expense" },
+    { date: "Jul 6",  desc: "Google One",          cat: "Subscriptions", amount: 1100.00,  wallet: "gcash", type: "expense" },
+    { date: "Jul 6",  desc: "Laundry",             cat: "Misc",          amount: 253.75,   wallet: "gcash", type: "expense" }
   ],
 
   spaylaterSchedule: [
@@ -579,7 +581,6 @@ const DATA = {
   ],
 
   upcomingPayments: [
-    { name: "Google One",    amount: 1100.00,  due: "Jul 7",  isSub: true,  urgent: true  },
     { name: "Claude Pro",    amount: 1300.00,  due: "Jul 10", isSub: true,  urgent: false },
     { name: "SPayLater",     amount: 7059.16,  due: "Jul 15", isSub: false, urgent: true  },
     { name: "Bryan (bike)",  amount: 1000.00,  due: "Jul 21", isSub: false, urgent: false }
@@ -835,11 +836,6 @@ const alerts = [
     dot: 'amber',
     title: 'SPayLater due',
     sub: fmt(DATA.spaylaterSchedule[0].amount) + ' · ' + DATA.spaylaterSchedule[0].due
-  },
-  {
-    dot: 'red',
-    title: 'Google One due Jul 7',
-    sub: '₱1,100.00 — tomorrow, GCash LOW'
   },
   {
     dot: totalSpent > 0 ? (onTrack ? 'green' : 'red') : 'gray',
