@@ -164,7 +164,9 @@
     #pinSub     { font-size:13px; color:var(--t3); margin-bottom:24px; }
     #pinInput   { font-size:32px; letter-spacing:10px; width:140px; text-align:center; border:none; border-bottom:2px solid var(--border2); background:transparent; color:var(--t1); padding:8px 0; outline:none; caret-color:transparent; }
     #pinError   { font-size:12px; color:var(--red); margin-top:12px; min-height:18px; }
-    #pinReset   { display:block; font-size:11px; color:var(--t3); margin-top:28px; cursor:pointer; text-decoration:underline; background:none; border:none; }
+    #pinBtn     { display:block; width:140px; margin:16px auto 0; padding:10px 0; background:var(--t1); color:var(--bg); border:none; border-radius:8px; font-size:14px; font-weight:600; cursor:pointer; letter-spacing:0.5px; transition:opacity 0.15s; }
+    #pinBtn:active { opacity:0.75; }
+    #pinReset   { display:block; font-size:11px; color:var(--t3); margin-top:20px; cursor:pointer; text-decoration:underline; background:none; border:none; }
 
     /* === TRANSITIONS & ANIMATIONS === */
 
@@ -258,6 +260,7 @@
     <div id="pinSub">Enter PIN to continue</div>
     <input id="pinInput" type="password" inputmode="numeric" maxlength="4" autofocus placeholder="••••">
     <div id="pinError"></div>
+    <button id="pinBtn">Enter</button>
     <button id="pinReset" onclick="localStorage.removeItem('findash_pin_ok'); location.reload()">Forget this device</button>
   </div>
 </div>
@@ -1036,22 +1039,28 @@ setTimeout(function() {
   const overlay = document.getElementById('pinOverlay');
   const input   = document.getElementById('pinInput');
   const errEl   = document.getElementById('pinError');
+  const btn     = document.getElementById('pinBtn');
   if (localStorage.getItem(KEY)) { overlay.remove(); return; }
   input.focus();
+  function tryUnlock() {
+    errEl.textContent = '';
+    if (input.value.length === 0) return;
+    if (input.value === PIN) {
+      localStorage.setItem(KEY, '1');
+      overlay.style.opacity = '0';
+      overlay.style.transition = 'opacity 0.2s';
+      setTimeout(function() { overlay.remove(); }, 200);
+    } else {
+      errEl.textContent = 'Incorrect PIN — try again';
+      input.value = '';
+      input.focus();
+    }
+  }
+  btn.addEventListener('click', tryUnlock);
+  input.addEventListener('keydown', function(e) { if (e.key === 'Enter') tryUnlock(); });
   input.addEventListener('input', function() {
     errEl.textContent = '';
-    if (input.value.length === 4) {
-      if (input.value === PIN) {
-        localStorage.setItem(KEY, '1');
-        overlay.style.opacity = '0';
-        overlay.style.transition = 'opacity 0.2s';
-        setTimeout(function() { overlay.remove(); }, 200);
-      } else {
-        errEl.textContent = 'Incorrect PIN — try again';
-        input.value = '';
-        input.focus();
-      }
-    }
+    if (input.value.length === 4) tryUnlock();
   });
 })();
 </script>
