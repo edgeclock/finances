@@ -301,9 +301,9 @@
     <div class="ga" id="alertGrid"></div>
   </div>
 
-  <!-- MacBook Goal -->
+  <!-- Train the Trainer Goal -->
   <div class="sec">
-    <div class="sec-title">MacBook Pro M5 goal</div>
+    <div class="sec-title">Train the Trainer goal</div>
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
         <span style="font-size:14px;font-weight:500">GCash savings</span>
@@ -462,7 +462,7 @@ const DATA = {
   // Account balances (update each salary period)
   accounts: [
     { label: "GCash wallet",   balance: 1571.08,  tag: "spend",  tagLabel: "spending"      },
-    { label: "GCash savings",  balance: 31061.49, tag: "save",   tagLabel: "MacBook fund"  },
+    { label: "GCash savings",  balance: 31061.49, tag: "save",   tagLabel: "Trainer event fund" },
     { label: "RCBC savings",   balance: 3621.60,  tag: "spend",  tagLabel: "groceries/cash"},
     { label: "Maya wallet",    balance: 1642.54,  tag: "spend",  tagLabel: "personal"      },
     { label: "GoTyme savings", balance: 9000.00,  tag: "save",   tagLabel: "rent/utilities"},
@@ -486,10 +486,10 @@ const DATA = {
   },
 
   macbook: {
-    target: 145000,
-    targetDate: "Dec 12, 2026",
+    target: 160000,
+    targetDate: "Jan 10, 2027",
     perPaycheck: 10000,
-    shortfall: 3939
+    shortfall: 0
   },
 
   salary: {
@@ -588,7 +588,7 @@ const DATA = {
   ],
 
   monthlyAllocation: [
-    { label: "MacBook savings", amount: 20000, color: "#1D9E75" },
+    { label: "Train the Trainer", amount: 20000, color: "#1D9E75" },
     { label: "RCBC spending",   amount: 18500, color: "#888780" },
     { label: "GoTyme rent",     amount: 9000,  color: "#378ADD" },
     { label: "Personal funds",  amount: 10600, color: "#5DCAA5" },
@@ -660,7 +660,7 @@ document.getElementById('mbBar').style.width        = mbPct + '%';
 document.getElementById('mbTargetLabel').textContent = 'target ' + fmt(DATA.macbook.target) + ' · ' + DATA.macbook.targetDate;
 document.getElementById('mbSaved').textContent      = fmt(gcashSavingsBal) + ' saved (' + mbPct + '%)';
 document.getElementById('mbRemaining').textContent  = fmt(DATA.macbook.target - gcashSavingsBal) + ' to go';
-document.getElementById('mbNote').textContent       = '+' + fmt(DATA.macbook.perPaycheck) + '/paycheck · ~' + fmt(DATA.macbook.shortfall) + ' short at Dec 10 — supplement via SPayLater';
+document.getElementById('mbNote').textContent       = '+' + fmt(DATA.macbook.perPaycheck) + '/paycheck · on track by ' + DATA.macbook.targetDate;
 
 // Salary period
 document.getElementById('periodLabel').textContent    = sal.periodStart + ' – ' + sal.periodEnd;
@@ -830,8 +830,8 @@ const alerts = [
   },
   {
     dot: 'green',
-    title: 'MacBook on track',
-    sub: '₱141K projected by Dec 10'
+    title: 'Train the Trainer on track',
+    sub: '₱161K projected by Jan 10, 2027'
   },
   {
     dot: 'amber',
