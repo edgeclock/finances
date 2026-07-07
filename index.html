@@ -487,9 +487,9 @@ const DATA = {
 
   macbook: {
     target: 160000,
-    targetDate: "Jan 10, 2027",
+    targetDate: "Oct 25, 2026",
     perPaycheck: 10000,
-    shortfall: 0
+    shortfall: 48939
   },
 
   salary: {
@@ -660,7 +660,9 @@ document.getElementById('mbBar').style.width        = mbPct + '%';
 document.getElementById('mbTargetLabel').textContent = 'target ' + fmt(DATA.macbook.target) + ' · ' + DATA.macbook.targetDate;
 document.getElementById('mbSaved').textContent      = fmt(gcashSavingsBal) + ' saved (' + mbPct + '%)';
 document.getElementById('mbRemaining').textContent  = fmt(DATA.macbook.target - gcashSavingsBal) + ' to go';
-document.getElementById('mbNote').textContent       = '+' + fmt(DATA.macbook.perPaycheck) + '/paycheck · on track by ' + DATA.macbook.targetDate;
+document.getElementById('mbNote').textContent       = DATA.macbook.shortfall > 0
+  ? '+' + fmt(DATA.macbook.perPaycheck) + '/paycheck · ~' + fmt(DATA.macbook.shortfall) + ' short by ' + DATA.macbook.targetDate + ' — company may fund upfront'
+  : '+' + fmt(DATA.macbook.perPaycheck) + '/paycheck · on track by ' + DATA.macbook.targetDate;
 
 // Salary period
 document.getElementById('periodLabel').textContent    = sal.periodStart + ' – ' + sal.periodEnd;
@@ -829,9 +831,9 @@ const alerts = [
     sub: fmt(gcashWalletBal) + ' — ' + (gcashWalletBal >= SUB_THRESHOLD ? 'above ₱3,059 sub threshold' : 'below subscription minimum!')
   },
   {
-    dot: 'green',
-    title: 'Train the Trainer on track',
-    sub: '₱161K projected by Jan 10, 2027'
+    dot: 'amber',
+    title: 'Train the Trainer — Oct 2026',
+    sub: '₱111K saved by Oct 25 · ~₱49K short — company may fund upfront'
   },
   {
     dot: 'amber',
