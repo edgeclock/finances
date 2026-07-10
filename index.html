@@ -457,13 +457,13 @@
 // ================================================================
 const DATA = {
 
-  lastUpdated: "Jul 6, 2026",
+  lastUpdated: "Jul 10, 2026",
 
   // Account balances (update each salary period)
   accounts: [
-    { label: "GCash wallet",   balance: 1382.08,  tag: "spend",  tagLabel: "spending"      },
+    { label: "GCash wallet",   balance: 933.33,   tag: "spend",  tagLabel: "spending"      },
     { label: "GCash savings",  balance: 31061.49, tag: "save",   tagLabel: "Trainer event fund" },
-    { label: "RCBC savings",   balance: 3454.60,  tag: "spend",  tagLabel: "groceries/cash"},
+    { label: "RCBC savings",   balance: 1155.60,  tag: "spend",  tagLabel: "groceries/cash"},
     { label: "Maya wallet",    balance: 1642.54,  tag: "spend",  tagLabel: "personal"      },
     { label: "GoTyme savings", balance: 9000.00,  tag: "save",   tagLabel: "rent/utilities"},
     { label: "Coins.ph PHP",   balance: 3985.64,  tag: "save",   tagLabel: "charity/tithes"},
@@ -497,7 +497,7 @@ const DATA = {
     periodStart: "Jun 25",
     periodEnd: "Jul 10",
     nextDate: "Jul 10, 2026",
-    dayOfPeriod: 11,
+    dayOfPeriod: 15,
     totalDays: 15
   },
 
@@ -571,7 +571,12 @@ const DATA = {
     { date: "Jul 7",  desc: "TikTok top-up",       cat: "Misc",          amount: 189.00,   wallet: "gcash", type: "expense" },
     { date: "Jul 7",  desc: "Toothbrush (online)", cat: "Groceries",     amount: 167.00,   wallet: "rcbc",  type: "expense" },
     { date: "Jul 9",  desc: "Mom's baon (trip)",   cat: "Family",        amount: 500.00,   wallet: "cash",  type: "expense" },
-    { date: "Jul 9",  desc: "Fare",                cat: "Transport",     amount: 13.00,    wallet: "cash",  type: "expense" }
+    { date: "Jul 9",  desc: "Fare",                cat: "Transport",     amount: 13.00,    wallet: "cash",  type: "expense" },
+    { date: "Jul 10", desc: "WiFi (Palawan house)", cat: "Utilities",     amount: 1299.00,  wallet: "rcbc",  type: "expense" },
+    { date: "Jul 10", desc: "Transfer to GCash",   cat: "Transfer",      amount: 1000.00,  wallet: "rcbc",  type: "expense" },
+    { date: "Jul 10", desc: "Transfer from RCBC",  cat: "Transfer",      amount: 1000.00,  wallet: "gcash", type: "income"  },
+    { date: "Jul 10", desc: "Laundry",             cat: "Misc",          amount: 148.75,   wallet: "gcash", type: "expense" },
+    { date: "Jul 10", desc: "Claude Pro",          cat: "Subscriptions", amount: 1300.00,  wallet: "gcash", type: "expense" }
   ],
 
   spaylaterSchedule: [
@@ -586,7 +591,6 @@ const DATA = {
   ],
 
   upcomingPayments: [
-    { name: "Claude Pro",    amount: 1300.00,  due: "Jul 10", isSub: true,  urgent: false },
     { name: "SPayLater",     amount: 7059.16,  due: "Jul 15", isSub: false, urgent: true  },
     { name: "Bryan (bike)",  amount: 1000.00,  due: "Jul 21", isSub: false, urgent: false }
   ],
