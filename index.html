@@ -457,21 +457,21 @@
 // ================================================================
 const DATA = {
 
-  lastUpdated: "Jul 10, 2026",
+  lastUpdated: "Jul 12, 2026",
 
   // Account balances (update each salary period)
   accounts: [
-    { label: "GCash wallet",   balance: 933.33,   tag: "spend",  tagLabel: "spending"      },
+    { label: "GCash wallet",   balance: 533.33,   tag: "spend",  tagLabel: "spending"      },
     { label: "GCash savings",  balance: 31061.49, tag: "save",   tagLabel: "Trainer event fund" },
-    { label: "RCBC savings",   balance: 1155.60,  tag: "spend",  tagLabel: "groceries/cash"},
+    { label: "RCBC savings",   balance: 28132.12, tag: "spend",  tagLabel: "groceries/cash"},
     { label: "Maya wallet",    balance: 1642.54,  tag: "spend",  tagLabel: "personal"      },
     { label: "GoTyme savings", balance: 9000.00,  tag: "save",   tagLabel: "rent/utilities"},
-    { label: "Coins.ph PHP",   balance: 3985.64,  tag: "save",   tagLabel: "charity/tithes"},
+    { label: "Coins.ph PHP",   balance: 3485.64,  tag: "save",   tagLabel: "charity/tithes"},
     { label: "Bitget BTC",     balance: 11840.45, tag: "crypto", tagLabel: "crypto", btcAmount: 0.003287 },
     { label: "Maya savings",   balance: 1841.63,  tag: "save",   tagLabel: "emergency fund"},
     { label: "GoTyme wallet",  balance: 0.00,     tag: "spend",  tagLabel: "no plan yet"   },
     { label: "Tonik Bank",     balance: 52.66,    tag: "save",   tagLabel: "no plan yet"   },
-    { label: "Cash on hand",   balance: 3270.50,  tag: "cash",   tagLabel: "cash"          },
+    { label: "Cash on hand",   balance: 2531.50,  tag: "cash",   tagLabel: "cash"          },
     { label: "Alkansya",       balance: 479.75,   tag: "save",   tagLabel: "piggy bank"    }
   ],
 
@@ -482,7 +482,7 @@ const DATA = {
 
   receivables: {
     jr: 250.00,
-    sweet: 5000.00
+    sweet: 0
   },
 
   macbook: {
@@ -493,11 +493,11 @@ const DATA = {
   },
 
   salary: {
-    recent: 27856.36,
-    periodStart: "Jun 25",
-    periodEnd: "Jul 10",
-    nextDate: "Jul 10, 2026",
-    dayOfPeriod: 15,
+    recent: 21976.52,
+    periodStart: "Jul 11",
+    periodEnd: "Jul 25",
+    nextDate: "Jul 25, 2026",
+    dayOfPeriod: 2,
     totalDays: 15
   },
 
@@ -505,7 +505,7 @@ const DATA = {
   salaryHistory: [
     { period: "Jun 10", amount: 37000, actual: true  },
     { period: "Jun 25", amount: 27856.36, actual: true  },
-    { period: "Jul 10", amount: 37000, actual: false },
+    { period: "Jul 10", amount: 21976.52, actual: true  },
     { period: "Jul 25", amount: 37000, actual: false },
     { period: "Aug 10", amount: 37000, actual: false },
     { period: "Aug 25", amount: 37000, actual: false }
@@ -514,10 +514,10 @@ const DATA = {
   // Update from transaction history each check-in — add spent amounts per wallet
   periodSpending: {
     wallets: [
-      { id: "gcash",  label: "GCash wallet",  src: "txn history", budget: 4464 },
-      { id: "rcbc",   label: "RCBC savings",  src: "txn history", budget: 4464 },
-      { id: "maya",   label: "Maya wallet",   src: "txn history", budget: 1643 },
-      { id: "coins",  label: "Coins.ph PHP",  src: "txn history", budget: 2786 }
+      { id: "gcash",  label: "GCash wallet",  src: "txn history", budget: 2994 },
+      { id: "rcbc",   label: "RCBC savings",  src: "txn history", budget: 2994 },
+      { id: "maya",   label: "Maya wallet",   src: "txn history", budget: 0    },
+      { id: "coins",  label: "Coins.ph PHP",  src: "txn history", budget: 2198 }
     ]
   },
 
@@ -527,56 +527,18 @@ const DATA = {
   // wallet: "gcash" | "rcbc" | "maya" | "coins" | "cash"
   // cat must match a value in categoryOrder (or "Income" for income entries)
   transactions: [
-    { date: "Jun 25", desc: "Salary received",    cat: "Income",        amount: 27856.36, wallet: "rcbc",  type: "income"  },
-    { date: "Jun 25", desc: "Coffee",             cat: "Food & dining", amount: 108.00,   wallet: "gcash", type: "expense" },
-    { date: "Jun 25", desc: "Milk",               cat: "Groceries",     amount: 130.00,   wallet: "gcash", type: "expense" },
-    { date: "Jun 25", desc: "Breakfast",          cat: "Food & dining", amount: 80.00,    wallet: "gcash", type: "expense" },
-    { date: "Jun 26", desc: "Milk",               cat: "Groceries",     amount: 325.00,   wallet: "gcash", type: "expense" },
-    { date: "Jun 26", desc: "Coffee",             cat: "Food & dining", amount: 185.00,   wallet: "cash",  type: "expense" },
-    { date: "Jun 26", desc: "Shirt",              cat: "Misc",          amount: 150.00,   wallet: "gcash", type: "expense" },
-    { date: "Jun 27", desc: "Fare",               cat: "Transport",     amount: 13.00,    wallet: "cash",  type: "expense" },
-    { date: "Jun 27", desc: "Fare",               cat: "Transport",     amount: 67.00,    wallet: "cash",  type: "expense" },
-    { date: "Jun 27", desc: "Fare",               cat: "Transport",     amount: 13.00,    wallet: "cash",  type: "expense" },
-    { date: "Jun 27", desc: "Tithes (Victory)",   cat: "Charity",       amount: 500.00,   wallet: "coins", type: "expense" },
-    { date: "Jun 27", desc: "Fare",               cat: "Transport",     amount: 13.00,    wallet: "cash",  type: "expense" },
-    { date: "Jun 27", desc: "Milk",               cat: "Groceries",     amount: 170.00,   wallet: "gcash", type: "expense" },
-    { date: "Jun 29", desc: "Charity (via RCBC)", cat: "Charity",       amount: 500.00,   wallet: "rcbc",  type: "expense" },
-    { date: "Jun 29", desc: "TikTok coins",       cat: "Misc",          amount: 5.00,     wallet: "gcash", type: "expense" },
-    { date: "Jun 29", desc: "RJ45 cable (Shopee)",cat: "Misc",          amount: 322.00,   wallet: "rcbc",  type: "expense" },
-    { date: "Jun 30", desc: "Laundry",           cat: "Misc",          amount: 166.25,   wallet: "gcash", type: "expense" },
-    { date: "Jun 30", desc: "Lunch",             cat: "Food & dining", amount: 748.00,   wallet: "gcash", type: "expense" },
-    { date: "Jun 30", desc: "Meds (sore throat)",cat: "Misc",          amount: 480.50,   wallet: "gcash", type: "expense" },
-    { date: "Jun 30", desc: "Lunch",             cat: "Food & dining", amount: 160.00,   wallet: "cash",  type: "expense" },
-    { date: "Jun 30", desc: "Lunch",             cat: "Food & dining", amount: 392.00,   wallet: "cash",  type: "expense" },
-    { date: "Jun 30", desc: "Lunch",             cat: "Food & dining", amount: 240.00,   wallet: "cash",  type: "expense" },
-    { date: "Jun 30", desc: "Shopee order",      cat: "Misc",          amount: 327.00,   wallet: "rcbc",  type: "expense" },
-    { date: "Jun 30", desc: "Lunch",              cat: "Food & dining",  amount: 162.00,   wallet: "cash",  type: "expense" },
-    { date: "Jun 30", desc: "RCBC interest",      cat: "Income",         amount: 13.56,    wallet: "rcbc",  type: "income"  },
-    { date: "Jun 30", desc: "Interest tax (RCBC)", cat: "Misc",          amount: 2.71,     wallet: "rcbc",  type: "expense" },
-    { date: "Jul 1",  desc: "Medicine",            cat: "Misc",          amount: 1315.12,  wallet: "gcash", type: "expense" },
-    { date: "Jul 1",  desc: "Papa money transfer", cat: "Family",        amount: 2915.00,  wallet: "gcash", type: "expense" },
-    { date: "Jul 1",  desc: "Papa transfer (cash received)", cat: "Income", amount: 3000.00, wallet: "cash", type: "income" },
-    { date: "Jul 1",  desc: "Canva Pro",           cat: "Subscriptions", amount: 300.00,   wallet: "gcash", type: "expense" },
-    { date: "Jul 1",  desc: "CapCut",              cat: "Subscriptions", amount: 359.00,   wallet: "gcash", type: "expense" },
-    { date: "Jul 1",  desc: "Lent to Sweet",       cat: "Misc",          amount: 5000.00,  wallet: "gcash", type: "expense" },
-    { date: "Jul 1",  desc: "Transfer fee (Sweet)", cat: "Misc",          amount: 15.00,    wallet: "gcash", type: "expense" },
-    { date: "Jul 5",  desc: "Tithes (Coins.ph)",   cat: "Charity",       amount: 500.00,   wallet: "coins", type: "expense" },
-    { date: "Jul 5",  desc: "Fare",                cat: "Transport",     amount: 26.00,    wallet: "cash",  type: "expense" },
-    { date: "Jul 5",  desc: "Medicine",            cat: "Misc",          amount: 27.50,    wallet: "cash",  type: "expense" },
-    { date: "Jul 6",  desc: "Breakfast",           cat: "Food & dining", amount: 50.00,    wallet: "gcash", type: "expense" },
-    { date: "Jul 6",  desc: "Lunch",               cat: "Food & dining", amount: 185.00,   wallet: "cash",  type: "expense" },
-    { date: "Jul 6",  desc: "Google One",          cat: "Subscriptions", amount: 1100.00,  wallet: "gcash", type: "expense" },
-    { date: "Jul 6",  desc: "Laundry",             cat: "Misc",          amount: 253.75,   wallet: "gcash", type: "expense" },
-    { date: "Jul 7",  desc: "Dinner",              cat: "Food & dining", amount: 270.00,   wallet: "cash",  type: "expense" },
-    { date: "Jul 7",  desc: "TikTok top-up",       cat: "Misc",          amount: 189.00,   wallet: "gcash", type: "expense" },
-    { date: "Jul 7",  desc: "Toothbrush (online)", cat: "Groceries",     amount: 167.00,   wallet: "rcbc",  type: "expense" },
-    { date: "Jul 9",  desc: "Mom's baon (trip)",   cat: "Family",        amount: 500.00,   wallet: "cash",  type: "expense" },
-    { date: "Jul 9",  desc: "Fare",                cat: "Transport",     amount: 13.00,    wallet: "cash",  type: "expense" },
-    { date: "Jul 10", desc: "WiFi (Palawan house)", cat: "Utilities",     amount: 1299.00,  wallet: "rcbc",  type: "expense" },
-    { date: "Jul 10", desc: "Transfer to GCash",   cat: "Transfer",      amount: 1000.00,  wallet: "rcbc",  type: "expense" },
-    { date: "Jul 10", desc: "Transfer from RCBC",  cat: "Transfer",      amount: 1000.00,  wallet: "gcash", type: "income"  },
-    { date: "Jul 10", desc: "Laundry",             cat: "Misc",          amount: 148.75,   wallet: "gcash", type: "expense" },
-    { date: "Jul 10", desc: "Claude Pro",          cat: "Subscriptions", amount: 1300.00,  wallet: "gcash", type: "expense" }
+    { date: "Jul 11", desc: "Salary received",      cat: "Income",        amount: 21976.52, wallet: "rcbc",  type: "income"  },
+    { date: "Jul 11", desc: "Sweet loan repayment", cat: "Income",        amount: 5000.00,  wallet: "rcbc",  type: "income"  },
+    { date: "Jul 11", desc: "Milk",                 cat: "Groceries",     amount: 130.00,   wallet: "gcash", type: "expense" },
+    { date: "Jul 11", desc: "Lunch",                cat: "Food & dining", amount: 290.00,   wallet: "cash",  type: "expense" },
+    { date: "Jul 12", desc: "Fare",                 cat: "Transport",     amount: 13.00,    wallet: "cash",  type: "expense" },
+    { date: "Jul 12", desc: "Tithes (Coins.ph)",    cat: "Charity",       amount: 500.00,   wallet: "coins", type: "expense" },
+    { date: "Jul 12", desc: "Fare",                 cat: "Transport",     amount: 20.00,    wallet: "cash",  type: "expense" },
+    { date: "Jul 12", desc: "Fare",                 cat: "Transport",     amount: 13.00,    wallet: "cash",  type: "expense" },
+    { date: "Jul 12", desc: "Clothing",             cat: "Misc",          amount: 260.00,   wallet: "cash",  type: "expense" },
+    { date: "Jul 12", desc: "Coffee",               cat: "Food & dining", amount: 210.00,   wallet: "gcash", type: "expense" },
+    { date: "Jul 12", desc: "Lunch",                cat: "Food & dining", amount: 143.00,   wallet: "cash",  type: "expense" },
+    { date: "Jul 12", desc: "Dessert",              cat: "Food & dining", amount: 60.00,    wallet: "gcash", type: "expense" }
   ],
 
   spaylaterSchedule: [
@@ -658,7 +620,7 @@ document.getElementById('netWorth').textContent      = fmt(netWorth);
 document.getElementById('totalAssets').textContent   = fmt(totalAssets);
 document.getElementById('totalLiabilities').textContent = fmt(totalLiabilities);
 if (totalReceivables > 0) {
-  document.getElementById('receivableNote').textContent = '+' + fmt(totalReceivables) + ' receivable (JR + Sweet)';
+  document.getElementById('receivableNote').textContent = '+' + fmt(totalReceivables) + ' receivable (JR)';
   document.getElementById('receivableNote').style.color = 'var(--green)';
 }
 
@@ -857,11 +819,6 @@ const alerts = [
     dot: 'gray',
     title: 'Period vs period',
     sub: 'Available after 2nd check-in'
-  },
-  {
-    dot: 'amber',
-    title: 'Sweet owes ₱5,000',
-    sub: 'Lent Jul 1 — due Jul 10'
   },
   {
     dot: 'amber',
