@@ -461,14 +461,14 @@ const DATA = {
 
   // Account balances (update each salary period)
   accounts: [
-    { label: "GCash wallet",   balance: 3777.46,  tag: "spend",  tagLabel: "spending"      },
+    { label: "GCash wallet",   balance: 4145.02,  tag: "spend",  tagLabel: "spending"      },
     { label: "GCash savings",  balance: 41115.97, tag: "save",   tagLabel: "Trainer event fund" },
     { label: "RCBC savings",   balance: 4355.73,  tag: "spend",  tagLabel: "groceries/cash"},
-    { label: "Maya wallet",    balance: 3790.61,  tag: "spend",  tagLabel: "personal"      },
-    { label: "GoTyme savings", balance: 13544.00, tag: "save",   tagLabel: "rent/utilities"},
+    { label: "Maya wallet",    balance: 261.61,   tag: "spend",  tagLabel: "personal"      },
+    { label: "GoTyme savings", balance: 4427.84,  tag: "save",   tagLabel: "rent/utilities"},
     { label: "Coins.ph PHP",   balance: 5683.29,  tag: "save",   tagLabel: "charity/tithes"},
     { label: "Bitget BTC",     balance: 11840.45, tag: "crypto", tagLabel: "crypto", btcAmount: 0.003287 },
-    { label: "Maya savings",   balance: 3487.17,  tag: "save",   tagLabel: "emergency fund"},
+    { label: "Maya savings",   balance: 487.17,   tag: "save",   tagLabel: "emergency fund"},
     { label: "GoTyme wallet",  balance: 0.00,     tag: "spend",  tagLabel: "no plan yet"   },
     { label: "Tonik Bank",     balance: 52.66,    tag: "save",   tagLabel: "no plan yet"   },
     { label: "Cash on hand",   balance: 2518.50,  tag: "cash",   tagLabel: "cash"          },
@@ -539,7 +539,13 @@ const DATA = {
     { date: "Jul 12", desc: "Coffee",               cat: "Food & dining", amount: 210.00,   wallet: "gcash", type: "expense" },
     { date: "Jul 12", desc: "Lunch",                cat: "Food & dining", amount: 143.00,   wallet: "cash",  type: "expense" },
     { date: "Jul 12", desc: "Dessert",              cat: "Food & dining", amount: 60.00,    wallet: "gcash", type: "expense" },
-    { date: "Jul 12", desc: "Fare",                 cat: "Transport",     amount: 13.00,    wallet: "cash",  type: "expense" }
+    { date: "Jul 12", desc: "Fare",                 cat: "Transport",     amount: 13.00,    wallet: "cash",  type: "expense" },
+    { date: "Jul 12", desc: "House bills (RJ)",    cat: "Family",        amount: 4116.16,  wallet: "gotyme", type: "expense" },
+    { date: "Jul 12", desc: "Transfer to GCash",   cat: "Transfer",      amount: 5000.00,  wallet: "gotyme", type: "expense" },
+    { date: "Jul 12", desc: "Transfer from GoTyme",cat: "Transfer",      amount: 5000.00,  wallet: "gcash",  type: "income"  },
+    { date: "Jul 12", desc: "CebuPac MNL↔DVO (MMI)",cat: "Transport",   amount: 4632.44,  wallet: "gcash",  type: "expense" },
+    { date: "Jul 12", desc: "Transfer from Maya savings", cat: "Transfer",amount: 3000.00, wallet: "maya",   type: "income"  },
+    { date: "Jul 12", desc: "MMI VIP ticket (Davao)",cat: "Misc",        amount: 6529.00,  wallet: "maya",   type: "expense" }
   ],
 
   spaylaterSchedule: [
