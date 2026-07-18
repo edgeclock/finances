@@ -568,6 +568,38 @@ const DATA = {
 
   categoryOrder: ["Food & dining", "Groceries", "Transport", "Load / comms", "Subscriptions", "Charity", "Family", "Misc"],
 
+  // Archive of transactions from EARLIER period(s) within the current calendar month —
+  // preserved here when a period reset (10th/25th) happens mid-month, so account transaction
+  // history modals can show the whole month, not just the current pay period.
+  // On each period reset: if still the same calendar month, append the outgoing transactions[]
+  // here before clearing it; if the reset crosses into a new calendar month, clear this array too.
+  monthArchive: [
+    { date: "Jul 1",  desc: "Medicine",              cat: "Misc",          amount: 1315.12,  wallet: "gcash", type: "expense" },
+    { date: "Jul 1",  desc: "Papa money transfer",   cat: "Family",        amount: 2915.00,  wallet: "gcash", type: "expense" },
+    { date: "Jul 1",  desc: "Papa transfer (cash received)", cat: "Income", amount: 3000.00, wallet: "cash",  type: "income"  },
+    { date: "Jul 1",  desc: "Canva Pro",             cat: "Subscriptions", amount: 300.00,   wallet: "gcash", type: "expense" },
+    { date: "Jul 1",  desc: "CapCut",                cat: "Subscriptions", amount: 359.00,   wallet: "gcash", type: "expense" },
+    { date: "Jul 1",  desc: "Lent to Sweet",         cat: "Misc",          amount: 5000.00,  wallet: "gcash", type: "expense" },
+    { date: "Jul 1",  desc: "Transfer fee (Sweet)",  cat: "Misc",          amount: 15.00,    wallet: "gcash", type: "expense" },
+    { date: "Jul 5",  desc: "Tithes (Coins.ph)",     cat: "Charity",       amount: 500.00,   wallet: "coins", type: "expense" },
+    { date: "Jul 5",  desc: "Fare",                  cat: "Transport",     amount: 26.00,    wallet: "cash",  type: "expense" },
+    { date: "Jul 5",  desc: "Medicine",              cat: "Misc",          amount: 27.50,    wallet: "cash",  type: "expense" },
+    { date: "Jul 6",  desc: "Breakfast",             cat: "Food & dining", amount: 50.00,    wallet: "gcash", type: "expense" },
+    { date: "Jul 6",  desc: "Lunch",                 cat: "Food & dining", amount: 185.00,   wallet: "cash",  type: "expense" },
+    { date: "Jul 6",  desc: "Google One",            cat: "Subscriptions", amount: 1100.00,  wallet: "gcash", type: "expense" },
+    { date: "Jul 6",  desc: "Laundry",               cat: "Misc",          amount: 253.75,   wallet: "gcash", type: "expense" },
+    { date: "Jul 7",  desc: "Dinner",                cat: "Food & dining", amount: 270.00,   wallet: "cash",  type: "expense" },
+    { date: "Jul 7",  desc: "TikTok top-up",         cat: "Misc",          amount: 189.00,   wallet: "gcash", type: "expense" },
+    { date: "Jul 7",  desc: "Toothbrush (online)",   cat: "Groceries",     amount: 167.00,   wallet: "rcbc",  type: "expense" },
+    { date: "Jul 9",  desc: "Mom's baon (trip)",     cat: "Family",        amount: 500.00,   wallet: "cash",  type: "expense" },
+    { date: "Jul 9",  desc: "Fare",                  cat: "Transport",     amount: 13.00,    wallet: "cash",  type: "expense" },
+    { date: "Jul 10", desc: "WiFi (Palawan house)",  cat: "Utilities",     amount: 1299.00,  wallet: "rcbc",  type: "expense" },
+    { date: "Jul 10", desc: "Transfer to GCash",     cat: "Transfer",      amount: 1000.00,  wallet: "rcbc",  type: "expense" },
+    { date: "Jul 10", desc: "Transfer from RCBC",    cat: "Transfer",      amount: 1000.00,  wallet: "gcash", type: "income"  },
+    { date: "Jul 10", desc: "Laundry",               cat: "Misc",          amount: 148.75,   wallet: "gcash", type: "expense" },
+    { date: "Jul 10", desc: "Claude Pro",            cat: "Subscriptions", amount: 1300.00,  wallet: "gcash", type: "expense" }
+  ],
+
   // All transactions this period — type: "income" | "expense"
   // wallet: "gcash" | "rcbc" | "maya" | "coins" | "cash"
   // cat must match a value in categoryOrder (or "Income" for income entries)
@@ -1176,10 +1208,12 @@ setTimeout(function() {
       bodyEl.innerHTML = '<div class="empty">No per-transaction log for this account.<br>Balance is updated directly from screenshots each check-in.</div>';
       return;
     }
-    const txns = DATA.transactions.filter(t => t.wallet === walletId);
-    subEl.textContent = 'This period’s transactions (' + DATA.salary.periodStart + ' – present) · balance ' + fmt(a.balance);
+    const monthTxns = (DATA.monthArchive || []).concat(DATA.transactions);
+    const txns = monthTxns.filter(t => t.wallet === walletId);
+    const monthName = new Date().toLocaleString('en-US', { month: 'long' });
+    subEl.textContent = 'All ' + monthName + ' transactions · balance ' + fmt(a.balance);
     if (txns.length === 0) {
-      bodyEl.innerHTML = '<div class="empty">No transactions logged against this account yet this period.</div>';
+      bodyEl.innerHTML = '<div class="empty">No transactions logged against this account yet this month.</div>';
       return;
     }
     let html = txns.map(t => {
@@ -1190,7 +1224,7 @@ setTimeout(function() {
         '<span class="bd-row-val">' + sign + fmt(t.amount) + '</span></div>';
     }).join('');
     const net = txns.reduce((s, t) => s + (t.type === 'income' ? t.amount : -t.amount), 0);
-    html += '<div class="bd-total"><span>Net this period</span><span>' + (net >= 0 ? '+' : '−') + fmt(Math.abs(net)) + '</span></div>';
+    html += '<div class="bd-total"><span>Net this month</span><span>' + (net >= 0 ? '+' : '−') + fmt(Math.abs(net)) + '</span></div>';
     bodyEl.innerHTML = html;
   }
 
