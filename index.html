@@ -609,6 +609,17 @@ const DATA = {
     { date: "Jul 11", desc: "Distribute to GCash savings", cat: "Transfer", amount: 10000.00, wallet: "rcbc",       type: "expense" },
     { date: "Jul 11", desc: "Paycheck savings allocation", cat: "Income",   amount: 10000.00, wallet: "gcashsavings", type: "income"  },
     { date: "Jul 11", desc: "Interest earned",             cat: "Income",   amount: 54.48,    wallet: "gcashsavings", type: "income"  },
+    { date: "Jul 11", desc: "Distribute to GCash wallet",  cat: "Transfer", amount: 3244.13,  wallet: "rcbc",  type: "expense" },
+    { date: "Jul 11", desc: "Paycheck distribution",       cat: "Income",   amount: 3244.13,  wallet: "gcash", type: "income"  },
+    { date: "Jul 11", desc: "Distribute to GoTyme savings", cat: "Transfer", amount: 4544.00, wallet: "rcbc",   type: "expense" },
+    { date: "Jul 11", desc: "Paycheck rent/utilities allocation", cat: "Income", amount: 4544.00, wallet: "gotyme", type: "income" },
+    { date: "Jul 11", desc: "Distribute to Coins.ph",      cat: "Transfer", amount: 2197.65,  wallet: "rcbc",  type: "expense" },
+    { date: "Jul 11", desc: "Paycheck charity allocation", cat: "Income",   amount: 2197.65,  wallet: "coins", type: "income"  },
+    { date: "Jul 11", desc: "Distribute to Maya wallet",   cat: "Transfer", amount: 3790.61,  wallet: "rcbc",  type: "expense" },
+    { date: "Jul 11", desc: "Paycheck personal allocation", cat: "Income",  amount: 3790.61,  wallet: "maya",  type: "income"  },
+    { date: "Jul 11", desc: "Swept to Maya savings",       cat: "Transfer", amount: 1642.54,  wallet: "maya",       type: "expense" },
+    { date: "Jul 11", desc: "Swept from Maya wallet",      cat: "Transfer", amount: 1642.54,  wallet: "mayasavings", type: "income"  },
+    { date: "Jul 11", desc: "Interest earned",             cat: "Income",   amount: 3.00,     wallet: "mayasavings", type: "income"  },
     { date: "Jul 11", desc: "Milk",                 cat: "Groceries",     amount: 130.00,   wallet: "gcash", type: "expense" },
     { date: "Jul 11", desc: "Lunch",                cat: "Food & dining", amount: 290.00,   wallet: "cash",  type: "expense" },
     { date: "Jul 12", desc: "Fare",                 cat: "Transport",     amount: 13.00,    wallet: "cash",  type: "expense" },
@@ -707,7 +718,9 @@ const gcashWalletBal   = DATA.accounts.find(a => a.label === "GCash wallet").bal
 
 const ps = DATA.periodSpending;
 // Derive wallet spending and category breakdown from transactions (single source of truth)
-const txExpenses = DATA.transactions.filter(t => t.type === 'expense');
+// "Transfer" and paycheck-distribution "Income"-tagged entries are internal money movement between
+// Edge's own accounts, not discretionary spending — excluded from wallet spent / pace / projections.
+const txExpenses = DATA.transactions.filter(t => t.type === 'expense' && t.cat !== 'Transfer');
 ps.wallets.forEach(w => { w.spent = txExpenses.filter(t => t.wallet === w.id).reduce((s, t) => s + t.amount, 0); });
 const cashTotal = txExpenses.filter(t => t.wallet === 'cash').reduce((s, t) => s + t.amount, 0);
 const cats = {};
@@ -1197,6 +1210,7 @@ setTimeout(function() {
     'GCash savings':  'gcashsavings',
     'RCBC savings':   'rcbc',
     'Maya wallet':    'maya',
+    'Maya savings':   'mayasavings',
     'Coins.ph PHP':   'coins',
     'GoTyme savings': 'gotyme',
     'Cash on hand':   'cash'
