@@ -334,7 +334,7 @@
       <div class="metric" data-bd="liabilities">
         <div class="m-lbl">Total liabilities</div>
         <div class="m-val c-red" id="totalLiabilities"></div>
-        <div class="m-sub">SPayLater + bike</div>
+        <div class="m-sub">SPayLater (bike paid off)</div>
       </div>
     </div>
   </div>
@@ -521,7 +521,7 @@ const DATA = {
 
   liabilities: {
     spaylater: 22673.91,
-    bike: 1000.00
+    bike: 0
   },
 
   receivables: {
@@ -629,9 +629,7 @@ const DATA = {
     { month: "Jan bill", amount: 165.60,  due: "Feb 15, 2027",  urgent: false }
   ],
 
-  upcomingPayments: [
-    { name: "Bryan (bike)",  amount: 1000.00,  due: "Jul 21", isSub: false, urgent: true  }
-  ],
+  upcomingPayments: [],
 
   monthlyAllocation: [
     { label: "MacBook savings", amount: 10000, color: "#1D9E75" },
@@ -1109,7 +1107,7 @@ setTimeout(function() {
     subEl.textContent   = 'Outstanding debts owed';
     let html = '';
     html += row('SPayLater balance', DATA.liabilities.spaylater);
-    html += row('Bike debt (Bryan)', DATA.liabilities.bike);
+    html += row('Bike debt (Bryan) — paid off', 0, { cls: 'pos' });
     html += '<div class="bd-total"><span>Total liabilities</span><span>' + fmt(totalLiabilities) + '</span></div>';
     bodyEl.innerHTML = html;
   }
