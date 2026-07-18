@@ -301,9 +301,9 @@
     <div class="ga" id="alertGrid"></div>
   </div>
 
-  <!-- Train the Trainer Goal -->
+  <!-- MacBook Goal -->
   <div class="sec">
-    <div class="sec-title">Train the Trainer goal</div>
+    <div class="sec-title">MacBook Pro M5 goal</div>
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
         <span style="font-size:14px;font-weight:500">GCash savings</span>
@@ -462,7 +462,7 @@ const DATA = {
   // Account balances (update each salary period)
   accounts: [
     { label: "GCash wallet",   balance: 2141.53,  tag: "spend",  tagLabel: "spending"      },
-    { label: "GCash savings",  balance: 41115.97, tag: "save",   tagLabel: "Trainer event fund" },
+    { label: "GCash savings",  balance: 41115.97, tag: "save",   tagLabel: "MacBook fund"  },
     { label: "RCBC savings",   balance: 1340.73,  tag: "spend",  tagLabel: "groceries/cash"},
     { label: "Maya wallet",    balance: 261.61,   tag: "spend",  tagLabel: "personal"      },
     { label: "GoTyme savings", balance: 27.84,    tag: "save",   tagLabel: "rent/utilities"},
@@ -487,10 +487,10 @@ const DATA = {
   },
 
   macbook: {
-    target: 160000,
-    targetDate: "Oct 25, 2026",
-    perPaycheck: 10000,
-    shortfall: 48939
+    target: 145000,
+    targetDate: "Dec 12, 2026",
+    perPaycheck: 5000,
+    shortfall: 53884
   },
 
   salary: {
@@ -589,7 +589,7 @@ const DATA = {
   ],
 
   monthlyAllocation: [
-    { label: "Train the Trainer", amount: 20000, color: "#1D9E75" },
+    { label: "MacBook savings", amount: 10000, color: "#1D9E75" },
     { label: "RCBC spending",   amount: 18500, color: "#888780" },
     { label: "GoTyme rent",     amount: 9000,  color: "#378ADD" },
     { label: "Personal funds",  amount: 10600, color: "#5DCAA5" },
@@ -662,7 +662,7 @@ document.getElementById('mbTargetLabel').textContent = 'target ' + fmt(DATA.macb
 document.getElementById('mbSaved').textContent      = fmt(gcashSavingsBal) + ' saved (' + mbPct + '%)';
 document.getElementById('mbRemaining').textContent  = fmt(DATA.macbook.target - gcashSavingsBal) + ' to go';
 document.getElementById('mbNote').textContent       = DATA.macbook.shortfall > 0
-  ? '+' + fmt(DATA.macbook.perPaycheck) + '/paycheck · ~' + fmt(DATA.macbook.shortfall) + ' short by ' + DATA.macbook.targetDate + ' — company may fund upfront'
+  ? '+' + fmt(DATA.macbook.perPaycheck) + '/paycheck · ~' + fmt(DATA.macbook.shortfall) + ' short at ' + DATA.macbook.targetDate + ' — supplement via SPayLater or lump sum'
   : '+' + fmt(DATA.macbook.perPaycheck) + '/paycheck · on track by ' + DATA.macbook.targetDate;
 
 // Salary period
@@ -833,8 +833,8 @@ const alerts = [
   },
   {
     dot: 'amber',
-    title: 'Train the Trainer — Oct 2026',
-    sub: '₱111K saved by Oct 25 · ~₱49K short — company may fund upfront'
+    title: 'MacBook — reduced pace',
+    sub: '₱91K projected by Dec 10 · ~₱54K short — savings cut to ₱5K/paycheck (part-time)'
   },
   {
     dot: 'amber',
