@@ -509,11 +509,11 @@ const DATA = {
     { label: "GCash savings",  balance: 41115.97, tag: "save",   tagLabel: "MacBook fund"  },
     { label: "RCBC savings",   balance: 1340.73,  tag: "spend",  tagLabel: "groceries/cash"},
     { label: "Maya wallet",    balance: 261.61,   tag: "spend",  tagLabel: "personal"      },
-    { label: "GoTyme savings", balance: 27.84,    tag: "save",   tagLabel: "rent/utilities"},
+    { label: "GoTyme savings", balance: 0.00,     tag: "save",   tagLabel: "rent/utilities"},
     { label: "Coins.ph PHP",   balance: 5683.29,  tag: "save",   tagLabel: "charity/tithes"},
     { label: "Bitget BTC",     balance: 11840.45, tag: "crypto", tagLabel: "crypto", btcAmount: 0.003287 },
     { label: "Maya savings",   balance: 487.17,   tag: "save",   tagLabel: "emergency fund"},
-    { label: "GoTyme wallet",  balance: 0.00,     tag: "spend",  tagLabel: "no plan yet"   },
+    { label: "GoTyme wallet",  balance: 27.84,    tag: "spend",  tagLabel: "no plan yet"   },
     { label: "Tonik Bank",     balance: 52.66,    tag: "save",   tagLabel: "no plan yet"   },
     { label: "Cash on hand",   balance: 990.50,   tag: "cash",   tagLabel: "cash"          },
     { label: "Alkansya",       balance: 479.75,   tag: "save",   tagLabel: "piggy bank"    }
@@ -581,6 +581,7 @@ const DATA = {
     { date: "Jul 1",  desc: "CapCut",                cat: "Subscriptions", amount: 359.00,   wallet: "gcash", type: "expense" },
     { date: "Jul 1",  desc: "Lent to Sweet",         cat: "Misc",          amount: 5000.00,  wallet: "gcash", type: "expense" },
     { date: "Jul 1",  desc: "Transfer fee (Sweet)",  cat: "Misc",          amount: 15.00,    wallet: "gcash", type: "expense" },
+    { date: "Jul 1",  desc: "Interest earned",       cat: "Income",        amount: 5.33,     wallet: "gotyme", type: "income"  },
     { date: "Jul 5",  desc: "Tithes (Coins.ph)",     cat: "Charity",       amount: 500.00,   wallet: "coins", type: "expense" },
     { date: "Jul 5",  desc: "Fare",                  cat: "Transport",     amount: 26.00,    wallet: "cash",  type: "expense" },
     { date: "Jul 5",  desc: "Medicine",              cat: "Misc",          amount: 27.50,    wallet: "cash",  type: "expense" },
@@ -641,6 +642,8 @@ const DATA = {
     { date: "Jul 13", desc: "Lunch",                cat: "Food & dining", amount: 185.00,   wallet: "cash",   type: "expense" },
     { date: "Jul 12", desc: "Transfer to GCash",   cat: "Transfer",      amount: 4400.00,  wallet: "gotyme", type: "expense" },
     { date: "Jul 12", desc: "Transfer from GoTyme",cat: "Transfer",      amount: 4400.00,  wallet: "gcash",  type: "income"  },
+    { date: "Jul 12", desc: "Transfer to GoTyme wallet", cat: "Transfer", amount: 27.84,    wallet: "gotyme",       type: "expense" },
+    { date: "Jul 12", desc: "Transfer from GoTyme savings", cat: "Transfer", amount: 27.84, wallet: "gotymewallet", type: "income"  },
     { date: "Jul 12", desc: "Transfer to GCash",   cat: "Transfer",      amount: 2000.00,  wallet: "rcbc",   type: "expense" },
     { date: "Jul 12", desc: "Transfer from RCBC",  cat: "Transfer",      amount: 2000.00,  wallet: "gcash",  type: "income"  },
     { date: "Jul 12", desc: "SPayLater payment",   cat: "Misc",          amount: 7059.16,  wallet: "gcash",  type: "expense" },
@@ -1213,6 +1216,7 @@ setTimeout(function() {
     'Maya savings':   'mayasavings',
     'Coins.ph PHP':   'coins',
     'GoTyme savings': 'gotyme',
+    'GoTyme wallet':  'gotymewallet',
     'Cash on hand':   'cash'
   };
   const catPillBd = { 'Food & dining':'lp-food', 'Transport':'lp-trans', 'Groceries':'lp-groc', 'Income':'lp-groc', 'Charity':'lp-charity', 'Family':'lp-family', 'Transfer':'lp-misc', 'Misc':'lp-misc', 'Load / comms':'lp-misc', 'Subscriptions':'lp-misc' };
