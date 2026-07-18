@@ -606,6 +606,9 @@ const DATA = {
   transactions: [
     { date: "Jul 11", desc: "Salary received",      cat: "Income",        amount: 21976.52, wallet: "rcbc",  type: "income"  },
     { date: "Jul 11", desc: "Sweet loan repayment", cat: "Income",        amount: 5000.00,  wallet: "rcbc",  type: "income"  },
+    { date: "Jul 11", desc: "Distribute to GCash savings", cat: "Transfer", amount: 10000.00, wallet: "rcbc",       type: "expense" },
+    { date: "Jul 11", desc: "Paycheck savings allocation", cat: "Income",   amount: 10000.00, wallet: "gcashsavings", type: "income"  },
+    { date: "Jul 11", desc: "Interest earned",             cat: "Income",   amount: 54.48,    wallet: "gcashsavings", type: "income"  },
     { date: "Jul 11", desc: "Milk",                 cat: "Groceries",     amount: 130.00,   wallet: "gcash", type: "expense" },
     { date: "Jul 11", desc: "Lunch",                cat: "Food & dining", amount: 290.00,   wallet: "cash",  type: "expense" },
     { date: "Jul 12", desc: "Fare",                 cat: "Transport",     amount: 13.00,    wallet: "cash",  type: "expense" },
@@ -1191,6 +1194,7 @@ setTimeout(function() {
   // Account label -> wallet id used in DATA.transactions[].wallet
   const walletMap = {
     'GCash wallet':   'gcash',
+    'GCash savings':  'gcashsavings',
     'RCBC savings':   'rcbc',
     'Maya wallet':    'maya',
     'Coins.ph PHP':   'coins',
