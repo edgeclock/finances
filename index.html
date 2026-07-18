@@ -169,12 +169,12 @@
     #pinReset   { display:block; font-size:11px; color:var(--t3); margin-top:20px; cursor:pointer; text-decoration:underline; background:none; border:none; }
 
     /* Breakdown modal */
-    .metric[data-bd] { cursor: pointer; position: relative; }
-    .metric[data-bd]::after {
+    .metric[data-bd], .acct-card[data-acct] { cursor: pointer; position: relative; }
+    .metric[data-bd]::after, .acct-card[data-acct]::after {
       content: '↗'; position: absolute; top: 10px; right: 12px;
       font-size: 11px; color: var(--t3); opacity: 0; transition: opacity 0.15s;
     }
-    .metric[data-bd]:hover::after { opacity: 1; }
+    .metric[data-bd]:hover::after, .acct-card[data-acct]:hover::after { opacity: 1; }
     #bdOverlay {
       position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.4);
       display: flex; align-items: center; justify-content: center; padding: 20px;
@@ -840,10 +840,10 @@ txnLogEl.innerHTML += `
 
 // Accounts grid
 const acctGrid = document.getElementById('accountsGrid');
-DATA.accounts.forEach(a => {
+DATA.accounts.forEach((a, i) => {
   const balDisplay = (a.tag === 'crypto' && a.btcAmount != null) ? `${a.btcAmount} BTC` : fmt(a.balance);
   const subBal    = (a.tag === 'crypto' && a.btcAmount != null) ? `<div class="m-sub">≈ ${fmt(a.balance)}</div>` : '';
-  acctGrid.innerHTML += `<div class="acct-card">
+  acctGrid.innerHTML += `<div class="acct-card" data-acct="${i}">
     <div class="acct-name">${a.label}</div>
     <div class="acct-bal">${balDisplay}</div>
     ${subBal}
@@ -1156,12 +1156,55 @@ setTimeout(function() {
     bodyEl.innerHTML = html;
   }
 
+  // Account label -> wallet id used in DATA.transactions[].wallet
+  const walletMap = {
+    'GCash wallet':   'gcash',
+    'RCBC savings':   'rcbc',
+    'Maya wallet':    'maya',
+    'Coins.ph PHP':   'coins',
+    'GoTyme savings': 'gotyme',
+    'Cash on hand':   'cash'
+  };
+  const catPillBd = { 'Food & dining':'lp-food', 'Transport':'lp-trans', 'Groceries':'lp-groc', 'Income':'lp-groc', 'Charity':'lp-charity', 'Family':'lp-family', 'Transfer':'lp-misc', 'Misc':'lp-misc', 'Load / comms':'lp-misc', 'Subscriptions':'lp-misc' };
+
+  function buildAccount(idx) {
+    const a = DATA.accounts[idx];
+    titleEl.textContent = a.label;
+    const walletId = walletMap[a.label];
+    if (!walletId) {
+      subEl.textContent = 'Current balance ' + fmt(a.balance);
+      bodyEl.innerHTML = '<div class="empty">No per-transaction log for this account.<br>Balance is updated directly from screenshots each check-in.</div>';
+      return;
+    }
+    const txns = DATA.transactions.filter(t => t.wallet === walletId);
+    subEl.textContent = 'This period’s transactions (' + DATA.salary.periodStart + ' – present) · balance ' + fmt(a.balance);
+    if (txns.length === 0) {
+      bodyEl.innerHTML = '<div class="empty">No transactions logged against this account yet this period.</div>';
+      return;
+    }
+    let html = txns.map(t => {
+      const sign = t.type === 'income' ? '+' : '−';
+      const cls  = t.type === 'income' ? 'pos' : '';
+      return '<div class="bd-row ' + cls + '"><span class="bd-row-lbl">' + t.date + ' · ' + t.desc +
+        ' <span class="log-pill ' + (catPillBd[t.cat] || 'lp-misc') + '" style="margin-left:4px">' + t.cat + '</span></span>' +
+        '<span class="bd-row-val">' + sign + fmt(t.amount) + '</span></div>';
+    }).join('');
+    const net = txns.reduce((s, t) => s + (t.type === 'income' ? t.amount : -t.amount), 0);
+    html += '<div class="bd-total"><span>Net this period</span><span>' + (net >= 0 ? '+' : '−') + fmt(Math.abs(net)) + '</span></div>';
+    bodyEl.innerHTML = html;
+  }
+
   const builders = { assets: buildAssets, liabilities: buildLiabilities, networth: buildNetWorth };
 
   function openModal(key) {
     const fn = builders[key];
     if (!fn) return;
     fn();
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function openAccountModal(idx) {
+    buildAccount(idx);
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -1172,6 +1215,9 @@ setTimeout(function() {
 
   document.querySelectorAll('.metric[data-bd]').forEach(el => {
     el.addEventListener('click', () => openModal(el.dataset.bd));
+  });
+  document.querySelectorAll('.acct-card[data-acct]').forEach(el => {
+    el.addEventListener('click', () => openAccountModal(Number(el.dataset.acct)));
   });
   document.getElementById('bdClose').addEventListener('click', closeModal);
   overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
