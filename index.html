@@ -631,6 +631,17 @@ const DATA = {
 
   upcomingPayments: [],
 
+  // Recurring monthly subscriptions — the fixed catalog (not Gemini API, which is usage-based/variable).
+  // `paid` tracks whether this month's charge has already been logged as a transaction.
+  // Reset every subscription's `paid` to false on the 1st of each month, then flip to true
+  // as each one gets logged during the month (see dashboard_setup.md check-in routine).
+  subscriptions: [
+    { name: "CapCut",     amount: 359.00,  wallet: "rcbc",  dueDay: 3,  paid: true },
+    { name: "Canva Pro",  amount: 300.00,  wallet: "gcash", dueDay: 3,  paid: true },
+    { name: "Google One", amount: 1100.00, wallet: "gcash", dueDay: 7,  paid: true },
+    { name: "Claude Pro", amount: 1300.00, wallet: "gcash", dueDay: 10, paid: true }
+  ],
+
   monthlyAllocation: [
     { label: "MacBook savings", amount: 10000, color: "#1D9E75" },
     { label: "RCBC spending",   amount: 18500, color: "#888780" },
@@ -840,8 +851,22 @@ DATA.accounts.forEach(a => {
   </div>`;
 });
 
-// Upcoming payments
+// Upcoming payments — unpaid subscriptions this month + any one-off items in DATA.upcomingPayments
 const upList = document.getElementById('upcomingList');
+const today = new Date();
+const monthName = today.toLocaleString('en-US', { month: 'short' });
+const todayDay = today.getDate();
+const unpaidSubs = DATA.subscriptions.filter(s => !s.paid);
+unpaidSubs.forEach(s => {
+  const overdue = todayDay > s.dueDay;
+  upList.innerHTML += `<div class="row">
+    <div>
+      <div class="row-name">${s.name}</div>
+      <div class="row-sub" style="${overdue ? 'color:var(--red)' : ''}">${monthName} ${s.dueDay}${overdue ? ' — overdue' : ''}</div>
+    </div>
+    <div class="row-amt" style="${overdue ? 'color:var(--red)' : ''}">${fmt(s.amount)}</div>
+  </div>`;
+});
 DATA.upcomingPayments.forEach(p => {
   upList.innerHTML += `<div class="row">
     <div>
@@ -851,7 +876,10 @@ DATA.upcomingPayments.forEach(p => {
     <div class="row-amt" style="${p.urgent ? 'color:var(--red)' : ''}">${fmt(p.amount)}</div>
   </div>`;
 });
-const subTotal = DATA.upcomingPayments.filter(p => p.isSub).reduce((s, p) => s + p.amount, 0);
+if (unpaidSubs.length === 0 && DATA.upcomingPayments.length === 0) {
+  upList.innerHTML = '<div class="empty">All caught up — nothing due right now.</div>';
+}
+const subTotal = DATA.subscriptions.reduce((s, p) => s + p.amount, 0);
 document.getElementById('subTotal').textContent = fmt(subTotal) + '/mo';
 
 // SPayLater schedule
