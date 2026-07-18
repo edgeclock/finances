@@ -168,6 +168,39 @@
     #pinBtn:active { opacity:0.75; }
     #pinReset   { display:block; font-size:11px; color:var(--t3); margin-top:20px; cursor:pointer; text-decoration:underline; background:none; border:none; }
 
+    /* Breakdown modal */
+    .metric[data-bd] { cursor: pointer; position: relative; }
+    .metric[data-bd]::after {
+      content: '↗'; position: absolute; top: 10px; right: 12px;
+      font-size: 11px; color: var(--t3); opacity: 0; transition: opacity 0.15s;
+    }
+    .metric[data-bd]:hover::after { opacity: 1; }
+    #bdOverlay {
+      position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.4);
+      display: flex; align-items: center; justify-content: center; padding: 20px;
+      opacity: 0; pointer-events: none; transition: opacity 0.18s ease;
+    }
+    #bdOverlay.open { opacity: 1; pointer-events: auto; }
+    #bdModal {
+      background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--rl);
+      max-width: 420px; width: 100%; max-height: 80vh; overflow-y: auto;
+      padding: 20px 22px; transform: translateY(8px) scale(0.98); transition: transform 0.18s ease;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+    #bdOverlay.open #bdModal { transform: translateY(0) scale(1); }
+    #bdHead { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+    #bdTitle { font-size: 15px; font-weight: 600; color: var(--t1); }
+    #bdClose { background: none; border: none; color: var(--t3); font-size: 20px; cursor: pointer; line-height: 1; padding: 4px; }
+    #bdSub { font-size: 11px; color: var(--t3); margin-bottom: 16px; }
+    .bd-row { display: flex; justify-content: space-between; align-items: baseline; padding: 7px 0; border-bottom: 0.5px solid var(--border); font-size: 13px; }
+    .bd-row:last-of-type { border-bottom: none; }
+    .bd-row-lbl { color: var(--t2); }
+    .bd-row-val { color: var(--t1); font-weight: 500; font-variant-numeric: tabular-nums; }
+    .bd-row.neg .bd-row-val { color: var(--red); }
+    .bd-row.pos .bd-row-val { color: var(--green); }
+    .bd-op { color: var(--t3); font-size: 12px; margin-right: 6px; }
+    .bd-total { display: flex; justify-content: space-between; align-items: baseline; padding-top: 12px; margin-top: 8px; border-top: 1.5px solid var(--border2); font-size: 16px; font-weight: 600; }
+
     /* === TRANSITIONS & ANIMATIONS === */
 
     /* Card hover lift */
@@ -265,6 +298,17 @@
   </div>
 </div>
 
+<div id="bdOverlay">
+  <div id="bdModal">
+    <div id="bdHead">
+      <div id="bdTitle"></div>
+      <button id="bdClose" aria-label="Close">&times;</button>
+    </div>
+    <div id="bdSub"></div>
+    <div id="bdBody"></div>
+  </div>
+</div>
+
 <div class="wrap">
 
   <div class="hdr">
@@ -276,18 +320,18 @@
   <div class="sec">
     <div class="sec-title">Net worth</div>
     <div class="g3">
-      <div class="metric">
+      <div class="metric" data-bd="networth">
         <div class="m-lbl">Net worth</div>
         <div class="m-val c-green" id="netWorth"></div>
         <div class="m-sub" id="snapshotDate"></div>
         <div class="m-sub" id="receivableNote" style="margin-top:2px"></div>
       </div>
-      <div class="metric">
+      <div class="metric" data-bd="assets">
         <div class="m-lbl">Total assets</div>
         <div class="m-val" id="totalAssets"></div>
         <div class="m-sub">all accounts + cash</div>
       </div>
-      <div class="metric">
+      <div class="metric" data-bd="liabilities">
         <div class="m-lbl">Total liabilities</div>
         <div class="m-val c-red" id="totalLiabilities"></div>
         <div class="m-sub">SPayLater + bike</div>
@@ -1033,6 +1077,80 @@ setTimeout(function() {
   countUp(document.getElementById('totalLiabilities'), totalLiabilities);
   if (totalSpent > 0) countUp(document.getElementById('spentTotal'), totalSpent);
 }, 300);
+
+// ================================================================
+// BREAKDOWN MODAL — net worth / assets / liabilities computation
+// ================================================================
+(function() {
+  const receivableLabels = { jr: 'JR', sweet: 'Sweet', papa: 'Papa' };
+  const overlay = document.getElementById('bdOverlay');
+  const modal   = document.getElementById('bdModal');
+  const titleEl = document.getElementById('bdTitle');
+  const subEl   = document.getElementById('bdSub');
+  const bodyEl  = document.getElementById('bdBody');
+
+  function row(lbl, val, opts) {
+    opts = opts || {};
+    const cls = 'bd-row' + (opts.cls ? ' ' + opts.cls : '');
+    const op  = opts.op ? '<span class="bd-op">' + opts.op + '</span>' : '';
+    return '<div class="' + cls + '"><span class="bd-row-lbl">' + op + lbl + '</span><span class="bd-row-val">' + fmt(val) + '</span></div>';
+  }
+
+  function buildAssets() {
+    titleEl.textContent = 'Total assets';
+    subEl.textContent   = 'Sum of every account balance + cash on hand';
+    let html = DATA.accounts.map(a => row(a.label + (a.tagLabel ? ' · ' + a.tagLabel : ''), a.balance)).join('');
+    html += '<div class="bd-total"><span>Total assets</span><span>' + fmt(totalAssets) + '</span></div>';
+    bodyEl.innerHTML = html;
+  }
+
+  function buildLiabilities() {
+    titleEl.textContent = 'Total liabilities';
+    subEl.textContent   = 'Outstanding debts owed';
+    let html = '';
+    html += row('SPayLater balance', DATA.liabilities.spaylater);
+    html += row('Bike debt (Bryan)', DATA.liabilities.bike);
+    html += '<div class="bd-total"><span>Total liabilities</span><span>' + fmt(totalLiabilities) + '</span></div>';
+    bodyEl.innerHTML = html;
+  }
+
+  function buildNetWorth() {
+    titleEl.textContent = 'Net worth';
+    subEl.textContent   = 'Assets + receivables − liabilities';
+    let html = '';
+    html += row('Total assets', totalAssets, { op: '' });
+    const receivables = DATA.receivables || {};
+    Object.keys(receivables).forEach(k => {
+      if (receivables[k] > 0) {
+        html += row((receivableLabels[k] || k) + ' owes', receivables[k], { op: '+', cls: 'pos' });
+      }
+    });
+    html += row('Total liabilities', totalLiabilities, { op: '−', cls: 'neg' });
+    html += '<div class="bd-total"><span>Net worth</span><span>' + fmt(netWorth) + '</span></div>';
+    bodyEl.innerHTML = html;
+  }
+
+  const builders = { assets: buildAssets, liabilities: buildLiabilities, networth: buildNetWorth };
+
+  function openModal(key) {
+    const fn = builders[key];
+    if (!fn) return;
+    fn();
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.metric[data-bd]').forEach(el => {
+    el.addEventListener('click', () => openModal(el.dataset.bd));
+  });
+  document.getElementById('bdClose').addEventListener('click', closeModal);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+})();
 
 // PIN auth — change PIN value to personalise
 (function() {
