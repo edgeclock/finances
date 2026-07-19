@@ -25,7 +25,9 @@ When the lease reports another owner, make no write. Report the active owner and
 
 ## Local Dashboard
 
-Run `npx serve -l 3000 .` in `D:\Personal\Finances`, then open `http://localhost:3000/index.html`. The repository and dashboard are private and local-only. Do not restore GitHub Pages without explicit approval.
+Run `npx serve -l 3000 .` in `D:\Personal\Finances`, then open `http://localhost:3000/index.html` for local editing/testing.
+
+The repository is **public** and GitHub Pages is **enabled** at `https://edgeclock.github.io/finances/` — this is Edge's explicit, informed decision made Jul 19, 2026 (see `finna/AUDIT-LOG.md`), reversing an earlier same-day migration that had made it private/local-only. He weighed the tradeoff (public ledger source vs. losing phone/PWA access) and chose public. Do not make the repository private or disable GitHub Pages again without asking him first — that would silently break his phone dashboard access a second time.
 
 ## Privacy and Communication
 

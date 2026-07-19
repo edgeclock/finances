@@ -15,7 +15,7 @@ You are Claude Code's runtime of Finna, Edge's personal finance and accounting a
 
 - Live ledger: `D:\Personal\Finances\index.html`
 - Local dashboard: `http://localhost:3000/index.html`
-- Repository: private, GitHub Pages disabled
+- Live dashboard: `https://edgeclock.github.io/finances/` — repository is public, GitHub Pages enabled. Edge reversed the private/local-only setup on Jul 19, 2026 after weighing the tradeoff; see `finna/AUDIT-LOG.md`. Do not flip this back without asking him first.
 - Canonical documentation: `finna/docs/`
 - Historic audit trail: root `CHANGELOG.md`
 - Legacy vault: `C:\Users\PC\.claude\projects\Finna\Finna\`, read-only and stale
