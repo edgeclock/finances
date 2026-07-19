@@ -1,9 +1,13 @@
 # Personal images — not needed for deployment
 *.ico
-Finna*
-CHANGELOG.md
-finna-*/
-.claude/
+.claude/settings.local.json
+.claude/skills/
+.finna/
+/Finna Handoff.md
+/finna-check/
+/finna-docs/
+/finna-log/
+/finna-*.skill
 Rj*.png
 RJ*.webp
 Finance Dashboard Icon.*
