@@ -1,14 +1,14 @@
 # Account Snapshot
 
 **Source:** `index.html`
-**As of:** Jul 18, 2026
-**Status:** Rebuilt during the dual-runtime migration.
+**As of:** Jul 19, 2026
+**Status:** Updated after logging Jul 19 expenses.
 
 ## Accounts
 
 | Account | Balance | Purpose |
 |---|---:|---|
-| GCash wallet | PHP 2,141.53 | Spending |
+| GCash wallet | PHP 771.37 | Spending |
 | GCash savings | PHP 41,115.97 | MacBook fund |
 | RCBC savings | PHP 1,340.73 | Groceries and cash |
 | Maya wallet | PHP 261.61 | Personal |
@@ -18,10 +18,10 @@
 | Maya savings | PHP 487.17 | Emergency fund |
 | GoTyme wallet | PHP 27.84 | No assigned plan |
 | Tonik Bank | PHP 52.66 | No assigned plan |
-| Cash on hand | PHP 990.50 | Cash |
+| Cash on hand | PHP 559.50 | Cash |
 | Alkansya | PHP 479.75 | Piggy bank |
 
-**Total assets:** PHP 64,421.50
+**Total assets:** PHP 62,620.34
 **Liabilities:** PHP 22,673.91
 **Receivables:** PHP 2,062.00
 **Ledger net worth formula:** assets + receivables - liabilities.

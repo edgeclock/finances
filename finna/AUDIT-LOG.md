@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Jul 19, 2026 - Logged 6 expenses (fare x2, coffee, groceries, meal prep x2)
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat report.
+- Ledger change: added 6 transactions dated Jul 19 — Fare ₱13 (cash) x2, Coffee ₱210 (gcash), Groceries ₱580.75 (gcash), Meal prep ₱579.41 (gcash), Meal prep ₱405.00 (cash). Total GCash spend ₱1,370.16, total Cash spend ₱431.00.
+- Balance updates: GCash wallet ₱2,141.53 → ₱771.37. Cash on hand ₱990.50 → ₱559.50.
+- `lastUpdated` → Jul 19, 2026. `salary.dayOfPeriod` 8 → 9 (day 9 of Jul 11–25 period).
+- Validation: `finna-validate.ps1` passed.
+
 ## Jul 19, 2026 - Edge reversed the privacy migration: repo public, GitHub Pages restored
 
 - Runtime: Claude Code.
