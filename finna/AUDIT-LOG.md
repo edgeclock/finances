@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Jul 19, 2026 - Papa's loan fully repaid
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat report.
+- Ledger change: added income transaction "Papa loan repayment" ₱1,500.00 to GCash wallet, Jul 19.
+- Balance update: GCash wallet ₱771.37 → ₱2,271.37.
+- Receivables: `papa` ₱1,500.00 → ₱0 (fully repaid — Jul 15 loan ₱3,500, repaid ₱2,000 Jul 17 + ₱1,500 Jul 19). Removed the "Papa owes" monitoring alert and updated the receivable note to JR-only.
+- Validation: `finna-validate.ps1` passed.
+
 ## Jul 19, 2026 - Logged 6 expenses (fare x2, coffee, groceries, meal prep x2)
 
 - Runtime: Claude Code.

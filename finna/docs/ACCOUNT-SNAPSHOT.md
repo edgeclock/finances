@@ -8,7 +8,7 @@
 
 | Account | Balance | Purpose |
 |---|---:|---|
-| GCash wallet | PHP 771.37 | Spending |
+| GCash wallet | PHP 2,271.37 | Spending |
 | GCash savings | PHP 41,115.97 | MacBook fund |
 | RCBC savings | PHP 1,340.73 | Groceries and cash |
 | Maya wallet | PHP 261.61 | Personal |
@@ -21,9 +21,9 @@
 | Cash on hand | PHP 559.50 | Cash |
 | Alkansya | PHP 479.75 | Piggy bank |
 
-**Total assets:** PHP 62,620.34
+**Total assets:** PHP 64,120.34
 **Liabilities:** PHP 22,673.91
-**Receivables:** PHP 2,062.00
+**Receivables:** PHP 562.00
 **Ledger net worth formula:** assets + receivables - liabilities.
 
 ## Current Salary Period

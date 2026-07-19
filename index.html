@@ -533,7 +533,7 @@ const DATA = {
 
   // Account balances (update each salary period)
   accounts: [
-    { label: "GCash wallet",   balance: 771.37,   tag: "spend",  tagLabel: "spending"      },
+    { label: "GCash wallet",   balance: 2271.37,  tag: "spend",  tagLabel: "spending"      },
     { label: "GCash savings",  balance: 41115.97, tag: "save",   tagLabel: "MacBook fund"  },
     { label: "RCBC savings",   balance: 1340.73,  tag: "spend",  tagLabel: "groceries/cash"},
     { label: "Maya wallet",    balance: 261.61,   tag: "spend",  tagLabel: "personal"      },
@@ -555,7 +555,7 @@ const DATA = {
   receivables: {
     jr: 562.00,
     sweet: 0,
-    papa: 1500.00
+    papa: 0
   },
 
   macbook: {
@@ -699,7 +699,8 @@ const DATA = {
     { date: "Jul 19", desc: "Fare",                cat: "Transport",     amount: 13.00,    wallet: "cash",   type: "expense" },
     { date: "Jul 19", desc: "Groceries",            cat: "Groceries",     amount: 580.75,   wallet: "gcash",  type: "expense" },
     { date: "Jul 19", desc: "Meal prep",            cat: "Food & dining", amount: 579.41,   wallet: "gcash",  type: "expense" },
-    { date: "Jul 19", desc: "Meal prep",            cat: "Food & dining", amount: 405.00,   wallet: "cash",   type: "expense" }
+    { date: "Jul 19", desc: "Meal prep",            cat: "Food & dining", amount: 405.00,   wallet: "cash",   type: "expense" },
+    { date: "Jul 19", desc: "Papa loan repayment",  cat: "Income",        amount: 1500.00,  wallet: "gcash",  type: "income"  }
   ],
 
   spaylaterSchedule: [
@@ -820,7 +821,7 @@ document.getElementById('netWorth').textContent      = fmt(netWorth);
 document.getElementById('totalAssets').textContent   = fmt(totalAssets);
 document.getElementById('totalLiabilities').textContent = fmt(totalLiabilities);
 if (totalReceivables > 0) {
-  document.getElementById('receivableNote').textContent = '+' + fmt(totalReceivables) + ' receivable (JR + Papa)';
+  document.getElementById('receivableNote').textContent = '+' + fmt(totalReceivables) + ' receivable (JR)';
   document.getElementById('receivableNote').style.color = 'var(--green)';
 }
 
@@ -1062,11 +1063,6 @@ const alerts = [
     dot: 'gray',
     title: 'Period vs period',
     sub: 'Available after 2nd check-in'
-  },
-  {
-    dot: 'amber',
-    title: 'Papa owes ₱1,500',
-    sub: 'Lent Jul 15 — ₱2,000 partial paid Jul 17'
   },
   {
     dot: 'amber',
