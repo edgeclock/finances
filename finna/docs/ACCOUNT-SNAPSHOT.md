@@ -2,7 +2,7 @@
 
 **Source:** `index.html`
 **As of:** Jul 20, 2026
-**Status:** Updated after logging Jul 19 laundry (retroactive).
+**Status:** Updated after logging ChatGPT Plus subscription (new recurring cost).
 
 ## Accounts
 
@@ -10,7 +10,7 @@
 |---|---:|---|
 | GCash wallet | PHP 2,096.37 | Spending |
 | GCash savings | PHP 41,115.97 | MacBook fund |
-| RCBC savings | PHP 1,340.73 | Groceries and cash |
+| RCBC savings | PHP 341.73 | Groceries and cash |
 | Maya wallet | PHP 261.61 | Personal |
 | GoTyme savings | PHP 0.00 | Rent and utilities |
 | Coins.ph PHP | PHP 5,683.29 | Charity and tithes |
@@ -21,7 +21,7 @@
 | Cash on hand | PHP 559.50 | Cash |
 | Alkansya | PHP 479.75 | Piggy bank |
 
-**Total assets:** PHP 63,945.34
+**Total assets:** PHP 62,946.34
 **Liabilities:** PHP 22,673.91
 **Receivables:** PHP 562.00
 **Ledger net worth formula:** assets + receivables - liabilities.

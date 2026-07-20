@@ -1,5 +1,15 @@
 # Finna Audit Log
 
+## Jul 20, 2026 - New recurring subscription: ChatGPT Plus
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat report.
+- Ledger change: added expense "ChatGPT Plus" ₱999.00, wallet rcbc, cat Subscriptions, dated Jul 19. Added as a new entry in `DATA.subscriptions[]` (dueDay 19, paid: true this cycle) so it's tracked for future monthly resets alongside CapCut/Canva/Google One/Claude Pro.
+- Balance update: RCBC savings ₱1,340.73 → ₱341.73.
+- `monthlyAllocation` "Subscriptions" planning figure updated ₱3,059 → ₱4,058 to include the new recurring cost.
+- Validation: `finna-validate.ps1` passed.
+- Flag: RCBC balance is now low (₱341.73) against its period budget — worth noting to Edge.
+
 ## Jul 20, 2026 - Logged Jul 19 laundry (retroactive)
 
 - Runtime: Claude Code.

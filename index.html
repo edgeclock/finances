@@ -535,7 +535,7 @@ const DATA = {
   accounts: [
     { label: "GCash wallet",   balance: 2096.37,  tag: "spend",  tagLabel: "spending"      },
     { label: "GCash savings",  balance: 41115.97, tag: "save",   tagLabel: "MacBook fund"  },
-    { label: "RCBC savings",   balance: 1340.73,  tag: "spend",  tagLabel: "groceries/cash"},
+    { label: "RCBC savings",   balance: 341.73,   tag: "spend",  tagLabel: "groceries/cash"},
     { label: "Maya wallet",    balance: 261.61,   tag: "spend",  tagLabel: "personal"      },
     { label: "GoTyme savings", balance: 0.00,     tag: "save",   tagLabel: "rent/utilities"},
     { label: "Coins.ph PHP",   balance: 5683.29,  tag: "save",   tagLabel: "charity/tithes"},
@@ -701,7 +701,8 @@ const DATA = {
     { date: "Jul 19", desc: "Meal prep",            cat: "Food & dining", amount: 579.41,   wallet: "gcash",  type: "expense" },
     { date: "Jul 19", desc: "Meal prep",            cat: "Food & dining", amount: 405.00,   wallet: "cash",   type: "expense" },
     { date: "Jul 19", desc: "Papa loan repayment",  cat: "Income",        amount: 1500.00,  wallet: "gcash",  type: "income"  },
-    { date: "Jul 19", desc: "Laundry",               cat: "Misc",          amount: 175.00,   wallet: "gcash",  type: "expense" }
+    { date: "Jul 19", desc: "Laundry",               cat: "Misc",          amount: 175.00,   wallet: "gcash",  type: "expense" },
+    { date: "Jul 19", desc: "ChatGPT Plus",           cat: "Subscriptions", amount: 999.00,   wallet: "rcbc",   type: "expense" }
   ],
 
   spaylaterSchedule: [
@@ -724,7 +725,8 @@ const DATA = {
     { name: "CapCut",     amount: 359.00,  wallet: "rcbc",  dueDay: 3,  paid: true },
     { name: "Canva Pro",  amount: 300.00,  wallet: "gcash", dueDay: 3,  paid: true },
     { name: "Google One", amount: 1100.00, wallet: "gcash", dueDay: 7,  paid: true },
-    { name: "Claude Pro", amount: 1300.00, wallet: "gcash", dueDay: 10, paid: true }
+    { name: "Claude Pro", amount: 1300.00, wallet: "gcash", dueDay: 10, paid: true },
+    { name: "ChatGPT Plus", amount: 999.00, wallet: "rcbc", dueDay: 19, paid: true }
   ],
 
   // Monthly reports — one entry per month that has been compiled. Compiled automatically on the
@@ -764,7 +766,7 @@ const DATA = {
     { label: "Personal funds",  amount: 10600, color: "#5DCAA5" },
     { label: "SPayLater",       amount: 7059,  color: "#E24B4A" },
     { label: "Charity",         amount: 7400,  color: "#534AB7" },
-    { label: "Subscriptions",   amount: 3059,  color: "#BA7517" }
+    { label: "Subscriptions",   amount: 4058,  color: "#BA7517" }
   ]
 };
 
