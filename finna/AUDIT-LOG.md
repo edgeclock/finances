@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Jul 20, 2026 - Logged Jul 19 laundry (retroactive)
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat report. Edge initially wrote "June 19" — confirmed with him before logging that he meant July 19, rather than guessing.
+- Ledger change: added expense "Laundry" ₱175.00, wallet gcash, dated Jul 19.
+- Balance update: GCash wallet ₱2,271.37 → ₱2,096.37.
+- `lastUpdated` → Jul 20, 2026. `salary.dayOfPeriod` 9 → 10.
+- Validation: `finna-validate.ps1` passed.
+
 ## Jul 19, 2026 - Papa's loan fully repaid
 
 - Runtime: Claude Code.
