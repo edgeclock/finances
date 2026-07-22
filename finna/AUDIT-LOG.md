@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Jul 22, 2026 - Logged breakfast
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat report.
+- Ledger change: added expense "Breakfast" ₱60.00, wallet cash, dated Jul 22.
+- Balance update: Cash on hand ₱559.50 → ₱499.50.
+- `lastUpdated` → Jul 22, 2026. `salary.dayOfPeriod` 10 → 12.
+- Validation: `finna-validate.ps1` passed.
+
 ## Jul 20, 2026 - New recurring subscription: ChatGPT Plus
 
 - Runtime: Claude Code.

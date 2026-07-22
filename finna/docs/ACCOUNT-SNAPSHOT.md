@@ -1,8 +1,8 @@
 # Account Snapshot
 
 **Source:** `index.html`
-**As of:** Jul 20, 2026
-**Status:** Updated after logging ChatGPT Plus subscription (new recurring cost).
+**As of:** Jul 22, 2026
+**Status:** Updated after logging Jul 22 breakfast.
 
 ## Accounts
 
@@ -18,10 +18,10 @@
 | Maya savings | PHP 487.17 | Emergency fund |
 | GoTyme wallet | PHP 27.84 | No assigned plan |
 | Tonik Bank | PHP 52.66 | No assigned plan |
-| Cash on hand | PHP 559.50 | Cash |
+| Cash on hand | PHP 499.50 | Cash |
 | Alkansya | PHP 479.75 | Piggy bank |
 
-**Total assets:** PHP 62,946.34
+**Total assets:** PHP 62,886.34
 **Liabilities:** PHP 22,673.91
 **Receivables:** PHP 562.00
 **Ledger net worth formula:** assets + receivables - liabilities.
