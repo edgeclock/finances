@@ -533,13 +533,13 @@ const DATA = {
 
   // Account balances (update each salary period)
   accounts: [
-    { label: "GCash wallet",   balance: 1287.63,  tag: "spend",  tagLabel: "spending"      },
+    { label: "GCash wallet",   balance: 14485.89, tag: "spend",  tagLabel: "spending"      },
     { label: "GCash savings",  balance: 41115.97, tag: "save",   tagLabel: "MacBook fund"  },
     { label: "RCBC savings",   balance: 134.73,   tag: "spend",  tagLabel: "groceries/cash"},
     { label: "Maya wallet",    balance: 261.61,   tag: "spend",  tagLabel: "personal"      },
     { label: "GoTyme savings", balance: 0.00,     tag: "save",   tagLabel: "rent/utilities"},
     { label: "Coins.ph PHP",   balance: 5183.29,  tag: "save",   tagLabel: "charity/tithes"},
-    { label: "Bitget BTC",     balance: 11840.45, tag: "crypto", tagLabel: "crypto", btcAmount: 0.003287 },
+    { label: "Bitget BTC",     balance: 0.00,     tag: "crypto", tagLabel: "liquidated Jul 23", btcAmount: 0 },
     { label: "Maya savings",   balance: 487.17,   tag: "save",   tagLabel: "emergency fund"},
     { label: "GoTyme wallet",  balance: 27.84,    tag: "spend",  tagLabel: "no plan yet"   },
     { label: "Tonik Bank",     balance: 52.66,    tag: "save",   tagLabel: "no plan yet"   },
@@ -710,7 +710,8 @@ const DATA = {
     { date: "Jul 22", desc: "Breakfast",                cat: "Food & dining", amount: 60.00,    wallet: "gcash",  type: "expense" },
     { date: "Jul 22", desc: "Missionary support (Even Tolorio)", cat: "Charity", amount: 500.00, wallet: "coins", type: "expense" },
     { date: "Jul 22", desc: "Shopee order",            cat: "Misc",          amount: 207.00,   wallet: "rcbc",   type: "expense" },
-    { date: "Jul 22", desc: "JR loan repayment",       cat: "Income",        amount: 562.00,   wallet: "gcash",  type: "income"  }
+    { date: "Jul 22", desc: "JR loan repayment",       cat: "Income",        amount: 562.00,   wallet: "gcash",  type: "income"  },
+    { date: "Jul 23", desc: "Bitget BTC liquidation",  cat: "Transfer",      amount: 13198.26, wallet: "gcash",  type: "income"  }
   ],
 
   spaylaterSchedule: [

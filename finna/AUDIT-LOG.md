@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Jul 23, 2026 - Bitget BTC fully liquidated to GCash wallet
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat report. Edge's stated reasoning: needs liquid cash; crypto had been informally functioning as his emergency buffer; plans (not yet decided/actioned) to redirect future monthly investing toward something like S&P 500 instead of crypto starting next pay period — noted for context, no ledger structure created for this yet since it's still a plan, not a confirmed transaction.
+- Ledger change: added transaction "Bitget BTC liquidation" ₱13,198.26, wallet gcash, type income, cat **Transfer** (not "Income") — this is an internal asset conversion (crypto → cash within Edge's own accounts), not new external income, so it's excluded from the monthly report's income total, consistent with the Income-vs-Transfer rule in `finna/DATA-CONTRACT.md` / dashboard_setup memory.
+- Balance updates: Bitget BTC ₱11,840.45 (0.003287 BTC) → ₱0.00 (0 BTC), tagLabel updated to "liquidated Jul 23". GCash wallet ₱1,287.63 → ₱14,485.89.
+- Note: did not split out the ₱1,357.81 difference between the last recorded Bitget balance and the actual liquidation proceeds as a separate "gain" entry — Edge reported only the total proceeds, not a cost basis or gain figure, so no gain/loss breakdown was assumed. Net worth is unaffected by this choice (total assets already reflect the full swap correctly either way); only the monthly report's income/expense split would change if a breakdown were added later.
+- Validation: `finna-validate.ps1` passed.
+
 ## Jul 23, 2026 - Logged Jul 21-22 activity; JR loan cleared; new recurring charity commitment
 
 - Runtime: Claude Code.
