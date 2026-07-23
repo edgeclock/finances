@@ -1,5 +1,19 @@
 # Finna Audit Log
 
+## Jul 23, 2026 - Correction: all tithes so far were to Victory LB
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat correction.
+- Fix: standardized the description on the Jul 5 and Jul 12 tithe entries from "Tithes (Coins.ph)" to "Tithes (Victory LB)", matching the Jul 19 entry and confirming all tithes logged so far went to the same recipient (Victory LB). No amounts or balances changed — description only.
+- Validation: `finna-validate.ps1` passed.
+
+## Jul 23, 2026 - Correction: name spelling "Even Tolorio" → "Evan Tolorio"
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat correction, flagged from the dashboard's Upcoming Payments view.
+- Fix: corrected the recipient's name in the Jul 22 "Missionary support" transaction and in `DATA.recurringCommitments[]`, plus in this audit log's own prior entries referencing the same name. No amounts or balances changed — spelling only.
+- Validation: `finna-validate.ps1` passed.
+
 ## Jul 23, 2026 - Logged Jul 19 tithes (retroactive)
 
 - Runtime: Claude Code.
@@ -35,12 +49,12 @@
   - Jul 22: Groceries ₱1,095.74 (gcash, expense)
   - Jul 22: Dinner ₱215.00 (gcash, expense)
   - Jul 22: Breakfast ₱60.00 (gcash, expense)
-  - Jul 22: Missionary support (Even Tolorio) ₱500.00 (coins, expense, Charity)
+  - Jul 22: Missionary support (Evan Tolorio) ₱500.00 (coins, expense, Charity)
   - Jul 22: Shopee order ₱207.00 (rcbc, expense)
   - Jul 22: JR loan repayment ₱562.00 (gcash, income)
 - Balance updates: Cash ₱499.50 → ₱399.50. GCash wallet ₱2,096.37 → ₱1,287.63. RCBC savings ₱341.73 → ₱134.73. Coins.ph PHP ₱5,683.29 → ₱5,183.29.
 - Receivables: `jr` ₱562.00 → ₱0 (fully repaid, all receivables now clear). Removed "JR owes" monitoring alert.
-- New: added `DATA.recurringCommitments[]` — Missionary support (Even Tolorio) ₱500/month via Coins.ph, dueDay 22, same paid/reset mechanism as `subscriptions` but tracked separately (not a "Subscriptions"-category cost). Updated `finna/DATA-CONTRACT.md` to document this new collection. Extended the `monthly-subscription-reset` scheduled task to also reset `recurringCommitments` each month and to follow the dual-runtime lease protocol.
+- New: added `DATA.recurringCommitments[]` — Missionary support (Evan Tolorio) ₱500/month via Coins.ph, dueDay 22, same paid/reset mechanism as `subscriptions` but tracked separately (not a "Subscriptions"-category cost). Updated `finna/DATA-CONTRACT.md` to document this new collection. Extended the `monthly-subscription-reset` scheduled task to also reset `recurringCommitments` each month and to follow the dual-runtime lease protocol.
 - `lastUpdated` → Jul 23, 2026. `salary.dayOfPeriod` 12 → 13.
 - Flag: RCBC now very low (₱134.73) — 2 days left until Jul 25 payday.
 - Validation: `finna-validate.ps1` passed.
