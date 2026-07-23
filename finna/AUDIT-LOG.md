@@ -1,5 +1,13 @@
 # Finna Audit Log
 
+## Jul 23, 2026 - Logged Jul 19 tithes (retroactive)
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat report.
+- Ledger change: added expense "Tithes (Victory LB)" ₱500.00, wallet coins, cat Charity, dated Jul 19.
+- Balance update: Coins.ph PHP ₱5,183.29 → ₱4,683.29.
+- Validation: `finna-validate.ps1` passed.
+
 ## Jul 23, 2026 - Correction: duplicate Jul 22 breakfast entry
 
 - Runtime: Claude Code.
