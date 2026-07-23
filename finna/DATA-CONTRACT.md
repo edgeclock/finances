@@ -8,7 +8,9 @@
 - `transactions[]`: current salary-period entries.
 - `monthArchive[]`: earlier entries in the same calendar month.
 - `categoryOrder[]`: primary expense categories.
-- `liabilities`, `receivables`, `salary`, `subscriptions`, and `monthlyReports`.
+- `liabilities`, `receivables`, `salary`, `subscriptions`, `recurringCommitments`, and `monthlyReports`.
+
+`subscriptions[]` and `recurringCommitments[]` share the same shape (`name`, `amount`, `wallet`, `dueDay`, `paid`) and the same monthly reset mechanism (paid resets to false on the 1st, flips to true as each is logged). They are kept as two separate arrays because `subscriptions` is specifically app/service subscriptions (feeds the "Subscriptions / month" total), while `recurringCommitments` holds other recurring monthly money commitments (e.g. ongoing charity giving) that should not be counted in that total. `recurringCommitments` entries also carry a `cat` field for their transaction category.
 
 ## Transaction Rules
 

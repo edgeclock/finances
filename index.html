@@ -529,21 +529,21 @@
 // ================================================================
 const DATA = {
 
-  lastUpdated: "Jul 22, 2026",
+  lastUpdated: "Jul 23, 2026",
 
   // Account balances (update each salary period)
   accounts: [
-    { label: "GCash wallet",   balance: 2096.37,  tag: "spend",  tagLabel: "spending"      },
+    { label: "GCash wallet",   balance: 1287.63,  tag: "spend",  tagLabel: "spending"      },
     { label: "GCash savings",  balance: 41115.97, tag: "save",   tagLabel: "MacBook fund"  },
-    { label: "RCBC savings",   balance: 341.73,   tag: "spend",  tagLabel: "groceries/cash"},
+    { label: "RCBC savings",   balance: 134.73,   tag: "spend",  tagLabel: "groceries/cash"},
     { label: "Maya wallet",    balance: 261.61,   tag: "spend",  tagLabel: "personal"      },
     { label: "GoTyme savings", balance: 0.00,     tag: "save",   tagLabel: "rent/utilities"},
-    { label: "Coins.ph PHP",   balance: 5683.29,  tag: "save",   tagLabel: "charity/tithes"},
+    { label: "Coins.ph PHP",   balance: 5183.29,  tag: "save",   tagLabel: "charity/tithes"},
     { label: "Bitget BTC",     balance: 11840.45, tag: "crypto", tagLabel: "crypto", btcAmount: 0.003287 },
     { label: "Maya savings",   balance: 487.17,   tag: "save",   tagLabel: "emergency fund"},
     { label: "GoTyme wallet",  balance: 27.84,    tag: "spend",  tagLabel: "no plan yet"   },
     { label: "Tonik Bank",     balance: 52.66,    tag: "save",   tagLabel: "no plan yet"   },
-    { label: "Cash on hand",   balance: 499.50,   tag: "cash",   tagLabel: "cash"          },
+    { label: "Cash on hand",   balance: 399.50,   tag: "cash",   tagLabel: "cash"          },
     { label: "Alkansya",       balance: 479.75,   tag: "save",   tagLabel: "piggy bank"    }
   ],
 
@@ -553,7 +553,7 @@ const DATA = {
   },
 
   receivables: {
-    jr: 562.00,
+    jr: 0,
     sweet: 0,
     papa: 0
   },
@@ -570,7 +570,7 @@ const DATA = {
     periodStart: "Jul 11",
     periodEnd: "Jul 25",
     nextDate: "Jul 25, 2026",
-    dayOfPeriod: 12,
+    dayOfPeriod: 13,
     totalDays: 15
   },
 
@@ -703,7 +703,14 @@ const DATA = {
     { date: "Jul 19", desc: "Papa loan repayment",  cat: "Income",        amount: 1500.00,  wallet: "gcash",  type: "income"  },
     { date: "Jul 19", desc: "Laundry",               cat: "Misc",          amount: 175.00,   wallet: "gcash",  type: "expense" },
     { date: "Jul 19", desc: "ChatGPT Plus",           cat: "Subscriptions", amount: 999.00,   wallet: "rcbc",   type: "expense" },
-    { date: "Jul 22", desc: "Breakfast",              cat: "Food & dining", amount: 60.00,    wallet: "cash",   type: "expense" }
+    { date: "Jul 22", desc: "Breakfast",              cat: "Food & dining", amount: 60.00,    wallet: "cash",   type: "expense" },
+    { date: "Jul 21", desc: "Water",                  cat: "Misc",          amount: 100.00,   wallet: "cash",   type: "expense" },
+    { date: "Jul 22", desc: "Groceries",               cat: "Groceries",     amount: 1095.74,  wallet: "gcash",  type: "expense" },
+    { date: "Jul 22", desc: "Dinner",                  cat: "Food & dining", amount: 215.00,   wallet: "gcash",  type: "expense" },
+    { date: "Jul 22", desc: "Breakfast",                cat: "Food & dining", amount: 60.00,    wallet: "gcash",  type: "expense" },
+    { date: "Jul 22", desc: "Missionary support (Even Tolorio)", cat: "Charity", amount: 500.00, wallet: "coins", type: "expense" },
+    { date: "Jul 22", desc: "Shopee order",            cat: "Misc",          amount: 207.00,   wallet: "rcbc",   type: "expense" },
+    { date: "Jul 22", desc: "JR loan repayment",       cat: "Income",        amount: 562.00,   wallet: "gcash",  type: "income"  }
   ],
 
   spaylaterSchedule: [
@@ -728,6 +735,14 @@ const DATA = {
     { name: "Google One", amount: 1100.00, wallet: "gcash", dueDay: 7,  paid: true },
     { name: "Claude Pro", amount: 1300.00, wallet: "gcash", dueDay: 10, paid: true },
     { name: "ChatGPT Plus", amount: 999.00, wallet: "rcbc", dueDay: 19, paid: true }
+  ],
+
+  // Recurring monthly commitments that are NOT "Subscriptions" category (e.g. ongoing charity
+  // giving) — same paid/dueDay reset mechanism as `subscriptions`, but tracked separately so the
+  // "Subscriptions / month" total doesn't get polluted with non-subscription spending.
+  // Reset every entry's `paid` to false on the 1st of each month, same as subscriptions.
+  recurringCommitments: [
+    { name: "Missionary support (Even Tolorio)", amount: 500.00, wallet: "coins", dueDay: 22, paid: true, cat: "Charity" }
   ],
 
   // Monthly reports — one entry per month that has been compiled. Compiled automatically on the
@@ -1003,7 +1018,8 @@ const today = new Date();
 const monthName = today.toLocaleString('en-US', { month: 'short' });
 const todayDay = today.getDate();
 const unpaidSubs = DATA.subscriptions.filter(s => !s.paid);
-unpaidSubs.forEach(s => {
+const unpaidCommitments = (DATA.recurringCommitments || []).filter(c => !c.paid);
+unpaidSubs.concat(unpaidCommitments).forEach(s => {
   const overdue = todayDay > s.dueDay;
   upList.innerHTML += `<div class="row">
     <div>
@@ -1022,7 +1038,7 @@ DATA.upcomingPayments.forEach(p => {
     <div class="row-amt" style="${p.urgent ? 'color:var(--red)' : ''}">${fmt(p.amount)}</div>
   </div>`;
 });
-if (unpaidSubs.length === 0 && DATA.upcomingPayments.length === 0) {
+if (unpaidSubs.length === 0 && unpaidCommitments.length === 0 && DATA.upcomingPayments.length === 0) {
   upList.innerHTML = '<div class="empty">All caught up — nothing due right now.</div>';
 }
 const subTotal = DATA.subscriptions.reduce((s, p) => s + p.amount, 0);
@@ -1067,11 +1083,6 @@ const alerts = [
     dot: 'gray',
     title: 'Period vs period',
     sub: 'Available after 2nd check-in'
-  },
-  {
-    dot: 'amber',
-    title: 'JR owes ₱562',
-    sub: 'Jun 15 (₱250) + Jul 18 (₱312) — due Jul 21'
   }
 ];
 const alertGrid = document.getElementById('alertGrid');
