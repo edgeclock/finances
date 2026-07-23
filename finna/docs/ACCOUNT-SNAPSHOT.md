@@ -2,7 +2,7 @@
 
 **Source:** `index.html`
 **As of:** Jul 23, 2026
-**Status:** Updated after Bitget BTC full liquidation to GCash wallet.
+**Status:** Updated after correcting a duplicate Jul 22 breakfast entry.
 
 ## Accounts
 
@@ -18,10 +18,10 @@
 | Maya savings | PHP 487.17 | Emergency fund |
 | GoTyme wallet | PHP 27.84 | No assigned plan |
 | Tonik Bank | PHP 52.66 | No assigned plan |
-| Cash on hand | PHP 399.50 | Cash |
+| Cash on hand | PHP 459.50 | Cash |
 | Alkansya | PHP 479.75 | Piggy bank |
 
-**Total assets:** PHP 62,628.41
+**Total assets:** PHP 62,688.41
 **Liabilities:** PHP 22,673.91
 **Receivables:** PHP 0.00
 **Ledger net worth formula:** assets + receivables - liabilities.

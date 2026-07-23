@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Jul 23, 2026 - Correction: duplicate Jul 22 breakfast entry
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat correction, flagged from the dashboard's transaction log view.
+- Audit finding: the Jul 22 "Breakfast" ₱60.00 had been logged twice — once as `wallet: "cash"` (from an earlier same-day report) and once as `wallet: "gcash"` (from a later, more detailed batch report). Edge confirmed it was actually gcash both times — the cash-tagged entry was a genuine duplicate, not a second breakfast.
+- Fix: removed the duplicate `wallet: "cash"` entry, kept the correct `wallet: "gcash"` entry. Refunded the erroneous ₱60.00 deduction back to Cash on hand.
+- Balance update: Cash on hand ₱399.50 → ₱459.50. No change to GCash wallet (its entry was already correct).
+- Validation: `finna-validate.ps1` passed.
+
 ## Jul 23, 2026 - Bitget BTC fully liquidated to GCash wallet
 
 - Runtime: Claude Code.
