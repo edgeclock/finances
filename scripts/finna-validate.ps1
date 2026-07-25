@@ -81,10 +81,16 @@ foreach ($relativePath in $trackedDocumentation) {
     }
 }
 
-$totalAssets = [math]::Round((@($data.accounts | Measure-Object -Property balance -Sum).Sum), 2)
+function Get-SafeSum {
+    param([double[]]$Values)
+    if (-not $Values -or $Values.Count -eq 0) { return 0 }
+    return [math]::Round((($Values | Measure-Object -Sum).Sum), 2)
+}
+
+$totalAssets = Get-SafeSum -Values @($data.accounts | ForEach-Object { [double]$_.balance })
 $totalLiabilities = [math]::Round(([double]$data.liabilities.spaylater + [double]$data.liabilities.bike), 2)
-$totalReceivables = [math]::Round((@($data.receivables.psobject.Properties | ForEach-Object { [double]$_.Value } | Measure-Object -Sum).Sum), 2)
-$periodExpenses = [math]::Round((@($data.transactions | Where-Object { $_.type -eq 'expense' -and $_.cat -ne 'Transfer' } | Measure-Object -Property amount -Sum).Sum), 2)
+$totalReceivables = Get-SafeSum -Values @($data.receivables.psobject.Properties | ForEach-Object { [double]$_.Value })
+$periodExpenses = Get-SafeSum -Values @($data.transactions | Where-Object { $_.type -eq 'expense' -and $_.cat -ne 'Transfer' } | ForEach-Object { [double]$_.amount })
 
 if ($errors.Count -gt 0) {
     $errors | ForEach-Object { Write-Error $_ }

@@ -1,5 +1,19 @@
 # Finna Audit Log
 
+## Jul 25, 2026 - Period reset: new salary period, salary notably reduced
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat report ("received salary 17,354.21 rcbc" dated Jul 24).
+- Period reset performed (10th/25th boundary): appended the outgoing Jul 11-25 period's 79 transactions to `DATA.monthArchive[]` (still within July, so appended not cleared). Cleared `DATA.transactions[]`, seeded it with the new "Salary received" ₱17,354.21 income entry (wallet rcbc), dated Jul 24.
+- Balance update: RCBC savings ₱134.73 → ₱17,488.94.
+- `DATA.salary` updated: recent ₱17,354.21, periodStart "Jul 24", periodEnd/nextDate "Aug 10, 2026", dayOfPeriod 2, totalDays 18 (calendar days Jul 24 - Aug 10 inclusive).
+- `DATA.salaryHistory`: "Jul 25" entry updated from placeholder ₱37,000 (actual: false) to confirmed ₱17,354.21 (actual: true).
+- `lastUpdated` → Jul 25, 2026.
+- **Not done, needs Edge's input:** `DATA.periodSpending.wallets[].budget` (GCash/RCBC/Maya/Coins) were left at their prior-period values — this salary is far below the usual ₱25K-40K range (well below even the ₱21,976.52 two periods ago), so the standard distribution formula in `finna/FINNA.md`/dashboard_setup memory would likely break the same way it did at ₱21,976.52 (Maya allocation going negative), only worse. Also no updated account-balance screenshots were given for GCash savings/GCash wallet/GoTyme/Coins.ph/Maya wallet — cannot log the actual paycheck distribution transactions until Edge confirms how this smaller paycheck was split. Flagged to Edge in chat; do not guess a distribution.
+- Flag: this may be the part-time income reduction landing earlier than the Aug 10 date noted in [[user_profile]]/[[financial-plan]] memory — worth confirming with Edge rather than assuming.
+- **Script fix:** `scripts/finna-validate.ps1` threw `PropertyNotFoundStrict` on `Measure-Object -Sum` when a filtered collection was empty (exactly this period reset's situation — `transactions[]` freshly reset to a single income entry, zero expenses). Under `Set-StrictMode -Version Latest`, `Measure-Object` over an empty pipeline doesn't produce a `.Sum` property to read. Fixed by adding a `Get-SafeSum` helper that returns 0 for empty/null input instead of piping straight into `Measure-Object`. This will recur every period reset otherwise (transactions[] often starts a new period with income-only entries), so worth having fixed now rather than hitting it again in two weeks.
+- Validation: `finna-validate.ps1` passed after the script fix (VALID accounts=12 transactions=105 assets=79,542.62 liabilities=22,673.91 receivables=0.00 periodExpenses=0.00).
+
 ## Jul 23, 2026 - Correction: all tithes so far were to Victory LB
 
 - Runtime: Claude Code.
