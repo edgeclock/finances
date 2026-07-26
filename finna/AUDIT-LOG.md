@@ -1,5 +1,13 @@
 # Finna Audit Log
 
+## Jul 26, 2026 - Unaccounted cash expense logged as-is (not guessed)
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat report — he noticed ₱145 cash missing from what the ledger would otherwise show, but doesn't remember what it was spent on.
+- Ledger change: added "Unaccounted cash expense (forgotten)" ₱145.00, wallet cash, cat Misc, expense. Logged honestly as unknown rather than guessing a category or description — per `finna/FINNA.md`, "do not create transactions from assumptions."
+- Balance update: Cash on hand ₱3,146.50 → ₱3,001.50.
+- Validation: `finna-validate.ps1` passed.
+
 ## Jul 26, 2026 - Bank interest + GoTyme wallet swept back to savings
 
 - Runtime: Claude Code.
