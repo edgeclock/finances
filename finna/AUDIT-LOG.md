@@ -1,5 +1,13 @@
 # Finna Audit Log
 
+## Jul 26, 2026 - Correction: GoTrade transfer fee ₱15.33 → ₱29.57
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat correction.
+- Fix: the actual GCash → GoTrade transfer fee was ₱29.57, not the ₱15.33 first reported. Updated the transaction amount.
+- Balance update: GCash wallet ₱11,724.28 → ₱11,710.04 (additional ₱14.24 deduction).
+- Validation: `finna-validate.ps1` passed.
+
 ## Jul 26, 2026 - Logged 18 Jul 26 transactions — daily spending, two new loans, ATM withdrawal
 
 - Runtime: Claude Code.

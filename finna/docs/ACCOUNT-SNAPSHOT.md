@@ -2,13 +2,13 @@
 
 **Source:** `index.html`
 **As of:** Jul 26, 2026
-**Status:** Logged 18 Jul 26 transactions — daily spending, loans to Bryan/RJ, ATM withdrawal.
+**Status:** Corrected GoTrade transfer fee to PHP 29.57 (was PHP 15.33).
 
 ## Accounts
 
 | Account | Balance | Purpose |
 |---|---:|---|
-| GCash wallet | PHP 11,724.28 | Spending |
+| GCash wallet | PHP 11,710.04 | Spending |
 | GCash savings | PHP 46,115.97 | MacBook fund |
 | RCBC savings | PHP 1,253.52 | Groceries and cash |
 | Maya wallet | PHP 1,261.61 | Personal (now fixed PHP 1,000/paycheck) |
@@ -21,7 +21,7 @@
 | Cash on hand | PHP 3,146.50 | Cash |
 | Alkansya | PHP 479.75 | Piggy bank |
 
-**Total assets:** PHP 75,968.01
+**Total assets:** PHP 75,953.77
 **Liabilities:** PHP 22,673.91
 **Receivables:** PHP 264.75 (Bryan PHP 2.00 + RJ PHP 262.75)
 **Ledger net worth formula:** assets + receivables - liabilities.
