@@ -1,5 +1,13 @@
 # Finna Audit Log
 
+## Jul 26, 2026 - GoTrade status update: USD purchased, S&P 500 pending approval
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat status update.
+- No balance change — the ₱1,000 already sitting in GoTrade was used within the app to buy $15.17 USD (the currency GoTrade trades in). Edge has NOT yet bought the S&P 500 ETF — his account is still pending approval for that step.
+- Updated the GoTrade account's `tagLabel` from "USDT P2P -> S&P 500 (long-term)" to "$15.17 USD bought, S&P 500 pending approval" so the dashboard reflects current status. Update this again once the S&P 500 purchase actually goes through.
+- Validation: `finna-validate.ps1` passed.
+
 ## Jul 26, 2026 - Correction: the "unaccounted" ₱145 was Jul 25 lunch
 
 - Runtime: Claude Code.

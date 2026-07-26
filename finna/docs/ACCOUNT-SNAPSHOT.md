@@ -2,7 +2,7 @@
 
 **Source:** `index.html`
 **As of:** Jul 26, 2026
-**Status:** Corrected the PHP 145 cash entry — it was Jul 25 lunch, not an unaccounted expense.
+**Status:** GoTrade status update — $15.17 USD purchased, S&P 500 ETF purchase pending account approval.
 
 ## Accounts
 
@@ -14,7 +14,7 @@
 | Maya wallet | PHP 1,261.61 | Personal (now fixed PHP 1,000/paycheck) |
 | GoTyme savings | PHP 4,527.84 | Rent and utilities |
 | Coins.ph PHP | PHP 5,918.71 | Charity and tithes |
-| GoTrade | PHP 1,000.00 | Long-term investing — USDT P2P then S&P 500, fixed PHP 1,000/paycheck (replaces the liquidated Bitget BTC account) |
+| GoTrade | PHP 1,000.00 | Long-term investing — $15.17 USD bought, S&P 500 pending approval, fixed PHP 1,000/paycheck (replaces the liquidated Bitget BTC account) |
 | Maya savings | PHP 488.43 | Emergency fund |
 | GoTyme wallet | PHP 0.00 | No assigned plan |
 | Tonik Bank | PHP 52.66 | No assigned plan |
