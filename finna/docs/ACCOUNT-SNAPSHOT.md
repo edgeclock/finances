@@ -2,7 +2,7 @@
 
 **Source:** `index.html`
 **As of:** Jul 26, 2026
-**Status:** Logged an unaccounted PHP 145 cash expense (Edge doesn't recall what it was for).
+**Status:** Corrected the PHP 145 cash entry — it was Jul 25 lunch, not an unaccounted expense.
 
 ## Accounts
 

@@ -1,5 +1,12 @@
 # Finna Audit Log
 
+## Jul 26, 2026 - Correction: the "unaccounted" ₱145 was Jul 25 lunch
+
+- Runtime: Claude Code.
+- Confirmed source: Edge remembered shortly after the previous entry was logged.
+- Fix: updated the ₱145 cash transaction from "Unaccounted cash expense (forgotten)" (cat Misc, dated Jul 26) to "Lunch" (cat Food & dining, dated Jul 25) — same amount, same wallet, no balance change.
+- Validation: `finna-validate.ps1` passed.
+
 ## Jul 26, 2026 - Unaccounted cash expense logged as-is (not guessed)
 
 - Runtime: Claude Code.
