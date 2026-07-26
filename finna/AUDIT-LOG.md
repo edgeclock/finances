@@ -1,5 +1,13 @@
 # Finna Audit Log
 
+## Jul 26, 2026 - Bank interest + GoTyme wallet swept back to savings
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat report.
+- Ledger changes: Interest earned ₱44.16 (gcashsavings, income), Interest earned ₱1.26 (mayasavings, income), Transfer to GoTyme savings ₱27.84 (gotymewallet, expense) / Transfer from GoTyme wallet ₱27.84 (gotyme, income).
+- Balance updates: GCash savings 46,115.97 → 46,160.13. Maya savings 487.17 → 488.43. GoTyme wallet 27.84 → 0.00. GoTyme savings 4,500.00 → 4,527.84.
+- Validation: `finna-validate.ps1` passed.
+
 ## Jul 26, 2026 - Correction: GoTrade transfer fee ₱15.33 → ₱29.57
 
 - Runtime: Claude Code.

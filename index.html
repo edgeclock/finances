@@ -536,14 +536,14 @@ const DATA = {
   // Account balances (update each salary period)
   accounts: [
     { label: "GCash wallet",   balance: 11710.04, tag: "spend",  tagLabel: "spending"      },
-    { label: "GCash savings",  balance: 46115.97, tag: "save",   tagLabel: "MacBook fund"  },
+    { label: "GCash savings",  balance: 46160.13, tag: "save",   tagLabel: "MacBook fund"  },
     { label: "RCBC savings",   balance: 1253.52,  tag: "spend",  tagLabel: "groceries/cash"},
     { label: "Maya wallet",    balance: 1261.61,  tag: "spend",  tagLabel: "personal"      },
-    { label: "GoTyme savings", balance: 4500.00,  tag: "save",   tagLabel: "rent/utilities"},
+    { label: "GoTyme savings", balance: 4527.84,  tag: "save",   tagLabel: "rent/utilities"},
     { label: "Coins.ph PHP",   balance: 5918.71,  tag: "save",   tagLabel: "charity/tithes"},
     { label: "GoTrade",        balance: 1000.00,  tag: "invest", tagLabel: "USDT P2P -> S&P 500 (long-term)" },
-    { label: "Maya savings",   balance: 487.17,   tag: "save",   tagLabel: "emergency fund"},
-    { label: "GoTyme wallet",  balance: 27.84,    tag: "spend",  tagLabel: "no plan yet"   },
+    { label: "Maya savings",   balance: 488.43,   tag: "save",   tagLabel: "emergency fund"},
+    { label: "GoTyme wallet",  balance: 0.00,     tag: "spend",  tagLabel: "no plan yet"   },
     { label: "Tonik Bank",     balance: 52.66,    tag: "save",   tagLabel: "no plan yet"   },
     { label: "Cash on hand",   balance: 3146.50,  tag: "cash",   tagLabel: "cash"          },
     { label: "Alkansya",       balance: 479.75,   tag: "save",   tagLabel: "piggy bank"    }
@@ -748,7 +748,11 @@ const DATA = {
     { date: "Jul 26", desc: "ATM withdrawal",      cat: "Transfer",      amount: 3000.00,  wallet: "rcbc",  type: "expense" },
     { date: "Jul 26", desc: "Cash from ATM",       cat: "Transfer",      amount: 3000.00,  wallet: "cash",  type: "income"  },
     { date: "Jul 26", desc: "Fare",                cat: "Transport",     amount: 13.00,    wallet: "cash",  type: "expense" },
-    { date: "Jul 26", desc: "Fare",                cat: "Transport",     amount: 25.00,    wallet: "cash",  type: "expense" }
+    { date: "Jul 26", desc: "Fare",                cat: "Transport",     amount: 25.00,    wallet: "cash",  type: "expense" },
+    { date: "Jul 26", desc: "Interest earned",     cat: "Income",        amount: 44.16,    wallet: "gcashsavings", type: "income"  },
+    { date: "Jul 26", desc: "Interest earned",     cat: "Income",        amount: 1.26,     wallet: "mayasavings",  type: "income"  },
+    { date: "Jul 26", desc: "Transfer to GoTyme savings", cat: "Transfer", amount: 27.84,   wallet: "gotymewallet", type: "expense" },
+    { date: "Jul 26", desc: "Transfer from GoTyme wallet", cat: "Transfer", amount: 27.84,  wallet: "gotyme",       type: "income"  }
   ],
 
   spaylaterSchedule: [
