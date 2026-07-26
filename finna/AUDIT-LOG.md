@@ -1,5 +1,15 @@
 # Finna Audit Log
 
+## Jul 26, 2026 - Logged 18 Jul 26 transactions — daily spending, two new loans, ATM withdrawal
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat report (18 items).
+- Ledger changes: Fare ₱13 (cash), Tithes (Victory LB) ₱500 (coins), Coffee ₱210 (gcash), Lunch ₱210 (gcash), Lent to Bryan (lunch) ₱139 (gcash), Lent to RJ (lunch) ₱149 (gcash), Bryan loan repayment ₱137 (cash, income), Laundry ₱192.50 (gcash), Lent to RJ (laundry) ₱113.75 (gcash), Fare ₱24 (cash), Meal prep ₱1,015.78 (gcash), Groceries ₱716.25 (gcash), Meal prep ₱276.00 (cash), Groceries ₱39.00 (cash), Meal prep ₱60.00 (cash), ATM withdrawal ₱3,000 (rcbc expense / cash income, Transfer), Fare ₱13 (cash), Fare ₱25 (cash).
+- New receivables: `bryan` ₱2.00 (loaned ₱139, repaid ₱137 same day — not fully settled), `rj` ₱262.75 (₱149 lunch + ₱113.75 laundry, both Jul 26, no repayment yet). Added both to `DATA.receivables`, added `bryan`/`rj` to the `receivableLabels` maps (net worth modal + header note, header note is now built dynamically from whichever receivables are >0 instead of a hardcoded "(JR)" string). Added a monitoring alert for RJ's ₱262.75 (Bryan's ₱2.00 was too small to warrant its own alert card).
+- Balance updates: GCash wallet 14,470.56 → 11,724.28. Cash on hand 459.50 → 3,146.50. Coins.ph 6,418.71 → 5,918.71. RCBC savings 4,253.52 → 1,253.52.
+- `lastUpdated` → Jul 26, 2026. `salary.dayOfPeriod` 2 → 3.
+- Validation: `finna-validate.ps1` passed.
+
 ## Jul 26, 2026 - Applied Jul 24 paycheck distribution under a new formula (fixed Maya, new GoTrade investment wallet)
 
 - Runtime: Claude Code.

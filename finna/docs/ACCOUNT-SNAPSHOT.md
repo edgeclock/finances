@@ -2,28 +2,28 @@
 
 **Source:** `index.html`
 **As of:** Jul 26, 2026
-**Status:** Jul 24 paycheck distributed under the new formula (fixed Maya + new GoTrade investment allocation).
+**Status:** Logged 18 Jul 26 transactions — daily spending, loans to Bryan/RJ, ATM withdrawal.
 
 ## Accounts
 
 | Account | Balance | Purpose |
 |---|---:|---|
-| GCash wallet | PHP 14,470.56 | Spending (no allocation this period — see AUDIT-LOG) |
+| GCash wallet | PHP 11,724.28 | Spending |
 | GCash savings | PHP 46,115.97 | MacBook fund |
-| RCBC savings | PHP 4,253.52 | Groceries and cash |
+| RCBC savings | PHP 1,253.52 | Groceries and cash |
 | Maya wallet | PHP 1,261.61 | Personal (now fixed PHP 1,000/paycheck) |
 | GoTyme savings | PHP 4,500.00 | Rent and utilities |
-| Coins.ph PHP | PHP 6,418.71 | Charity and tithes |
+| Coins.ph PHP | PHP 5,918.71 | Charity and tithes |
 | GoTrade | PHP 1,000.00 | Long-term investing — USDT P2P then S&P 500, fixed PHP 1,000/paycheck (replaces the liquidated Bitget BTC account) |
 | Maya savings | PHP 487.17 | Emergency fund |
 | GoTyme wallet | PHP 27.84 | No assigned plan |
 | Tonik Bank | PHP 52.66 | No assigned plan |
-| Cash on hand | PHP 459.50 | Cash |
+| Cash on hand | PHP 3,146.50 | Cash |
 | Alkansya | PHP 479.75 | Piggy bank |
 
-**Total assets:** PHP 79,527.29
+**Total assets:** PHP 75,968.01
 **Liabilities:** PHP 22,673.91
-**Receivables:** PHP 0.00
+**Receivables:** PHP 264.75 (Bryan PHP 2.00 + RJ PHP 262.75)
 **Ledger net worth formula:** assets + receivables - liabilities.
 
 ## Current Salary Period
