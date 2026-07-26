@@ -1,27 +1,27 @@
 # Account Snapshot
 
 **Source:** `index.html`
-**As of:** Jul 25, 2026
-**Status:** New salary period (Jul 24 - Aug 10) — salary logged, wallet distribution NOT yet applied (needs Edge's input, see AUDIT-LOG).
+**As of:** Jul 26, 2026
+**Status:** Jul 24 paycheck distributed under the new formula (fixed Maya + new GoTrade investment allocation).
 
 ## Accounts
 
 | Account | Balance | Purpose |
 |---|---:|---|
-| GCash wallet | PHP 14,485.89 | Spending |
-| GCash savings | PHP 41,115.97 | MacBook fund |
-| RCBC savings | PHP 17,488.94 | Groceries and cash |
-| Maya wallet | PHP 261.61 | Personal |
-| GoTyme savings | PHP 0.00 | Rent and utilities |
-| Coins.ph PHP | PHP 4,683.29 | Charity and tithes |
-| Bitget BTC | PHP 0.00 | Liquidated Jul 23, 2026 |
+| GCash wallet | PHP 14,470.56 | Spending (no allocation this period — see AUDIT-LOG) |
+| GCash savings | PHP 46,115.97 | MacBook fund |
+| RCBC savings | PHP 4,253.52 | Groceries and cash |
+| Maya wallet | PHP 1,261.61 | Personal (now fixed PHP 1,000/paycheck) |
+| GoTyme savings | PHP 4,500.00 | Rent and utilities |
+| Coins.ph PHP | PHP 6,418.71 | Charity and tithes |
+| GoTrade | PHP 1,000.00 | Long-term investing — USDT P2P then S&P 500, fixed PHP 1,000/paycheck (replaces the liquidated Bitget BTC account) |
 | Maya savings | PHP 487.17 | Emergency fund |
 | GoTyme wallet | PHP 27.84 | No assigned plan |
 | Tonik Bank | PHP 52.66 | No assigned plan |
 | Cash on hand | PHP 459.50 | Cash |
 | Alkansya | PHP 479.75 | Piggy bank |
 
-**Total assets:** PHP 79,542.62
+**Total assets:** PHP 79,527.29
 **Liabilities:** PHP 22,673.91
 **Receivables:** PHP 0.00
 **Ledger net worth formula:** assets + receivables - liabilities.
@@ -32,5 +32,6 @@
 - Most recent salary: PHP 17,354.21 (notably below the usual PHP 25K-40K range — flagged, unconfirmed whether this is the expected part-time reduction)
 - Next salary date: Aug 10, 2026
 - MacBook target: PHP 145,000 by Dec 12, 2026 (savings rate currently PHP 5,000/paycheck per financial-plan memory)
+- **New distribution formula (as of this paycheck):** MacBook (GCash savings) PHP 5,000 fixed + GoTrade (investing) PHP 1,000 fixed + GoTyme PHP 4,500 fixed + Maya PHP 1,000 fixed (changed from a formula remainder) + Coins.ph 10% of salary + remainder split between GCash wallet/RCBC. This period, by Edge's choice, GCash wallet's share stayed in RCBC instead (GCash didn't need it — flush from the Jul 23 Bitget liquidation).
 
 This is a documentation mirror. Recalculate it from `index.html` after a material finance update.

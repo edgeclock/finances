@@ -57,7 +57,7 @@ foreach ($account in $data.accounts) {
 }
 
 $validCategories = @($data.categoryOrder) + @('Income', 'Transfer', 'Utilities')
-$validWallets = @('gcash', 'rcbc', 'maya', 'coins', 'cash', 'gotyme', 'gcashsavings', 'mayasavings', 'gotymewallet')
+$validWallets = @('gcash', 'rcbc', 'maya', 'coins', 'cash', 'gotyme', 'gcashsavings', 'mayasavings', 'gotymewallet', 'gotrade')
 $transactions = @($data.monthArchive) + @($data.transactions)
 foreach ($transaction in $transactions) {
     if ($validCategories -notcontains $transaction.cat) { $errors.Add("Invalid category '$($transaction.cat)' in $($transaction.date): $($transaction.desc)") }

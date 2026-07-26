@@ -19,7 +19,7 @@ Each transaction has `date`, `desc`, `cat`, `amount`, `wallet`, and `type`.
 - `type` is `income` or `expense`.
 - `amount` is greater than zero.
 - Valid categories are every `categoryOrder` value plus `Income`, `Transfer`, and historical `Utilities`.
-- Valid wallet IDs are `gcash`, `rcbc`, `maya`, `coins`, `cash`, `gotyme`, `gcashsavings`, `mayasavings`, and `gotymewallet`.
+- Valid wallet IDs are `gcash`, `rcbc`, `maya`, `coins`, `cash`, `gotyme`, `gcashsavings`, `mayasavings`, `gotymewallet`, and `gotrade`.
 - `Transfer` entries record internal movements and are excluded from spending totals.
 - Do not mutate an account balance for expected income that has not actually arrived.
 

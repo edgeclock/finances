@@ -104,6 +104,8 @@
     .tag-save   { background: var(--green-bg); color: var(--green-t); }
     .tag-crypto { background: var(--amber-bg); color: var(--amber-t); }
     .tag-cash   { background: var(--surface2); color: var(--t2); border: 0.5px solid var(--border); }
+    .tag-invest { background: #ede9fc; color: #3b35a0; }
+    @media (prefers-color-scheme: dark) { .tag-invest { background: #1e1a3f; color: var(--purple); } }
 
     /* Monthly reports */
     .month-tile { border-radius: var(--r); padding: 12px 14px; text-align: center; }
@@ -533,13 +535,13 @@ const DATA = {
 
   // Account balances (update each salary period)
   accounts: [
-    { label: "GCash wallet",   balance: 14485.89, tag: "spend",  tagLabel: "spending"      },
-    { label: "GCash savings",  balance: 41115.97, tag: "save",   tagLabel: "MacBook fund"  },
-    { label: "RCBC savings",   balance: 17488.94, tag: "spend",  tagLabel: "groceries/cash"},
-    { label: "Maya wallet",    balance: 261.61,   tag: "spend",  tagLabel: "personal"      },
-    { label: "GoTyme savings", balance: 0.00,     tag: "save",   tagLabel: "rent/utilities"},
-    { label: "Coins.ph PHP",   balance: 4683.29,  tag: "save",   tagLabel: "charity/tithes"},
-    { label: "Bitget BTC",     balance: 0.00,     tag: "crypto", tagLabel: "liquidated Jul 23", btcAmount: 0 },
+    { label: "GCash wallet",   balance: 14470.56, tag: "spend",  tagLabel: "spending"      },
+    { label: "GCash savings",  balance: 46115.97, tag: "save",   tagLabel: "MacBook fund"  },
+    { label: "RCBC savings",   balance: 4253.52,  tag: "spend",  tagLabel: "groceries/cash"},
+    { label: "Maya wallet",    balance: 1261.61,  tag: "spend",  tagLabel: "personal"      },
+    { label: "GoTyme savings", balance: 4500.00,  tag: "save",   tagLabel: "rent/utilities"},
+    { label: "Coins.ph PHP",   balance: 6418.71,  tag: "save",   tagLabel: "charity/tithes"},
+    { label: "GoTrade",        balance: 1000.00,  tag: "invest", tagLabel: "USDT P2P -> S&P 500 (long-term)" },
     { label: "Maya savings",   balance: 487.17,   tag: "save",   tagLabel: "emergency fund"},
     { label: "GoTyme wallet",  balance: 27.84,    tag: "spend",  tagLabel: "no plan yet"   },
     { label: "Tonik Bank",     balance: 52.66,    tag: "save",   tagLabel: "no plan yet"   },
@@ -587,10 +589,10 @@ const DATA = {
   // Update from transaction history each check-in — add spent amounts per wallet
   periodSpending: {
     wallets: [
-      { id: "gcash",  label: "GCash wallet",  src: "txn history", budget: 3244 },
-      { id: "rcbc",   label: "RCBC savings",  src: "txn history", budget: 3244 },
-      { id: "maya",   label: "Maya wallet",   src: "txn history", budget: 3791 },
-      { id: "coins",  label: "Coins.ph PHP",  src: "txn history", budget: 2198 }
+      { id: "gcash",  label: "GCash wallet",  src: "txn history", budget: 0    },
+      { id: "rcbc",   label: "RCBC savings",  src: "txn history", budget: 4119 },
+      { id: "maya",   label: "Maya wallet",   src: "txn history", budget: 1000 },
+      { id: "coins",  label: "Coins.ph PHP",  src: "txn history", budget: 1735 }
     ]
   },
 
@@ -712,7 +714,20 @@ const DATA = {
   // wallet: "gcash" | "rcbc" | "maya" | "coins" | "cash"
   // cat must match a value in categoryOrder (or "Income" for income entries)
   transactions: [
-    { date: "Jul 24", desc: "Salary received",      cat: "Income",        amount: 17354.21, wallet: "rcbc",  type: "income"  }
+    { date: "Jul 24", desc: "Salary received",      cat: "Income",        amount: 17354.21, wallet: "rcbc",  type: "income"  },
+    { date: "Jul 26", desc: "Distribute to GCash savings", cat: "Transfer", amount: 5000.00,  wallet: "rcbc",       type: "expense" },
+    { date: "Jul 26", desc: "Paycheck savings allocation",  cat: "Transfer", amount: 5000.00,  wallet: "gcashsavings", type: "income"  },
+    { date: "Jul 26", desc: "Distribute to GCash wallet (investment passthrough)", cat: "Transfer", amount: 1000.00, wallet: "rcbc",  type: "expense" },
+    { date: "Jul 26", desc: "Investment allocation (passthrough)", cat: "Transfer", amount: 1000.00, wallet: "gcash", type: "income"  },
+    { date: "Jul 26", desc: "Transfer to GoTrade",          cat: "Transfer", amount: 1000.00,  wallet: "gcash",  type: "expense" },
+    { date: "Jul 26", desc: "Investment transfer from GCash", cat: "Transfer", amount: 1000.00, wallet: "gotrade", type: "income"  },
+    { date: "Jul 26", desc: "GoTrade transfer fee",         cat: "Misc",     amount: 15.33,    wallet: "gcash",  type: "expense" },
+    { date: "Jul 26", desc: "Distribute to GoTyme savings", cat: "Transfer", amount: 4500.00,  wallet: "rcbc",   type: "expense" },
+    { date: "Jul 26", desc: "Paycheck rent/utilities allocation", cat: "Transfer", amount: 4500.00, wallet: "gotyme", type: "income" },
+    { date: "Jul 26", desc: "Distribute to Maya wallet",    cat: "Transfer", amount: 1000.00,  wallet: "rcbc",  type: "expense" },
+    { date: "Jul 26", desc: "Paycheck personal allocation (fixed)", cat: "Transfer", amount: 1000.00, wallet: "maya", type: "income"  },
+    { date: "Jul 26", desc: "Distribute to Coins.ph",       cat: "Transfer", amount: 1735.42,  wallet: "rcbc",  type: "expense" },
+    { date: "Jul 26", desc: "Paycheck charity allocation",  cat: "Transfer", amount: 1735.42,  wallet: "coins", type: "income"  }
   ],
 
   spaylaterSchedule: [
@@ -1320,6 +1335,7 @@ setTimeout(function() {
     'Coins.ph PHP':   'coins',
     'GoTyme savings': 'gotyme',
     'GoTyme wallet':  'gotymewallet',
+    'GoTrade':        'gotrade',
     'Cash on hand':   'cash'
   };
   const catPillBd = { 'Food & dining':'lp-food', 'Transport':'lp-trans', 'Groceries':'lp-groc', 'Income':'lp-groc', 'Charity':'lp-charity', 'Family':'lp-family', 'Transfer':'lp-misc', 'Misc':'lp-misc', 'Load / comms':'lp-misc', 'Subscriptions':'lp-misc' };

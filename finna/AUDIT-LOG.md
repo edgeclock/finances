@@ -1,5 +1,26 @@
 # Finna Audit Log
 
+## Jul 26, 2026 - Applied Jul 24 paycheck distribution under a new formula (fixed Maya, new GoTrade investment wallet)
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat instructions across several turns.
+- **Formula change:** Maya wallet's allocation changed from a formula remainder to a **fixed PHP 1,000/paycheck**. Added a **new fixed PHP 1,000/paycheck "Investments" allocation**, going to a renamed account.
+- **Account rename:** "Bitget BTC" (liquidated Jul 23, was sitting at PHP 0.00) renamed to **"GoTrade"**, tag changed `crypto` -> new `invest` tag (added `.tag-invest` CSS, purple-family color reusing `--purple`). Purpose: Edge's plan is to buy USDT via P2P then buy S&P 500 exposure through GoTrade — his chosen long-term investment vehicle going forward, replacing crypto. Added `gotrade` as a new valid wallet ID in `finna/DATA-CONTRACT.md`, `scripts/finna-validate.ps1`, and the dashboard's account-history `walletMap`.
+- **This period only (Edge's explicit choice):** GCash wallet gets PHP 0 new allocation — its share stays in RCBC instead, since GCash wallet is already flush from the Jul 23 Bitget liquidation (PHP 14,485.89 balance). Not a standing change — confirm with Edge before assuming this applies to future periods too.
+- **Real-world routing note:** the PHP 1,000 investment allocation was routed RCBC -> GCash wallet -> GoTrade (not RCBC -> GoTrade directly), because GoTrade funding apparently requires GCash as the intermediary. A PHP 15.33 fee was charged to GCash wallet for that GCash -> GoTrade transfer specifically (logged as `cat: "Misc"`, not `"Transfer"`, since it's a real cost, not internal movement) — this is the ONLY net worth impact of this whole distribution event; everything else nets to zero across the combined accounts.
+- Ledger changes — transactions added (all dated Jul 26, the date Edge confirmed sending):
+  - Distribute to GCash savings ₱5,000 (rcbc, expense) / Paycheck savings allocation ₱5,000 (gcashsavings, income)
+  - Distribute to GCash wallet (investment passthrough) ₱1,000 (rcbc, expense) / Investment allocation (passthrough) ₱1,000 (gcash, income)
+  - Transfer to GoTrade ₱1,000 (gcash, expense) / Investment transfer from GCash ₱1,000 (gotrade, income)
+  - GoTrade transfer fee ₱15.33 (gcash, expense, cat Misc)
+  - Distribute to GoTyme savings ₱4,500 (rcbc, expense) / Paycheck rent/utilities allocation ₱4,500 (gotyme, income)
+  - Distribute to Maya wallet ₱1,000 (rcbc, expense) / Paycheck personal allocation (fixed) ₱1,000 (maya, income)
+  - Distribute to Coins.ph ₱1,735.42 (rcbc, expense) / Paycheck charity allocation ₱1,735.42 (coins, income)
+- Balance updates: GCash wallet 14,485.89 → 14,470.56 (net −15.33, the fee, since the ₱1,000 passed straight through). GCash savings 41,115.97 → 46,115.97. RCBC 17,488.94 → 4,253.52. GoTyme 0.00 → 4,500.00. Maya wallet 261.61 → 1,261.61. Coins.ph 4,683.29 → 6,418.71. GoTrade 0.00 → 1,000.00.
+- `periodSpending.wallets[].budget` updated to match the new allocations: gcash 0, rcbc 4119, maya 1000, coins 1735 (GoTrade not added to this array — it's an investment account, not a day-to-day spending wallet, matching how GCash savings/Maya savings/GoTyme savings are also excluded).
+- Total assets impact: exactly −₱15.33 (the GoTrade transfer fee) — everything else is internal movement, confirmed by recomputing total assets before/after.
+- Validation: `finna-validate.ps1` passed.
+
 ## Jul 25, 2026 - Period reset: new salary period, salary notably reduced
 
 - Runtime: Claude Code.
