@@ -18,10 +18,10 @@
 | Maya savings | PHP 488.43 | Emergency fund |
 | GoTyme wallet | PHP 0.00 | No assigned plan |
 | Tonik Bank | PHP 52.66 | No assigned plan |
-| Cash on hand | PHP 2,996.50 | Cash |
+| Cash on hand | PHP 2,807.50 | Cash |
 | Alkansya | PHP 479.75 | Piggy bank |
 
-**Total assets:** PHP 75,849.19
+**Total assets:** PHP 75,660.19
 **Liabilities:** PHP 22,673.91
 **Receivables:** PHP 264.75 (Bryan PHP 2.00 + RJ PHP 262.75)
 **Ledger net worth formula:** assets + receivables - liabilities.

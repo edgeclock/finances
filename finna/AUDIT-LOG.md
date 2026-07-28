@@ -1,5 +1,13 @@
 # Finna Audit Log
 
+## Jul 28, 2026 - Logged Jul 27 cash dinner
+
+- Runtime: Codex.
+- Confirmed source: Edge, direct chat report.
+- Ledger change: added Jul 27 dinner expense PHP 189.00, wallet cash, category Food & dining.
+- Balance update: Cash on hand PHP 2,996.50 to PHP 2,807.50.
+- Validation: `finna-validate.ps1` passed.
+
 ## Jul 26, 2026 - GoTrade status update: USD purchased, S&P 500 pending approval
 
 - Runtime: Claude Code.
