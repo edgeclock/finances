@@ -545,7 +545,7 @@ const DATA = {
     { label: "Maya savings",   balance: 488.43,   tag: "save",   tagLabel: "emergency fund"},
     { label: "GoTyme wallet",  balance: 0.00,     tag: "spend",  tagLabel: "no plan yet"   },
     { label: "Tonik Bank",     balance: 52.66,    tag: "save",   tagLabel: "no plan yet"   },
-    { label: "Cash on hand",   balance: 2807.50,  tag: "cash",   tagLabel: "cash"          },
+    { label: "Cash on hand",   balance: 2812.50,  tag: "cash",   tagLabel: "cash"          },
     { label: "Alkansya",       balance: 479.75,   tag: "save",   tagLabel: "piggy bank"    }
   ],
 
@@ -754,7 +754,8 @@ const DATA = {
     { date: "Jul 26", desc: "Transfer to GoTyme savings", cat: "Transfer", amount: 27.84,   wallet: "gotymewallet", type: "expense" },
     { date: "Jul 26", desc: "Transfer from GoTyme wallet", cat: "Transfer", amount: 27.84,  wallet: "gotyme",       type: "income"  },
     { date: "Jul 25", desc: "Lunch",                cat: "Food & dining", amount: 150.00,   wallet: "cash",   type: "expense" },
-    { date: "Jul 27", desc: "Dinner",               cat: "Food & dining", amount: 189.00,   wallet: "cash",   type: "expense" }
+    { date: "Jul 27", desc: "Dinner",               cat: "Food & dining", amount: 189.00,   wallet: "cash",   type: "expense" },
+    { date: "Jul 28", desc: "Cash reconciliation: blessings", cat: "Misc", amount: 5.00, wallet: "cash", type: "adjustment" }
   ],
 
   spaylaterSchedule: [
@@ -996,7 +997,9 @@ const catPillTxn = { 'Food & dining':'lp-food', 'Transport':'lp-trans', 'Groceri
 const txnLogEl   = document.getElementById('txnLog');
 const totalIncome = DATA.transactions.filter(t => t.type === 'income').reduce((s, t) => s + t.amount, 0);
 
-txnLogEl.innerHTML = [...DATA.transactions].reverse().map(t => `
+txnLogEl.innerHTML = [...DATA.transactions].reverse().map(t => {
+  const isPositive = t.type === 'income' || t.type === 'adjustment';
+  return `
   <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 20px;border-bottom:0.5px solid var(--border)">
     <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0">
       <span style="color:var(--t3);font-size:11px;min-width:44px;flex-shrink:0">${t.date}</span>
@@ -1008,10 +1011,11 @@ txnLogEl.innerHTML = [...DATA.transactions].reverse().map(t => `
         </div>
       </div>
     </div>
-    <div class="row-amt" style="color:${t.type === 'income' ? 'var(--green)' : 'var(--t1)'}">
-      ${t.type === 'income' ? '+' : '−'}${fmt(t.amount)}
+    <div class="row-amt" style="color:${isPositive ? 'var(--green)' : 'var(--t1)'}">
+      ${isPositive ? '+' : '−'}${fmt(t.amount)}
     </div>
-  </div>`).join('');
+  </div>`;
+}).join('');
 
 txnLogEl.innerHTML += `
   <div style="display:flex;justify-content:space-between;padding:10px 20px;font-size:13px">
@@ -1392,13 +1396,14 @@ setTimeout(function() {
       return;
     }
     let html = txns.map(t => {
-      const sign = t.type === 'income' ? '+' : '−';
-      const cls  = t.type === 'income' ? 'pos' : '';
+      const isPositive = t.type === 'income' || t.type === 'adjustment';
+      const sign = isPositive ? '+' : '−';
+      const cls  = isPositive ? 'pos' : '';
       return '<div class="bd-row ' + cls + '"><span class="bd-row-lbl">' + t.date + ' · ' + t.desc +
         ' <span class="log-pill ' + (catPillBd[t.cat] || 'lp-misc') + '" style="margin-left:4px">' + t.cat + '</span></span>' +
         '<span class="bd-row-val">' + sign + fmt(t.amount) + '</span></div>';
     }).join('');
-    const net = txns.reduce((s, t) => s + (t.type === 'income' ? t.amount : -t.amount), 0);
+    const net = txns.reduce((s, t) => s + ((t.type === 'income' || t.type === 'adjustment') ? t.amount : -t.amount), 0);
     html += '<div class="bd-total"><span>Net this month</span><span>' + (net >= 0 ? '+' : '−') + fmt(Math.abs(net)) + '</span></div>';
     bodyEl.innerHTML = html;
   }

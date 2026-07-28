@@ -16,11 +16,12 @@
 
 Each transaction has `date`, `desc`, `cat`, `amount`, `wallet`, and `type`.
 
-- `type` is `income` or `expense`.
+- `type` is `income`, `expense`, or `adjustment`.
 - `amount` is greater than zero.
 - Valid categories are every `categoryOrder` value plus `Income`, `Transfer`, and historical `Utilities`.
 - Valid wallet IDs are `gcash`, `rcbc`, `maya`, `coins`, `cash`, `gotyme`, `gcashsavings`, `mayasavings`, `gotymewallet`, and `gotrade`.
 - `Transfer` entries record internal movements and are excluded from spending totals.
+- An `adjustment` is a verified cash-count reconciliation only: it must use wallet `cash` and category `Misc`, is shown as a positive cash movement, and is excluded from income and spending totals.
 - Do not mutate an account balance for expected income that has not actually arrived.
 
 ## Documentation Rule

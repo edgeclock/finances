@@ -1,5 +1,13 @@
 # Finna Audit Log
 
+## Jul 28, 2026 - Cash reconciliation adjustment: blessings
+
+- Runtime: Codex.
+- Confirmed source: Edge, direct cash-count report and chat approval.
+- Ledger change: added `Cash reconciliation: blessings`, PHP 5.00, wallet cash, category Misc, type adjustment. This is a verified reconciliation adjustment, not salary or ordinary income.
+- Balance update: Cash on hand PHP 2,807.50 to PHP 2,812.50.
+- Validation: `finna-validate.ps1` passed.
+
 ## Jul 28, 2026 - Logged Jul 27 cash dinner
 
 - Runtime: Codex.

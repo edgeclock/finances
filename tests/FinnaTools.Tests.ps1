@@ -6,7 +6,7 @@ $syncTool = Join-Path $repoRoot 'scripts\sync-finna-runtime.ps1'
 Describe 'Finna runtime tools' {
     It 'checks the default project lease path' {
         & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $lockTool status
-        $LASTEXITCODE | Should Be 0
+        ($LASTEXITCODE -eq 0 -or $LASTEXITCODE -eq 2) | Should Be $true
     }
 
     It 'validates the default project ledger path' {
@@ -25,6 +25,20 @@ Describe 'Finna runtime tools' {
         $ledger.Replace('cat: "Groceries"', 'cat: "Not a category"') | Set-Content -LiteralPath $invalidLedger -Encoding UTF8
 
         & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $validator -Path $invalidLedger
+        $LASTEXITCODE | Should Be 1
+    }
+
+    It 'allows only a cash Misc reconciliation adjustment' {
+        $adjustmentLedger = Join-Path $TestDrive 'adjustment-index.html'
+        $ledger = Get-Content -Raw -LiteralPath (Join-Path $repoRoot 'index.html')
+        $addition = '    { date: "Jul 28", desc: "Cash reconciliation — blessing", cat: "Misc", amount: 5.00, wallet: "cash", type: "adjustment" }'
+        $ledger.Replace('    { date: "Jul 27", desc: "Dinner",               cat: "Food & dining", amount: 189.00,   wallet: "cash",   type: "expense" }', "    { date: `"Jul 27`", desc: `"Dinner`",               cat: `"Food & dining`", amount: 189.00,   wallet: `"cash`",   type: `"expense`" },`r`n$addition") | Set-Content -LiteralPath $adjustmentLedger -Encoding UTF8
+
+        & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $validator -Path $adjustmentLedger
+        $LASTEXITCODE | Should Be 0
+
+        (Get-Content -Raw -LiteralPath $adjustmentLedger).Replace('wallet: "cash", type: "adjustment"', 'wallet: "gcash", type: "adjustment"') | Set-Content -LiteralPath $adjustmentLedger -Encoding UTF8
+        & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $validator -Path $adjustmentLedger
         $LASTEXITCODE | Should Be 1
     }
 

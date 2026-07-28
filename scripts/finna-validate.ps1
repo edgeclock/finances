@@ -62,7 +62,10 @@ $transactions = @($data.monthArchive) + @($data.transactions)
 foreach ($transaction in $transactions) {
     if ($validCategories -notcontains $transaction.cat) { $errors.Add("Invalid category '$($transaction.cat)' in $($transaction.date): $($transaction.desc)") }
     if ($validWallets -notcontains $transaction.wallet) { $errors.Add("Invalid wallet '$($transaction.wallet)' in $($transaction.date): $($transaction.desc)") }
-    if (@('income', 'expense') -notcontains $transaction.type) { $errors.Add("Invalid transaction type '$($transaction.type)' in $($transaction.date): $($transaction.desc)") }
+    if (@('income', 'expense', 'adjustment') -notcontains $transaction.type) { $errors.Add("Invalid transaction type '$($transaction.type)' in $($transaction.date): $($transaction.desc)") }
+    if ($transaction.type -eq 'adjustment' -and ($transaction.wallet -ne 'cash' -or $transaction.cat -ne 'Misc')) {
+        $errors.Add("Cash reconciliation adjustment must use wallet 'cash' and category 'Misc' in $($transaction.date): $($transaction.desc)")
+    }
     if ([double]$transaction.amount -le 0) { $errors.Add("Non-positive transaction amount in $($transaction.date): $($transaction.desc)") }
 }
 
