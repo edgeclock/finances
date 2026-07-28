@@ -206,4 +206,13 @@
 - Rebuilt the account snapshot from the Jul 18, 2026 ledger state.
 - Preserved the prior Claude vault as a read-only recovery snapshot; it is no longer a documentation source.
 
+## Jul 28, 2026 - Corrected Jul 25 lunch amount
+
+- Runtime: Codex.
+- Confirmed source: Edge, direct chat confirmation.
+- Ledger change: corrected the existing Jul 25 cash lunch expense from PHP 145.00 to PHP 150.00; no duplicate transaction added.
+- Balance update: Cash on hand PHP 3,001.50 to PHP 2,996.50.
+- `lastUpdated` to Jul 28, 2026. `salary.dayOfPeriod` 3 to 5.
+- Validation: `finna-validate.ps1` passed.
+
 Future entries go above this section and must identify the date, runtime, confirmed source, ledger change, and validation result.
