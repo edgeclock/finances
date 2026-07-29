@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Jul 29, 2026 - GoTrade SPY limit order tracked as bought
+
+- Runtime: Codex.
+- Confirmed source: Edge, GoTrade limit-order screenshot and direct instruction to consider it bought.
+- Status update: recorded a dollar-amount SPY limit order at USD 737.00, for 0.020434192 shares. The order amount is USD 15.06 plus USD 0.11 in listed fees, total cost USD 15.17.
+- Tracking treatment: Finna treats the USD 15.17 as invested in SPY as instructed, while preserving the factual caveat that it is a limit order whose market execution remains conditional.
+- No PHP balance change: the PHP 1,000 GoTrade allocation was already recorded. `lastUpdated` changed to Jul 29, 2026 and `salary.dayOfPeriod` to 6.
+- Validation: `finna-validate.ps1` passed.
+
 ## Jul 28, 2026 - Cash reconciliation adjustment: blessings
 
 - Runtime: Codex.

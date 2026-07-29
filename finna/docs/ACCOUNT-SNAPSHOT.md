@@ -1,8 +1,8 @@
 # Account Snapshot
 
 **Source:** `index.html`
-**As of:** Jul 28, 2026
-**Status:** GoTrade status update — $15.17 USD purchased, S&P 500 ETF purchase pending account approval.
+**As of:** Jul 29, 2026
+**Status:** SPY limit order at USD 737.00, 0.020434192 shares, USD 15.06 plus USD 0.11 fees, USD 15.17 total. Track as bought per Edge; market execution remains conditional on the limit.
 
 ## Accounts
 
@@ -14,7 +14,7 @@
 | Maya wallet | PHP 1,261.61 | Personal (now fixed PHP 1,000/paycheck) |
 | GoTyme savings | PHP 4,527.84 | Rent and utilities |
 | Coins.ph PHP | PHP 5,918.71 | Charity and tithes |
-| GoTrade | PHP 1,000.00 | Long-term investing — $15.17 USD bought, S&P 500 pending approval, fixed PHP 1,000/paycheck (replaces the liquidated Bitget BTC account) |
+| GoTrade | PHP 1,000.00 | Long-term investing, SPY limit order USD 15.17 treated as bought per Edge, fixed PHP 1,000/paycheck (replaces the liquidated Bitget BTC account) |
 | Maya savings | PHP 488.43 | Emergency fund |
 | GoTyme wallet | PHP 0.00 | No assigned plan |
 | Tonik Bank | PHP 52.66 | No assigned plan |
