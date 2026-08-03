@@ -1,5 +1,13 @@
 # Finna Audit Log
 
+## Aug 3, 2026 - Monthly subscription/commitment reset
+
+- Runtime: Claude Code (scheduled task: monthly-subscription-reset).
+- Reset `paid` to `false` for the new month on: CapCut, Canva Pro, Google One, Claude Pro, ChatGPT Plus (`DATA.subscriptions`), and Missionary support (Evan Tolorio) (`DATA.recurringCommitments`). No amounts, wallets, or due days changed.
+- `lastUpdated` updated from Jul 29, 2026 to Aug 3, 2026 (today's date, more recent than prior value).
+- No other ledger data touched.
+- Validation: `finna-validate.ps1` run before commit.
+
 ## Jul 29, 2026 - GoTrade SPY limit order tracked as bought
 
 - Runtime: Codex.
