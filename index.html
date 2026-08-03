@@ -126,6 +126,18 @@
     .month-history-net.pos { color: var(--green); }
     .month-history-net.neg { color: var(--red); }
 
+    /* Card-style collapsible summaries — collapsed state looks like an account card
+       (label + big value), expands inline on click, matches Accounts section visual weight */
+    details.sec-collapsible summary.card-summary {
+      background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--rl);
+      padding: 14px 16px; margin-bottom: 0; text-transform: none; letter-spacing: normal;
+    }
+    details.sec-collapsible[open] summary.card-summary { margin-bottom: 10px; }
+    .cs-left  { display: flex; flex-direction: column; }
+    .cs-label { font-size: 13px; font-weight: 500; color: var(--t1); }
+    .cs-sub   { font-size: 11px; color: var(--t3); margin-top: 2px; }
+    .cs-value { margin-left: auto; font-size: 17px; font-weight: 600; color: var(--t1); font-variant-numeric: tabular-nums; }
+
     /* Rows */
     .row { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 0.5px solid var(--border); }
     .row:last-child { border-bottom: none; }
@@ -391,7 +403,7 @@
   </div>
 
   <!-- Charts -->
-  <div class="g2 sec">
+  <div class="g2 sec" style="grid-template-columns: 1fr">
     <div>
       <div class="sec-title">Income history</div>
       <div class="card" style="padding:14px">
@@ -401,7 +413,11 @@
         <div style="font-size:11px;color:var(--t3);margin-top:8px;text-align:center">Historical record — no income since Jul 24, 2026 (resigned)</div>
       </div>
     </div>
-    <div>
+    <!-- "Monthly allocation" hidden 2026-08-03 at Edge's request — it's a planned monthly
+         budget breakdown that assumes a paycheck, and there's currently no income. Restore by
+         removing this comment and the display:none below, and reverting the grid to
+         grid-template-columns: 1fr 1fr on the wrapping div above. -->
+    <div style="display:none">
       <div class="sec-title">Monthly allocation</div>
       <div class="card" style="padding:14px">
         <div id="allocLegend" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;font-size:11px;color:var(--t2)"></div>
@@ -458,9 +474,9 @@
   <div class="sec">
     <div class="sec-title">Spending by category · this period</div>
     <div class="card" style="padding:14px">
-      <div id="catLegend" style="display:flex;gap:16px;margin-bottom:10px;font-size:11px;color:var(--t2)"></div>
-      <div class="ch" style="height:180px">
-        <canvas id="catChart" role="img" aria-label="Horizontal stacked bar chart of spending by category"></canvas>
+      <div id="catLegend" style="display:flex;flex-wrap:wrap;gap:8px 16px;margin-bottom:10px;font-size:11px;color:var(--t2)"></div>
+      <div class="ch" style="height:220px">
+        <canvas id="catChart" role="img" aria-label="Pie chart of spending by category"></canvas>
       </div>
       <div id="catEmpty" class="empty" style="display:none">No spending data yet this period.<br>Updates after each check-in.</div>
     </div>
@@ -468,7 +484,13 @@
 
   <!-- Transaction Log -->
   <details class="sec sec-collapsible">
-    <summary class="sec-title">Transaction log · this period</summary>
+    <summary class="sec-title card-summary">
+      <span class="cs-left">
+        <span class="cs-label">Transaction log</span>
+        <span class="cs-sub" id="txnLogSub"></span>
+      </span>
+      <span class="cs-value" id="txnLogValue"></span>
+    </summary>
     <div class="card" style="padding:0;max-height:420px;overflow-x:hidden;overflow-y:auto">
       <div id="txnLog"></div>
     </div>
@@ -505,7 +527,13 @@
   <!-- Upcoming + SPayLater -->
   <div class="g2 sec">
     <details class="sec-collapsible">
-      <summary class="sec-title">Upcoming payments</summary>
+      <summary class="sec-title card-summary">
+        <span class="cs-left">
+          <span class="cs-label">Upcoming payments</span>
+          <span class="cs-sub" id="upcomingSub"></span>
+        </span>
+        <span class="cs-value" id="upcomingValue"></span>
+      </summary>
       <div class="card">
         <div id="upcomingList"></div>
         <div class="total-row">
@@ -515,7 +543,13 @@
       </div>
     </details>
     <details class="sec-collapsible">
-      <summary class="sec-title">SPayLater schedule</summary>
+      <summary class="sec-title card-summary">
+        <span class="cs-left">
+          <span class="cs-label">SPayLater schedule</span>
+          <span class="cs-sub" id="spaySub"></span>
+        </span>
+        <span class="cs-value" id="spayValue"></span>
+      </summary>
       <div class="card">
         <div id="spaylaterList"></div>
         <div class="total-row">
@@ -944,6 +978,9 @@ txnLogEl.innerHTML += `
     <span style="font-weight:500;color:var(--red)">${fmt(totalSpent)}</span>
   </div>`;
 
+document.getElementById('txnLogSub').textContent = DATA.transactions.length + ' entries this period';
+document.getElementById('txnLogValue').textContent = fmt(totalSpent);
+
 // Accounts grid
 const acctGrid = document.getElementById('accountsGrid');
 DATA.accounts.forEach((a, i) => {
@@ -990,6 +1027,11 @@ if (unpaidSubs.length === 0 && unpaidCommitments.length === 0 && DATA.upcomingPa
 const subTotal = DATA.subscriptions.reduce((s, p) => s + p.amount, 0);
 document.getElementById('subTotal').textContent = fmt(subTotal) + '/mo';
 
+const upcomingCount = unpaidSubs.length + unpaidCommitments.length + DATA.upcomingPayments.length;
+const upcomingTotal = unpaidSubs.reduce((s,x)=>s+x.amount,0) + unpaidCommitments.reduce((s,x)=>s+x.amount,0) + DATA.upcomingPayments.reduce((s,x)=>s+x.amount,0);
+document.getElementById('upcomingSub').textContent = upcomingCount + (upcomingCount === 1 ? ' item due' : ' items due');
+document.getElementById('upcomingValue').textContent = fmt(upcomingTotal);
+
 // SPayLater schedule
 const spList = document.getElementById('spaylaterList');
 DATA.spaylaterSchedule.forEach(s => {
@@ -1002,6 +1044,9 @@ DATA.spaylaterSchedule.forEach(s => {
   </div>`;
 });
 document.getElementById('spayTotal').textContent = fmt(DATA.liabilities.spaylater);
+
+document.getElementById('spaySub').textContent = DATA.spaylaterSchedule.length + (DATA.spaylaterSchedule.length === 1 ? ' installment remaining' : ' installments remaining');
+document.getElementById('spayValue').textContent = fmt(DATA.liabilities.spaylater);
 
 // Monitoring alerts
 const alerts = [
@@ -1105,9 +1150,10 @@ new Chart(document.getElementById('allocChart'), {
   }
 });
 
-// Category chart
+// Category chart — pie, by category only (not split by wallet)
 const catLabels = DATA.categoryOrder;
-const hasData   = catLabels.some(k => cats[k] && (cats[k].gcash||0)+(cats[k].rcbc||0)+(cats[k].maya||0)+(cats[k].coins||0)+(cats[k].cash||0) > 0);
+const catTotals = catLabels.map(k => (cats[k].gcash||0)+(cats[k].rcbc||0)+(cats[k].maya||0)+(cats[k].coins||0)+(cats[k].cash||0));
+const hasData   = catTotals.some(v => v > 0);
 const catCanvas = document.getElementById('catChart');
 const catEmpty  = document.getElementById('catEmpty');
 
@@ -1115,34 +1161,40 @@ if (!hasData) {
   catCanvas.style.display = 'none';
   catEmpty.style.display  = 'block';
 } else {
-  const catChartClrs = [greenSolid, blueSolid, dark ? '#AFA9EC' : '#534AB7', dark ? '#EF9F27' : '#BA7517', '#888780'];
+  const catPieColors = {
+    'Food & dining': dark ? '#EF9F27' : '#BA7517',
+    'Groceries':     dark ? '#5DCAA5' : '#1D9E75',
+    'Transport':     dark ? '#85B7EB' : '#378ADD',
+    'Load / comms':  dark ? '#A8A6A0' : '#888780',
+    'Subscriptions': dark ? '#2DD4BF' : '#0D9488',
+    'Charity':       dark ? '#AFA9EC' : '#534AB7',
+    'Family':        dark ? '#F472B6' : '#BE185D',
+    'Household':     dark ? '#94A3B8' : '#64748B',
+    'Loans':         dark ? '#FACC15' : '#CA8A04',
+    'Debt payment':  dark ? '#F09595' : '#E24B4A',
+    'Investments':   dark ? '#818CF8' : '#4F46E5'
+  };
+  const nonZero = catLabels.map((k, i) => ({ k, v: catTotals[i] })).filter(x => x.v > 0);
+  const catTotalSum = nonZero.reduce((s, x) => s + x.v, 0);
   const catLegend = document.getElementById('catLegend');
-  ['GCash', 'RCBC', 'Maya', 'Coins.ph', 'Cash'].forEach((l, i) => {
+  nonZero.sort((a, b) => b.v - a.v).forEach(x => {
+    const pct = Math.round(x.v / catTotalSum * 100);
     catLegend.innerHTML += `<span style="display:flex;align-items:center;gap:4px">
-      <span style="width:10px;height:10px;border-radius:2px;background:${catChartClrs[i]};display:inline-block"></span>${l}
+      <span style="width:10px;height:10px;border-radius:2px;background:${catPieColors[x.k] || '#888780'};display:inline-block;flex-shrink:0"></span>${x.k}
+      <span style="color:var(--t1);font-weight:500">${fmt(x.v)}</span><span style="color:var(--t3)">(${pct}%)</span>
     </span>`;
   });
   new Chart(catCanvas, {
-    type: 'bar',
+    type: 'pie',
     data: {
-      labels: catLabels,
-      datasets: [
-        { label: 'GCash',    data: catLabels.map(k => cats[k].gcash  || 0), backgroundColor: catChartClrs[0], borderRadius: 3, stack: 'a' },
-        { label: 'RCBC',     data: catLabels.map(k => cats[k].rcbc   || 0), backgroundColor: catChartClrs[1], borderRadius: 3, stack: 'a' },
-        { label: 'Maya',     data: catLabels.map(k => cats[k].maya   || 0), backgroundColor: catChartClrs[2], borderRadius: 3, stack: 'a' },
-        { label: 'Coins.ph', data: catLabels.map(k => cats[k].coins  || 0), backgroundColor: catChartClrs[3], borderRadius: 3, stack: 'a' },
-        { label: 'Cash',     data: catLabels.map(k => cats[k].cash   || 0), backgroundColor: catChartClrs[4], borderRadius: 3, stack: 'a' }
-      ]
+      labels: nonZero.map(x => x.k),
+      datasets: [{ data: nonZero.map(x => x.v), backgroundColor: nonZero.map(x => catPieColors[x.k] || '#888780'), borderWidth: 0, hoverOffset: 6 }]
     },
     options: {
-      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      responsive: true, maintainAspectRatio: false,
       plugins: {
         legend: { display: false },
-        tooltip: { callbacks: { label: c => ' ' + fmt(c.parsed.x) + ' (' + c.dataset.label + ')' } }
-      },
-      scales: {
-        x: { stacked: true, ticks: { callback: v => '₱' + Math.round(v).toLocaleString(), color: txtClr, maxTicksLimit: 5 }, grid: { color: gridClr }, border: { display: false } },
-        y: { stacked: true, ticks: { color: txtClr }, grid: { display: false }, border: { display: false } }
+        tooltip: { callbacks: { label: c => ' ' + fmt(c.parsed) + ' (' + Math.round(c.parsed / catTotalSum * 100) + '%)' } }
       }
     }
   });
@@ -1345,9 +1397,12 @@ setTimeout(function() {
   sortedReports.forEach(r => {
     const netCls = r.netSavings >= 0 ? 'pos' : 'neg';
     monthHistoryEl.innerHTML += `<details class="sec-collapsible month-history-row">
-      <summary class="sec-title month-history-summary">
-        <span>${r.label}${r.partial ? ' <span class="src">partial</span>' : ''}</span>
-        <span class="month-history-net ${netCls}">${r.netSavings >= 0 ? '+' : '−'}${fmt(Math.abs(r.netSavings))}</span>
+      <summary class="card-summary">
+        <span class="cs-left">
+          <span class="cs-label">${r.label}</span>
+          <span class="cs-sub">${r.partial ? 'Partial month' : (r.netSavings >= 0 ? 'Net positive' : 'Net negative')}</span>
+        </span>
+        <span class="cs-value month-history-net ${netCls}">${r.netSavings >= 0 ? '+' : '−'}${fmt(Math.abs(r.netSavings))}</span>
       </summary>
       <div class="card">${renderMonthReportHTML(r)}</div>
     </details>`;

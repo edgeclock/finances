@@ -1,5 +1,19 @@
 # Finna Audit Log
 
+## Aug 3, 2026 - Hid Monthly allocation, pie-chart category spending, card-style collapsed summaries (UI only, no data change)
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat request, several follow-ups in the same session.
+- Hid the "Monthly allocation" donut chart section (`display:none` on its wrapper, grid reverted to single column) — it's a planned monthly budget breakdown that assumes a paycheck, and there's currently no income. Left the underlying JS/canvas/DATA untouched so it can be restored later by removing the wrapper's `display:none` (see inline HTML comment).
+- Converted "Spending by category" from a horizontal stacked bar chart (segregated by wallet: GCash/RCBC/Maya/Coins.ph/Cash) to a `pie` chart of category totals only, no wallet split. Legend now shows both peso value and percentage per category, sorted descending by value.
+- Upgraded the collapsed (closed) visual of Transaction log, Upcoming payments, SPayLater schedule, and Monthly History rows to a card-style summary (`.card-summary`/`.cs-*` CSS) matching the Accounts section's look — label + sub-line + prominent value — instead of plain text with a chevron. Each still expands inline on click via the existing `<details>/<summary>` pattern; no new JS needed for open/close.
+  - Transaction log: entry count + total spent this period.
+  - Upcoming payments: item count + total due.
+  - SPayLater schedule: installment count + total outstanding.
+  - Monthly History rows: "Net positive"/"Net negative"/"Partial month" sub-label + net savings figure (already had green/red coloring, kept).
+- No `DATA` fields changed — pure presentation.
+- Verified in browser: no console errors, Monthly allocation confirmed hidden (Income history chart now full-width), pie chart renders with 7 non-zero categories and correct value+percentage legend, all 4 card-style summaries show correct label/sub/value, clicking Upcoming payments expands inline correctly (regression-checked).
+
 ## Aug 3, 2026 - Replaced "Monthly Reports" grid+popup with collapsible "Monthly History" list (planned via plan mode)
 
 - Runtime: Claude Code.
