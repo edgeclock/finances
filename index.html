@@ -57,6 +57,18 @@
     /* Section */
     .sec { margin-bottom: 28px; }
     .sec-title { font-size: 11px; font-weight: 500; color: var(--t3); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 12px; }
+    /* Collapsible sections — native <details>/<summary>, collapsed by default */
+    details.sec-collapsible summary.sec-title {
+      cursor: pointer; user-select: none; list-style: none;
+      display: flex; align-items: center; gap: 6px; margin-bottom: 12px;
+    }
+    details.sec-collapsible summary.sec-title::-webkit-details-marker { display: none; }
+    details.sec-collapsible summary.sec-title::before {
+      content: '▸'; display: inline-block; font-size: 9px; transition: transform 0.15s ease; color: var(--t3);
+    }
+    details.sec-collapsible[open] > summary.sec-title::before { transform: rotate(90deg); }
+    details.sec-collapsible summary.sec-title:hover { color: var(--t2); }
+    details.sec-collapsible summary.sec-title:hover::before { color: var(--t2); }
 
     /* Card */
     .card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--rl); padding: 16px 20px; }
@@ -440,12 +452,13 @@
         <div class="m-sub" id="projStatus"></div>
       </div>
     </div>
-    <div class="g2" style="grid-template-columns: 1fr">
-      <!-- "Budget vs actual" hidden 2026-08-03 at Edge's request — wallet budgets are stale
-           leftovers from the last paycheck and don't reflect a real monthly plan yet. Restore
-           by removing this comment/style override and un-hiding the card below once Edge sets
-           real monthly budget figures in DATA.monthlySpending. -->
-      <div class="card" style="display:none">
+    <!-- "Budget vs actual" archived 2026-08-03 — wallet budgets are stale leftovers from the
+         last paycheck, not a real monthly plan yet. "Cash log" archived same day — redundant
+         with the Accounts section's click-to-view transaction history for Cash on hand.
+         Restore either by removing display:none on this div (both) or on an individual card
+         below (just one). DOM elements kept intact so the JS that populates them doesn't error. -->
+    <div class="g2" style="display:none">
+      <div class="card">
         <div style="font-size:12px;font-weight:500;color:var(--t2);margin-bottom:14px">Budget vs actual</div>
         <div id="budgetBars"></div>
       </div>
@@ -469,12 +482,12 @@
   </div>
 
   <!-- Transaction Log -->
-  <div class="sec">
-    <div class="sec-title">Transaction log · this period</div>
+  <details class="sec sec-collapsible">
+    <summary class="sec-title">Transaction log · this period</summary>
     <div class="card" style="padding:0;max-height:420px;overflow-x:hidden;overflow-y:auto">
       <div id="txnLog"></div>
     </div>
-  </div>
+  </details>
 
   <!-- Accounts -->
   <div class="sec">
@@ -506,8 +519,8 @@
 
   <!-- Upcoming + SPayLater -->
   <div class="g2 sec">
-    <div>
-      <div class="sec-title">Upcoming payments</div>
+    <details class="sec-collapsible">
+      <summary class="sec-title">Upcoming payments</summary>
       <div class="card">
         <div id="upcomingList"></div>
         <div class="total-row">
@@ -515,9 +528,9 @@
           <span class="total-val" id="subTotal"></span>
         </div>
       </div>
-    </div>
-    <div>
-      <div class="sec-title">SPayLater schedule</div>
+    </details>
+    <details class="sec-collapsible">
+      <summary class="sec-title">SPayLater schedule</summary>
       <div class="card">
         <div id="spaylaterList"></div>
         <div class="total-row">
@@ -525,7 +538,7 @@
           <span class="total-val c-red" id="spayTotal"></span>
         </div>
       </div>
-    </div>
+    </details>
   </div>
 
   <div class="footer">

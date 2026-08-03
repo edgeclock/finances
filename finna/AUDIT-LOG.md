@@ -1,5 +1,13 @@
 # Finna Audit Log
 
+## Aug 3, 2026 - Archived Cash log, made 3 sections collapsible (UI only, no data change)
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat request.
+- Archived "Cash log" (already redundant with the Accounts section's click-to-view history for Cash on hand) — folded into the same already-hidden `.g2` wrapper as "Budget vs actual" from the previous entry. Both DOM elements kept intact (just `display:none`) so their populating JS doesn't error.
+- Made "Transaction log · this period", "Upcoming payments", and "SPayLater schedule" collapsible using native `<details>/<summary>` — collapsed by default, click to expand. Added `.sec-collapsible` CSS (custom chevron marker, hides the native disclosure triangle, matches existing `.sec-title` styling).
+- No `DATA` fields changed — pure presentation. Verified in browser: all three default closed, expand on click, no console errors.
+
 ## Aug 3, 2026 - Hid "Budget vs actual" section (UI only, no data change)
 
 - Runtime: Claude Code.
