@@ -542,9 +542,9 @@ const DATA = {
 
   // Account balances (update each salary period)
   accounts: [
-    { label: "GCash wallet",   balance: 10291.30, tag: "spend",  tagLabel: "spending"      },
+    { label: "GCash wallet",   balance: 8576.95,  tag: "spend",  tagLabel: "spending"      },
     { label: "GCash savings",  balance: 36160.13, tag: "save",   tagLabel: "Emergency fund (was MacBook fund)" },
-    { label: "RCBC savings",   balance: 1253.52,  tag: "spend",  tagLabel: "groceries/cash"},
+    { label: "RCBC savings",   balance: 827.96,   tag: "spend",  tagLabel: "groceries/cash"},
     { label: "Maya wallet",    balance: 1261.61,  tag: "spend",  tagLabel: "personal"      },
     { label: "GoTyme savings", balance: 4527.84,  tag: "save",   tagLabel: "rent/utilities"},
     { label: "Coins.ph PHP",   balance: 5418.71,  tag: "save",   tagLabel: "charity/tithes"},
@@ -552,7 +552,7 @@ const DATA = {
     { label: "Maya savings",   balance: 488.43,   tag: "save",   tagLabel: "emergency fund"},
     { label: "GoTyme wallet",  balance: 0.00,     tag: "spend",  tagLabel: "no plan yet"   },
     { label: "Tonik Bank",     balance: 52.66,    tag: "save",   tagLabel: "no plan yet"   },
-    { label: "Cash on hand",   balance: 2296.50,  tag: "cash",   tagLabel: "cash"          },
+    { label: "Cash on hand",   balance: 2077.50,  tag: "cash",   tagLabel: "cash"          },
     { label: "Alkansya",       balance: 479.75,   tag: "save",   tagLabel: "piggy bank"    }
   ],
 
@@ -638,7 +638,14 @@ const DATA = {
     { date: "Aug 3",  desc: "CapCut",                  cat: "Subscriptions",amount: 359.00,  wallet: "gcash", type: "expense" },
     { date: "Aug 3",  desc: "Transfer to GCash wallet (emergency fund draw)", cat: "Transfer", amount: 10000.00, wallet: "gcashsavings", type: "expense" },
     { date: "Aug 3",  desc: "Transfer from GCash savings", cat: "Transfer", amount: 10000.00, wallet: "gcash",  type: "income"  },
-    { date: "Aug 3",  desc: "SPayLater payment (July)",  cat: "Debt payment", amount: 6985.74, wallet: "gcash",  type: "expense" }
+    { date: "Aug 3",  desc: "SPayLater payment (July)",  cat: "Debt payment", amount: 6985.74, wallet: "gcash",  type: "expense" },
+    { date: "Aug 3",  desc: "Lunch",                   cat: "Food & dining", amount: 115.00,   wallet: "cash",  type: "expense" },
+    { date: "Aug 3",  desc: "Fare",                    cat: "Transport",     amount: 26.00,    wallet: "cash",  type: "expense" },
+    { date: "Aug 3",  desc: "Meal prep",               cat: "Food & dining", amount: 65.00,    wallet: "cash",  type: "expense" },
+    { date: "Aug 3",  desc: "Fare",                    cat: "Transport",     amount: 13.00,    wallet: "cash",  type: "expense" },
+    { date: "Aug 3",  desc: "Grocery",                 cat: "Groceries",     amount: 1414.35,  wallet: "gcash", type: "expense" },
+    { date: "Aug 3",  desc: "Canva Pro",               cat: "Subscriptions", amount: 300.00,   wallet: "gcash", type: "expense" },
+    { date: "Aug 3",  desc: "Meal prep",               cat: "Food & dining", amount: 425.56,   wallet: "rcbc",  type: "expense" }
   ],
 
   spaylaterSchedule: [
@@ -658,7 +665,7 @@ const DATA = {
   // as each one gets logged during the month (see dashboard_setup.md check-in routine).
   subscriptions: [
     { name: "CapCut",     amount: 359.00,  wallet: "gcash", dueDay: 3,  paid: true  },
-    { name: "Canva Pro",  amount: 300.00,  wallet: "gcash", dueDay: 3,  paid: false },
+    { name: "Canva Pro",  amount: 300.00,  wallet: "gcash", dueDay: 3,  paid: true  },
     { name: "Google One", amount: 1100.00, wallet: "gcash", dueDay: 7,  paid: false },
     { name: "Claude Pro", amount: 1300.00, wallet: "gcash", dueDay: 10, paid: false },
     { name: "ChatGPT Plus", amount: 999.00, wallet: "rcbc", dueDay: 19, paid: false }

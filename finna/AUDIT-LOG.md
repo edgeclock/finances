@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Aug 3, 2026 - Logged 7 more Aug 3 transactions
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat report.
+- Ledger changes: Lunch ₱115.00 (cash), Fare ₱26.00 (cash), Meal prep ₱65.00 (cash), Fare ₱13.00 (cash), Grocery ₱1,414.35 (gcash), Canva Pro ₱300.00 (gcash, Subscriptions), Meal prep ₱425.56 (rcbc).
+- Canva Pro subscription marked `paid: true` for this cycle (dueDay 3, matches today).
+- Balance updates: Cash on hand ₱2,296.50 → ₱2,077.50. GCash wallet ₱10,291.30 → ₱8,576.95. RCBC savings ₱1,253.52 → ₱827.96.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 3, 2026 - Correction: Aug 3 breakfast was gcash, not cash
 
 - Runtime: Claude Code.
