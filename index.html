@@ -369,9 +369,9 @@
     <div class="ga" id="alertGrid"></div>
   </div>
 
-  <!-- MacBook Goal -->
+  <!-- Emergency Fund (was MacBook Goal) -->
   <div class="sec">
-    <div class="sec-title">MacBook Pro M5 goal</div>
+    <div class="sec-title">Emergency fund</div>
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
         <span style="font-size:14px;font-weight:500">GCash savings</span>
@@ -535,8 +535,8 @@ const DATA = {
 
   // Account balances (update each salary period)
   accounts: [
-    { label: "GCash wallet",   balance: 7387.04,  tag: "spend",  tagLabel: "spending"      },
-    { label: "GCash savings",  balance: 46160.13, tag: "save",   tagLabel: "MacBook fund"  },
+    { label: "GCash wallet",   balance: 10401.30, tag: "spend",  tagLabel: "spending"      },
+    { label: "GCash savings",  balance: 36160.13, tag: "save",   tagLabel: "Emergency fund (was MacBook fund)" },
     { label: "RCBC savings",   balance: 1253.52,  tag: "spend",  tagLabel: "groceries/cash"},
     { label: "Maya wallet",    balance: 1261.61,  tag: "spend",  tagLabel: "personal"      },
     { label: "GoTyme savings", balance: 4527.84,  tag: "save",   tagLabel: "rent/utilities"},
@@ -550,7 +550,7 @@ const DATA = {
   ],
 
   liabilities: {
-    spaylater: 22673.91,
+    spaylater: 15688.17,
     bike: 0
   },
 
@@ -666,11 +666,13 @@ const DATA = {
     { date: "Aug 2",  desc: "Lunch",                  cat: "Food & dining",amount: 100.00,   wallet: "gcash", type: "expense" },
     { date: "Aug 2",  desc: "Dinner",                 cat: "Food & dining",amount: 209.00,   wallet: "gcash", type: "expense" },
     { date: "Aug 3",  desc: "Breakfast",               cat: "Food & dining",amount: 110.00,  wallet: "cash",  type: "expense" },
-    { date: "Aug 3",  desc: "CapCut",                  cat: "Subscriptions",amount: 359.00,  wallet: "gcash", type: "expense" }
+    { date: "Aug 3",  desc: "CapCut",                  cat: "Subscriptions",amount: 359.00,  wallet: "gcash", type: "expense" },
+    { date: "Aug 3",  desc: "Transfer to GCash wallet (emergency fund draw)", cat: "Transfer", amount: 10000.00, wallet: "gcashsavings", type: "expense" },
+    { date: "Aug 3",  desc: "Transfer from GCash savings", cat: "Transfer", amount: 10000.00, wallet: "gcash",  type: "income"  },
+    { date: "Aug 3",  desc: "SPayLater payment (July)",  cat: "Misc",       amount: 6985.74,  wallet: "gcash",  type: "expense" }
   ],
 
   spaylaterSchedule: [
-    { month: "Jul bill", amount: 6985.74, due: "Aug 15, 2026",  urgent: false },
     { month: "Aug bill", amount: 6969.87, due: "Sep 15, 2026",  urgent: false },
     { month: "Sep bill", amount: 6969.87, due: "Oct 15, 2026",  urgent: false },
     { month: "Oct bill", amount: 994.89,  due: "Nov 15, 2026",  urgent: false },
@@ -832,15 +834,12 @@ if (totalReceivables > 0) {
   document.getElementById('receivableNote').style.color = 'var(--green)';
 }
 
-// MacBook
-const mbPct = pct(gcashSavingsBal, DATA.macbook.target);
-document.getElementById('mbBar').style.width        = mbPct + '%';
-document.getElementById('mbTargetLabel').textContent = 'target ' + fmt(DATA.macbook.target) + ' · ' + DATA.macbook.targetDate;
-document.getElementById('mbSaved').textContent      = fmt(gcashSavingsBal) + ' saved (' + mbPct + '%)';
-document.getElementById('mbRemaining').textContent  = fmt(DATA.macbook.target - gcashSavingsBal) + ' to go';
-document.getElementById('mbNote').textContent       = DATA.macbook.shortfall > 0
-  ? '+' + fmt(DATA.macbook.perPaycheck) + '/paycheck · ~' + fmt(DATA.macbook.shortfall) + ' short at ' + DATA.macbook.targetDate + ' — supplement via SPayLater or lump sum'
-  : '+' + fmt(DATA.macbook.perPaycheck) + '/paycheck · on track by ' + DATA.macbook.targetDate;
+// Emergency fund (was MacBook goal — repurposed Aug 3, 2026 after resignation, no target set yet)
+document.getElementById('mbBar').style.width        = '100%';
+document.getElementById('mbTargetLabel').textContent = 'no target set';
+document.getElementById('mbSaved').textContent      = fmt(gcashSavingsBal) + ' available';
+document.getElementById('mbRemaining').textContent  = '';
+document.getElementById('mbNote').textContent       = 'Repurposed from MacBook fund on Aug 3, 2026 — Edge resigned, this is now the emergency buffer until new work is found. No paycheck contributions until income resumes.';
 
 // Salary period
 document.getElementById('periodLabel').textContent    = sal.periodStart + ' – ' + sal.periodEnd;
@@ -1057,8 +1056,8 @@ const alerts = [
   },
   {
     dot: 'amber',
-    title: 'MacBook — reduced pace',
-    sub: '₱91K projected by Dec 10 · ~₱54K short — savings cut to ₱5K/paycheck (part-time)'
+    title: 'No active income',
+    sub: 'Resigned Aug 3 — GCash savings (' + fmt(gcashSavingsBal) + ') now the emergency buffer until new work'
   },
   {
     dot: 'amber',

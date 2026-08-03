@@ -1,5 +1,23 @@
 # Finna Audit Log
 
+## Aug 3, 2026 - MAJOR: Edge resigned from his job — GCash savings repurposed as emergency fund; SPayLater July bill paid
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat report.
+- **Life event:** Edge resigned from his VA job. No income currently. This invalidates several standing assumptions in `finna/FINNA.md`/[[financial-plan]]/[[user_profile]] memory — flagged to Edge, not yet fully reworked (see below).
+- Ledger changes:
+  - Transfer to GCash wallet (emergency fund draw) ₱10,000 (gcashsavings, expense, Transfer) / Transfer from GCash savings ₱10,000 (gcash, income, Transfer)
+  - SPayLater payment (July) ₱6,985.74 (gcash, expense, cat Misc)
+- Balance updates: GCash wallet ₱7,387.04 → ₱10,401.30. GCash savings ₱46,160.13 → ₱36,160.13. `liabilities.spaylater` ₱22,673.91 → ₱15,688.17 (July bill paid; removed the "Jul bill" entry from `spaylaterSchedule`, next due is the Aug bill ₱6,969.87 on Sep 15).
+- **Account repurposed:** GCash savings `tagLabel` changed "MacBook fund" → "Emergency fund (was MacBook fund)". Edge's own words: "this bank/saving for macbook will now be considered emergency fund until i find new work."
+- **Dashboard section reworked:** "MacBook Pro M5 goal" section renamed **"Emergency fund"**. Removed the target/percentage/shortfall framing (was based on a ₱145,000 MacBook target and ongoing paycheck contributions — both now inapplicable) since no new target has been set; now just shows the GCash savings balance plainly with a note explaining the repurpose and that there are no paycheck contributions until income resumes. `DATA.macbook` object left in place as historical data but nothing in the JS reads it anymore.
+- Monitoring alert "MacBook — reduced pace" replaced with "No active income" reflecting the resignation and emergency-fund status.
+- **NOT done — flagged to Edge, needs his direction rather than assumptions:**
+  - `DATA.salaryHistory`'s future entries (Aug 10, Aug 25, etc.) still show placeholder ₱37,000/`actual: false` — these are now almost certainly wrong (no job = no paycheck), but left untouched since Edge hasn't confirmed whether/when he expects any income.
+  - `DATA.monthlyAllocation` (donut chart) still shows a "MacBook savings ₱10,000/mo" line and other paycheck-based planning figures — now stale, not updated pending Edge's direction on how he wants monthly planning framed with no income.
+  - `finna/FINNA.md`, `financial_plan` memory, and `user_profile` memory all describe an active paycheck/distribution-formula routine that no longer applies — memory updated with this event (see separate memory edit) but the operating docs (`finna/FINNA.md`) were not restructured this session; the semi-monthly period-reset/distribution routine should probably pause until Edge has income again.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 3, 2026 - Logged Jul 28 - Aug 3 backlog (17 transactions); recomputed July monthly report
 
 - Runtime: Claude Code.
