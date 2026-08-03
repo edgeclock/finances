@@ -440,8 +440,12 @@
         <div class="m-sub" id="projStatus"></div>
       </div>
     </div>
-    <div class="g2">
-      <div class="card">
+    <div class="g2" style="grid-template-columns: 1fr">
+      <!-- "Budget vs actual" hidden 2026-08-03 at Edge's request — wallet budgets are stale
+           leftovers from the last paycheck and don't reflect a real monthly plan yet. Restore
+           by removing this comment/style override and un-hiding the card below once Edge sets
+           real monthly budget figures in DATA.monthlySpending. -->
+      <div class="card" style="display:none">
         <div style="font-size:12px;font-weight:500;color:var(--t2);margin-bottom:14px">Budget vs actual</div>
         <div id="budgetBars"></div>
       </div>

@@ -1,5 +1,13 @@
 # Finna Audit Log
 
+## Aug 3, 2026 - Hid "Budget vs actual" section (UI only, no data change)
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat request.
+- Change: hid the "Budget vs actual" card on the dashboard (`display: none`, left in the DOM with a comment explaining how to restore it) since `DATA.monthlySpending.wallets[].budget` figures are stale leftovers from the last paycheck and don't reflect a real monthly plan. Adjusted the containing grid to single-column so the adjacent "Cash log" card fills the space cleanly instead of leaving a blank gap.
+- No `DATA` fields changed — pure presentation. `finna-validate.ps1` re-run as a sanity check regardless (unchanged figures, as expected).
+- To restore: remove the `display:none` and the explanatory comment in `index.html`, and revert the grid to `grid-template-columns: 1fr 1fr` (or just drop the inline style) — do this once Edge sets real monthly budget figures.
+
 ## Aug 3, 2026 - Logged 7 more Aug 3 transactions
 
 - Runtime: Claude Code.
