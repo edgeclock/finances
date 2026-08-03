@@ -119,27 +119,12 @@
     .tag-invest { background: #ede9fc; color: #3b35a0; }
     @media (prefers-color-scheme: dark) { .tag-invest { background: #1e1a3f; color: var(--purple); } }
 
-    /* Monthly reports */
-    .month-tile { border-radius: var(--r); padding: 12px 14px; text-align: center; }
-    .mt-name    { font-size: 12px; font-weight: 500; margin-bottom: 3px; }
-    .mt-status  { font-size: 10px; }
-    .mt-black   { background: #0a0a09; border: 0.5px solid rgba(255,255,255,0.04); cursor: default; }
-    .mt-black .mt-name   { color: rgba(255,255,255,0.16); }
-    .mt-black .mt-status { color: rgba(255,255,255,0.1); }
-    @media (prefers-color-scheme: light) {
-      .mt-black { background: #0a0a09; }
-      .mt-black .mt-name   { color: rgba(255,255,255,0.22); }
-      .mt-black .mt-status { color: rgba(255,255,255,0.14); }
-    }
-    .mt-grey    { background: var(--surface2); border: 0.5px solid var(--border); cursor: default; }
-    .mt-grey .mt-name   { color: var(--t3); }
-    .mt-grey .mt-status { color: var(--t3); }
-    .mt-ready   { background: var(--green-bg); border: 0.5px solid transparent; cursor: pointer; }
-    .mt-ready .mt-name   { color: var(--green-t); font-weight: 600; }
-    .mt-ready .mt-status { color: var(--green-t); }
-    .mt-ready.mt-partial { background: var(--amber-bg); }
-    .mt-ready.mt-partial .mt-name,
-    .mt-ready.mt-partial .mt-status { color: var(--amber-t); }
+    /* Monthly history */
+    .month-history-row { margin-bottom: 10px; }
+    .month-history-summary { justify-content: space-between; }
+    .month-history-net { font-variant-numeric: tabular-nums; font-weight: 600; }
+    .month-history-net.pos { color: var(--green); }
+    .month-history-net.neg { color: var(--red); }
 
     /* Rows */
     .row { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 0.5px solid var(--border); }
@@ -212,12 +197,12 @@
     #pinReset   { display:block; font-size:11px; color:var(--t3); margin-top:20px; cursor:pointer; text-decoration:underline; background:none; border:none; }
 
     /* Breakdown modal */
-    .metric[data-bd], .acct-card[data-acct], .mt-ready { cursor: pointer; position: relative; }
-    .metric[data-bd]::after, .acct-card[data-acct]::after, .mt-ready::after {
+    .metric[data-bd], .acct-card[data-acct] { cursor: pointer; position: relative; }
+    .metric[data-bd]::after, .acct-card[data-acct]::after {
       content: '↗'; position: absolute; top: 8px; right: 10px;
       font-size: 10px; color: inherit; opacity: 0; transition: opacity 0.15s;
     }
-    .metric[data-bd]:hover::after, .acct-card[data-acct]:hover::after, .mt-ready:hover::after { opacity: 0.6; }
+    .metric[data-bd]:hover::after, .acct-card[data-acct]:hover::after { opacity: 0.6; }
     #bdOverlay {
       position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.4);
       display: flex; align-items: center; justify-content: center; padding: 20px;
@@ -495,10 +480,10 @@
     <div class="ga" id="accountsGrid"></div>
   </div>
 
-  <!-- Monthly Reports -->
+  <!-- Monthly History -->
   <div class="sec">
-    <div class="sec-title">Monthly reports</div>
-    <div class="ga" id="monthGrid"></div>
+    <div class="sec-title">Monthly history</div>
+    <div id="monthHistoryList"></div>
   </div>
 
   <!-- Salary Period -->
@@ -972,31 +957,6 @@ DATA.accounts.forEach((a, i) => {
   </div>`;
 });
 
-// Monthly reports grid
-const monthGridEl = document.getElementById('monthGrid');
-const MONTH_NAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-const NO_DATA_MONTHS = ['2026-01','2026-02','2026-03','2026-04','2026-05'];
-const reportsByKey = {};
-DATA.monthlyReports.forEach(r => { reportsByKey[r.key] = r; });
-MONTH_NAMES.forEach((name, i) => {
-  const key = '2026-' + String(i + 1).padStart(2, '0');
-  const report = reportsByKey[key];
-  let cls, status;
-  if (report) {
-    cls = 'month-tile mt-ready' + (report.partial ? ' mt-partial' : '');
-    status = report.partial ? 'Partial report' : 'View report';
-  } else if (NO_DATA_MONTHS.includes(key)) {
-    cls = 'month-tile mt-black';
-    status = 'No data';
-  } else {
-    cls = 'month-tile mt-grey';
-    status = 'No report yet';
-  }
-  monthGridEl.innerHTML += `<div class="${cls}"${report ? ` data-month="${key}"` : ''}>
-    <div class="mt-name">${name} 2026</div>
-    <div class="mt-status">${status}</div>
-  </div>`;
-});
 
 // Upcoming payments — unpaid subscriptions this month + any one-off items in DATA.upcomingPayments
 const upList = document.getElementById('upcomingList');
@@ -1353,12 +1313,7 @@ setTimeout(function() {
     return '<div style="font-size:11px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:0.4px;margin:18px 0 6px">' + label + '</div>';
   }
 
-  function buildMonthReport(key) {
-    const r = reportsByKey[key];
-    if (!r) return;
-    titleEl.textContent = r.label;
-    subEl.textContent = r.partial ? 'Partial month · ' + r.partialNote : 'Full month report';
-
+  function renderMonthReportHTML(r) {
     let html = sectionHead('Income & spending');
     html += row('Income', r.income, { cls: 'pos', op: '' });
     html += row('Expenses', r.expenses, { cls: 'neg', op: '' });
@@ -1381,8 +1336,24 @@ setTimeout(function() {
       html += r.notableEvents.map(e => row(e.desc, e.amount)).join('');
     }
 
-    bodyEl.innerHTML = html;
+    return html;
   }
+
+  // Monthly history — collapsible list, most recent first
+  const monthHistoryEl = document.getElementById('monthHistoryList');
+  const sortedReports = [...DATA.monthlyReports].sort((a, b) => b.key.localeCompare(a.key));
+  sortedReports.forEach(r => {
+    const netCls = r.netSavings >= 0 ? 'pos' : 'neg';
+    monthHistoryEl.innerHTML += `<details class="sec-collapsible month-history-row">
+      <summary class="sec-title month-history-summary">
+        <span>${r.label}${r.partial ? ' <span class="src">partial</span>' : ''}</span>
+        <span class="month-history-net ${netCls}">${r.netSavings >= 0 ? '+' : '−'}${fmt(Math.abs(r.netSavings))}</span>
+      </summary>
+      <div class="card">${renderMonthReportHTML(r)}</div>
+    </details>`;
+  });
+  if (sortedReports.length === 0) monthHistoryEl.innerHTML = '<div class="empty">No monthly reports yet.</div>';
+  monthHistoryEl.innerHTML += '<div style="font-size:11px;color:var(--t3);margin-top:10px">No report for Jan–May 2026 (before tracking started) or the current month in progress — new reports appear here automatically once compiled.</div>';
 
   const builders = { assets: buildAssets, liabilities: buildLiabilities, networth: buildNetWorth };
 
@@ -1398,11 +1369,6 @@ setTimeout(function() {
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
-  function openMonthModal(key) {
-    buildMonthReport(key);
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
   function closeModal() {
     overlay.classList.remove('open');
     document.body.style.overflow = '';
@@ -1413,9 +1379,6 @@ setTimeout(function() {
   });
   document.querySelectorAll('.acct-card[data-acct]').forEach(el => {
     el.addEventListener('click', () => openAccountModal(Number(el.dataset.acct)));
-  });
-  document.querySelectorAll('.mt-ready[data-month]').forEach(el => {
-    el.addEventListener('click', () => openMonthModal(el.dataset.month));
   });
   document.getElementById('bdClose').addEventListener('click', closeModal);
   overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });

@@ -1,5 +1,15 @@
 # Finna Audit Log
 
+## Aug 3, 2026 - Replaced "Monthly Reports" grid+popup with collapsible "Monthly History" list (planned via plan mode)
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat request, explicitly asked for plan mode for this feature — plan approved before implementation (plan file: `C:\Users\PC\.claude\plans\tranquil-brewing-corbato.md`).
+- Replaced the 12-tile grid (`#monthGrid`, black/grey/green tiles for Jan-Dec 2026, click a colored tile to open a modal popup) with a collapsible list (`#monthHistoryList`, native `<details>/<summary>`, same pattern as the other 3 sections made collapsible earlier today). Most-recent-first ordering. Each row's collapsed summary shows the month label + net savings figure (green/red) at a glance; expanding shows the full report inline (income/expenses/category breakdown/goals & net worth/notable events) — no popup.
+- Refactored `buildMonthReport(key)` (previously wrote into the shared modal's `bodyEl`) into `renderMonthReportHTML(r)`, a pure function returning an HTML string, reusing the existing `row()`/`sectionHead()` helpers rather than duplicating them. Removed `openMonthModal()` and its `.mt-ready[data-month]` click-listener registration — the shared `bdOverlay` modal system stays intact for Net worth/Total assets/Total liabilities/Account cards, only the month-click-opens-modal path was removed.
+- Removed unused CSS (`.month-tile`, `.mt-name`, `.mt-status`, `.mt-black` + dark-mode variant, `.mt-grey`, `.mt-ready`, `.mt-ready.mt-partial`) and stripped `.mt-ready` out of the 3 shared hover-affordance selectors. Added `.month-history-row`/`.month-history-summary`/`.month-history-net` CSS.
+- No `DATA` fields changed — pure presentation, reusing `DATA.monthlyReports` as-is.
+- Verified in browser per the plan's verification steps: exactly 2 rows (July 2026 first, −₱7,402.00 red; June 2026 second, marked partial, +₱22,610.46 green), both collapsed by default, both expand correctly on click with full report content matching what the old modal showed, "no report yet" note present, and — regression check — Net worth/Total assets/Account-card clicks still correctly open the shared modal. No console errors.
+
 ## Aug 3, 2026 - Archived Cash log, made 3 sections collapsible (UI only, no data change)
 
 - Runtime: Claude Code.
