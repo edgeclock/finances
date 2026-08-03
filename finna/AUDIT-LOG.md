@@ -1,5 +1,13 @@
 # Finna Audit Log
 
+## Aug 3, 2026 - Correction: Aug 3 breakfast was gcash, not cash
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat correction.
+- Fix: "Breakfast" ₱110.00 (Aug 3, Food & dining) changed from `wallet: "cash"` to `wallet: "gcash"`.
+- Balance update: GCash wallet ₱10,401.30 → ₱10,291.30. Cash on hand ₱2,186.50 → ₱2,296.50.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 3, 2026 - MAJOR: three-part restructure — month-scoped transactions, monthly monitoring, retired "Misc" category
 
 - Runtime: Claude Code.

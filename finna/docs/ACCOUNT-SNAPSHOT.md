@@ -2,13 +2,13 @@
 
 **Source:** `index.html`
 **As of:** Aug 3, 2026
-**Status:** MAJOR restructure Aug 3, 2026 — switched to monthly monitoring (no more pay periods), `transactions[]` now August-only, "Misc" category retired (see `finna/DATA-CONTRACT.md` and `finna/AUDIT-LOG.md` for full detail). Balances unchanged by this entry.
+**Status:** Corrected Aug 3 breakfast (₱110) from cash to gcash.
 
 ## Accounts
 
 | Account | Balance | Purpose |
 |---|---:|---|
-| GCash wallet | PHP 10,401.30 | Spending |
+| GCash wallet | PHP 10,291.30 | Spending |
 | GCash savings | PHP 36,160.13 | **Emergency fund** (was MacBook fund — repurposed Aug 3, 2026 after resignation, no target set) |
 | RCBC savings | PHP 1,253.52 | Groceries and cash |
 | Maya wallet | PHP 1,261.61 | Personal (fixed PHP 1,000/paycheck — but see income status below) |
@@ -18,7 +18,7 @@
 | Maya savings | PHP 488.43 | Emergency fund (separate from GCash savings — Maya wallet's own sweep destination) |
 | GoTyme wallet | PHP 0.00 | No assigned plan |
 | Tonik Bank | PHP 52.66 | No assigned plan |
-| Cash on hand | PHP 2,186.50 | Cash, including PHP 5.00 reconciliation adjustment (blessings) |
+| Cash on hand | PHP 2,296.50 | Cash, including PHP 5.00 reconciliation adjustment (blessings) |
 | Alkansya | PHP 479.75 | Piggy bank |
 
 **Total assets:** PHP 63,230.45
