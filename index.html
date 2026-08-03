@@ -159,6 +159,13 @@
     .lp-family  { background: #fce7f3; color: #9d174d; }
     @media (prefers-color-scheme: dark) { .lp-family { background: #2d0a1a; color: #f9a8d4; } }
     .lp-groc  { background: var(--green-bg); color: var(--green-t); }
+    .lp-household { background: var(--surface2); color: var(--t2); }
+    .lp-loan  { background: #fef3c7; color: #92400e; }
+    @media (prefers-color-scheme: dark) { .lp-loan { background: #3a2a08; color: #fbbf24; } }
+    .lp-debt  { background: var(--red-bg); color: var(--red-t); }
+    .lp-invest { background: #ede9fc; color: #3b35a0; }
+    @media (prefers-color-scheme: dark) { .lp-invest { background: #1e1a3f; color: var(--purple); } }
+    .lp-recon { background: var(--surface2); color: var(--t3); }
     .log-amt  { font-weight: 500; margin-left: auto; }
 
     /* Source chip */
@@ -389,12 +396,12 @@
   <!-- Charts -->
   <div class="g2 sec">
     <div>
-      <div class="sec-title">Salary trend</div>
+      <div class="sec-title">Income history</div>
       <div class="card" style="padding:14px">
         <div class="ch" style="height:190px">
           <canvas id="salaryChart" role="img" aria-label="Salary trend chart showing actual and projected paychecks"></canvas>
         </div>
-        <div style="font-size:11px;color:var(--t3);margin-top:8px;text-align:center">Faded = projected · updates each paycheck</div>
+        <div style="font-size:11px;color:var(--t3);margin-top:8px;text-align:center">Historical record — no income since Jul 24, 2026 (resigned)</div>
       </div>
     </div>
     <div>
@@ -410,7 +417,7 @@
 
   <!-- Period Spending -->
   <div class="sec">
-    <div class="sec-title">Period spending · <span id="periodLabel"></span></div>
+    <div class="sec-title">Monthly spending · <span id="periodLabel"></span></div>
     <div class="g4" style="margin-bottom:12px">
       <div class="metric">
         <div class="m-lbl">Spent so far</div>
@@ -420,7 +427,7 @@
       <div class="metric">
         <div class="m-lbl">Remaining</div>
         <div class="m-val" id="spentRemaining"></div>
-        <div class="m-sub">of period budget</div>
+        <div class="m-sub">of monthly budget</div>
       </div>
       <div class="metric">
         <div class="m-lbl">Daily pace</div>
@@ -479,7 +486,7 @@
 
   <!-- Salary Period -->
   <div class="sec">
-    <div class="sec-title">Salary period</div>
+    <div class="sec-title">Monthly monitoring</div>
     <div class="card">
       <div class="period-meta">
         <span id="periodRange"></span>
@@ -569,27 +576,37 @@ const DATA = {
     shortfall: 53884
   },
 
-  salary: {
-    recent: 17354.21,
-    periodStart: "Jul 24",
-    periodEnd: "Aug 10",
-    nextDate: "Aug 10, 2026",
-    dayOfPeriod: 11,
-    totalDays: 18
+  // Monthly monitoring (replaced the semi-monthly pay-period cycle on 2026-08-03 — Edge resigned,
+  // no more paychecks to anchor a "period" to). monthStart/monthEnd/dayOfMonth/daysInMonth drive
+  // the "Monthly monitoring" section and the monthly spending pace/projection math, the same way
+  // periodStart/dayOfPeriod/totalDays used to. lastIncome is historical only (Jul 24 was the last
+  // confirmed paycheck) — do not treat it as a current income figure.
+  monthly: {
+    lastIncome: 17354.21,
+    lastIncomeDate: "Jul 24, 2026",
+    monthStart: "Aug 1",
+    monthEnd: "Aug 31",
+    nextReset: "Sep 1, 2026",
+    dayOfMonth: 3,
+    daysInMonth: 31
   },
 
-  // Add a new entry each paycheck; set actual: false for future projections
+  // Historical income record. Stopped adding future placeholder entries on 2026-08-03 —
+  // Edge resigned, there's no paycheck to project. Add a new entry only when actual income
+  // resumes; don't guess a projection until Edge confirms an amount/date.
   salaryHistory: [
     { period: "Jun 10", amount: 37000, actual: true  },
     { period: "Jun 25", amount: 27856.36, actual: true  },
     { period: "Jul 10", amount: 21976.52, actual: true  },
-    { period: "Jul 25", amount: 17354.21, actual: true  },
-    { period: "Aug 10", amount: 37000, actual: false },
-    { period: "Aug 25", amount: 37000, actual: false }
+    { period: "Jul 25", amount: 17354.21, actual: true  }
   ],
 
-  // Update from transaction history each check-in — add spent amounts per wallet
-  periodSpending: {
+  // Update from transaction history each check-in — add spent amounts per wallet.
+  // NOTE (2026-08-03): these budget figures are stale leftovers from the last paycheck
+  // distribution (Jul 24 period) and no longer reflect a real monthly spending plan now that
+  // there's no income. Left as-is rather than invented — ask Edge what he wants his monthly
+  // spending budgets to be per wallet (e.g. drawn from the emergency fund) and update then.
+  monthlySpending: {
     wallets: [
       { id: "gcash",  label: "GCash wallet",  src: "txn history", budget: 0    },
       { id: "rcbc",   label: "RCBC savings",  src: "txn history", budget: 4119 },
@@ -598,68 +615,20 @@ const DATA = {
     ]
   },
 
-  categoryOrder: ["Food & dining", "Groceries", "Transport", "Load / comms", "Subscriptions", "Charity", "Family", "Misc"],
+  categoryOrder: ["Food & dining", "Groceries", "Transport", "Load / comms", "Subscriptions", "Charity", "Family", "Household", "Loans", "Debt payment", "Investments"],
 
-  // Archive of transactions from EARLIER period(s) within the current calendar month —
-  // preserved here when a period reset (10th/25th) happens mid-month, so account transaction
-  // history modals can show the whole month, not just the current pay period.
-  // On each period reset: if still the same calendar month, append the outgoing transactions[]
-  // here before clearing it; if the reset crosses into a new calendar month, clear this array too.
+  // Deprecated as of 2026-08-03 (monthly monitoring replaced the semi-monthly pay-period cycle —
+  // transactions[] now IS the current calendar month, so there's no more mid-month reset to
+  // archive around). Left in place, always empty, only because the account-history modal's JS
+  // still references it defensively (monthArchive || []). Do not write to this array.
   monthArchive: [],
 
   // All transactions this period — type: "income" | "expense"
   // wallet: "gcash" | "rcbc" | "maya" | "coins" | "cash"
   // cat must match a value in categoryOrder (or "Income" for income entries)
   transactions: [
-    { date: "Jul 24", desc: "Salary received",      cat: "Income",        amount: 17354.21, wallet: "rcbc",  type: "income"  },
-    { date: "Jul 26", desc: "Distribute to GCash savings", cat: "Transfer", amount: 5000.00,  wallet: "rcbc",       type: "expense" },
-    { date: "Jul 26", desc: "Paycheck savings allocation",  cat: "Transfer", amount: 5000.00,  wallet: "gcashsavings", type: "income"  },
-    { date: "Jul 26", desc: "Distribute to GCash wallet (investment passthrough)", cat: "Transfer", amount: 1000.00, wallet: "rcbc",  type: "expense" },
-    { date: "Jul 26", desc: "Investment allocation (passthrough)", cat: "Transfer", amount: 1000.00, wallet: "gcash", type: "income"  },
-    { date: "Jul 26", desc: "Transfer to GoTrade",          cat: "Transfer", amount: 1000.00,  wallet: "gcash",  type: "expense" },
-    { date: "Jul 26", desc: "Investment transfer from GCash", cat: "Transfer", amount: 1000.00, wallet: "gotrade", type: "income"  },
-    { date: "Jul 26", desc: "GoTrade transfer fee",         cat: "Misc",     amount: 29.57,    wallet: "gcash",  type: "expense" },
-    { date: "Jul 26", desc: "Distribute to GoTyme savings", cat: "Transfer", amount: 4500.00,  wallet: "rcbc",   type: "expense" },
-    { date: "Jul 26", desc: "Paycheck rent/utilities allocation", cat: "Transfer", amount: 4500.00, wallet: "gotyme", type: "income" },
-    { date: "Jul 26", desc: "Distribute to Maya wallet",    cat: "Transfer", amount: 1000.00,  wallet: "rcbc",  type: "expense" },
-    { date: "Jul 26", desc: "Paycheck personal allocation (fixed)", cat: "Transfer", amount: 1000.00, wallet: "maya", type: "income"  },
-    { date: "Jul 26", desc: "Distribute to Coins.ph",       cat: "Transfer", amount: 1735.42,  wallet: "rcbc",  type: "expense" },
-    { date: "Jul 26", desc: "Paycheck charity allocation",  cat: "Transfer", amount: 1735.42,  wallet: "coins", type: "income"  },
-    { date: "Jul 26", desc: "Fare",                cat: "Transport",     amount: 13.00,    wallet: "cash",  type: "expense" },
-    { date: "Jul 26", desc: "Tithes (Victory LB)", cat: "Charity",       amount: 500.00,   wallet: "coins", type: "expense" },
-    { date: "Jul 26", desc: "Coffee",              cat: "Food & dining", amount: 210.00,   wallet: "gcash", type: "expense" },
-    { date: "Jul 26", desc: "Lunch",               cat: "Food & dining", amount: 210.00,   wallet: "gcash", type: "expense" },
-    { date: "Jul 26", desc: "Lent to Bryan (lunch)", cat: "Misc",        amount: 139.00,   wallet: "gcash", type: "expense" },
-    { date: "Jul 26", desc: "Lent to RJ (lunch)",   cat: "Misc",         amount: 149.00,   wallet: "gcash", type: "expense" },
-    { date: "Jul 26", desc: "Bryan loan repayment", cat: "Income",       amount: 137.00,   wallet: "cash",  type: "income"  },
-    { date: "Jul 26", desc: "Laundry",              cat: "Misc",         amount: 192.50,   wallet: "gcash", type: "expense" },
-    { date: "Jul 26", desc: "Lent to RJ (laundry)", cat: "Misc",         amount: 113.75,   wallet: "gcash", type: "expense" },
-    { date: "Jul 26", desc: "Fare",                cat: "Transport",     amount: 24.00,    wallet: "cash",  type: "expense" },
-    { date: "Jul 26", desc: "Meal prep",           cat: "Food & dining", amount: 1015.78,  wallet: "gcash", type: "expense" },
-    { date: "Jul 26", desc: "Groceries",           cat: "Groceries",     amount: 716.25,   wallet: "gcash", type: "expense" },
-    { date: "Jul 26", desc: "Meal prep",           cat: "Food & dining", amount: 276.00,   wallet: "cash",  type: "expense" },
-    { date: "Jul 26", desc: "Groceries",           cat: "Groceries",     amount: 39.00,    wallet: "cash",  type: "expense" },
-    { date: "Jul 26", desc: "Meal prep",           cat: "Food & dining", amount: 60.00,    wallet: "cash",  type: "expense" },
-    { date: "Jul 26", desc: "ATM withdrawal",      cat: "Transfer",      amount: 3000.00,  wallet: "rcbc",  type: "expense" },
-    { date: "Jul 26", desc: "Cash from ATM",       cat: "Transfer",      amount: 3000.00,  wallet: "cash",  type: "income"  },
-    { date: "Jul 26", desc: "Fare",                cat: "Transport",     amount: 13.00,    wallet: "cash",  type: "expense" },
-    { date: "Jul 26", desc: "Fare",                cat: "Transport",     amount: 25.00,    wallet: "cash",  type: "expense" },
-    { date: "Jul 26", desc: "Interest earned",     cat: "Income",        amount: 44.16,    wallet: "gcashsavings", type: "income"  },
-    { date: "Jul 26", desc: "Interest earned",     cat: "Income",        amount: 1.26,     wallet: "mayasavings",  type: "income"  },
-    { date: "Jul 26", desc: "Transfer to GoTyme savings", cat: "Transfer", amount: 27.84,   wallet: "gotymewallet", type: "expense" },
-    { date: "Jul 26", desc: "Transfer from GoTyme wallet", cat: "Transfer", amount: 27.84,  wallet: "gotyme",       type: "income"  },
-    { date: "Jul 25", desc: "Lunch",                cat: "Food & dining", amount: 150.00,   wallet: "cash",   type: "expense" },
-    { date: "Jul 27", desc: "Dinner",               cat: "Food & dining", amount: 189.00,   wallet: "cash",   type: "expense" },
-    { date: "Jul 28", desc: "Cash reconciliation: blessings", cat: "Misc", amount: 5.00, wallet: "cash", type: "adjustment" },
-    { date: "Jul 28", desc: "Water",                cat: "Misc",          amount: 100.00,   wallet: "cash",  type: "expense" },
-    { date: "Jul 28", desc: "Lent to RJ",            cat: "Misc",          amount: 500.00,   wallet: "cash",  type: "expense" },
-    { date: "Jul 30", desc: "Lent to JR",            cat: "Misc",          amount: 3010.00,  wallet: "gcash", type: "expense" },
-    { date: "Jul 30", desc: "Fare",                  cat: "Transport",     amount: 13.00,    wallet: "cash",  type: "expense" },
-    { date: "Jul 30", desc: "Umbrella",               cat: "Misc",         amount: 140.00,   wallet: "cash",  type: "expense" },
-    { date: "Jul 31", desc: "RJ loan repayment",      cat: "Income",       amount: 500.00,   wallet: "cash",  type: "income"  },
-    { date: "Jul 31", desc: "Tofu food",              cat: "Food & dining",amount: 250.00,   wallet: "cash",  type: "expense" },
     { date: "Aug 1",  desc: "Groceries",              cat: "Groceries",    amount: 260.00,   wallet: "gcash", type: "expense" },
-    { date: "Aug 1",  desc: "Laundry",                cat: "Misc",         amount: 175.00,   wallet: "gcash", type: "expense" },
+    { date: "Aug 1",  desc: "Laundry",                cat: "Household",    amount: 175.00,   wallet: "gcash", type: "expense" },
     { date: "Aug 2",  desc: "Fare",                   cat: "Transport",    amount: 13.00,    wallet: "cash",  type: "expense" },
     { date: "Aug 2",  desc: "Tithes (Victory LB)",    cat: "Charity",      amount: 500.00,   wallet: "coins", type: "expense" },
     { date: "Aug 2",  desc: "Coffee",                 cat: "Food & dining",amount: 210.00,   wallet: "gcash", type: "expense" },
@@ -669,7 +638,7 @@ const DATA = {
     { date: "Aug 3",  desc: "CapCut",                  cat: "Subscriptions",amount: 359.00,  wallet: "gcash", type: "expense" },
     { date: "Aug 3",  desc: "Transfer to GCash wallet (emergency fund draw)", cat: "Transfer", amount: 10000.00, wallet: "gcashsavings", type: "expense" },
     { date: "Aug 3",  desc: "Transfer from GCash savings", cat: "Transfer", amount: 10000.00, wallet: "gcash",  type: "income"  },
-    { date: "Aug 3",  desc: "SPayLater payment (July)",  cat: "Misc",       amount: 6985.74,  wallet: "gcash",  type: "expense" }
+    { date: "Aug 3",  desc: "SPayLater payment (July)",  cat: "Debt payment", amount: 6985.74, wallet: "gcash",  type: "expense" }
   ],
 
   spaylaterSchedule: [
@@ -740,14 +709,17 @@ const DATA = {
       netSavings: -7402.00,
       savingsRate: -13.7,
       categoryBreakdown: [
-        { cat: "Misc",          amount: 26748.10 },
+        { cat: "Misc (legacy, pre-Aug-3 recategorization — itemized detail no longer available for entries before Jul 24)", amount: 22374.28 },
         { cat: "Family",        amount: 11031.16 },
+        { cat: "Loans",         amount: 3911.75 },
         { cat: "Food & dining", amount: 6863.19 },
         { cat: "Transport",     amount: 4857.44 },
         { cat: "Groceries",     amount: 4183.07 },
         { cat: "Subscriptions", amount: 4058.00 },
         { cat: "Charity",       amount: 2500.00 },
-        { cat: "Utilities",     amount: 1299.00 }
+        { cat: "Utilities",     amount: 1299.00 },
+        { cat: "Household",     amount: 432.50 },
+        { cat: "Investments",   amount: 29.57 }
       ],
       goalContribution: { label: "MacBook fund (GCash savings)", amount: 15000.00 },
       netWorthEnd: 52753.03,
@@ -779,7 +751,7 @@ const DATA = {
 // ================================================================
 const fmt = n => '₱' + Number(n).toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const pct = (a, b) => b > 0 ? Math.min(100, Math.round(a / b * 100)) : 0;
-const daysLeft = d => DATA.salary.totalDays - d;
+const daysLeft = d => DATA.monthly.daysInMonth - d;
 
 // ================================================================
 // COMPUTED
@@ -791,7 +763,7 @@ const netWorth         = totalAssets + totalReceivables - totalLiabilities;
 const gcashSavingsBal  = DATA.accounts.find(a => a.label === "GCash savings").balance;
 const gcashWalletBal   = DATA.accounts.find(a => a.label === "GCash wallet").balance;
 
-const ps = DATA.periodSpending;
+const ps = DATA.monthlySpending;
 // Derive wallet spending and category breakdown from transactions (single source of truth)
 // "Transfer" and paycheck-distribution "Income"-tagged entries are internal money movement between
 // Edge's own accounts, not discretionary spending — excluded from wallet spent / pace / projections.
@@ -805,9 +777,9 @@ const walletSpent = ps.wallets.reduce((s, w) => s + w.spent, 0);
 const totalSpent  = walletSpent + cashTotal;
 const totalBudget = ps.wallets.reduce((s, w) => s + w.budget, 0);
 const remaining   = totalBudget - walletSpent;
-const sal         = DATA.salary;
-const dailyPace   = sal.dayOfPeriod > 0 && totalSpent > 0 ? totalSpent / sal.dayOfPeriod : 0;
-const projected   = dailyPace > 0 ? dailyPace * sal.totalDays : 0;
+const mo          = DATA.monthly;
+const dailyPace   = mo.dayOfMonth > 0 && totalSpent > 0 ? totalSpent / mo.dayOfMonth : 0;
+const projected   = dailyPace > 0 ? dailyPace * mo.daysInMonth : 0;
 const onTrack     = projected > 0 && projected <= totalBudget;
 const SUB_THRESHOLD = 3059;
 
@@ -841,17 +813,17 @@ document.getElementById('mbSaved').textContent      = fmt(gcashSavingsBal) + ' a
 document.getElementById('mbRemaining').textContent  = '';
 document.getElementById('mbNote').textContent       = 'Repurposed from MacBook fund on Aug 3, 2026 — Edge resigned, this is now the emergency buffer until new work is found. No paycheck contributions until income resumes.';
 
-// Salary period
-document.getElementById('periodLabel').textContent    = sal.periodStart + ' – ' + sal.periodEnd;
-document.getElementById('periodRange').textContent    = sal.periodStart + ' – ' + sal.periodEnd;
-document.getElementById('periodDay').textContent      = 'Day ' + sal.dayOfPeriod + ' of ' + sal.totalDays;
-document.getElementById('periodReceived').textContent = 'Received ' + sal.periodStart;
-document.getElementById('periodNext').textContent     = 'Next: ' + sal.nextDate;
-document.getElementById('periodBar').style.width      = pct(sal.dayOfPeriod, sal.totalDays) + '%';
+// Monthly monitoring (was "Salary period" — see DATA.monthly comment)
+document.getElementById('periodLabel').textContent    = mo.monthStart + ' – ' + mo.monthEnd;
+document.getElementById('periodRange').textContent    = mo.monthStart + ' – ' + mo.monthEnd;
+document.getElementById('periodDay').textContent      = 'Day ' + mo.dayOfMonth + ' of ' + mo.daysInMonth;
+document.getElementById('periodReceived').textContent = 'Month start: ' + mo.monthStart;
+document.getElementById('periodNext').textContent     = 'Resets: ' + mo.nextReset;
+document.getElementById('periodBar').style.width      = pct(mo.dayOfMonth, mo.daysInMonth) + '%';
 
-// Period spending
+// Monthly spending
 document.getElementById('spentTotal').textContent    = totalSpent > 0 ? fmt(totalSpent) : '₱0';
-document.getElementById('dayLabel').textContent      = 'day ' + sal.dayOfPeriod + ' of ' + sal.totalDays;
+document.getElementById('dayLabel').textContent      = 'day ' + mo.dayOfMonth + ' of ' + mo.daysInMonth;
 document.getElementById('spentRemaining').textContent = totalSpent > 0 ? fmt(remaining) : '—';
 document.getElementById('spentRemaining').className  = 'metric m-val ' + (remaining < 2000 ? 'c-red' : 'c-green');
 document.getElementById('dailyPace').textContent     = dailyPace > 0 ? fmt(dailyPace) : '—';
@@ -865,8 +837,8 @@ const budgetBarsEl = document.getElementById('budgetBars');
 
 ps.wallets.forEach(w => {
   const wPct  = pct(w.spent, w.budget);
-  const wPace = sal.dayOfPeriod > 0 && w.spent > 0 ? w.spent / sal.dayOfPeriod : 0;
-  const wProj = wPace > 0 ? wPace * sal.totalDays : 0;
+  const wPace = mo.dayOfMonth > 0 && w.spent > 0 ? w.spent / mo.dayOfMonth : 0;
+  const wProj = wPace > 0 ? wPace * mo.daysInMonth : 0;
   const barClr = wPct >= 100 ? 'var(--red)' : wPct > 80 ? 'var(--amber)' : 'var(--blue)';
 
   const catBreakdown = Object.entries(cats)
@@ -894,7 +866,7 @@ ps.wallets.forEach(w => {
       </div>
       <div class="b-track"><div class="b-fill" style="width:${wPct}%;background:${barClr}"></div></div>
       <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--t3);margin-top:3px">
-        <span>${wPct}% used · ${daysLeft(sal.dayOfPeriod)} days left</span>
+        <span>${wPct}% used · ${daysLeft(mo.dayOfMonth)} days left</span>
         <span>${wPace > 0 ? fmt(wPace) + '/day · proj ' + fmt(wProj) : '—'}</span>
       </div>
       ${catHtml}
@@ -913,14 +885,14 @@ budgetBarsEl.innerHTML += `
 
 // Cash log (derived from transactions where wallet === 'cash')
 const logEl    = document.getElementById('cashLog');
-const catPill  = { 'Food & dining':'lp-food', 'Transport':'lp-trans', 'Groceries':'lp-groc', 'Charity':'lp-charity', 'Family':'lp-family', 'Misc':'lp-misc', 'Load / comms':'lp-misc', 'Subscriptions':'lp-misc' };
+const catPill  = { 'Food & dining':'lp-food', 'Transport':'lp-trans', 'Groceries':'lp-groc', 'Charity':'lp-charity', 'Family':'lp-family', 'Household':'lp-household', 'Loans':'lp-loan', 'Debt payment':'lp-debt', 'Investments':'lp-invest', 'Load / comms':'lp-household', 'Subscriptions':'lp-household' };
 const cashTxns = DATA.transactions.filter(t => t.wallet === 'cash' && t.type === 'expense');
 if (cashTxns.length > 0) {
   logEl.innerHTML = cashTxns.map(e =>
     `<div class="log-row">
       <span class="log-date">${e.date}</span>
       <span style="flex:1;color:var(--t1)">${e.desc}</span>
-      <span class="log-pill ${catPill[e.cat] || 'lp-misc'}">${e.cat}</span>
+      <span class="log-pill ${catPill[e.cat] || 'lp-household'}">${e.cat}</span>
       <span class="log-amt">${fmt(e.amount)}</span>
     </div>`
   ).join('') + `<div class="total-row">
@@ -933,7 +905,7 @@ if (cashTxns.length > 0) {
 
 // Transaction log
 const walletLbl  = { gcash: 'GCash', rcbc: 'RCBC', maya: 'Maya', coins: 'Coins.ph', cash: 'Cash' };
-const catPillTxn = { 'Food & dining':'lp-food', 'Transport':'lp-trans', 'Groceries':'lp-groc', 'Income':'lp-groc', 'Charity':'lp-charity', 'Family':'lp-family', 'Misc':'lp-misc', 'Load / comms':'lp-misc', 'Subscriptions':'lp-misc' };
+const catPillTxn = { 'Food & dining':'lp-food', 'Transport':'lp-trans', 'Groceries':'lp-groc', 'Income':'lp-groc', 'Charity':'lp-charity', 'Family':'lp-family', 'Household':'lp-household', 'Loans':'lp-loan', 'Debt payment':'lp-debt', 'Investments':'lp-invest', 'Load / comms':'lp-household', 'Subscriptions':'lp-household' };
 const txnLogEl   = document.getElementById('txnLog');
 const totalIncome = DATA.transactions.filter(t => t.type === 'income').reduce((s, t) => s + t.amount, 0);
 
@@ -946,7 +918,7 @@ txnLogEl.innerHTML = [...DATA.transactions].reverse().map(t => {
       <div style="min-width:0">
         <div class="row-name" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${t.desc}</div>
         <div style="display:flex;gap:5px;margin-top:3px;align-items:center">
-          <span class="log-pill ${catPillTxn[t.cat] || 'lp-misc'}">${t.cat}</span>
+          <span class="log-pill ${catPillTxn[t.cat] || 'lp-household'}">${t.cat}</span>
           <span class="src">${walletLbl[t.wallet] || t.wallet}</span>
         </div>
       </div>
@@ -1071,8 +1043,8 @@ const alerts = [
   },
   {
     dot: 'gray',
-    title: 'Period vs period',
-    sub: 'Available after 2nd check-in'
+    title: 'Month vs month',
+    sub: 'Available after next month closes'
   },
   {
     dot: 'amber',
@@ -1102,7 +1074,7 @@ alerts.forEach(a => {
 Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
 Chart.defaults.font.size   = 11;
 
-// Salary trend
+// Income history (was "Salary trend" — no more future projections since resignation)
 new Chart(document.getElementById('salaryChart'), {
   type: 'bar',
   data: {
@@ -1321,7 +1293,7 @@ setTimeout(function() {
     'GoTrade':        'gotrade',
     'Cash on hand':   'cash'
   };
-  const catPillBd = { 'Food & dining':'lp-food', 'Transport':'lp-trans', 'Groceries':'lp-groc', 'Income':'lp-groc', 'Charity':'lp-charity', 'Family':'lp-family', 'Transfer':'lp-misc', 'Misc':'lp-misc', 'Load / comms':'lp-misc', 'Subscriptions':'lp-misc' };
+  const catPillBd = { 'Food & dining':'lp-food', 'Transport':'lp-trans', 'Groceries':'lp-groc', 'Income':'lp-groc', 'Charity':'lp-charity', 'Family':'lp-family', 'Transfer':'lp-household', 'Household':'lp-household', 'Loans':'lp-loan', 'Debt payment':'lp-debt', 'Investments':'lp-invest', 'Reconciliation':'lp-recon', 'Load / comms':'lp-household', 'Subscriptions':'lp-household' };
 
   function buildAccount(idx) {
     const a = DATA.accounts[idx];
@@ -1345,7 +1317,7 @@ setTimeout(function() {
       const sign = isPositive ? '+' : '−';
       const cls  = isPositive ? 'pos' : '';
       return '<div class="bd-row ' + cls + '"><span class="bd-row-lbl">' + t.date + ' · ' + t.desc +
-        ' <span class="log-pill ' + (catPillBd[t.cat] || 'lp-misc') + '" style="margin-left:4px">' + t.cat + '</span></span>' +
+        ' <span class="log-pill ' + (catPillBd[t.cat] || 'lp-household') + '" style="margin-left:4px">' + t.cat + '</span></span>' +
         '<span class="bd-row-val">' + sign + fmt(t.amount) + '</span></div>';
     }).join('');
     const net = txns.reduce((s, t) => s + ((t.type === 'income' || t.type === 'adjustment') ? t.amount : -t.amount), 0);

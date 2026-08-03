@@ -2,7 +2,7 @@
 
 **Source:** `index.html`
 **As of:** Aug 3, 2026
-**Status:** MAJOR — Edge resigned from his job Aug 3, 2026. GCash savings repurposed from MacBook fund to emergency fund. SPayLater July bill paid.
+**Status:** MAJOR restructure Aug 3, 2026 — switched to monthly monitoring (no more pay periods), `transactions[]` now August-only, "Misc" category retired (see `finna/DATA-CONTRACT.md` and `finna/AUDIT-LOG.md` for full detail). Balances unchanged by this entry.
 
 ## Accounts
 
@@ -26,18 +26,23 @@
 **Receivables:** PHP 3,274.75 (JR PHP 3,010.00 + RJ PHP 262.75 + Bryan PHP 2.00)
 **Ledger net worth formula:** assets + receivables - liabilities.
 
-## Employment status — CHANGED Aug 3, 2026
+## Employment status — no income since Jul 24, 2026
 
-**Edge resigned from his VA job.** No income currently. This affects nearly everything below, which describes the PRE-resignation state and needs Edge's direction to rework properly:
+**Edge resigned from his VA job Aug 3, 2026.** No income currently.
 
-- **Salary period tracking below is now stale** — there is no confirmed next paycheck. Don't assume Aug 10/25 salary dates still apply.
-- **The semi-monthly distribution formula is paused** — it depended on a paycheck arriving each period. Nothing to distribute until income resumes.
-- **MacBook goal is paused/repurposed** — the fund itself became the emergency buffer; no active savings target right now.
-- `DATA.salaryHistory` still has placeholder `₱37,000, actual: false` entries for Aug 10/25 onward — these are almost certainly wrong now, left untouched pending Edge's confirmation of what (if anything) to project.
+- **Now on monthly monitoring, not pay-period tracking** (as of Aug 3, 2026) — `DATA.monthly` replaced `DATA.salary`. Current: month Aug 1-31, 2026, day 3 of 31, resets Sep 1.
+- **The semi-monthly distribution formula is paused** — nothing to distribute until income resumes.
+- **MacBook goal repurposed** — GCash savings is now the emergency buffer; no active savings target.
+- **`DATA.monthlySpending.wallets[].budget`** figures are stale leftovers from the last paycheck (Jul 24) — need Edge's input on real monthly budget amounts.
+- `DATA.salaryHistory` future placeholders removed — it's now a pure historical record ending Jul 25, 2026 (last actual paycheck).
 
-## Pre-resignation reference (stale — kept for history, do not treat as current)
+## Category system — "Misc" retired Aug 3, 2026
 
-- Period: Jul 24, 2026 to Aug 10, 2026 (last confirmed paycheck period)
+Active categories: Food & dining, Groceries, Transport, Load / comms, Subscriptions, Charity, Family, **Household**, **Loans**, **Debt payment**, **Investments**. `Misc` is no longer used for new transactions — see `finna/DATA-CONTRACT.md` for the full rule and category definitions. (June 2026 and part of July 2026's compiled `monthlyReports` still carry a frozen legacy `Misc` bucket that can't be itemized further — historical limitation, not an active category.)
+
+## Pre-resignation reference (historical — last confirmed paycheck)
+
+- Period: Jul 24, 2026 to Aug 10, 2026 (last pay period, cut short by the resignation)
 - Most recent salary: PHP 17,354.21 (Jul 24 — notably reduced; may have been an early signal of the situation that led to resignation)
 - Old distribution formula: MacBook (GCash savings) PHP 5,000 fixed + GoTrade (investing) PHP 1,000 fixed + GoTyme PHP 4,500 fixed + Maya PHP 1,000 fixed + Coins.ph 10% of salary + remainder split GCash wallet/RCBC.
 

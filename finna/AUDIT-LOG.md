@@ -1,5 +1,43 @@
 # Finna Audit Log
 
+## Aug 3, 2026 - MAJOR: three-part restructure — month-scoped transactions, monthly monitoring, retired "Misc" category
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat instructions, three related requests handled together.
+
+### 1. Accounts section now shows only the current month
+- `DATA.transactions[]` held a mix of July (Jul 24-31) and August (Aug 1-3) entries — all of July's data had already been captured in the July `monthlyReports` entry (see recompute below), so it was redundant to keep live. Removed all Jul-dated entries from `transactions[]`; it now holds only the 12 August entries.
+- `DATA.monthArchive` was already empty (the monthly-report-compile task had cleared it). Marked it **deprecated** in a code comment — it's no longer needed once `transactions[]` itself is month-scoped (see part 2). Left in place as `[]` only because the account-history modal JS references it defensively.
+- **New rule, documented in `finna/DATA-CONTRACT.md`:** `transactions[]` = current calendar month only. Reset happens once a month (by `monthly-report-compile`), not mid-month.
+
+### 2. Switched from semi-monthly pay-period tracking to monthly monitoring
+Edge: "since i have left my work... we will stop the pay period rule and now be monthly monitoring starting now."
+- Renamed `DATA.salary` → **`DATA.monthly`**: `periodStart/periodEnd/dayOfPeriod/totalDays/nextDate` → `monthStart/monthEnd/dayOfMonth/daysInMonth/nextReset`. Current values: monthStart "Aug 1", monthEnd "Aug 31", dayOfMonth 3, daysInMonth 31, nextReset "Sep 1, 2026". `recent` → `lastIncome`/`lastIncomeDate` (historical only, Jul 24 2026 — do not treat as current).
+- Renamed `DATA.periodSpending` → **`DATA.monthlySpending`** (same `wallets[]` shape, budgets left at their stale Jul 24-paycheck values — flagged to Edge, needs his input on real monthly budget amounts, not invented here).
+- Updated every JS reference (`sal.*` → `mo.*`, `DATA.salary` → `DATA.monthly`) — dailyPace/projected/onTrack/daysLeft math all now runs off day-of-month instead of day-of-pay-period. Verified in browser: renders "Aug 1 – Aug 31", "Day 3 of 31" correctly, no console errors.
+- Section titles: "Salary period" → "Monthly monitoring", "Period spending" → "Monthly spending", "of period budget" → "of monthly budget", "Salary trend" → "Income history" (caption changed from "Faded = projected · updates each paycheck" to a note that there's no income since Jul 24).
+- `DATA.salaryHistory`: removed the two placeholder future entries (Aug 10/25, ₱37,000 `actual: false`) — there's no paycheck to project. Chart is now a pure historical record ending at Jul 25, 2026.
+- Updated the `monthly-report-compile` scheduled task substantially: it now ALSO clears `DATA.transactions` at month-end (previously only cleared `monthArchive`, since a separate period-reset routine handled `transactions[]` — that routine no longer exists). Also updated its `goalContribution` label logic ("MacBook fund" → "Emergency fund (GCash savings)") and added the shared lease/validate protocol it was missing. `monthly-subscription-reset` task checked — no stale salary/period references, left as-is.
+- `finna/DATA-CONTRACT.md` rewritten with a "Monthly monitoring" section documenting all of this for future sessions/Codex.
+- `financial_plan` and `dashboard_setup` memory updated to match (separate memory edit, see below).
+
+### 3. Retired the "Misc" category — recategorized everything
+Edge: "i would love to remove the category others or misc... if they cannot be added to the existing categories make a new category distinct for them."
+- New categories added to `categoryOrder`: **Household** (water, laundry, small household items), **Loans** (money lent out — creates a receivable), **Debt payment** (paying down liabilities, e.g. SPayLater), **Investments** (investment-related costs like GoTrade fees — NOT the investment principal itself, which stays `cat: "Transfer"`). New CSS pill styles added (`.lp-household`, `.lp-loan`, `.lp-debt`, `.lp-invest`) plus `.lp-recon` for the new `Reconciliation` category.
+- Reclassified all 12 live `Misc`/adjustment transactions:
+  - GoTrade transfer fee ₱29.57 → Investments
+  - Lent to Bryan (lunch) ₱139.00, Lent to RJ (lunch) ₱149.00, Lent to RJ (laundry) ₱113.75, Lent to RJ ₱500.00, Lent to JR ₱3,010.00 → Loans (₱3,911.75 total)
+  - Laundry ₱192.50 (Jul 26), Water ₱100.00, Umbrella ₱140.00, Laundry ₱175.00 (Aug 1) → Household (₱607.50 total)
+  - SPayLater payment (July) ₱6,985.74 → Debt payment
+  - Cash reconciliation: blessings ₱5.00 (adjustment-type) → **Reconciliation** (new category specifically for adjustment entries, replacing Misc in that role)
+- **Recomputed the July 2026 monthlyReport's categoryBreakdown** to split out the July-dated portion of the old Misc bucket: Investments ₱29.57, Loans ₱3,911.75, Household ₱432.50 pulled out of the old ₱26,748.10 Misc total, leaving a residual **₱22,374.28** labeled `"Misc (legacy, pre-Aug-3 recategorization — itemized detail no longer available for entries before Jul 24)"` — this portion's underlying transactions were already archived/compiled before this change (in `monthArchive`, which gets cleared after each report compile) and can't be itemized anymore. Income/expenses/netSavings/savingsRate/netWorthEnd unchanged (recategorizing doesn't change totals). June 2026's report (₱1,453.46 Misc) has the same limitation and was left untouched — its raw data was reconstructed from git history months ago and isn't itemized enough to split further.
+- `scripts/finna-validate.ps1`: added `Reconciliation` to `$validCategories`; changed the adjustment-type rule from requiring `cat -eq 'Misc'` to `cat -eq 'Reconciliation'`.
+- `finna/DATA-CONTRACT.md` documents the full new category list and the "Misc retirement" rationale/limitation.
+- Validated in browser: account-history modal shows correct new category pills (Household, Debt payment, Transfer) with no console errors.
+
+### Net effect
+No account balances changed in this entry (pure reclassification + structural rename) — total assets stayed exactly ₱63,230.45, liabilities ₱15,688.17, receivables ₱3,274.75. Validation passed both before AND after each sub-change, cross-checked independently.
+
 ## Aug 3, 2026 - MAJOR: Edge resigned from his job — GCash savings repurposed as emergency fund; SPayLater July bill paid
 
 - Runtime: Claude Code.
