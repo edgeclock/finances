@@ -1,29 +1,29 @@
 # Account Snapshot
 
 **Source:** `index.html`
-**As of:** Jul 29, 2026
-**Status:** SPY limit order at USD 737.00, 0.020434192 shares, USD 15.06 plus USD 0.11 fees, USD 15.17 total. Track as bought per Edge; market execution remains conditional on the limit.
+**As of:** Aug 3, 2026
+**Status:** Logged Jul 28 - Aug 3 backlog (17 transactions); recomputed July monthly report to include the missed Jul 28-31 entries.
 
 ## Accounts
 
 | Account | Balance | Purpose |
 |---|---:|---|
-| GCash wallet | PHP 11,710.04 | Spending |
+| GCash wallet | PHP 7,387.04 | Spending |
 | GCash savings | PHP 46,160.13 | MacBook fund |
 | RCBC savings | PHP 1,253.52 | Groceries and cash |
 | Maya wallet | PHP 1,261.61 | Personal (now fixed PHP 1,000/paycheck) |
 | GoTyme savings | PHP 4,527.84 | Rent and utilities |
-| Coins.ph PHP | PHP 5,918.71 | Charity and tithes |
+| Coins.ph PHP | PHP 5,418.71 | Charity and tithes |
 | GoTrade | PHP 1,000.00 | Long-term investing, SPY limit order USD 15.17 treated as bought per Edge, fixed PHP 1,000/paycheck (replaces the liquidated Bitget BTC account) |
 | Maya savings | PHP 488.43 | Emergency fund |
 | GoTyme wallet | PHP 0.00 | No assigned plan |
 | Tonik Bank | PHP 52.66 | No assigned plan |
-| Cash on hand | PHP 2,812.50 | Cash, including PHP 5.00 reconciliation adjustment (blessings) |
+| Cash on hand | PHP 2,186.50 | Cash, including PHP 5.00 reconciliation adjustment (blessings) |
 | Alkansya | PHP 479.75 | Piggy bank |
 
-**Total assets:** PHP 75,665.19
+**Total assets:** PHP 70,216.19
 **Liabilities:** PHP 22,673.91
-**Receivables:** PHP 264.75 (Bryan PHP 2.00 + RJ PHP 262.75)
+**Receivables:** PHP 3,274.75 (JR PHP 3,010.00 + RJ PHP 262.75 + Bryan PHP 2.00)
 **Ledger net worth formula:** assets + receivables - liabilities.
 
 ## Current Salary Period

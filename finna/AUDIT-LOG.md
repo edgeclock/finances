@@ -1,5 +1,29 @@
 # Finna Audit Log
 
+## Aug 3, 2026 - Logged Jul 28 - Aug 3 backlog (17 transactions); recomputed July monthly report
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat report across a multi-day batch. Clarified two ambiguous items before logging: Aug 1 groceries wallet (confirmed gcash), and CapCut's billing wallet (confirmed it's now billed via GCash, not RCBC as previously recorded — updated `DATA.subscriptions` accordingly).
+- Ledger changes — 17 transactions added:
+  - Jul 28: Water ₱100 (cash, expense), Lent to RJ ₱500 (cash, expense)
+  - Jul 30: Lent to JR ₱3,010 (gcash, expense), Fare ₱13 (cash, expense), Umbrella ₱140 (cash, expense)
+  - Jul 31: RJ loan repayment ₱500 (cash, income), Tofu food ₱250 (cash, expense)
+  - Aug 1: Groceries ₱260 (gcash, expense), Laundry ₱175 (gcash, expense)
+  - Aug 2: Fare ₱13 (cash, expense), Tithes (Victory LB) ₱500 (coins, expense), Coffee ₱210 (gcash, expense), Lunch ₱100 (gcash, expense), Dinner ₱209 (gcash, expense)
+  - Aug 3: Breakfast ₱110 (cash, expense), CapCut ₱359 (gcash, expense, Subscriptions)
+- Receivables: `jr` ₱0 → ₱3,010.00 (Jul 30 loan, not yet repaid). `rj` net unchanged at ₱262.75 (Jul 28 ₱500 loan fully repaid Jul 31 — both legs logged for the audit trail, they net to zero). Added a monitoring alert for JR's ₱3,010.
+- CapCut subscription entry: `wallet` changed `rcbc` → `gcash`, `paid` set to `true` for this cycle (was reset `false` by the Aug 1/3 monthly reset).
+- Balance updates: GCash wallet ₱11,710.04 → ₱7,387.04. Cash on hand ₱2,812.50 → ₱2,186.50. Coins.ph ₱5,918.71 → ₱5,418.71.
+- `salary.dayOfPeriod` corrected 6 → 11 (was stale from the Jul 29 Codex entry; Aug 3 is day 11 of the Jul 24 - Aug 10 period).
+- **Recomputed the July 2026 monthly report** (`DATA.monthlyReports`, key `2026-07`) since it had already auto-compiled on Aug 3 before these Jul 28-31 entries were known, making it materially incomplete:
+  - Income ₱53,637.96 → ₱54,137.96 (+₱500 RJ repayment)
+  - Expenses ₱57,526.96 → ₱61,539.96 (+₱4,013: water, both loans given, fare, umbrella, tofu)
+  - Net savings ₱−3,889.00 → **₱−7,402.00** (savings rate −7.3% → −13.7%)
+  - Category breakdown: Misc ₱22,998.10 → ₱26,748.10, Food & dining ₱6,613.19 → ₱6,863.19, Transport ₱4,844.44 → ₱4,857.44 (others unchanged)
+  - Net worth (month end) ₱53,256.03 → ₱52,753.03 (−₱503 = the real expenses only; both loans are net-worth-neutral, cash converting to a receivable)
+  - `notableEvents` unchanged — JR's ₱3,010 loan doesn't crack the existing top-5 (all ≥ ₱5,000)
+- Validation: `finna-validate.ps1` passed (assets=70,216.19 receivables=3,274.75, cross-verified by independently summing all 12 account balances — matched exactly).
+
 ## Aug 3, 2026 - Monthly subscription/commitment reset
 
 - Runtime: Claude Code (scheduled task: monthly-subscription-reset).
