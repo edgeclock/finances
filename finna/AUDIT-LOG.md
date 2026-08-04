@@ -1,5 +1,13 @@
 # Finna Audit Log
 
+## Aug 4, 2026 - Logged DeepSeek API tokens expense
+
+- Runtime: Claude Code.
+- Confirmed source: Edge, direct chat request.
+- `{ date: "Aug 4", desc: "DeepSeek API tokens", cat: "Subscriptions", amount: 330.47, wallet: "rcbc", type: "expense" }` — RCBC savings 827.96 → 497.49.
+- Updated `DATA.lastUpdated` to Aug 4, 2026 and `DATA.monthly.dayOfMonth` to 4.
+- Validated: `transactions=20 assets=60,541.07 liabilities=15,688.17 receivables=3,274.75 periodExpenses=11,611.12`.
+
 ## Aug 3, 2026 - Hid Monthly allocation, pie-chart category spending, card-style collapsed summaries (UI only, no data change)
 
 - Runtime: Claude Code.
