@@ -1,16 +1,16 @@
 # Account Snapshot
 
 **Source:** `index.html`
-**As of:** Aug 5, 2026
-**Status:** Logged Aug 5 coffee expense (cash).
+**As of:** Aug 6, 2026
+**Status:** Logged Aug 6 GCash→RCBC transfer (₱2,000) + ₱10 fee; Aug 5 grocery + RJ loan logged earlier.
 
 ## Accounts
 
 | Account | Balance | Purpose |
 |---|---:|---|
-| GCash wallet | PHP 8,576.95 | Spending |
+| GCash wallet | PHP 6,566.95 | Spending |
 | GCash savings | PHP 36,160.13 | **Emergency fund** (was MacBook fund — repurposed Aug 3, 2026 after resignation, no target set) |
-| RCBC savings | PHP 497.49 | Groceries and cash |
+| RCBC savings | PHP 2,497.49 | Groceries and cash |
 | Maya wallet | PHP 1,261.61 | Personal (fixed PHP 1,000/paycheck — but see income status below) |
 | GoTyme savings | PHP 4,527.84 | Rent and utilities |
 | Coins.ph PHP | PHP 5,418.71 | Charity and tithes |
@@ -21,7 +21,7 @@
 | Cash on hand | PHP 1,790.50 | Cash, including PHP 5.00 reconciliation adjustment (blessings) |
 | Alkansya | PHP 479.75 | Piggy bank |
 
-**Total assets:** PHP 60,254.07
+**Total assets:** PHP 60,244.07
 **Liabilities:** PHP 15,688.17 (SPayLater — July bill paid, next due Aug bill PHP 6,969.87 on Sep 15, 2026)
 **Receivables:** PHP 3,286.75 (JR PHP 3,010.00 + RJ PHP 274.75 + Bryan PHP 2.00)
 **Ledger net worth formula:** assets + receivables - liabilities.
@@ -30,7 +30,7 @@
 
 **Edge resigned from his VA job Aug 3, 2026.** No income currently.
 
-- **Now on monthly monitoring, not pay-period tracking** (as of Aug 3, 2026) — `DATA.monthly` replaced `DATA.salary`. Current: month Aug 1-31, 2026, day 5 of 31, resets Sep 1.
+- **Now on monthly monitoring, not pay-period tracking** (as of Aug 3, 2026) — `DATA.monthly` replaced `DATA.salary`. Current: month Aug 1-31, 2026, day 6 of 31, resets Sep 1.
 - **The semi-monthly distribution formula is paused** — nothing to distribute until income resumes.
 - **MacBook goal repurposed** — GCash savings is now the emergency buffer; no active savings target.
 - **`DATA.monthlySpending.wallets[].budget`** figures are stale leftovers from the last paycheck (Jul 24) — need Edge's input on real monthly budget amounts.

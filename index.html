@@ -574,13 +574,13 @@
 // ================================================================
 const DATA = {
 
-  lastUpdated: "Aug 5, 2026",
+  lastUpdated: "Aug 6, 2026",
 
   // Account balances (update each salary period)
   accounts: [
-    { label: "GCash wallet",   balance: 8576.95,  tag: "spend",  tagLabel: "spending"      },
+    { label: "GCash wallet",   balance: 6566.95,  tag: "spend",  tagLabel: "spending"      },
     { label: "GCash savings",  balance: 36160.13, tag: "save",   tagLabel: "Emergency fund (was MacBook fund)" },
-    { label: "RCBC savings",   balance: 497.49,   tag: "spend",  tagLabel: "groceries/cash"},
+    { label: "RCBC savings",   balance: 2497.49,  tag: "spend",  tagLabel: "groceries/cash"},
     { label: "Maya wallet",    balance: 1261.61,  tag: "spend",  tagLabel: "personal"      },
     { label: "GoTyme savings", balance: 4527.84,  tag: "save",   tagLabel: "rent/utilities"},
     { label: "Coins.ph PHP",   balance: 5418.71,  tag: "save",   tagLabel: "charity/tithes"},
@@ -623,7 +623,7 @@ const DATA = {
     monthStart: "Aug 1",
     monthEnd: "Aug 31",
     nextReset: "Sep 1, 2026",
-    dayOfMonth: 5,
+    dayOfMonth: 6,
     daysInMonth: 31
   },
 
@@ -651,7 +651,7 @@ const DATA = {
     ]
   },
 
-  categoryOrder: ["Food & dining", "Groceries", "Transport", "Load / comms", "Subscriptions", "Charity", "Family", "Household", "Loans", "Debt payment", "Investments"],
+  categoryOrder: ["Food & dining", "Groceries", "Transport", "Load / comms", "Subscriptions", "Charity", "Family", "Household", "Bank fees", "Loans", "Debt payment", "Investments"],
 
   // Deprecated as of 2026-08-03 (monthly monitoring replaced the semi-monthly pay-period cycle —
   // transactions[] now IS the current calendar month, so there's no more mid-month reset to
@@ -685,7 +685,10 @@ const DATA = {
     { date: "Aug 4",  desc: "DeepSeek API tokens",      cat: "Subscriptions", amount: 330.47,   wallet: "rcbc",  type: "expense" },
     { date: "Aug 5",  desc: "Coffee",                   cat: "Food & dining", amount: 210.00,   wallet: "cash",  type: "expense" },
     { date: "Aug 5",  desc: "Grocery",                   cat: "Groceries",     amount: 65.00,    wallet: "cash",  type: "expense" },
-    { date: "Aug 5",  desc: "RJ loan",                   cat: "Loans",         amount: 12.00,    wallet: "cash",  type: "expense" }
+    { date: "Aug 5",  desc: "RJ loan",                   cat: "Loans",         amount: 12.00,    wallet: "cash",  type: "expense" },
+    { date: "Aug 6",  desc: "Transfer to RCBC savings",    cat: "Transfer",      amount: 2000.00,  wallet: "gcash", type: "expense" },
+    { date: "Aug 6",  desc: "Transfer from GCash wallet",  cat: "Transfer",      amount: 2000.00,  wallet: "rcbc",  type: "income"  },
+    { date: "Aug 6",  desc: "Transfer fee (GCash to RCBC)", cat: "Bank fees",    amount: 10.00,    wallet: "gcash", type: "expense" }
   ],
 
   spaylaterSchedule: [

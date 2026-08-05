@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Aug 6, 2026 - Logged GCash→RCBC transfer + fee
+
+- Runtime: Monica (OpenClaw) — lease handle `claude` (lock script agent set).
+- Confirmed source: Edge, direct chat request.
+- Ledger change: 3 entries dated Aug 6 — Transfer ₱2,000 GCash→RCBC (matching Transfer expense/income pair), plus ₱10 transfer fee (gcash, new category **Bank fees** added to `categoryOrder`).
+- Balance updates: GCash wallet 8,576.95 → 6,566.95 (−2,010). RCBC savings 497.49 → 2,497.49 (+2,000).
+- `DATA.lastUpdated` → Aug 6, 2026; `DATA.monthly.dayOfMonth` 5 → 6.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 5, 2026 - Logged grocery + RJ loan (cash)
 
 - Runtime: Monica (OpenClaw) — lease handle `claude` (lock script agent set).
