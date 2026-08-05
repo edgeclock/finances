@@ -1,5 +1,13 @@
 # Finna Audit Log
 
+## Aug 5, 2026 - Logged coffee expense (cash)
+
+- Runtime: Monica (OpenClaw) — lease handle `claude` (lock script agent set).
+- Confirmed source: Edge, direct chat request.
+- `{ date: "Aug 5", desc: "Coffee", cat: "Food & dining", amount: 210.00, wallet: "cash", type: "expense" }` — Cash on hand 2,077.50 → 1,867.50.
+- Updated `DATA.lastUpdated` to Aug 5, 2026 and `DATA.monthly.dayOfMonth` to 5.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 4, 2026 - Logged DeepSeek API tokens expense
 
 - Runtime: Claude Code.
