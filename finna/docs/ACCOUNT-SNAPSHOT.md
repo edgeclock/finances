@@ -18,12 +18,12 @@
 | Maya savings | PHP 488.43 | Emergency fund (separate from GCash savings — Maya wallet's own sweep destination) |
 | GoTyme wallet | PHP 0.00 | No assigned plan |
 | Tonik Bank | PHP 52.66 | No assigned plan |
-| Cash on hand | PHP 1,867.50 | Cash, including PHP 5.00 reconciliation adjustment (blessings) |
+| Cash on hand | PHP 1,790.50 | Cash, including PHP 5.00 reconciliation adjustment (blessings) |
 | Alkansya | PHP 479.75 | Piggy bank |
 
-**Total assets:** PHP 60,331.07
+**Total assets:** PHP 60,254.07
 **Liabilities:** PHP 15,688.17 (SPayLater — July bill paid, next due Aug bill PHP 6,969.87 on Sep 15, 2026)
-**Receivables:** PHP 3,274.75 (JR PHP 3,010.00 + RJ PHP 262.75 + Bryan PHP 2.00)
+**Receivables:** PHP 3,286.75 (JR PHP 3,010.00 + RJ PHP 274.75 + Bryan PHP 2.00)
 **Ledger net worth formula:** assets + receivables - liabilities.
 
 ## Employment status — no income since Jul 24, 2026

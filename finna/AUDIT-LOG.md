@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Aug 5, 2026 - Logged grocery + RJ loan (cash)
+
+- Runtime: Monica (OpenClaw) — lease handle `claude` (lock script agent set).
+- Confirmed source: Edge, direct chat request.
+- Ledger change: added 2 transactions dated Aug 5 — Grocery ₱65 (cash, Groceries) and RJ loan ₱12 (cash, Loans). Cash on hand 1,867.50 → 1,790.50.
+- Receivables: `rj` 262.75 → 274.75 (Loans rule: money lent out creates a receivables entry).
+- `DATA.lastUpdated` already Aug 5, 2026; `DATA.monthly.dayOfMonth` already 5.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 5, 2026 - Logged coffee expense (cash)
 
 - Runtime: Monica (OpenClaw) — lease handle `claude` (lock script agent set).
