@@ -1,5 +1,13 @@
 # Finna Audit Log
 
+## Aug 6, 2026 - Logged DeepSeek API top-up
+
+- Runtime: Monica (OpenClaw) — lease handle `claude` (lock script agent set).
+- Confirmed source: Edge, direct chat request.
+- `{ date: "Aug 6", desc: "DeepSeek API top-up", cat: "Subscriptions", amount: 331.14, wallet: "rcbc", type: "expense" }` — RCBC savings 2,497.49 → 2,166.35.
+- `DATA.lastUpdated` already Aug 6, 2026; `DATA.monthly.dayOfMonth` already 6.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 6, 2026 - Logged GCash→RCBC transfer + fee
 
 - Runtime: Monica (OpenClaw) — lease handle `claude` (lock script agent set).
