@@ -1,5 +1,15 @@
 # Finna Audit Log
 
+## Aug 6, 2026 - Logged RJ loan repayment (approx. ₱108)
+
+- Runtime: Finna (OpenClaw) — lease handle `codex`.
+- Confirmed source: Edge (Chairman), relayed via telegram direct session — "RJ paid his loan, about ₱108 (received 2026-08-06)". Amount recorded as ₱108.00 but is **approximate** per Edge's note; exact figure unconfirmed.
+- Ledger change: added transaction dated Aug 6 — "RJ loan repayment" ₱108 (cash, Loans, type income). Cash on hand 1,790.50 → 1,898.50.
+- Receivables: `rj` 274.75 → 166.75 (₱274.75 lent − ₱108 repaid). This also **resolves the flagged RJ discrepancy**: the alert card's ₱262.75 was stale text predating the Aug 5 ₱12 loan (Jul 26 lunch ₱149 + laundry ₱113.75 + Aug 5 ₱12 = ₱274.75, matching the ledger). Alert updated to ₱166.75 with corrected sub-note.
+- Payment channel assumed cash (consistent with RJ's prior Jul 31 ₱500 repayment being cash); flag for Edge to confirm if received via e-wallet instead.
+- `DATA.lastUpdated` already Aug 6, 2026.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 6, 2026 - Logged DeepSeek API top-up
 
 - Runtime: Monica (OpenClaw) — lease handle `claude` (lock script agent set).
