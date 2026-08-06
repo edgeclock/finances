@@ -2,7 +2,7 @@
 
 **Source:** `index.html`
 **As of:** Aug 6, 2026
-**Status:** Logged RJ loan repayment (≈₱108, Aug 6) + GCash→RCBC transfer (₱2,000) + ₱10 fee; Aug 5 grocery + RJ loan logged earlier.
+**Status:** Corrected RJ repayment (in-kind breakfast treat, no cash movement — cash stays ₱1,790.50); GCash→RCBC transfer (₱2,000) + ₱10 fee; Aug 5 grocery + RJ loan logged earlier.
 
 ## Accounts
 
@@ -18,10 +18,10 @@
 | Maya savings | PHP 488.43 | Emergency fund (separate from GCash savings — Maya wallet's own sweep destination) |
 | GoTyme wallet | PHP 0.00 | No assigned plan |
 | Tonik Bank | PHP 52.66 | No assigned plan |
-| Cash on hand | PHP 1,898.50 | Cash, including PHP 5.00 reconciliation adjustment (blessings); +₱108 RJ repayment Aug 6 |
+| Cash on hand | PHP 1,790.50 | Cash, including PHP 5.00 reconciliation adjustment (blessings); RJ repaid ₱108 in-kind (breakfast treat) — no cash movement |
 | Alkansya | PHP 479.75 | Piggy bank |
 
-**Total assets:** PHP 60,020.93
+**Total assets:** PHP 59,912.93
 **Liabilities:** PHP 15,688.17 (SPayLater — July bill paid, next due Aug bill PHP 6,969.87 on Sep 15, 2026)
 **Receivables:** PHP 3,178.75 (JR PHP 3,010.00 + RJ PHP 166.75 + Bryan PHP 2.00)
 **Ledger net worth formula:** assets + receivables - liabilities.

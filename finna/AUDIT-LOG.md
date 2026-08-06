@@ -1,5 +1,17 @@
 # Finna Audit Log
 
+## Aug 6, 2026 - CORRECTION: RJ repayment was in-kind, not cash
+
+- Runtime: Finna (OpenClaw) — lease handle `codex`.
+- Confirmed source: Edge correction relayed via telegram — "There was NO cash intake. RJ 'paid' the loan by treating Edge to breakfast (~₱108)."
+- Re-booked the Aug 6 RJ repayment as a **net-zero pair** (zero cash movement):
+  - `{ date: "Aug 6", desc: "Breakfast (RJ treat)", cat: "Food & dining", amount: 108.00, wallet: "cash", type: "expense" }`
+  - `{ date: "Aug 6", desc: "RJ loan repayment (in-kind)", cat: "Income", amount: 108.00, wallet: "cash", type: "income" }`
+- This replaces the earlier entry (which incorrectly booked a cash inflow with `cat: "Loans"` — per DATA-CONTRACT, repayments must be `cat: "Income"`).
+- Balance changes: **Cash on hand unchanged** at 1,790.50 (reverted from 1,898.50). Receivable `rj` stands at **166.75** (₱274.75 lent − ₱108 in-kind repayment). Total assets back to 59,912.93.
+- Note: the ₱108 breakfast now counts as spending (Food & dining) in monthly totals, offset by the repayment income — net zero, per Edge's instruction to record it as expense-covered-by-loan-repayment.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 6, 2026 - Logged RJ loan repayment (approx. ₱108)
 
 - Runtime: Finna (OpenClaw) — lease handle `codex`.
