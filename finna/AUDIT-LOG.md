@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Aug 7, 2026 - Logged food (cash)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via telegram - "₱100 CASH for food."
+- Ledger change: `{ date: "Aug 7", desc: "Food", cat: "Food & dining", amount: 100.00, wallet: "cash", type: "expense" }`.
+- Balance update: Cash on hand 4,547.50 → 4,447.50.
+- `DATA.lastUpdated` stays Aug 7, 2026; `DATA.monthly.dayOfMonth` stays 7.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 7, 2026 - Logged food (GCash wallet)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.

@@ -2,7 +2,7 @@
 
 **Source:** `index.html`
 **As of:** Aug 7, 2026
-**Status:** Food ₱31 logged (GCash 4,284.45 → 4,253.45); food ₱33, dinners ₱435 GCash + ₱50 cash, real monthly budgets set (gcash 6,000, rcbc 3,000, maya 1,000, coins 1,000); DeepSeek top-up ₱657.94, GCash fare ₱251, cash fare ₱175, Aug 6 groceries ₱354.50, Google One ₱1,100, phone load ₱99, Davao transfer ₱6,000, ₱3,000 RCBC cash withdrawal booked.
+**Status:** Food ₱100 cash logged (4,547.50 → 4,447.50); food ₱31 + ₱33 GCash, dinners ₱435 GCash + ₱50 cash, real monthly budgets set (gcash 6,000, rcbc 3,000, maya 1,000, coins 1,000); DeepSeek top-up ₱657.94, GCash fare ₱251, cash fare ₱175, Aug 6 groceries ₱354.50, Google One ₱1,100, phone load ₱99, Davao transfer ₱6,000, ₱3,000 RCBC cash withdrawal booked.
 
 ## Accounts
 
@@ -18,10 +18,10 @@
 | Maya savings | PHP 488.43 | Emergency fund (separate from GCash savings — Maya wallet's own sweep destination) |
 | GoTyme wallet | PHP 0.00 | No assigned plan |
 | Tonik Bank | PHP 52.66 | No assigned plan |
-| Cash on hand | PHP 4,547.50 | Cash, including PHP 5.00 reconciliation adjustment (blessings); +₱3,000 RCBC withdrawal (Davao trip) Aug 7 |
+| Cash on hand | PHP 4,447.50 | Cash, including PHP 5.00 reconciliation adjustment (blessings); +₱3,000 RCBC withdrawal (Davao trip) Aug 7 |
 | Alkansya | PHP 479.75 | Piggy bank |
 
-**Total assets:** PHP 56,698.49
+**Total assets:** PHP 56,598.49
 **Liabilities:** PHP 15,688.17 (SPayLater — July bill paid, next due Aug bill PHP 6,969.87 on Sep 15, 2026)
 **Receivables:** PHP 3,178.75 (JR PHP 3,010.00 + RJ PHP 166.75 + Bryan PHP 2.00)
 **Ledger net worth formula:** assets + receivables - liabilities.
