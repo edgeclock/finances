@@ -2,13 +2,13 @@
 
 **Source:** `index.html`
 **As of:** Aug 7, 2026
-**Status:** Phone load ₱99 logged from GCash wallet (6,566.95 → 6,467.95); Davao transfer corrected to ₱6,000 + ₱10 fee (GCash savings 30,150.13), ₱3,000 RCBC cash withdrawal booked.
+**Status:** Google One ₱1,100 logged from GCash wallet (6,467.95 → 5,367.95); phone load ₱99 logged earlier; Davao transfer ₱6,000 + ₱10 fee (GCash savings 30,150.13), ₱3,000 RCBC cash withdrawal booked.
 
 ## Accounts
 
 | Account | Balance | Purpose |
 |---|---:|---|
-| GCash wallet | PHP 6,467.95 | Spending |
+| GCash wallet | PHP 5,367.95 | Spending |
 | GCash savings | PHP 30,150.13 | **Emergency fund** (was MacBook fund - repurposed Aug 3, 2026 after resignation, no target set) |
 | RCBC savings | PHP 5,166.35 | Groceries and cash |
 | Maya wallet | PHP 1,261.61 | Personal (fixed PHP 1,000/paycheck — but see income status below) |

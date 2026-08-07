@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Aug 7, 2026 - Logged Google One subscription (GCash wallet)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via telegram - "₱1,100 spent from the GCash WALLET for his Google subscription (the Google One sub that was flagged due today)."
+- Ledger change: `{ date: "Aug 7", desc: "Google One", cat: "Subscriptions", amount: 1100.00, wallet: "gcash", type: "expense" }`; `subscriptions` Google One `paid: false → true`.
+- Balance update: GCash wallet 6,467.95 → 5,367.95.
+- `DATA.lastUpdated` stays Aug 7, 2026; `DATA.monthly.dayOfMonth` stays 7.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 7, 2026 - Logged phone load (GCash wallet)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
