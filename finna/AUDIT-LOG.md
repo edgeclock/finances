@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Aug 7, 2026 - Logged dinners (GCash + cash)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via telegram - "₱435 from the GCash WALLET for dinner... ₱50 CASH for dinner."
+- Ledger change: 2 entries dated Aug 7 - Dinner ₱435 (gcash, Food & dining), Dinner ₱50 (cash, Food & dining).
+- Balance updates: GCash wallet 4,752.45 → 4,317.45. Cash on hand 4,597.50 → 4,547.50.
+- `DATA.lastUpdated` stays Aug 7, 2026; `DATA.monthly.dayOfMonth` stays 7.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 7, 2026 - Set REAL monthly budgets (Edge decision via all-hands)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.

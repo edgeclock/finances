@@ -2,13 +2,13 @@
 
 **Source:** `index.html`
 **As of:** Aug 7, 2026
-**Status:** DeepSeek top-up ₱657.94 logged (RCBC 5,166.35 → 4,508.41); GCash fare ₱251, cash fare ₱175, fee reclass to GCash wallet, GCash savings restored (30,160.13); Aug 6 groceries ₱354.50, Google One ₱1,100, phone load ₱99, Davao transfer ₱6,000, ₱3,000 RCBC cash withdrawal booked.
+**Status:** Dinners logged (GCash 4,752.45 → 4,317.45, cash 4,597.50 → 4,547.50); real monthly budgets set (gcash 6,000, rcbc 3,000, maya 1,000, coins 1,000); DeepSeek top-up ₱657.94, GCash fare ₱251, cash fare ₱175, Aug 6 groceries ₱354.50, Google One ₱1,100, phone load ₱99, Davao transfer ₱6,000, ₱3,000 RCBC cash withdrawal booked.
 
 ## Accounts
 
 | Account | Balance | Purpose |
 |---|---:|---|
-| GCash wallet | PHP 4,752.45 | Spending |
+| GCash wallet | PHP 4,317.45 | Spending |
 | GCash savings | PHP 30,160.13 | **Emergency fund** (was MacBook fund - repurposed Aug 3, 2026 after resignation, no target set) |
 | RCBC savings | PHP 4,508.41 | Groceries and cash |
 | Maya wallet | PHP 1,261.61 | Personal (fixed PHP 1,000/paycheck — but see income status below) |
@@ -18,10 +18,10 @@
 | Maya savings | PHP 488.43 | Emergency fund (separate from GCash savings — Maya wallet's own sweep destination) |
 | GoTyme wallet | PHP 0.00 | No assigned plan |
 | Tonik Bank | PHP 52.66 | No assigned plan |
-| Cash on hand | PHP 4,597.50 | Cash, including PHP 5.00 reconciliation adjustment (blessings); +₱3,000 RCBC withdrawal (Davao trip) Aug 7 |
+| Cash on hand | PHP 4,547.50 | Cash, including PHP 5.00 reconciliation adjustment (blessings); +₱3,000 RCBC withdrawal (Davao trip) Aug 7 |
 | Alkansya | PHP 479.75 | Piggy bank |
 
-**Total assets:** PHP 57,247.49
+**Total assets:** PHP 56,762.49
 **Liabilities:** PHP 15,688.17 (SPayLater — July bill paid, next due Aug bill PHP 6,969.87 on Sep 15, 2026)
 **Receivables:** PHP 3,178.75 (JR PHP 3,010.00 + RJ PHP 166.75 + Bryan PHP 2.00)
 **Ledger net worth formula:** assets + receivables - liabilities.
