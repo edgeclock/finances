@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Aug 7, 2026 - Logged DeepSeek API top-up (RCBC)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via telegram - "₱657.94 spent from RCBC for a DeepSeek top-up (API credits). This resolves the DeepSeek balance low flag from the morning report."
+- Ledger change: `{ date: "Aug 7", desc: "DeepSeek API top-up", cat: "Subscriptions", amount: 657.94, wallet: "rcbc", type: "expense" }`.
+- Balance update: RCBC savings 5,166.35 → 4,508.41.
+- `DATA.lastUpdated` stays Aug 7, 2026; `DATA.monthly.dayOfMonth` stays 7.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 7, 2026 - Logged GCash fare (Transport)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
