@@ -637,17 +637,21 @@ const DATA = {
     { period: "Jul 25", amount: 17354.21, actual: true  }
   ],
 
-  // Update from transaction history each check-in — add spent amounts per wallet.
-  // NOTE (2026-08-03): these budget figures are stale leftovers from the last paycheck
-  // distribution (Jul 24 period) and no longer reflect a real monthly spending plan now that
-  // there's no income. Left as-is rather than invented — ask Edge what he wants his monthly
-  // spending budgets to be per wallet (e.g. drawn from the emergency fund) and update then.
+  // Update from transaction history each check-in - add spent amounts per wallet.
+  // NOTE (2026-08-07): REAL monthly budgets set from Aug ledger actuals + fixed commitments
+  // (Edge decision via all-hands). No income since Jul 24 - budgets are lean monthly targets
+  // drawn from available funds, not paycheck-derived. gcash 6,000 (fixed subs 3,059: CapCut/
+  // Canva/Google One/Claude Pro + food/groceries/transport/load), rcbc 3,000 (ChatGPT Plus 999
+  // + DeepSeek usage ~1,300 + groceries/meal prep), maya 1,000 (personal), coins 1,000
+  // (tithes 500 + missionary 500). DeepSeek is usage-based and volatile (₱1,319.55 in first
+  // 7 days of Aug) - rcbc may need a mid-month recheck. monthlyAllocation donut below is still
+  // stale paycheck-era display; awaiting Edge decision on whether to update it.
   monthlySpending: {
     wallets: [
-      { id: "gcash",  label: "GCash wallet",  src: "txn history", budget: 0    },
-      { id: "rcbc",   label: "RCBC savings",  src: "txn history", budget: 4119 },
+      { id: "gcash",  label: "GCash wallet",  src: "txn history", budget: 6000 },
+      { id: "rcbc",   label: "RCBC savings",  src: "txn history", budget: 3000 },
       { id: "maya",   label: "Maya wallet",   src: "txn history", budget: 1000 },
-      { id: "coins",  label: "Coins.ph PHP",  src: "txn history", budget: 1735 }
+      { id: "coins",  label: "Coins.ph PHP",  src: "txn history", budget: 1000 }
     ]
   },
 

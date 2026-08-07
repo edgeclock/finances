@@ -1,5 +1,18 @@
 # Finna Audit Log
 
+## Aug 7, 2026 - Set REAL monthly budgets (Edge decision via all-hands)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Chairman decision relayed via Monica - "Edge wants YOU to build the real monthly budget for him (the current monthly budget figures are stale placeholders). Use the actual ledger data, known subscriptions..., income reality (no current income since VA job ended), and realistic categories."
+- Ledger change: `DATA.monthlySpending.wallets[].budget` replaced stale leftovers with real targets:
+  - `gcash` 0 → **6,000** (fixed subs 3,059: CapCut 359 + Canva Pro 300 + Google One 1,100 + Claude Pro 1,300; plus food/groceries/transport/load)
+  - `rcbc` 4,119 → **3,000** (ChatGPT Plus 999 + DeepSeek usage ~1,300 + groceries/meal prep)
+  - `maya` 1,000 (kept: personal, historical 1,000/paycheck - unchanged)
+  - `coins` 1,735 → **1,000** (tithes 500 + missionary support 500)
+- Basis: actual Aug 1-7 spend (7 days of ledger data): food/dining ₱1,552.56, groceries ₱2,093.85 (incl. ₱1,414.35 stock-up), transport ₱496, subs ₱3,078.55 (incl. DeepSeek variable), charity ₱500, household ₱175. DeepSeek usage-based spend was ₱1,319.55 in the first 7 days - volatile; flagged for mid-month rcbc recheck.
+- Budgets are lean targets drawn from available funds (no income since Jul 24), not paycheck-derived. `monthlyAllocation` donut left untouched (still stale paycheck-era display) - flagged for Edge decision.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 7, 2026 - Logged DeepSeek API top-up (RCBC)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.

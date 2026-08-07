@@ -33,7 +33,7 @@
 - **Now on monthly monitoring, not pay-period tracking** (as of Aug 3, 2026) — `DATA.monthly` replaced `DATA.salary`. Current: month Aug 1-31, 2026, day 6 of 31, resets Sep 1.
 - **The semi-monthly distribution formula is paused** — nothing to distribute until income resumes.
 - **MacBook goal repurposed** — GCash savings is now the emergency buffer; no active savings target.
-- **`DATA.monthlySpending.wallets[].budget`** figures are stale leftovers from the last paycheck (Jul 24) — need Edge's input on real monthly budget amounts.
+- **`DATA.monthlySpending.wallets[].budget`** set Aug 7, 2026 from real ledger data (Edge decision): gcash 6,000, rcbc 3,000, maya 1,000, coins 1,000. Basis: Aug 1-7 actuals + fixed subscriptions + no-income reality. DeepSeek usage is volatile (₱1,319.55 in first 7 days) - flagged for mid-month rcbc recheck. `monthlyAllocation` donut still stale paycheck-era display, pending Edge decision.
 - `DATA.salaryHistory` future placeholders removed — it's now a pure historical record ending Jul 25, 2026 (last actual paycheck).
 
 ## Category system — "Misc" retired Aug 3, 2026
