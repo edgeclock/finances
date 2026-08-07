@@ -3,6 +3,15 @@
 ## Aug 7, 2026 - Logged food (GCash wallet)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via telegram - "₱31 from the GCash WALLET for food (another one)."
+- Ledger change: `{ date: "Aug 7", desc: "Food", cat: "Food & dining", amount: 31.00, wallet: "gcash", type: "expense" }`.
+- Balance update: GCash wallet 4,284.45 → 4,253.45.
+- `DATA.lastUpdated` stays Aug 7, 2026; `DATA.monthly.dayOfMonth` stays 7.
+- Validation: `finna-validate.ps1` passed.
+
+## Aug 7, 2026 - Logged food (GCash wallet)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
 - Confirmed source: Edge via telegram - "₱33 from the GCash WALLET for food."
 - Ledger change: `{ date: "Aug 7", desc: "Food", cat: "Food & dining", amount: 33.00, wallet: "gcash", type: "expense" }`.
 - Balance update: GCash wallet 4,317.45 → 4,284.45.
