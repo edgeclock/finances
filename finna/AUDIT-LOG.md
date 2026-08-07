@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Aug 7, 2026 - Logged GCash fare (Transport)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via telegram - "₱251 spent from the GCash WALLET for fare (transportation)."
+- Ledger change: `{ date: "Aug 7", desc: "Fare", cat: "Transport", amount: 251.00, wallet: "gcash", type: "expense" }`.
+- Balance update: GCash wallet 5,003.45 → 4,752.45.
+- `DATA.lastUpdated` stays Aug 7, 2026; `DATA.monthly.dayOfMonth` stays 7.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 7, 2026 - Logged cash fare (Transport)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
