@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Aug 7, 2026 - Logged phone load (GCash wallet)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via telegram - "₱99 spent from the GCash WALLET for phone load (mobile load/credits)."
+- Ledger change: `{ date: "Aug 7", desc: "Phone load", cat: "Load / comms", amount: 99.00, wallet: "gcash", type: "expense" }`.
+- Balance update: GCash wallet 6,566.95 → 6,467.95.
+- `DATA.lastUpdated` stays Aug 7, 2026; `DATA.monthly.dayOfMonth` stays 7.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 7, 2026 - CORRECTION (2nd pass): Davao transfer was ₱6,000 + ₱10 fee; plus ₱3,000 RCBC cash withdrawal
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
