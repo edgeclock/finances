@@ -2,14 +2,14 @@
 
 **Source:** `index.html`
 **As of:** Aug 7, 2026
-**Status:** Aug 6 groceries ₱354.50 logged (GCash wallet 5,367.95 → 5,013.45); Google One ₱1,100 and phone load ₱99 logged; Davao transfer ₱6,000 + ₱10 fee (GCash savings 30,150.13), ₱3,000 RCBC cash withdrawal booked.
+**Status:** CORRECTION (3rd pass): ₱10 transfer fee charged to GCash wallet (5,013.45 → 5,003.45), GCash savings restored (30,150.13 → 30,160.13). Also logged: Aug 6 groceries ₱354.50, Google One ₱1,100, phone load ₱99, Davao transfer ₱6,000 (GCash savings), ₱3,000 RCBC cash withdrawal.
 
 ## Accounts
 
 | Account | Balance | Purpose |
 |---|---:|---|
-| GCash wallet | PHP 5,013.45 | Spending |
-| GCash savings | PHP 30,150.13 | **Emergency fund** (was MacBook fund - repurposed Aug 3, 2026 after resignation, no target set) |
+| GCash wallet | PHP 5,003.45 | Spending |
+| GCash savings | PHP 30,160.13 | **Emergency fund** (was MacBook fund - repurposed Aug 3, 2026 after resignation, no target set) |
 | RCBC savings | PHP 5,166.35 | Groceries and cash |
 | Maya wallet | PHP 1,261.61 | Personal (fixed PHP 1,000/paycheck — but see income status below) |
 | GoTyme savings | PHP 4,527.84 | Rent and utilities |
@@ -21,7 +21,7 @@
 | Cash on hand | PHP 4,772.50 | Cash, including PHP 5.00 reconciliation adjustment (blessings); +₱3,000 RCBC withdrawal (Davao trip) Aug 7 |
 | Alkansya | PHP 479.75 | Piggy bank |
 
-**Total assets:** PHP 59,884.93
+**Total assets:** PHP 58,331.43
 **Liabilities:** PHP 15,688.17 (SPayLater — July bill paid, next due Aug bill PHP 6,969.87 on Sep 15, 2026)
 **Receivables:** PHP 3,178.75 (JR PHP 3,010.00 + RJ PHP 166.75 + Bryan PHP 2.00)
 **Ledger net worth formula:** assets + receivables - liabilities.

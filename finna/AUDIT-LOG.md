@@ -1,5 +1,15 @@
 # Finna Audit Log
 
+## Aug 7, 2026 - CORRECTION (3rd pass): Transfer fee charged to GCash wallet, not GCash Bank
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge correction relayed via telegram - "the ₱10 transfer fee was charged to the GCASH WALLET, not the GCash Bank account. Restore the ₱10 back to GCash savings and charge the ₱10 fee to the GCash wallet."
+- Ledger change: fee entry wallet `gcashsavings` → `gcash`, desc updated to "Transfer fee (GCash to RCBC)": `{ date: "Aug 7", desc: "Transfer fee (GCash to RCBC)", cat: "Bank fees", amount: 10.00, wallet: "gcash", type: "expense" }`.
+- Balance updates: GCash savings 30,150.13 → 30,160.13 (+10 restored). GCash wallet 5,013.45 → 5,003.45 (−10 fee). RCBC 5,166.35 and cash 4,772.50 unchanged; transfer pair stays ₱6,000.
+- This corrects the Aug 7 2nd-pass entry (commit 3b9a620) which had charged the fee to `gcashsavings`.
+- `DATA.lastUpdated` stays Aug 7, 2026; `DATA.monthly.dayOfMonth` stays 7.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 7, 2026 - Logged Aug 6 groceries (GCash wallet)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
