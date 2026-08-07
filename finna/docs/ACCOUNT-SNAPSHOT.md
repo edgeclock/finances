@@ -2,7 +2,7 @@
 
 **Source:** `index.html`
 **As of:** Aug 7, 2026
-**Status:** CORRECTION (3rd pass): ₱10 transfer fee charged to GCash wallet (5,013.45 → 5,003.45), GCash savings restored (30,150.13 → 30,160.13). Also logged: Aug 6 groceries ₱354.50, Google One ₱1,100, phone load ₱99, Davao transfer ₱6,000 (GCash savings), ₱3,000 RCBC cash withdrawal.
+**Status:** Cash fare ₱175 logged (4,772.50 → 4,597.50); fee reclass to GCash wallet (5,003.45) and GCash savings restored (30,160.13); Aug 6 groceries ₱354.50, Google One ₱1,100, phone load ₱99, Davao transfer ₱6,000, ₱3,000 RCBC cash withdrawal booked.
 
 ## Accounts
 
@@ -18,10 +18,10 @@
 | Maya savings | PHP 488.43 | Emergency fund (separate from GCash savings — Maya wallet's own sweep destination) |
 | GoTyme wallet | PHP 0.00 | No assigned plan |
 | Tonik Bank | PHP 52.66 | No assigned plan |
-| Cash on hand | PHP 4,772.50 | Cash, including PHP 5.00 reconciliation adjustment (blessings); +₱3,000 RCBC withdrawal (Davao trip) Aug 7 |
+| Cash on hand | PHP 4,597.50 | Cash, including PHP 5.00 reconciliation adjustment (blessings); +₱3,000 RCBC withdrawal (Davao trip) Aug 7 |
 | Alkansya | PHP 479.75 | Piggy bank |
 
-**Total assets:** PHP 58,331.43
+**Total assets:** PHP 58,156.43
 **Liabilities:** PHP 15,688.17 (SPayLater — July bill paid, next due Aug bill PHP 6,969.87 on Sep 15, 2026)
 **Receivables:** PHP 3,178.75 (JR PHP 3,010.00 + RJ PHP 166.75 + Bryan PHP 2.00)
 **Ledger net worth formula:** assets + receivables - liabilities.
