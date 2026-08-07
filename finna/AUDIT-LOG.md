@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Aug 7, 2026 - Logged Aug 6 groceries (GCash wallet)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via telegram - "₱354.50 spent from the GCash WALLET for groceries" dated yesterday (Aug 6).
+- Ledger change: `{ date: "Aug 6", desc: "Groceries", cat: "Groceries", amount: 354.50, wallet: "gcash", type: "expense" }` - dated Aug 6 per Edge.
+- Balance update: GCash wallet 5,367.95 → 5,013.45.
+- `DATA.lastUpdated` stays Aug 7, 2026; `DATA.monthly.dayOfMonth` stays 7.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 7, 2026 - Logged Google One subscription (GCash wallet)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
