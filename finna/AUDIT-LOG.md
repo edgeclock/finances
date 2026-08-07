@@ -1,5 +1,19 @@
 # Finna Audit Log
 
+## Aug 7, 2026 - Logged GCash→RCBC transfer (Davao trip budget) + fee + cash fare
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via telegram (relayed from Monica session) - "Transfer ₱6,000 from GCash to RCBC, with ₱10 transfer fee. Purpose: Davao trip budget and allowance... Cash spent: ₱18 for fare (transportation), paid in cash."
+- Ledger change: 4 entries dated Aug 7:
+  - `{ date: "Aug 7", desc: "Transfer to RCBC savings (Davao trip budget)", cat: "Transfer", amount: 5990.00, wallet: "gcash", type: "expense" }`
+  - `{ date: "Aug 7", desc: "Transfer from GCash wallet (Davao trip budget)", cat: "Transfer", amount: 5990.00, wallet: "rcbc", type: "income" }`
+  - `{ date: "Aug 7", desc: "Transfer fee (GCash to RCBC)", cat: "Bank fees", amount: 10.00, wallet: "gcash", type: "expense" }`
+  - `{ date: "Aug 7", desc: "Fare", cat: "Transport", amount: 18.00, wallet: "cash", type: "expense" }`
+- Balance updates: GCash wallet 6,566.95 → 566.95 (−6,000 total: 5,990 transfer + 10 fee). RCBC savings 2,166.35 → 8,156.35 (+5,990). Cash on hand 1,790.50 → 1,772.50 (−18 fare).
+- Transfer booked as ₱5,990 pair per Edge's stated end state (GCash −6,000, RCBC +5,990) - the ₱10 fee is an expense, matching the Aug 6 transfer-fee convention.
+- `DATA.lastUpdated` → Aug 7, 2026; `DATA.monthly.dayOfMonth` 6 → 7.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 6, 2026 - CORRECTION: RJ repayment was in-kind, not cash
 
 - Runtime: Finna (OpenClaw) — lease handle `codex`.
