@@ -2,15 +2,15 @@
 
 **Source:** `index.html`
 **As of:** Aug 7, 2026
-**Status:** CORRECTION: Davao trip transfer sourced from GCash Bank (savings) not the wallet - GCash wallet restored to ₱6,566.95, GCash savings 36,160.13 → 30,160.13 (−₱5,990 transfer − ₱10 fee), RCBC credited ₱5,990, cash fare ₱18 logged.
+**Status:** CORRECTION (2nd pass): Davao transfer was ₱6,000 + ₱10 fee from GCash Bank (savings 30,160.13 → 30,150.13), RCBC credited ₱6,000, then ₱3,000 cash withdrawal from RCBC (Davao trip). GCash wallet stays ₱6,566.95.
 
 ## Accounts
 
 | Account | Balance | Purpose |
 |---|---:|---|
 | GCash wallet | PHP 6,566.95 | Spending |
-| GCash savings | PHP 30,160.13 | **Emergency fund** (was MacBook fund - repurposed Aug 3, 2026 after resignation, no target set) |
-| RCBC savings | PHP 8,156.35 | Groceries and cash |
+| GCash savings | PHP 30,150.13 | **Emergency fund** (was MacBook fund - repurposed Aug 3, 2026 after resignation, no target set) |
+| RCBC savings | PHP 5,166.35 | Groceries and cash |
 | Maya wallet | PHP 1,261.61 | Personal (fixed PHP 1,000/paycheck — but see income status below) |
 | GoTyme savings | PHP 4,527.84 | Rent and utilities |
 | Coins.ph PHP | PHP 5,418.71 | Charity and tithes |
@@ -18,7 +18,7 @@
 | Maya savings | PHP 488.43 | Emergency fund (separate from GCash savings — Maya wallet's own sweep destination) |
 | GoTyme wallet | PHP 0.00 | No assigned plan |
 | Tonik Bank | PHP 52.66 | No assigned plan |
-| Cash on hand | PHP 1,772.50 | Cash, including PHP 5.00 reconciliation adjustment (blessings); RJ repaid ₱108 in-kind (breakfast treat) - no cash movement |
+| Cash on hand | PHP 4,772.50 | Cash, including PHP 5.00 reconciliation adjustment (blessings); +₱3,000 RCBC withdrawal (Davao trip) Aug 7 |
 | Alkansya | PHP 479.75 | Piggy bank |
 
 **Total assets:** PHP 59,884.93

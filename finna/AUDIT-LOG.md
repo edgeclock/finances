@@ -1,5 +1,20 @@
 # Finna Audit Log
 
+## Aug 7, 2026 - CORRECTION (2nd pass): Davao transfer was ₱6,000 + ₱10 fee; plus ₱3,000 RCBC cash withdrawal
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge correction relayed via telegram - "the amount transferred to RCBC was ₱6,000, and an ADDITIONAL ₱10 was charged to GCash Bank as the transfer fee. GCash Bank total debit = ₱6,010... RCBC credit = ₱6,000, not ₱5,990. New transaction: cash withdrawal of ₱3,000 from RCBC (for the Davao trip)."
+- Ledger change: transfer pair amount corrected 5,990 → 6,000 (both legs), fee stays ₱10 (gcashsavings), plus new transfer pair for the cash withdrawal:
+  - `{ date: "Aug 7", desc: "Transfer to RCBC savings (Davao trip budget)", cat: "Transfer", amount: 6000.00, wallet: "gcashsavings", type: "expense" }`
+  - `{ date: "Aug 7", desc: "Transfer from GCash Bank (Davao trip budget)", cat: "Transfer", amount: 6000.00, wallet: "rcbc", type: "income" }`
+  - `{ date: "Aug 7", desc: "Transfer fee (GCash Bank to RCBC)", cat: "Bank fees", amount: 10.00, wallet: "gcashsavings", type: "expense" }`
+  - `{ date: "Aug 7", desc: "Cash withdrawal (Davao trip budget)", cat: "Transfer", amount: 3000.00, wallet: "rcbc", type: "expense" }`
+  - `{ date: "Aug 7", desc: "Cash withdrawal from RCBC (Davao trip)", cat: "Transfer", amount: 3000.00, wallet: "cash", type: "income" }`
+- Balance updates: GCash savings 30,160.13 → 30,150.13 (−6,010: 6,000 transfer + 10 fee). RCBC 8,156.35 → 5,166.35 (+6,000 transfer − 3,000 withdrawal). Cash on hand 1,772.50 → 4,772.50 (+3,000 withdrawal − 18 fare).
+- This corrects the Aug 7 first-pass entry (commit 7b91da7) which had booked a ₱5,990 transfer pair.
+- `DATA.lastUpdated` stays Aug 7, 2026; `DATA.monthly.dayOfMonth` stays 7.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 7, 2026 - CORRECTION: Davao transfer came from GCash Bank (savings), not GCash wallet
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.

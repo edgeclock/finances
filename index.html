@@ -579,8 +579,8 @@ const DATA = {
   // Account balances (update each salary period)
   accounts: [
     { label: "GCash wallet",   balance: 6566.95,  tag: "spend",  tagLabel: "spending"      },
-    { label: "GCash savings",  balance: 30160.13, tag: "save",   tagLabel: "Emergency fund (was MacBook fund)" },
-    { label: "RCBC savings",   balance: 8156.35,  tag: "spend",  tagLabel: "groceries/cash"},
+    { label: "GCash savings",  balance: 30150.13, tag: "save",   tagLabel: "Emergency fund (was MacBook fund)" },
+    { label: "RCBC savings",   balance: 5166.35,  tag: "spend",  tagLabel: "groceries/cash"},
     { label: "Maya wallet",    balance: 1261.61,  tag: "spend",  tagLabel: "personal"      },
     { label: "GoTyme savings", balance: 4527.84,  tag: "save",   tagLabel: "rent/utilities"},
     { label: "Coins.ph PHP",   balance: 5418.71,  tag: "save",   tagLabel: "charity/tithes"},
@@ -588,7 +588,7 @@ const DATA = {
     { label: "Maya savings",   balance: 488.43,   tag: "save",   tagLabel: "emergency fund"},
     { label: "GoTyme wallet",  balance: 0.00,     tag: "spend",  tagLabel: "no plan yet"   },
     { label: "Tonik Bank",     balance: 52.66,    tag: "save",   tagLabel: "no plan yet"   },
-    { label: "Cash on hand",   balance: 1772.50,  tag: "cash",   tagLabel: "cash"          },
+    { label: "Cash on hand",   balance: 4772.50,  tag: "cash",   tagLabel: "cash"          },
     { label: "Alkansya",       balance: 479.75,   tag: "save",   tagLabel: "piggy bank"    }
   ],
 
@@ -692,10 +692,12 @@ const DATA = {
     { date: "Aug 6",  desc: "DeepSeek API top-up",          cat: "Subscriptions", amount: 331.14,   wallet: "rcbc",  type: "expense" },
     { date: "Aug 6",  desc: "Breakfast (RJ treat)",          cat: "Food & dining", amount: 108.00,   wallet: "cash",  type: "expense" },
     { date: "Aug 6",  desc: "RJ loan repayment (in-kind)",    cat: "Income",        amount: 108.00,   wallet: "cash",  type: "income"  },
-    { date: "Aug 7",  desc: "Transfer to RCBC savings (Davao trip budget)", cat: "Transfer", amount: 5990.00, wallet: "gcashsavings", type: "expense" },
-    { date: "Aug 7",  desc: "Transfer from GCash Bank (Davao trip budget)", cat: "Transfer", amount: 5990.00, wallet: "rcbc",  type: "income"  },
+    { date: "Aug 7",  desc: "Transfer to RCBC savings (Davao trip budget)", cat: "Transfer", amount: 6000.00, wallet: "gcashsavings", type: "expense" },
+    { date: "Aug 7",  desc: "Transfer from GCash Bank (Davao trip budget)", cat: "Transfer", amount: 6000.00, wallet: "rcbc",  type: "income"  },
     { date: "Aug 7",  desc: "Transfer fee (GCash Bank to RCBC)",        cat: "Bank fees",     amount: 10.00,    wallet: "gcashsavings", type: "expense" },
-    { date: "Aug 7",  desc: "Fare",                                cat: "Transport",    amount: 18.00,    wallet: "cash",  type: "expense" }
+    { date: "Aug 7",  desc: "Fare",                                cat: "Transport",    amount: 18.00,    wallet: "cash",  type: "expense" },
+    { date: "Aug 7",  desc: "Cash withdrawal (Davao trip budget)",        cat: "Transfer",     amount: 3000.00,  wallet: "rcbc",  type: "expense" },
+    { date: "Aug 7",  desc: "Cash withdrawal from RCBC (Davao trip)",     cat: "Transfer",     amount: 3000.00,  wallet: "cash",  type: "income"  }
   ],
 
   spaylaterSchedule: [
