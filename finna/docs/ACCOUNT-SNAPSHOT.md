@@ -2,14 +2,14 @@
 
 **Source:** `index.html`
 **As of:** Aug 7, 2026
-**Status:** GCash→RCBC transfer (₱5,990 + ₱10 fee, Davao trip budget) and cash fare (₱18) logged Aug 7; RJ in-kind repayment correction from Aug 6 stands.
+**Status:** CORRECTION: Davao trip transfer sourced from GCash Bank (savings) not the wallet - GCash wallet restored to ₱6,566.95, GCash savings 36,160.13 → 30,160.13 (−₱5,990 transfer − ₱10 fee), RCBC credited ₱5,990, cash fare ₱18 logged.
 
 ## Accounts
 
 | Account | Balance | Purpose |
 |---|---:|---|
-| GCash wallet | PHP 566.95 | Spending |
-| GCash savings | PHP 36,160.13 | **Emergency fund** (was MacBook fund - repurposed Aug 3, 2026 after resignation, no target set) |
+| GCash wallet | PHP 6,566.95 | Spending |
+| GCash savings | PHP 30,160.13 | **Emergency fund** (was MacBook fund - repurposed Aug 3, 2026 after resignation, no target set) |
 | RCBC savings | PHP 8,156.35 | Groceries and cash |
 | Maya wallet | PHP 1,261.61 | Personal (fixed PHP 1,000/paycheck — but see income status below) |
 | GoTyme savings | PHP 4,527.84 | Rent and utilities |

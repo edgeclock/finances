@@ -1,5 +1,18 @@
 # Finna Audit Log
 
+## Aug 7, 2026 - CORRECTION: Davao transfer came from GCash Bank (savings), not GCash wallet
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge correction relayed via telegram - "the ₱6,000 transfer came from his GCash BANK account, NOT from the GCash wallet. Source is GCash Bank (debit ₱6,000 + ₱10 fee from there), restore the GCash wallet balance... RCBC credit of ₱5,990 stays."
+- Rebooked the Aug 7 transfer pair + fee so the source is `gcashsavings` instead of `gcash`:
+  - `{ date: "Aug 7", desc: "Transfer to RCBC savings (Davao trip budget)", cat: "Transfer", amount: 5990.00, wallet: "gcashsavings", type: "expense" }`
+  - `{ date: "Aug 7", desc: "Transfer from GCash Bank (Davao trip budget)", cat: "Transfer", amount: 5990.00, wallet: "rcbc", type: "income" }`
+  - `{ date: "Aug 7", desc: "Transfer fee (GCash Bank to RCBC)", cat: "Bank fees", amount: 10.00, wallet: "gcashsavings", type: "expense" }`
+- Balance updates: GCash wallet restored 566.95 → 6,566.95. GCash savings 36,160.13 → 30,160.13 (−6,000: 5,990 transfer + 10 fee). RCBC savings stays 8,156.35. Cash on hand stays 1,772.50 (fare unchanged).
+- This corrects the earlier Aug 7 entry (commit 4ebf62a) which had wrongly debited the GCash wallet.
+- `DATA.lastUpdated` stays Aug 7, 2026; `DATA.monthly.dayOfMonth` stays 7.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 7, 2026 - Logged GCash→RCBC transfer (Davao trip budget) + fee + cash fare
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
