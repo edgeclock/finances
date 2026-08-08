@@ -1,8 +1,8 @@
 # Account Snapshot
 
 **Source:** `index.html`
-**As of:** Aug 7, 2026
-**Status:** Food ₱100 cash logged (4,547.50 → 4,447.50); food ₱31 + ₱33 GCash, dinners ₱435 GCash + ₱50 cash, real monthly budgets set (gcash 6,000, rcbc 3,000, maya 1,000, coins 1,000); DeepSeek top-up ₱657.94, GCash fare ₱251, cash fare ₱175, Aug 6 groceries ₱354.50, Google One ₱1,100, phone load ₱99, Davao transfer ₱6,000, ₱3,000 RCBC cash withdrawal booked.
+**As of:** Aug 8, 2026
+**Status:** Food ₱20 cash logged (4,447.50 → 4,427.50).
 
 ## Accounts
 
@@ -18,7 +18,7 @@
 | Maya savings | PHP 488.43 | Emergency fund (separate from GCash savings — Maya wallet's own sweep destination) |
 | GoTyme wallet | PHP 0.00 | No assigned plan |
 | Tonik Bank | PHP 52.66 | No assigned plan |
-| Cash on hand | PHP 4,447.50 | Cash, including PHP 5.00 reconciliation adjustment (blessings); +₱3,000 RCBC withdrawal (Davao trip) Aug 7 |
+| Cash on hand | PHP 4,427.50 | Cash, including PHP 5.00 reconciliation adjustment (blessings); +₱3,000 RCBC withdrawal (Davao trip) Aug 7; food ₱20 Aug 8 |
 | Alkansya | PHP 479.75 | Piggy bank |
 
 **Total assets:** PHP 56,598.49
@@ -30,7 +30,7 @@
 
 **Edge resigned from his VA job Aug 3, 2026.** No income currently.
 
-- **Now on monthly monitoring, not pay-period tracking** (as of Aug 3, 2026) — `DATA.monthly` replaced `DATA.salary`. Current: month Aug 1-31, 2026, day 6 of 31, resets Sep 1.
+- **Now on monthly monitoring, not pay-period tracking** (as of Aug 3, 2026) — `DATA.monthly` replaced `DATA.salary`. Current: month Aug 1-31, 2026, day 8 of 31, resets Sep 1.
 - **The semi-monthly distribution formula is paused** — nothing to distribute until income resumes.
 - **MacBook goal repurposed** — GCash savings is now the emergency buffer; no active savings target.
 - **`DATA.monthlySpending.wallets[].budget`** set Aug 7, 2026 from real ledger data (Edge decision): gcash 6,000, rcbc 3,000, maya 1,000, coins 1,000. Basis: Aug 1-7 actuals + fixed subscriptions + no-income reality. DeepSeek usage is volatile (₱1,319.55 in first 7 days) - flagged for mid-month rcbc recheck. `monthlyAllocation` donut still stale paycheck-era display, pending Edge decision.
