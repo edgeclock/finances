@@ -1,5 +1,26 @@
 # Finna Audit Log
 
+## Aug 8, 2026 - CASH CORRECTION + FULL 6-JAR DASHBOARD IMPLEMENTATION
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Chairman decision relayed via Monica (inter-session) - "FINAL UPDATES + FULL DASHBOARD IMPLEMENTATION. Edge confirmed before sleeping."
+
+### 1. Cash correction (Edge-confirmed)
+- Real cash on hand = 3,303.50 (was booked 4,001.75). Difference 698.25 = TRAVEL EXPENSES.
+- Booked `{ date: "Aug 8", desc: "Travel expenses", cat: "Travel", amount: 698.25, wallet: "cash", type: "expense" }`.
+- Added "Travel" to `DATA.categoryOrder` (subcategory of Transport/NEC) + pill/color maps.
+- Cash on hand balance 4,001.75 -> 3,303.50. Total assets 54,900.97 -> 54,202.72. NEC jar 26,416.33 -> 25,718.08.
+
+### 2. Dashboard full 6-jar implementation
+- New `DATA.jarSystem` block: pool 50,673.75, one-time this-period targets (NEC 28,152.08; FFA/LTSS/EDU/PLAY 5,630.42; GIVE 0), jar names/colors, subcategory mapping per jar, split note (next period standard 50/10/10/10/10/10 with GIVE 10%).
+- New "6-jar summary" section: per-jar balance (summed from account `jar` field), target, delta, status OK/LOW/OVER, subcategory list. `jar` field added to every account (NEC/FFA/LTSS/EDU/PLAY/GIVE or null for hubs/outside).
+- Accounts grid + wallet labels already carry jar tags from the earlier restructure.
+- Emergency fund section = FFA jar (kept from earlier).
+- LOW alert: GCash wallet 2,943.45 < 3,059 subscription threshold - existing alert logic flags it red until next NEC top-up or income.
+- Validator whitelist + DATA-CONTRACT + dashboard labels extended for all jars/vaults (incl. new wallet IDs gotymenev/gotymeltss/gotymeplay from the restructure commit).
+- Post-correction totals: total assets 54,202.72, NEC 25,718.08 - both confirmed by validation.
+- Validation: `finna-validate.ps1` passed (accounts=14 transactions=69 assets=54,202.72).
+
 ## Aug 8, 2026 - MAJOR: 6-jar MM system adopted (T. Harv Eker modified) - full restructure
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.

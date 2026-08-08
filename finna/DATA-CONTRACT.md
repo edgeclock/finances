@@ -4,7 +4,7 @@
 
 ## Required Collections
 
-- `accounts[]`: unique `label`, non-negative `balance`, `tag`, and `tagLabel`.
+- `accounts[]`: unique `label`, non-negative `balance`, `tag`, `tagLabel`, and optional `jar` (NEC/FFA/LTSS/EDU/PLAY/GIVE under the 6-jar system, or null for hubs/outside accounts).
 - `transactions[]`: the **current calendar month's** entries. (Changed 2026-08-03 — see "Monthly monitoring" below. Was "current salary-period entries" before Edge resigned.)
 - `monthArchive[]`: **deprecated 2026-08-03**, always empty. Existed to bridge mid-month pay-period resets under the old semi-monthly cycle; no longer needed since `transactions[]` itself is now month-scoped. Left in the data shape only because some rendering JS still references it defensively — do not write to it.
 - `categoryOrder[]`: primary expense categories.
@@ -27,7 +27,8 @@ Each transaction has `date`, `desc`, `cat`, `amount`, `wallet`, and `type`.
 - `type` is `income`, `expense`, or `adjustment`.
 - `amount` is greater than zero.
 - Valid categories are every `categoryOrder` value plus `Income`, `Transfer`, `Reconciliation`, and historical `Utilities`, `Misc` (the latter two no longer used for new transactions — `Misc` was retired 2026-08-03, see below; kept valid only so old/historical entries and the frozen June/July `monthlyReports` category breakdowns don't fail validation).
-- `categoryOrder` (as of 2026-08-03): `Food & dining`, `Groceries`, `Transport`, `Load / comms`, `Subscriptions`, `Charity`, `Family`, `Household`, `Loans`, `Debt payment`, `Investments`.
+- `categoryOrder` (as of 2026-08-08): `Food & dining`, `Groceries`, `Transport`, `Travel`, `Load / comms`, `Subscriptions`, `Charity`, `Family`, `Household`, `Loans`, `Debt payment`, `Investments`.
+  - `Travel`: trip/transport-adjacent travel costs (added Aug 8, 2026 for the cash-correction travel expense; subcategory of NEC under the jar system).
   - `Household`: home/personal-care consumables that aren't groceries (water, laundry, small household items like an umbrella).
   - `Loans`: money lent out to other people (creates a `receivables` entry). Loan *repayments received* stay `cat: "Income"`, not `Loans`.
   - `Debt payment`: paying down an existing liability (e.g. SPayLater), distinct from regular discretionary spending.
@@ -40,6 +41,10 @@ Each transaction has `date`, `desc`, `cat`, `amount`, `wallet`, and `type`.
 ## "Misc" retirement (2026-08-03)
 
 `Misc` was removed as an active category — every live transaction that used it was reclassified into `Household`, `Loans`, `Debt payment`, or `Investments`. If a new transaction doesn't cleanly fit any existing category, create a new distinct one and add it to `categoryOrder` rather than reaching for a catch-all. The June 2026 and part of the July 2026 `monthlyReports` category breakdowns still contain a frozen `Misc` bucket — their underlying itemized transactions were already archived/compiled before this change and are no longer available to reclassify. Don't try to further break those down; they're historical record, not live data.
+
+## 6-jar MM system (adopted 2026-08-08)
+
+`DATA.jarSystem` holds the jar framework: `pool` (50,673.75 this period), `splitNote`, `targets` (per-jar this-period targets), `jars` (label/name/color), and `subcats` (existing ledger categories grouped under each jar). Jar-to-account mapping is via each account's `jar` field. This period used a one-time split (NEC 50/90, FFA/LTSS/EDU/PLAY 10/90, GIVE 0 because Coins.ph was pre-funded); next period returns to standard 50/10/10/10/10/10 with GIVE 10%. The dashboard "6-jar summary" section computes per-jar balance vs target with OK/LOW/OVER status.
 
 ## Documentation Rule
 

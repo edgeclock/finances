@@ -402,6 +402,13 @@
     </div>
   </div>
 
+  <!-- 6-Jar Summary -->
+  <div class="sec">
+    <div class="sec-title">6-jar summary <span class="src">MM system</span></div>
+    <div class="ga" id="jarGrid"></div>
+    <div style="margin-top:10px;font-size:11px;color:var(--t3)" id="jarNote"></div>
+  </div>
+
   <!-- Charts -->
   <div class="g2 sec" style="grid-template-columns: 1fr">
     <div>
@@ -583,21 +590,55 @@ const DATA = {
   // subcategories of the 6 mains. Pool excluded Tonik, Alkansya, Coins.ph; included cash
   // and GoTrade (GoTrade = already-invested FFA).
   accounts: [
-    { label: "GCash wallet",   balance: 2943.45,  tag: "spend",  tagLabel: "NEC jar - spending" },
-    { label: "GCash bank",     balance: 4630.41,  tag: "save",   tagLabel: "FFA jar (10%)" },
-    { label: "RCBC savings",   balance: 4508.41,  tag: "spend",  tagLabel: "NEC jar (temporarily inaccessible)" },
-    { label: "Cash on hand",   balance: 4001.75,  tag: "cash",   tagLabel: "NEC jar - cash" },
-    { label: "GoTyme nec vault", balance: 14962.72, tag: "save", tagLabel: "NEC jar - GoTyme vault" },
-    { label: "GoTyme Professional Development (LTSS)", balance: 5630.42, tag: "save", tagLabel: "LTSS jar (10%)" },
-    { label: "GoTyme My Go Save (PLAY)", balance: 5642.27, tag: "save", tagLabel: "PLAY jar (10%)" },
-    { label: "Maya bank",      balance: 5630.42,  tag: "save",   tagLabel: "EDU jar (10%)" },
-    { label: "Maya wallet",    balance: 0.00,     tag: "spend",  tagLabel: "distribution hub" },
-    { label: "GoTyme wallet",  balance: 0.00,     tag: "spend",  tagLabel: "distribution hub" },
-    { label: "Coins.ph PHP",   balance: 5418.71,  tag: "save",   tagLabel: "GIVE jar (10%) - charity/tithes" },
-    { label: "GoTrade",        balance: 1000.00,  tag: "invest", tagLabel: "FFA jar - SPY (invested)" },
-    { label: "Tonik Bank",     balance: 52.66,    tag: "save",   tagLabel: "outside system" },
-    { label: "Alkansya",       balance: 479.75,   tag: "save",   tagLabel: "outside system - joins later" }
+    { label: "GCash wallet",   balance: 2943.45,  tag: "spend",  tagLabel: "NEC jar - spending", jar: "NEC" },
+    { label: "GCash bank",     balance: 4630.41,  tag: "save",   tagLabel: "FFA jar (10%)", jar: "FFA" },
+    { label: "RCBC savings",   balance: 4508.41,  tag: "spend",  tagLabel: "NEC jar (temporarily inaccessible)", jar: "NEC" },
+    { label: "Cash on hand",   balance: 3303.50,  tag: "cash",   tagLabel: "NEC jar - cash", jar: "NEC" },
+    { label: "GoTyme nec vault", balance: 14962.72, tag: "save", tagLabel: "NEC jar - GoTyme vault", jar: "NEC" },
+    { label: "GoTyme Professional Development (LTSS)", balance: 5630.42, tag: "save", tagLabel: "LTSS jar (10%)", jar: "LTSS" },
+    { label: "GoTyme My Go Save (PLAY)", balance: 5642.27, tag: "save", tagLabel: "PLAY jar (10%)", jar: "PLAY" },
+    { label: "Maya bank",      balance: 5630.42,  tag: "save",   tagLabel: "EDU jar (10%)", jar: "EDU" },
+    { label: "Maya wallet",    balance: 0.00,     tag: "spend",  tagLabel: "distribution hub", jar: null },
+    { label: "GoTyme wallet",  balance: 0.00,     tag: "spend",  tagLabel: "distribution hub", jar: null },
+    { label: "Coins.ph PHP",   balance: 5418.71,  tag: "save",   tagLabel: "GIVE jar - charity/tithes", jar: "GIVE" },
+    { label: "GoTrade",        balance: 1000.00,  tag: "invest", tagLabel: "FFA jar - SPY (invested)", jar: "FFA" },
+    { label: "Tonik Bank",     balance: 52.66,    tag: "save",   tagLabel: "outside system", jar: null },
+    { label: "Alkansya",       balance: 479.75,   tag: "save",   tagLabel: "outside system - joins later", jar: null }
   ],
+
+  // 6-jar MM system (adopted Aug 8, 2026). Jars are the 6 MAIN categories; existing
+  // categories are subcategories. This period used a one-time split of pool 50,673.75:
+  // NEC 50/90 = 28,152.08, FFA/LTSS/EDU/PLAY 10/90 = 5,630.42 each, GIVE 0 (pre-funded).
+  // NEXT period returns to standard 50/10/10/10/10/10 with GIVE 10%.
+  // jarTotals below are computed from the jar targets for the summary section.
+  jarSystem: {
+    pool: 50673.75,
+    splitNote: "One-time this-period split: NEC 50/90, FFA/LTSS/EDU/PLAY 10/90, GIVE 0 (pre-funded). Next period: standard 50/10/10/10/10/10 with GIVE 10%.",
+    targets: {
+      NEC:  28152.08,
+      FFA:  5630.42,
+      LTSS: 5630.42,
+      EDU:  5630.42,
+      PLAY: 5630.42,
+      GIVE: 0
+    },
+    jars: {
+      NEC:  { label: "NEC",  name: "Necessities",        color: "#378ADD" },
+      FFA:  { label: "FFA",  name: "Financial Freedom",  color: "#1D9E75" },
+      LTSS: { label: "LTSS", name: "Long-Term Savings",  color: "#534AB7" },
+      EDU:  { label: "EDU",  name: "Education",          color: "#0D9488" },
+      PLAY: { label: "PLAY", name: "Play",               color: "#BA7517" },
+      GIVE: { label: "GIVE", name: "Give",               color: "#E24B4A" }
+    },
+    subcats: {
+      NEC:  ["Food & dining", "Groceries", "Household", "Transport", "Travel", "Utilities", "Load / comms", "Debt payment", "Subscriptions", "Rent"],
+      FFA:  ["Investments"],
+      LTSS: ["Long-term savings"],
+      EDU:  ["Education", "Books", "Courses"],
+      PLAY: ["Entertainment", "Eating out", "Coffee", "Fun"],
+      GIVE: ["Tithes", "Charity", "Missionary support"]
+    }
+  },
 
   liabilities: {
     spaylater: 15688.17,
@@ -662,7 +703,7 @@ const DATA = {
     ]
   },
 
-  categoryOrder: ["Food & dining", "Groceries", "Transport", "Load / comms", "Subscriptions", "Charity", "Family", "Household", "Bank fees", "Loans", "Debt payment", "Investments"],
+  categoryOrder: ["Food & dining", "Groceries", "Transport", "Travel", "Load / comms", "Subscriptions", "Charity", "Family", "Household", "Bank fees", "Loans", "Debt payment", "Investments"],
 
   // Deprecated as of 2026-08-03 (monthly monitoring replaced the semi-monthly pay-period cycle —
   // transactions[] now IS the current calendar month, so there's no more mid-month reset to
@@ -741,7 +782,8 @@ const DATA = {
     { date: "Aug 8",  desc: "Transfer to nec vault (NEC jar)",        cat: "Transfer",    amount: 14962.72, wallet: "gotyme",      type: "expense" },
     { date: "Aug 8",  desc: "Transfer from GoTyme (NEC jar)",         cat: "Transfer",    amount: 14962.72, wallet: "gotymenev",   type: "income"  },
     { date: "Aug 8",  desc: "Transfer to Professional Development (LTSS jar)", cat: "Transfer", amount: 1098.71, wallet: "gotyme", type: "expense" },
-    { date: "Aug 8",  desc: "Transfer from GoTyme (LTSS jar)",        cat: "Transfer",    amount: 1098.71,  wallet: "gotymeltss",  type: "income"  }
+    { date: "Aug 8",  desc: "Transfer from GoTyme (LTSS jar)",        cat: "Transfer",    amount: 1098.71,  wallet: "gotymeltss",  type: "income"  },
+    { date: "Aug 8",  desc: "Travel expenses",                        cat: "Travel",       amount: 698.25,   wallet: "cash",    type: "expense" }
   ],
 
   spaylaterSchedule: [
@@ -988,7 +1030,7 @@ budgetBarsEl.innerHTML += `
 
 // Cash log (derived from transactions where wallet === 'cash')
 const logEl    = document.getElementById('cashLog');
-const catPill  = { 'Food & dining':'lp-food', 'Transport':'lp-trans', 'Groceries':'lp-groc', 'Charity':'lp-charity', 'Family':'lp-family', 'Household':'lp-household', 'Loans':'lp-loan', 'Debt payment':'lp-debt', 'Investments':'lp-invest', 'Load / comms':'lp-household', 'Subscriptions':'lp-household' };
+const catPill  = { 'Food & dining':'lp-food', 'Transport':'lp-trans', 'Travel':'lp-trans', 'Groceries':'lp-groc', 'Charity':'lp-charity', 'Family':'lp-family', 'Household':'lp-household', 'Loans':'lp-loan', 'Debt payment':'lp-debt', 'Investments':'lp-invest', 'Load / comms':'lp-household', 'Subscriptions':'lp-household' };
 const cashTxns = DATA.transactions.filter(t => t.wallet === 'cash' && t.type === 'expense');
 if (cashTxns.length > 0) {
   logEl.innerHTML = cashTxns.map(e =>
@@ -1008,7 +1050,7 @@ if (cashTxns.length > 0) {
 
 // Transaction log
 const walletLbl  = { gcash: 'GCash', rcbc: 'RCBC', maya: 'Maya', coins: 'Coins.ph', cash: 'Cash', gotyme: 'GoTyme', gcashsavings: 'GCash bank', mayasavings: 'Maya bank', gotymewallet: 'GoTyme wallet', gotrade: 'GoTrade', gotymenev: 'GoTyme nec', gotymeltss: 'GoTyme LTSS', gotymeplay: 'GoTyme PLAY' };
-const catPillTxn = { 'Food & dining':'lp-food', 'Transport':'lp-trans', 'Groceries':'lp-groc', 'Income':'lp-groc', 'Charity':'lp-charity', 'Family':'lp-family', 'Household':'lp-household', 'Loans':'lp-loan', 'Debt payment':'lp-debt', 'Investments':'lp-invest', 'Load / comms':'lp-household', 'Subscriptions':'lp-household' };
+const catPillTxn = { 'Food & dining':'lp-food', 'Transport':'lp-trans', 'Travel':'lp-trans', 'Groceries':'lp-groc', 'Income':'lp-groc', 'Charity':'lp-charity', 'Family':'lp-family', 'Household':'lp-household', 'Loans':'lp-loan', 'Debt payment':'lp-debt', 'Investments':'lp-invest', 'Load / comms':'lp-household', 'Subscriptions':'lp-household' };
 const txnLogEl   = document.getElementById('txnLog');
 const totalIncome = DATA.transactions.filter(t => t.type === 'income').reduce((s, t) => s + t.amount, 0);
 
@@ -1053,6 +1095,27 @@ DATA.accounts.forEach((a, i) => {
     <span class="tag tag-${a.tag}">${a.tagLabel}</span>
   </div>`;
 });
+
+// 6-jar summary - sums account balances per jar, compares against this-period targets
+const jarGridEl = document.getElementById('jarGrid');
+const jarBal = {};
+DATA.accounts.forEach(a => { if (a.jar) jarBal[a.jar] = (jarBal[a.jar] || 0) + a.balance; });
+Object.keys(DATA.jarSystem.jars).forEach(key => {
+  const meta = DATA.jarSystem.jars[key];
+  const bal = jarBal[key] || 0;
+  const target = DATA.jarSystem.targets[key];
+  const delta = bal - target;
+  const status = delta < -1 ? 'LOW' : (delta > 1 ? 'OVER' : 'OK');
+  const statusClr = status === 'OK' ? 'var(--green)' : (status === 'LOW' ? 'var(--red)' : 'var(--amber)');
+  const subcats = (DATA.jarSystem.subcats[key] || []).join(', ') || 'none yet';
+  jarGridEl.innerHTML += `<div class="acct-card" style="border-top:3px solid ${meta.color}">
+    <div class="acct-name">${meta.label} <span class="src">${meta.name}</span></div>
+    <div class="acct-bal">${fmt(bal)}</div>
+    <span class="tag tag-save">target ${fmt(target)} · <b style="color:${statusClr}">${status}</b> ${delta !== 0 ? '(' + (delta > 0 ? '+' : '−') + fmt(Math.abs(delta)) + ')' : ''}</span>
+    <div class="m-sub" style="margin-top:6px">${subcats}</div>
+  </div>`;
+});
+document.getElementById('jarNote').textContent = DATA.jarSystem.splitNote;
 
 
 // Upcoming payments — unpaid subscriptions this month + any one-off items in DATA.upcomingPayments
@@ -1225,6 +1288,7 @@ if (!hasData) {
     'Food & dining': dark ? '#EF9F27' : '#BA7517',
     'Groceries':     dark ? '#5DCAA5' : '#1D9E75',
     'Transport':     dark ? '#85B7EB' : '#378ADD',
+    'Travel':        dark ? '#7DD3FC' : '#0284C7',
     'Load / comms':  dark ? '#A8A6A0' : '#888780',
     'Subscriptions': dark ? '#2DD4BF' : '#0D9488',
     'Charity':       dark ? '#AFA9EC' : '#534AB7',
@@ -1391,7 +1455,7 @@ setTimeout(function() {
     'GoTrade':        'gotrade',
     'Cash on hand':   'cash'
   };
-  const catPillBd = { 'Food & dining':'lp-food', 'Transport':'lp-trans', 'Groceries':'lp-groc', 'Income':'lp-groc', 'Charity':'lp-charity', 'Family':'lp-family', 'Transfer':'lp-household', 'Household':'lp-household', 'Loans':'lp-loan', 'Debt payment':'lp-debt', 'Investments':'lp-invest', 'Reconciliation':'lp-recon', 'Load / comms':'lp-household', 'Subscriptions':'lp-household' };
+  const catPillBd = { 'Food & dining':'lp-food', 'Transport':'lp-trans', 'Travel':'lp-trans', 'Groceries':'lp-groc', 'Income':'lp-groc', 'Charity':'lp-charity', 'Family':'lp-family', 'Transfer':'lp-household', 'Household':'lp-household', 'Loans':'lp-loan', 'Debt payment':'lp-debt', 'Investments':'lp-invest', 'Reconciliation':'lp-recon', 'Load / comms':'lp-household', 'Subscriptions':'lp-household' };
 
   function buildAccount(idx) {
     const a = DATA.accounts[idx];
