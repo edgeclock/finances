@@ -2,7 +2,7 @@
 
 **Source:** `index.html`
 **As of:** Aug 8, 2026
-**Status:** Food ₱20 cash logged (4,447.50 → 4,427.50).
+**Status:** Food ₱20 cash logged (4,447.50 → 4,427.50). Edge decision (Aug 8): essential monthly expenses = ~₱20,000-21,000 (fixed ~13,000-13,400 + variable ~7,000-8,000), rent excluded (derived ₱7,700 unconfirmed, footnote only).
 
 ## Accounts
 

@@ -1,5 +1,16 @@
 # Finna Audit Log
 
+## Aug 8, 2026 - EDGE DECISION: essential monthly expenses = ~₱20,000-21,000 (no rent)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Chairman decision via telegram - "he prefers the FIRST estimate... official essential monthly number is 20-21k."
+- Decision: Edge's official essential monthly expenses = **~₱20,000-21,000** (fixed ~₱13,000-13,400 + variable ~₱7,000-8,000), WITHOUT the derived rent figure.
+- Breakdown (computed from ledger Aug 1-8 actuals + fixed commitments): fixed = SPayLater ₱6,969.87 + Google One ₱1,100 + Claude Pro ₱1,300 + ChatGPT Plus ₱999 + DeepSeek ~₱1,300-1,700 + utilities ~₱1,299; variable = food+groceries ~₱6,300-6,600 + transport ~₱300-400 + load ~₱100-300 + household ~₱200-700.
+- Rent: derived estimate ~₱7,700/mo (₱9,000 paycheck-era allocation - ₱1,299 July utilities) kept as a footnote only - **unconfirmed, not part of the official number**. No brothers-billing line exists in the ledger; Edge's actual share never recorded.
+- Watch item (unchanged): GoTyme buffer ₱4,527.84 funds housing now (no income since Jul 24); at ₱9,000/mo allocation it covers roughly half a month. DeepSeek is usage-based and volatile (₱1,319.55 in first 7 days of Aug).
+- No ledger DATA change - decision documentation only.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 8, 2026 - Logged food (cash)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
