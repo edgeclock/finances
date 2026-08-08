@@ -32,7 +32,7 @@ Each transaction has `date`, `desc`, `cat`, `amount`, `wallet`, and `type`.
   - `Loans`: money lent out to other people (creates a `receivables` entry). Loan *repayments received* stay `cat: "Income"`, not `Loans`.
   - `Debt payment`: paying down an existing liability (e.g. SPayLater), distinct from regular discretionary spending.
   - `Investments`: costs tied to investing (e.g. GoTrade transfer fees) — NOT the investment principal itself, which stays `cat: "Transfer"` (internal movement between Edge's own accounts/assets).
-- Valid wallet IDs are `gcash`, `rcbc`, `maya`, `coins`, `cash`, `gotyme`, `gcashsavings`, `mayasavings`, `gotymewallet`, and `gotrade`.
+- Valid wallet IDs are `gcash`, `rcbc`, `maya`, `coins`, `cash`, `gotyme`, `gcashsavings`, `mayasavings`, `gotymewallet`, `gotrade`, `gotymenev` (GoTyme NEC vault), `gotymeltss` (GoTyme LTSS vault), and `gotymeplay` (GoTyme PLAY vault).
 - `Transfer` entries record internal movements and are excluded from spending totals.
 - An `adjustment` is a verified cash-count reconciliation only: it must use wallet `cash` and category `Reconciliation` (changed from `Misc` on 2026-08-03), is shown as a positive cash movement, and is excluded from income and spending totals.
 - Do not mutate an account balance for expected income that has not actually arrived.

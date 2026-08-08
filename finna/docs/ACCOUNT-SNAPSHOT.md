@@ -2,48 +2,63 @@
 
 **Source:** `index.html`
 **As of:** Aug 8, 2026
-**Status:** Food ₱20 cash logged (4,447.50 → 4,427.50). Edge decision (Aug 8): essential monthly expenses = ~₱20,000-21,000 (fixed ~13,000-13,400 + variable ~7,000-8,000), rent excluded (derived ₱7,700 unconfirmed, footnote only).
+**Status:** MAJOR RESTRUCTURE Aug 8: 6-jar MM system adopted (T. Harv Eker modified). Accounts remapped to jars: NEC 50%, FFA/LTSS/EDU/PLAY/GIVE 10% each. One-time this-period split (pool 50,673.75): NEC 50/90, FFA/LTSS/EDU/PLAY 10/90, GIVE 0 (Coins.ph pre-funded). Edge decision: essential monthly expenses = ~₱20,000-21,000 (fixed ~13,000-13,400 + variable ~7,000-8,000), rent excluded (derived ₱7,700 unconfirmed, footnote only).
 
-## Accounts
+## Accounts (6-jar structure)
 
-| Account | Balance | Purpose |
+| Account | Balance | Jar / Purpose |
 |---|---:|---|
-| GCash wallet | PHP 4,253.45 | Spending |
-| GCash savings | PHP 30,160.13 | **Emergency fund** (was MacBook fund - repurposed Aug 3, 2026 after resignation, no target set) |
-| RCBC savings | PHP 4,508.41 | Groceries and cash |
-| Maya wallet | PHP 1,261.61 | Personal (fixed PHP 1,000/paycheck — but see income status below) |
-| GoTyme savings | PHP 4,527.84 | Rent and utilities |
-| Coins.ph PHP | PHP 5,418.71 | Charity and tithes |
-| GoTrade | PHP 1,000.00 | Long-term investing, SPY limit order USD 15.17 treated as bought per Edge (replaces the liquidated Bitget BTC account) |
-| Maya savings | PHP 488.43 | Emergency fund (separate from GCash savings — Maya wallet's own sweep destination) |
-| GoTyme wallet | PHP 0.00 | No assigned plan |
-| Tonik Bank | PHP 52.66 | No assigned plan |
-| Cash on hand | PHP 4,427.50 | Cash, including PHP 5.00 reconciliation adjustment (blessings); +₱3,000 RCBC withdrawal (Davao trip) Aug 7; food ₱20 Aug 8 |
-| Alkansya | PHP 479.75 | Piggy bank |
+| GCash wallet | PHP 2,943.45 | **NEC jar** - spending |
+| GCash bank | PHP 4,630.41 | **FFA jar** (10%) - growth buffer (was emergency fund) |
+| RCBC savings | PHP 4,508.41 | **NEC jar** - temporarily inaccessible, kept booked |
+| Cash on hand | PHP 4,001.75 | **NEC jar** - cash |
+| GoTyme nec vault | PHP 14,962.72 | **NEC jar** - GoTyme vault (housing/essentials) |
+| GoTyme Professional Development (LTSS) | PHP 5,630.42 | **LTSS jar** (10%) |
+| GoTyme My Go Save (PLAY) | PHP 5,642.27 | **PLAY jar** (10%) - includes ₱11.85 pre-existing legacy, never booked |
+| Maya bank | PHP 5,630.42 | **EDU jar** (10%) |
+| Maya wallet | PHP 0.00 | Distribution hub |
+| GoTyme wallet | PHP 0.00 | Distribution hub |
+| Coins.ph PHP | PHP 5,418.71 | **GIVE jar** - charity/tithes (untouched, not-his-money giving fund) |
+| GoTrade | PHP 1,000.00 | **FFA jar** - SPY (invested) |
+| Tonik Bank | PHP 52.66 | Outside system |
+| Alkansya | PHP 479.75 | Outside system - joins the jars later |
 
-**Total assets:** PHP 56,598.49
-**Liabilities:** PHP 15,688.17 (SPayLater — July bill paid, next due Aug bill PHP 6,969.87 on Sep 15, 2026)
+**Total assets:** PHP 54,900.97 (jars 54,368.56 + Tonik/Alkansya 532.41)
+**Liabilities:** PHP 15,688.17 (SPayLater - next due Aug bill PHP 6,969.87 on Sep 15, 2026)
 **Receivables:** PHP 3,178.75 (JR PHP 3,010.00 + RJ PHP 166.75 + Bryan PHP 2.00)
 **Ledger net worth formula:** assets + receivables - liabilities.
 
-## Employment status — no income since Jul 24, 2026
+## 6-jar system (adopted Aug 8, 2026)
+
+- Jars = the 6 MAIN categories. Existing ledger categories become subcategories:
+  - **NEC**: Food & dining, Groceries, Household, Transport, Utilities, Load/Comms, Debt payment (SPayLater), Subscriptions, Rent
+  - **FFA**: Investments, savings growth
+  - **LTSS**: long-term savings for spending, debt paydown
+  - **EDU**: education, books, courses, skill tools
+  - **PLAY**: entertainment, eating out, coffee, fun
+  - **GIVE**: tithes, charity, missionary support
+- Percentages: NEC 50%, FFA/LTSS/EDU/PLAY/GIVE 10% each. This period: one-time split 50/90 + 10/90 x4, GIVE 0. Next period: standard 50/10/10/10/10/10 with GIVE 10%.
+- Pool 50,673.75 excluded Tonik, Alkansya, Coins.ph; included cash on hand and GoTrade (GoTrade = already-invested FFA).
+
+## Employment status - no income since Jul 24, 2026
 
 **Edge resigned from his VA job Aug 3, 2026.** No income currently.
 
-- **Now on monthly monitoring, not pay-period tracking** (as of Aug 3, 2026) — `DATA.monthly` replaced `DATA.salary`. Current: month Aug 1-31, 2026, day 8 of 31, resets Sep 1.
-- **The semi-monthly distribution formula is paused** — nothing to distribute until income resumes.
-- **MacBook goal repurposed** — GCash savings is now the emergency buffer; no active savings target.
+- **Now on monthly monitoring, not pay-period tracking** (as of Aug 3, 2026) - `DATA.monthly` replaced `DATA.salary`. Current: month Aug 1-31, 2026, day 8 of 31, resets Sep 1.
+- **The semi-monthly distribution formula is paused** - nothing to distribute until income resumes; the 6-jar system replaces it.
 - **`DATA.monthlySpending.wallets[].budget`** set Aug 7, 2026 from real ledger data (Edge decision): gcash 6,000, rcbc 3,000, maya 1,000, coins 1,000. Basis: Aug 1-7 actuals + fixed subscriptions + no-income reality. DeepSeek usage is volatile (₱1,319.55 in first 7 days) - flagged for mid-month rcbc recheck. `monthlyAllocation` donut still stale paycheck-era display, pending Edge decision.
-- `DATA.salaryHistory` future placeholders removed — it's now a pure historical record ending Jul 25, 2026 (last actual paycheck).
+- `DATA.salaryHistory` future placeholders removed - it's now a pure historical record ending Jul 25, 2026 (last actual paycheck).
+- RCBC temporarily inaccessible - follow up pending.
+- GoTyme buffer ₱4,527.84 (pre-restructure) now spread into NEC/LTSS/PLAY vaults; housing comes from the NEC jar (GoTyme nec vault).
 
-## Category system — "Misc" retired Aug 3, 2026
+## Category system - "Misc" retired Aug 3, 2026
 
-Active categories: Food & dining, Groceries, Transport, Load / comms, Subscriptions, Charity, Family, **Household**, **Loans**, **Debt payment**, **Investments**. `Misc` is no longer used for new transactions — see `finna/DATA-CONTRACT.md` for the full rule and category definitions. (June 2026 and part of July 2026's compiled `monthlyReports` still carry a frozen legacy `Misc` bucket that can't be itemized further — historical limitation, not an active category.)
+Active categories: Food & dining, Groceries, Transport, Load / comms, Subscriptions, Charity, Family, **Household**, **Loans**, **Debt payment**, **Investments**. `Misc` is no longer used for new transactions - see `finna/DATA-CONTRACT.md` for the full rule and category definitions. (June 2026 and part of July 2026's compiled `monthlyReports` still carry a frozen legacy `Misc` bucket that can't be itemized further - historical limitation, not an active category.)
 
-## Pre-resignation reference (historical — last confirmed paycheck)
+## Pre-resignation reference (historical - last confirmed paycheck)
 
 - Period: Jul 24, 2026 to Aug 10, 2026 (last pay period, cut short by the resignation)
-- Most recent salary: PHP 17,354.21 (Jul 24 — notably reduced; may have been an early signal of the situation that led to resignation)
-- Old distribution formula: MacBook (GCash savings) PHP 5,000 fixed + GoTrade (investing) PHP 1,000 fixed + GoTyme PHP 4,500 fixed + Maya PHP 1,000 fixed + Coins.ph 10% of salary + remainder split GCash wallet/RCBC.
+- Most recent salary: PHP 17,354.21 (Jul 24 - notably reduced; may have been an early signal of the situation that led to resignation)
+- Old distribution formula: MacBook (GCash savings) PHP 5,000 fixed + GoTrade (investing) PHP 1,000 fixed + GoTyme PHP 4,500 fixed + Maya PHP 1,000 fixed + Coins.ph 10% of salary + remainder split GCash wallet/RCBC. (Superseded by the 6-jar system Aug 8, 2026.)
 
 This is a documentation mirror. Recalculate it from `index.html` after a material finance update.

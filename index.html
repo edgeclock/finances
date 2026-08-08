@@ -390,7 +390,7 @@
     <div class="sec-title">Emergency fund</div>
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
-        <span style="font-size:14px;font-weight:500">GCash savings</span>
+        <span style="font-size:14px;font-weight:500">GCash bank (FFA jar)</span>
         <span style="font-size:12px;color:var(--t2)" id="mbTargetLabel"></span>
       </div>
       <div class="pb"><div class="pb-fill" id="mbBar" style="background:var(--green)"></div></div>
@@ -576,20 +576,27 @@ const DATA = {
 
   lastUpdated: "Aug 8, 2026",
 
-  // Account balances (update each salary period)
+  // Account balances - 6-jar MM system (T. Harv Eker modified, adopted Aug 8, 2026):
+  // NEC 50% | FFA/LTSS/EDU/PLAY/GIVE 10% each. This period used a one-time split (pool
+  // 50,673.75): NEC 50/90, FFA/LTSS/EDU/PLAY 10/90, GIVE 0 (Coins.ph pre-funded).
+  // Next period: standard 50/10/10/10/10/10 with GIVE 10%. Existing ledger categories are
+  // subcategories of the 6 mains. Pool excluded Tonik, Alkansya, Coins.ph; included cash
+  // and GoTrade (GoTrade = already-invested FFA).
   accounts: [
-    { label: "GCash wallet",   balance: 4253.45,  tag: "spend",  tagLabel: "spending"      },
-    { label: "GCash savings",  balance: 30160.13, tag: "save",   tagLabel: "Emergency fund (was MacBook fund)" },
-    { label: "RCBC savings",   balance: 4508.41,  tag: "spend",  tagLabel: "groceries/cash"},
-    { label: "Maya wallet",    balance: 1261.61,  tag: "spend",  tagLabel: "personal"      },
-    { label: "GoTyme savings", balance: 4527.84,  tag: "save",   tagLabel: "rent/utilities"},
-    { label: "Coins.ph PHP",   balance: 5418.71,  tag: "save",   tagLabel: "charity/tithes"},
-    { label: "GoTrade",        balance: 1000.00,  tag: "invest", tagLabel: "SPY limit order $15.17, treated as bought" },
-    { label: "Maya savings",   balance: 488.43,   tag: "save",   tagLabel: "emergency fund"},
-    { label: "GoTyme wallet",  balance: 0.00,     tag: "spend",  tagLabel: "no plan yet"   },
-    { label: "Tonik Bank",     balance: 52.66,    tag: "save",   tagLabel: "no plan yet"   },
-    { label: "Cash on hand",   balance: 4427.50,  tag: "cash",   tagLabel: "cash"          },
-    { label: "Alkansya",       balance: 479.75,   tag: "save",   tagLabel: "piggy bank"    }
+    { label: "GCash wallet",   balance: 2943.45,  tag: "spend",  tagLabel: "NEC jar - spending" },
+    { label: "GCash bank",     balance: 4630.41,  tag: "save",   tagLabel: "FFA jar (10%)" },
+    { label: "RCBC savings",   balance: 4508.41,  tag: "spend",  tagLabel: "NEC jar (temporarily inaccessible)" },
+    { label: "Cash on hand",   balance: 4001.75,  tag: "cash",   tagLabel: "NEC jar - cash" },
+    { label: "GoTyme nec vault", balance: 14962.72, tag: "save", tagLabel: "NEC jar - GoTyme vault" },
+    { label: "GoTyme Professional Development (LTSS)", balance: 5630.42, tag: "save", tagLabel: "LTSS jar (10%)" },
+    { label: "GoTyme My Go Save (PLAY)", balance: 5642.27, tag: "save", tagLabel: "PLAY jar (10%)" },
+    { label: "Maya bank",      balance: 5630.42,  tag: "save",   tagLabel: "EDU jar (10%)" },
+    { label: "Maya wallet",    balance: 0.00,     tag: "spend",  tagLabel: "distribution hub" },
+    { label: "GoTyme wallet",  balance: 0.00,     tag: "spend",  tagLabel: "distribution hub" },
+    { label: "Coins.ph PHP",   balance: 5418.71,  tag: "save",   tagLabel: "GIVE jar (10%) - charity/tithes" },
+    { label: "GoTrade",        balance: 1000.00,  tag: "invest", tagLabel: "FFA jar - SPY (invested)" },
+    { label: "Tonik Bank",     balance: 52.66,    tag: "save",   tagLabel: "outside system" },
+    { label: "Alkansya",       balance: 479.75,   tag: "save",   tagLabel: "outside system - joins later" }
   ],
 
   liabilities: {
@@ -713,7 +720,28 @@ const DATA = {
     { date: "Aug 7",  desc: "Food",                                 cat: "Food & dining",amount: 33.00,    wallet: "gcash", type: "expense" },
     { date: "Aug 7",  desc: "Food",                                 cat: "Food & dining",amount: 31.00,    wallet: "gcash", type: "expense" },
     { date: "Aug 7",  desc: "Food",                                 cat: "Food & dining",amount: 100.00,   wallet: "cash",  type: "expense" },
-    { date: "Aug 8",  desc: "Food",                                 cat: "Food & dining",amount: 20.00,    wallet: "cash",  type: "expense" }
+    { date: "Aug 8",  desc: "Food",                                 cat: "Food & dining",amount: 20.00,    wallet: "cash",  type: "expense" },
+    { date: "Aug 8",  desc: "Interest earned",                        cat: "Income",       amount: 41.76,    wallet: "gcashsavings", type: "income"  },
+    { date: "Aug 8",  desc: "Interest earned",                        cat: "Income",       amount: 0.75,     wallet: "mayasavings",  type: "income"  },
+    { date: "Aug 8",  desc: "Interest earned",                        cat: "Income",       amount: 3.87,     wallet: "gotyme",       type: "income"  },
+    { date: "Aug 8",  desc: "Claude Pro",                            cat: "Subscriptions",amount: 1300.00,  wallet: "gcash",  type: "expense" },
+    { date: "Aug 8",  desc: "Dinner",                                cat: "Food & dining",amount: 140.00,   wallet: "cash",   type: "expense" },
+    { date: "Aug 8",  desc: "Snacks",                                cat: "Food & dining",amount: 515.75,   wallet: "cash",   type: "expense" },
+    { date: "Aug 8",  desc: "Snacks overcharge refund",              cat: "Income",       amount: 230.00,   wallet: "cash",   type: "income"  },
+    { date: "Aug 8",  desc: "Transfer to GCash wallet (6-jar setup)", cat: "Transfer",    amount: 25571.48, wallet: "gcashsavings", type: "expense" },
+    { date: "Aug 8",  desc: "Transfer from GCash bank (6-jar setup)", cat: "Transfer",    amount: 25571.48, wallet: "gcash",       type: "income"  },
+    { date: "Aug 8",  desc: "Transfer to GoTyme (6-jar setup)",       cat: "Transfer",    amount: 25581.48, wallet: "gcash",       type: "expense" },
+    { date: "Aug 8",  desc: "Transfer from GCash wallet (6-jar setup)", cat: "Transfer",  amount: 25581.48, wallet: "gotyme",      type: "income"  },
+    { date: "Aug 8",  desc: "Transfer to Maya wallet (6-jar setup)",  cat: "Transfer",    amount: 3879.63,  wallet: "gotyme",      type: "expense" },
+    { date: "Aug 8",  desc: "Transfer from GoTyme (6-jar setup)",     cat: "Transfer",    amount: 3879.63,  wallet: "maya",        type: "income"  },
+    { date: "Aug 8",  desc: "Transfer to Maya bank (EDU jar)",        cat: "Transfer",    amount: 5141.24,  wallet: "maya",        type: "expense" },
+    { date: "Aug 8",  desc: "Transfer from Maya wallet (EDU jar)",    cat: "Transfer",    amount: 5141.24,  wallet: "mayasavings", type: "income"  },
+    { date: "Aug 8",  desc: "Transfer to My Go Save (PLAY jar)",      cat: "Transfer",    amount: 5630.42,  wallet: "gotyme",      type: "expense" },
+    { date: "Aug 8",  desc: "Transfer from GoTyme (PLAY jar)",        cat: "Transfer",    amount: 5630.42,  wallet: "gotymeplay",  type: "income"  },
+    { date: "Aug 8",  desc: "Transfer to nec vault (NEC jar)",        cat: "Transfer",    amount: 14962.72, wallet: "gotyme",      type: "expense" },
+    { date: "Aug 8",  desc: "Transfer from GoTyme (NEC jar)",         cat: "Transfer",    amount: 14962.72, wallet: "gotymenev",   type: "income"  },
+    { date: "Aug 8",  desc: "Transfer to Professional Development (LTSS jar)", cat: "Transfer", amount: 1098.71, wallet: "gotyme", type: "expense" },
+    { date: "Aug 8",  desc: "Transfer from GoTyme (LTSS jar)",        cat: "Transfer",    amount: 1098.71,  wallet: "gotymeltss",  type: "income"  }
   ],
 
   spaylaterSchedule: [
@@ -735,7 +763,7 @@ const DATA = {
     { name: "CapCut",     amount: 359.00,  wallet: "gcash", dueDay: 3,  paid: true  },
     { name: "Canva Pro",  amount: 300.00,  wallet: "gcash", dueDay: 3,  paid: true  },
     { name: "Google One", amount: 1100.00, wallet: "gcash", dueDay: 7,  paid: true  },
-    { name: "Claude Pro", amount: 1300.00, wallet: "gcash", dueDay: 10, paid: false },
+    { name: "Claude Pro", amount: 1300.00, wallet: "gcash", dueDay: 10, paid: true  },
     { name: "ChatGPT Plus", amount: 999.00, wallet: "rcbc", dueDay: 19, paid: false }
   ],
 
@@ -835,7 +863,7 @@ const totalAssets      = DATA.accounts.reduce((s, a) => s + a.balance, 0);
 const totalReceivables = Object.values(DATA.receivables || {}).reduce((s, v) => s + v, 0);
 const totalLiabilities = DATA.liabilities.spaylater + DATA.liabilities.bike;
 const netWorth         = totalAssets + totalReceivables - totalLiabilities;
-const gcashSavingsBal  = DATA.accounts.find(a => a.label === "GCash savings").balance;
+const gcashSavingsBal  = DATA.accounts.find(a => a.label === "GCash bank").balance;
 const gcashWalletBal   = DATA.accounts.find(a => a.label === "GCash wallet").balance;
 
 const ps = DATA.monthlySpending;
@@ -881,12 +909,12 @@ if (totalReceivables > 0) {
   document.getElementById('receivableNote').style.color = 'var(--green)';
 }
 
-// Emergency fund (was MacBook goal — repurposed Aug 3, 2026 after resignation, no target set yet)
+// FFA jar (was GCash savings emergency fund - repurposed Aug 8, 2026 under the 6-jar system)
 document.getElementById('mbBar').style.width        = '100%';
 document.getElementById('mbTargetLabel').textContent = 'no target set';
-document.getElementById('mbSaved').textContent      = fmt(gcashSavingsBal) + ' available';
+document.getElementById('mbSaved').textContent      = fmt(gcashSavingsBal) + ' in FFA jar';
 document.getElementById('mbRemaining').textContent  = '';
-document.getElementById('mbNote').textContent       = 'Repurposed from MacBook fund on Aug 3, 2026 — Edge resigned, this is now the emergency buffer until new work is found. No paycheck contributions until income resumes.';
+document.getElementById('mbNote').textContent       = '6-jar MM system adopted Aug 8, 2026 - GCash bank is the FFA jar (10%). NEC jar (50%) covers essentials. No separate emergency fund target; FFA doubles as the growth buffer until income resumes.';
 
 // Monthly monitoring (was "Salary period" — see DATA.monthly comment)
 document.getElementById('periodLabel').textContent    = mo.monthStart + ' – ' + mo.monthEnd;
@@ -979,7 +1007,7 @@ if (cashTxns.length > 0) {
 }
 
 // Transaction log
-const walletLbl  = { gcash: 'GCash', rcbc: 'RCBC', maya: 'Maya', coins: 'Coins.ph', cash: 'Cash' };
+const walletLbl  = { gcash: 'GCash', rcbc: 'RCBC', maya: 'Maya', coins: 'Coins.ph', cash: 'Cash', gotyme: 'GoTyme', gcashsavings: 'GCash bank', mayasavings: 'Maya bank', gotymewallet: 'GoTyme wallet', gotrade: 'GoTrade', gotymenev: 'GoTyme nec', gotymeltss: 'GoTyme LTSS', gotymeplay: 'GoTyme PLAY' };
 const catPillTxn = { 'Food & dining':'lp-food', 'Transport':'lp-trans', 'Groceries':'lp-groc', 'Income':'lp-groc', 'Charity':'lp-charity', 'Family':'lp-family', 'Household':'lp-household', 'Loans':'lp-loan', 'Debt payment':'lp-debt', 'Investments':'lp-invest', 'Load / comms':'lp-household', 'Subscriptions':'lp-household' };
 const txnLogEl   = document.getElementById('txnLog');
 const totalIncome = DATA.transactions.filter(t => t.type === 'income').reduce((s, t) => s + t.amount, 0);
@@ -1090,7 +1118,7 @@ const alerts = [
   {
     dot: 'amber',
     title: 'No active income',
-    sub: 'Resigned Aug 3 — GCash savings (' + fmt(gcashSavingsBal) + ') now the emergency buffer until new work'
+    sub: 'Resigned Aug 3 - no income since Jul 24; FFA jar (' + fmt(gcashSavingsBal) + ') is the growth buffer under the 6-jar system'
   },
   {
     dot: 'amber',
@@ -1351,12 +1379,14 @@ setTimeout(function() {
   // Account label -> wallet id used in DATA.transactions[].wallet
   const walletMap = {
     'GCash wallet':   'gcash',
-    'GCash savings':  'gcashsavings',
+    'GCash bank':     'gcashsavings',
     'RCBC savings':   'rcbc',
     'Maya wallet':    'maya',
-    'Maya savings':   'mayasavings',
+    'Maya bank':      'mayasavings',
     'Coins.ph PHP':   'coins',
-    'GoTyme savings': 'gotyme',
+    'GoTyme nec vault': 'gotymenev',
+    'GoTyme Professional Development (LTSS)': 'gotymeltss',
+    'GoTyme My Go Save (PLAY)': 'gotymeplay',
     'GoTyme wallet':  'gotymewallet',
     'GoTrade':        'gotrade',
     'Cash on hand':   'cash'
