@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Aug 9, 2026 - Logged food (cash)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via Monica (inter-session) - wallet explicitly confirmed as CASH.
+- Ledger change: `{ date: "Aug 9", desc: "Food", cat: "Food & dining", amount: 30.00, wallet: "cash", type: "expense" }`.
+- Balance update: Cash on hand 3,303.50 -> 3,273.50.
+- `lastUpdated` to Aug 9, 2026. `monthly.dayOfMonth` 8 -> 9.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 8, 2026 - CASH CORRECTION + FULL 6-JAR DASHBOARD IMPLEMENTATION
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
