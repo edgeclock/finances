@@ -1,5 +1,18 @@
 # Finna Audit Log
 
+## Aug 10, 2026 - Logged Aug 9 Palawan expenses (4 items)
+
+- Runtime: Finna (OpenClaw) - lease handle `claude`.
+- Confirmed source: Edge via Telegram (10:53-10:55) - dates, wallets, and category all confirmed by Chairman.
+- Ledger change (all `Aug 9`):
+  - `{ date: "Aug 9", desc: "Food", cat: "Food & dining", amount: 75.00, wallet: "cash", type: "expense" }`
+  - `{ date: "Aug 9", desc: "Dinner", cat: "Food & dining", amount: 130.00, wallet: "cash", type: "expense" }`
+  - `{ date: "Aug 9", desc: "Dinner", cat: "Food & dining", amount: 245.00, wallet: "cash", type: "expense" }`
+  - `{ date: "Aug 9", desc: "Internet (parents' subscription, Palawan)", cat: "Load / comms", amount: 1299.00, wallet: "gotymenev", type: "expense" }`
+- Balance updates: Cash on hand 3,273.50 -> 2,823.50 (total cash out 450.00). GoTyme nec vault 14,962.72 -> 13,663.72.
+- `lastUpdated` to Aug 10, 2026. `monthly.dayOfMonth` 9 -> 10.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 9, 2026 - Logged food (cash)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
