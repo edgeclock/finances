@@ -1,5 +1,18 @@
 # Finna Audit Log
 
+## Aug 11, 2026 - Logged Aug 11 cash expenses (4 items)
+
+- Runtime: Finna (OpenClaw) - lease handle `claude`.
+- Confirmed source: Edge via Telegram (11:16-11:17) - fares, food, wallets, and amounts confirmed by Chairman.
+- Ledger change (all `Aug 11`, all `cash`):
+  - `{ date: "Aug 11", desc: "Fare", cat: "Transport", amount: 195.00, wallet: "cash", type: "expense" }`
+  - `{ date: "Aug 11", desc: "Food", cat: "Food & dining", amount: 45.00, wallet: "cash", type: "expense" }`
+  - `{ date: "Aug 11", desc: "Fare", cat: "Transport", amount: 175.00, wallet: "cash", type: "expense" }`
+  - `{ date: "Aug 11", desc: "Fare", cat: "Transport", amount: 13.00, wallet: "cash", type: "expense" }`
+- Balance update: Cash on hand 2,288.50 -> 1,860.50 (cash out 428.00 total).
+- `lastUpdated` stays Aug 11, 2026. `monthly.dayOfMonth` already 11.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 11, 2026 - Logged Aug 11 breakfast (GCash wallet)
 
 - Runtime: Finna (OpenClaw) - lease handle `claude`.
