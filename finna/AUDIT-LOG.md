@@ -1,5 +1,13 @@
 # Finna Audit Log
 
+## Aug 11, 2026 - RCBC access restored (status update)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via Monica (Aug 11 evening) - RCBC savings accessible again; no balance change, still booked at 4,508.41.
+- Ledger change: RCBC account tagLabel `"NEC jar (temporarily inaccessible)"` -> `"NEC jar"`. No transaction or balance changed.
+- Docs updated: AUDIT-LOG jar map + decisions, ACCOUNT-SNAPSHOT account table + notes, MEMORY.md jar map + follow-up list.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 11, 2026 - Logged Aug 11 lunch (cash)
 
 - Runtime: Finna (OpenClaw) - lease handle `claude`.
@@ -108,7 +116,7 @@
 - Pool excluded Tonik, Alkansya, Coins.ph; included cash on hand and GoTrade (GoTrade = already-invested FFA).
 
 ### Jar-to-account map (confirmed balances)
-- NEC: GCash wallet 2,943.45 + RCBC 4,508.41 (temporarily inaccessible, kept booked) + cash 4,001.75 + GoTyme 'nec' vault 14,962.72 = 26,416.33
+- NEC: GCash wallet 2,943.45 + RCBC 4,508.41 + cash 4,001.75 + GoTyme 'nec' vault 14,962.72 = 26,416.33
 - FFA: GCash bank 4,630.41 + GoTrade 1,000 (SPY, invested) = 5,630.41
 - LTSS: GoTyme vault 'Professional Development' 5,630.42
 - EDU: Maya bank 5,630.42 (Maya wallet = 0, distribution hub)
@@ -125,7 +133,7 @@
 - Transfer fee 10 charged during GoTyme chain: NOTE ONLY per Edge, not booked.
 
 ### Other decisions logged
-- (1) 6-jar MM system with modified percentages (NEC 50, GIVE 10). (2) One-time this-period split 50/90 + 10/90 x4, GIVE 0; next period standard. (3) Official essential monthly expenses = 20-21k, rent NOT included (7,700 derived stays unconfirmed footnote). (4) RCBC temporarily inaccessible, follow up. (5) Alkansya joins the system later. (6) Jar-to-account map as above.
+- (1) 6-jar MM system with modified percentages (NEC 50, GIVE 10). (2) One-time this-period split 50/90 + 10/90 x4, GIVE 0; next period standard. (3) Official essential monthly expenses = 20-21k, rent NOT included (7,700 derived stays unconfirmed footnote). (4) RCBC temporarily inaccessible Aug 8; access restored Aug 11 (Edge-confirmed). (5) Alkansya joins the system later. (6) Jar-to-account map as above.
 - New wallet IDs added: `gotymenev`, `gotymeltss`, `gotymeplay` (validator + DATA-CONTRACT + dashboard walletLbl/walletMap updated).
 - Dashboard emergency-fund section repurposed: GCash bank is now the FFA jar display; alert text updated.
 - Validation: `finna-validate.ps1` passed.

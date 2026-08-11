@@ -10,7 +10,7 @@
 |---|---:|---|
 | GCash wallet | PHP 2,740.45 | **NEC jar** - spending |
 | GCash bank | PHP 4,630.41 | **FFA jar** (10%) - growth buffer (was emergency fund) |
-| RCBC savings | PHP 4,508.41 | **NEC jar** - temporarily inaccessible, kept booked |
+| RCBC savings | PHP 4,508.41 | **NEC jar** |
 | Cash on hand | PHP 1,650.50 | **NEC jar** - cash (post travel-expense correction) |
 | GoTyme nec vault | PHP 13,091.72 | **NEC jar** - GoTyme vault (housing/essentials) |
 | GoTyme Professional Development (LTSS) | PHP 5,630.42 | **LTSS jar** (10%) |
@@ -50,7 +50,7 @@
 - **The semi-monthly distribution formula is paused** - nothing to distribute until income resumes; the 6-jar system replaces it.
 - **`DATA.monthlySpending.wallets[].budget`** set Aug 7, 2026 from real ledger data (Edge decision): gcash 6,000, rcbc 3,000, maya 1,000, coins 1,000. Basis: Aug 1-7 actuals + fixed subscriptions + no-income reality. DeepSeek usage is volatile (₱1,319.55 in first 7 days) - flagged for mid-month rcbc recheck. `monthlyAllocation` donut still stale paycheck-era display, pending Edge decision.
 - `DATA.salaryHistory` future placeholders removed - it's now a pure historical record ending Jul 25, 2026 (last actual paycheck).
-- RCBC temporarily inaccessible - follow up pending.
+- RCBC access restored Aug 11, 2026 (Edge-confirmed) - was temporarily inaccessible Aug 8, now fully usable. Balance unchanged at 4,508.41.
 - Housing comes from the NEC jar (GoTyme nec vault). GoTyme buffer pre-restructure (₱4,527.84) now spread into NEC/LTSS/PLAY vaults.
 - GCash wallet (NEC spending) at 2,943.45 is under the ₱3,059 subscription threshold - dashboard LOW alert active until next NEC top-up or income.
 - Aug 9 Palawan expenses logged (Edge-confirmed): food 75 cash, dinner 130 cash, dinner 245 cash, internet (parents' subscription) 1,299 from GoTyme nec vault.
