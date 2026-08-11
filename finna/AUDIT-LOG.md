@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Aug 11, 2026 - Logged Aug 11 fare (GoTyme NEC vault)
+
+- Runtime: Finna (OpenClaw) - lease handle `claude`.
+- Confirmed source: Edge via Telegram (04:18) - fare, wallet, and amount confirmed by Chairman.
+- Ledger change: `{ date: "Aug 11", desc: "Fare", cat: "Transport", amount: 252.00, wallet: "gotymenev", type: "expense" }`.
+- Balance update: GoTyme nec vault 13,343.72 -> 13,091.72.
+- `lastUpdated` to Aug 11, 2026. `monthly.dayOfMonth` 10 -> 11.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 10, 2026 - Logged Aug 10 expenses (5 items)
 
 - Runtime: Finna (OpenClaw) - lease handle `claude`.
