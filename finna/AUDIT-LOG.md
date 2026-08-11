@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Aug 11, 2026 - Logged Aug 11 breakfast (GCash wallet)
+
+- Runtime: Finna (OpenClaw) - lease handle `claude`.
+- Confirmed source: Edge via Telegram (04:19) - breakfast, wallet, and amount confirmed by Chairman.
+- Ledger change: `{ date: "Aug 11", desc: "Breakfast", cat: "Food & dining", amount: 203.00, wallet: "gcash", type: "expense" }`.
+- Balance update: GCash wallet 2,943.45 -> 2,740.45.
+- `lastUpdated` stays Aug 11, 2026. `monthly.dayOfMonth` already 11.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 11, 2026 - Logged Aug 11 fare (GoTyme NEC vault)
 
 - Runtime: Finna (OpenClaw) - lease handle `claude`.
