@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Aug 12, 2026 - Logged Aug 12 lunch (GCash wallet)
+
+- Runtime: Finna (OpenClaw) - lease handle `claude`.
+- Confirmed source: Edge via Telegram (14:44) - lunch, wallet, and amount confirmed by Chairman.
+- Ledger change: `{ date: "Aug 12", desc: "Lunch", cat: "Food & dining", amount: 210.00, wallet: "gcash", type: "expense" }`.
+- Balance update: GCash wallet 2,740.45 -> 2,530.45.
+- `lastUpdated` -> Aug 12, 2026. `monthly.dayOfMonth` -> 12.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 11, 2026 - RCBC access restored (status update)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
