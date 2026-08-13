@@ -1,5 +1,18 @@
 # Finna Audit Log
 
+## Aug 13, 2026 - Logged Aug 12 Bry loan + Aug 13 expenses
+
+- Runtime: Finna (OpenClaw) - lease handle `claude`.
+- Confirmed source: Edge via Telegram (18:25) - loan, repayment, laundry, and lunch amounts confirmed by Chairman.
+- Ledger change: 4 entries added -
+  - `{ date: "Aug 12", desc: "Loan to Bry", cat: "Loans", amount: 500.00, wallet: "cash", type: "expense" }`
+  - `{ date: "Aug 13", desc: "Bry loan repayment", cat: "Income", amount: 500.00, wallet: "gcash", type: "income" }`
+  - `{ date: "Aug 13", desc: "Laundry", cat: "Household", amount: 192.50, wallet: "gcash", type: "expense" }`
+  - `{ date: "Aug 13", desc: "Lunch", cat: "Food & dining", amount: 180.00, wallet: "gcash", type: "expense" }`
+- Balance update: GCash wallet 2,530.45 -> 2,657.95; Cash on hand 1,650.50 -> 1,150.50. Receivables.bryan unchanged (500 loaned out Aug 12, 500 repaid Aug 13).
+- `lastUpdated` -> Aug 13, 2026. `monthly.dayOfMonth` -> 13.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 13, 2026 - Jar rules added to operating guide (docs only)
 
 - Runtime: Finna (OpenClaw) - lease handle `claude`.
