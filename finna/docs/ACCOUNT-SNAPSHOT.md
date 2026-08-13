@@ -11,7 +11,7 @@
 | GCash wallet | PHP 2,657.95 | **NEC jar** - spending |
 | GCash bank | PHP 4,630.41 | **FFA jar** (10%) - growth buffer (was emergency fund) |
 | RCBC savings | PHP 4,508.41 | **NEC jar** |
-| Cash on hand | PHP 1,150.50 | **NEC jar** - cash (post travel-expense correction) |
+| Cash on hand | PHP 960.50 | **NEC jar** - cash (post travel-expense correction) |
 | GoTyme nec vault | PHP 13,091.72 | **NEC jar** - GoTyme vault (housing/essentials) |
 | GoTyme Professional Development (LTSS) | PHP 5,630.42 | **LTSS jar** (10%) |
 | GoTyme My Go Save (PLAY) | PHP 5,642.27 | **PLAY jar** (10%) - includes ₱11.85 pre-existing legacy, never booked |
@@ -23,7 +23,7 @@
 | Tonik Bank | PHP 52.66 | Outside system |
 | Alkansya | PHP 479.75 | Outside system - joins the jars later |
 
-**Total assets:** PHP 49,893.22 (jars 49,360.81 + Tonik/Alkansya 532.41)
+**Total assets:** PHP 49,703.22 (jars 49,170.81 + Tonik/Alkansya 532.41)
 **Liabilities:** PHP 15,688.17 (SPayLater - next due Aug bill PHP 6,969.87 on Sep 15, 2026)
 **Receivables:** PHP 3,178.75 (JR PHP 3,010.00 + RJ PHP 166.75 + Bryan PHP 2.00)
 **Ledger net worth formula:** assets + receivables - liabilities.
@@ -40,7 +40,7 @@
 - Percentages: NEC 50%, FFA/LTSS/EDU/PLAY/GIVE 10% each.
 - This period: one-time split of pool 50,673.75 - NEC 50/90 = 28,152.08, FFA/LTSS/EDU/PLAY 10/90 = 5,630.42 each, GIVE 0 (Coins.ph pre-funded). Next period: standard 50/10/10/10/10/10 with GIVE 10%.
 - Pool excluded Tonik, Alkansya, Coins.ph; included cash on hand and GoTrade (GoTrade = already-invested FFA).
-- Dashboard: new "6-jar summary" section shows per-jar balance vs target with OK/LOW/OVER status (tolerance 1.00 for split rounding). Jar balances: NEC 21,408.58 (LOW vs 28,152.08 - travel expense + spend), FFA 5,630.41 (OK), LTSS 5,630.42 (OK), EDU 5,630.42 (OK), PLAY 5,642.27 (OK), GIVE 5,418.71 (OVER - pre-funded, expected).
+- Dashboard: new "6-jar summary" section shows per-jar balance vs target with OK/LOW/OVER status (tolerance 1.00 for split rounding). Jar balances: NEC 21,218.58 (LOW vs 28,152.08 - travel expense + spend), FFA 5,630.41 (OK), LTSS 5,630.42 (OK), EDU 5,630.42 (OK), PLAY 5,642.27 (OK), GIVE 5,418.71 (OVER - pre-funded, expected).
 
 ## Employment status - no income since Jul 24, 2026
 
@@ -62,6 +62,7 @@
 - Aug 12 lunch 210 GCash wallet logged (Edge-confirmed).
 - Aug 12 loan to Bry 500 cash logged (Edge-confirmed) - receivable created then repaid next day, Bryan net stays 2.00.
 - Aug 13 logged (Edge-confirmed): Bry loan repayment 500 GCash (income), laundry 192.50 GCash (Household), lunch 180 GCash (Food & dining).
+- Aug 13 dinner 190 cash logged (Edge-confirmed).
 
 ## Category system - "Misc" retired Aug 3, 2026
 

@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Aug 13, 2026 - Logged Aug 13 dinner (cash)
+
+- Runtime: Finna (OpenClaw) - lease handle `claude`.
+- Confirmed source: Edge via Telegram (20:14) - dinner, wallet, and amount confirmed by Chairman.
+- Ledger change: `{ date: "Aug 13", desc: "Dinner", cat: "Food & dining", amount: 190.00, wallet: "cash", type: "expense" }`.
+- Balance update: Cash on hand 1,150.50 -> 960.50.
+- `lastUpdated` stays Aug 13, 2026. `monthly.dayOfMonth` already 13.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 13, 2026 - Logged Aug 12 Bry loan + Aug 13 expenses
 
 - Runtime: Finna (OpenClaw) - lease handle `claude`.
