@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Aug 13, 2026 - Jar rules added to operating guide (docs only)
+
+- Runtime: Finna (OpenClaw) - lease handle `claude`.
+- Confirmed source: Edge via dashboard (GO on Aug 13) - deep-dive learning from 6-Jars MMID guide (edgeclock/6-Jars-MMID).
+- Change: `finna/FINNA.md` gained a "Jar Rules (6-Jar MM System)" section: FFA capital never spent, LTSS = debt-paydown/big-purchase jar, PLAY must spend, GIVE 5-10%, Financial Freedom formula (confirmed Passive Income > Expenses only). LTSS-funds-SPayLater routing stays FLAGGED AS PROPOSAL pending Edge's decision (same treatment as the rent figure).
+- Change: `HEARTBEAT.md` (local runtime file, untracked in git) gained jar-rule checks: FFA excluded from spendable, PLAY idle flag, GIVE cadence, per-jar OK/LOW/OVER in monthly report.
+- No ledger entries; balances unchanged. `lastUpdated` stays Aug 12, 2026.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 12, 2026 - Logged Aug 12 lunch (GCash wallet)
 
 - Runtime: Finna (OpenClaw) - lease handle `claude`.

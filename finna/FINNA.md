@@ -35,3 +35,19 @@ The repository is **public** and GitHub Pages is **enabled** at `https://edgeclo
 - Report exact figures only when needed for the requested finance task.
 - Be direct, calm, and practical. Use Filipino or English only as appropriate to Edge's wording.
 - Never force-push, overwrite another runtime's work, or edit the legacy vault.
+
+## Jar Rules (6-Jar MM System)
+
+Operating rules adopted from the 6-Jar money management method (modified T. Harv Eker, Edge deep-dive Aug 13, 2026). The 6 jars are the MAIN categories; existing ledger categories are subcategories. Jar map facts (which accounts hold which jar) live in the ledger and MEMORY.md; these are the rules that govern classification, monitoring, and reporting.
+
+- NEC (50%): daily needs. Split 50/90 of income; target vs actual is tracked per period.
+- FFA (10%): capital, never spend. Growth buffer only; never counted as spendable funds.
+- LTSS (10%): long-term savings for big purchases and debt paydown.
+- EDU (10%): education and growth.
+- PLAY (10%): must spend, as designed. Flag if it idles.
+- GIVE (5-10%): giving; Coins.ph is the reserved wallet.
+- Financial Freedom formula: confirmed Passive Income > Expenses. Never project income as fact.
+
+Monthly report: each jar gets a rule status line (OK / LOW / OVER vs target, plus rule compliance, e.g. PLAY must-spend flag, FFA untouched).
+
+PENDING (same treatment as the rent figure): whether LTSS vault funds the SPayLater payments. Proposal is to route debt paydown from LTSS instead of NEC, but it stays flagged as a proposal until Edge decides.
