@@ -1,5 +1,17 @@
 # Finna Audit Log
 
+## Aug 14, 2026 - SEO overhaul: new favicon, OG share image, meta tags
+
+- Runtime: Finna (OpenClaw) - lease handle `claude`.
+- Confirmed source: Edge via webchat (12:34) - new favicon + SEO image + all SEO details for the dashboard app.
+- Change:
+  - New brand icon (green growth arrow + coin ring on charcoal, AI-generated) resized to `favicon.png` (512), `icon-192.png`, `icon-512.png`, `apple-touch-icon.png` (180).
+  - New `og-image.png` (1200x630) built programmatically with brand colors and text, for social share cards.
+  - `index.html` head: SEO title, description, robots, canonical, theme-color, Open Graph + Twitter Card meta (incl. og:image with dimensions), apple-touch-icon link; favicon link now `favicon.png` and favicon-rounding JS updated to match.
+  - `manifest.json`: name/description/background updated to brand; icons point to the new files.
+  - `sw.js`: cache bumped to `findash-v3`, precache now `favicon.png` + `manifest.json` (volcanis.png no longer referenced, file kept in repo).
+- No ledger data changed. Validation: `finna-validate.ps1` passed.
+
 ## Aug 14, 2026 - Temporary guest PIN 0000 added to dashboard (expires Aug 15, 12:23 GMT+8)
 
 - Runtime: Finna (OpenClaw) - lease handle `claude`.

@@ -1,5 +1,5 @@
-const CACHE = 'findash-v2';
-const STATIC = ['/volcanis.png', '/manifest.json'];
+const CACHE = 'findash-v3';
+const STATIC = ['/favicon.png', '/manifest.json'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(STATIC)));

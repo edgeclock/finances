@@ -1,10 +1,11 @@
 {
-  "name": "Edge · Finance Dashboard",
+  "name": "Edge Finance Dashboard",
   "short_name": "FinDash",
-  "description": "Personal finance monitoring dashboard",
+  "description": "Personal finance dashboard tracking net worth, the 6-jar money system, account balances, budgets, and monthly history.",
   "start_url": "/index.html",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#f7f7f5",
+  "background_color": "#161614",
   "theme_color": "#1D9E75",
   "icons": [
     {
