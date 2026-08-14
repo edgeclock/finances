@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Aug 14, 2026 - Temporary guest PIN 0000 added to dashboard (expires Aug 15, 12:23 GMT+8)
+
+- Runtime: Finna (OpenClaw) - lease handle `claude`.
+- Confirmed source: Edge via webchat (12:23) - wants to show finances to friends; temporary passcode `0000`, valid 24 hours.
+- Change: `index.html` PIN auth IIFE gained a temporary guest code `0000` accepted only until 2026-08-15 04:23 UTC (12:23 GMT+8). Owner PIN `1245` unchanged and always works. After expiry the guest code stops being accepted (client-side check).
+- Cleanup: cron job scheduled for Aug 15, ~12:40 GMT+8 to remove the temporary code and restore `index.html`, then push.
+- Security note: this is a client-side gate on a public repo; the ledger data remains visible to anyone who views source. Fine for a friends demo, not real protection.
+- No ledger data changed. Validation: `finna-validate.ps1` passed.
+
 ## Aug 13, 2026 - Logged Aug 13 dinner (cash)
 
 - Runtime: Finna (OpenClaw) - lease handle `claude`.
