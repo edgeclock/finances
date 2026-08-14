@@ -600,7 +600,7 @@
 // ================================================================
 const DATA = {
 
-  lastUpdated: "Aug 13, 2026",
+  lastUpdated: "Aug 14, 2026",
 
   // Account balances - 6-jar MM system (T. Harv Eker modified, adopted Aug 8, 2026):
   // NEC 50% | FFA/LTSS/EDU/PLAY/GIVE 10% each. This period used a one-time split (pool
@@ -609,7 +609,7 @@ const DATA = {
   // subcategories of the 6 mains. Pool excluded Tonik, Alkansya, Coins.ph; included cash
   // and GoTrade (GoTrade = already-invested FFA).
   accounts: [
-    { label: "GCash wallet",   balance: 2657.95,  tag: "spend",  tagLabel: "NEC jar - spending", jar: "NEC" },
+    { label: "GCash wallet",   balance: 2417.95,  tag: "spend",  tagLabel: "NEC jar - spending", jar: "NEC" },
     { label: "GCash bank",     balance: 4630.41,  tag: "save",   tagLabel: "FFA jar (10%)", jar: "FFA" },
     { label: "RCBC savings",   balance: 4508.41,  tag: "spend",  tagLabel: "NEC jar", jar: "NEC" },
     { label: "Cash on hand",   balance: 960.50,   tag: "cash",   tagLabel: "NEC jar - cash", jar: "NEC" },
@@ -825,7 +825,9 @@ const DATA = {
     { date: "Aug 13", desc: "Bry loan repayment",                   cat: "Income",        amount: 500.00,   wallet: "gcash", type: "income"  },
     { date: "Aug 13", desc: "Laundry",                             cat: "Household",     amount: 192.50,   wallet: "gcash", type: "expense" },
     { date: "Aug 13", desc: "Lunch",                               cat: "Food & dining", amount: 180.00,   wallet: "gcash", type: "expense" },
-    { date: "Aug 13", desc: "Dinner",                              cat: "Food & dining", amount: 190.00,   wallet: "cash",  type: "expense" }
+    { date: "Aug 13", desc: "Dinner",                              cat: "Food & dining", amount: 190.00,   wallet: "cash",  type: "expense" },
+    { date: "Aug 14", desc: "Lunch",                               cat: "Food & dining", amount: 150.00,   wallet: "gcash", type: "expense" },
+    { date: "Aug 14", desc: "Coffee",                              cat: "Food & dining", amount: 90.00,    wallet: "gcash", type: "expense" }
   ],
 
   spaylaterSchedule: [

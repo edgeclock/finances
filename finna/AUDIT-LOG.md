@@ -1,5 +1,16 @@
 # Finna Audit Log
 
+## Aug 14, 2026 - Logged Aug 14 lunch + coffee (GCash)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via Telegram (Aug 14) - lunch 150 and coffee 90, both from GCash wallet, confirmed by Chairman.
+- Ledger change: 2 entries added -
+  - `{ date: "Aug 14", desc: "Lunch", cat: "Food & dining", amount: 150.00, wallet: "gcash", type: "expense" }`
+  - `{ date: "Aug 14", desc: "Coffee", cat: "Food & dining", amount: 90.00, wallet: "gcash", type: "expense" }`
+- Balance update: GCash wallet 2,657.95 -> 2,417.95.
+- `lastUpdated` -> Aug 14, 2026.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 14, 2026 - SEO overhaul: new favicon, OG share image, meta tags
 
 - Runtime: Finna (OpenClaw) - lease handle `claude`.

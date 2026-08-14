@@ -1,14 +1,14 @@
 # Account Snapshot
 
 **Source:** `index.html`
-**As of:** Aug 13, 2026
-**Status:** MAJOR RESTRUCTURE Aug 8: 6-jar MM system adopted (T. Harv Eker modified). Cash correction (Edge-confirmed): cash on hand 4,001.75 → 3,303.50, difference 698.25 = travel expenses booked (new Travel category). Total assets 54,202.72. Full 6-jar dashboard implemented (jar summary section, per-jar targets/status, account jar mapping). Edge decision: essential monthly expenses = ~₱20,000-21,000 (fixed ~13,000-13,400 + variable ~7,000-8,000), rent excluded (derived ₱7,700 unconfirmed, footnote only).
+**As of:** Aug 14, 2026
+**Status:** MAJOR RESTRUCTURE Aug 8: 6-jar MM system adopted (T. Harv Eker modified). Cash correction (Edge-confirmed): cash on hand 4,001.75 → 3,303.50, difference 698.25 = travel expenses booked (new Travel category). Total assets 54,202.72. Full 6-jar dashboard implemented (jar summary section, per-jar targets/status, account jar mapping). Edge decision: essential monthly expenses = ~₱20,000-21,000 (fixed ~13,000-13,400 + variable ~7,000-8,000), rent excluded (derived ₱7,700 unconfirmed, footnote only). Aug 14: lunch + coffee logged from GCash wallet (240 total).
 
 ## Accounts (6-jar structure)
 
 | Account | Balance | Jar / Purpose |
 |---|---:|---|
-| GCash wallet | PHP 2,657.95 | **NEC jar** - spending |
+| GCash wallet | PHP 2,417.95 | **NEC jar** - spending |
 | GCash bank | PHP 4,630.41 | **FFA jar** (10%) - growth buffer (was emergency fund) |
 | RCBC savings | PHP 4,508.41 | **NEC jar** |
 | Cash on hand | PHP 960.50 | **NEC jar** - cash (post travel-expense correction) |
@@ -23,7 +23,7 @@
 | Tonik Bank | PHP 52.66 | Outside system |
 | Alkansya | PHP 479.75 | Outside system - joins the jars later |
 
-**Total assets:** PHP 49,703.22 (jars 49,170.81 + Tonik/Alkansya 532.41)
+**Total assets:** PHP 49,463.22 (jars 48,930.81 + Tonik/Alkansya 532.41)
 **Liabilities:** PHP 15,688.17 (SPayLater - next due Aug bill PHP 6,969.87 on Sep 15, 2026)
 **Receivables:** PHP 3,178.75 (JR PHP 3,010.00 + RJ PHP 166.75 + Bryan PHP 2.00)
 **Ledger net worth formula:** assets + receivables - liabilities.
