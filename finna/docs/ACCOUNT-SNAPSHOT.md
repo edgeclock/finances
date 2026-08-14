@@ -52,7 +52,7 @@
 - `DATA.salaryHistory` future placeholders removed - it's now a pure historical record ending Jul 25, 2026 (last actual paycheck).
 - RCBC access restored Aug 11, 2026 (Edge-confirmed) - was temporarily inaccessible Aug 8, now fully usable. Balance unchanged at 4,508.41.
 - Housing comes from the NEC jar (GoTyme nec vault). GoTyme buffer pre-restructure (₱4,527.84) now spread into NEC/LTSS/PLAY vaults.
-- GCash wallet (NEC spending) at 2,657.95 is under the ₱3,059 subscription threshold - dashboard LOW alert active until next NEC top-up or income.
+- GCash wallet (NEC spending) at 2,417.95 is under the ₱3,059 subscription threshold - dashboard LOW alert active until next NEC top-up or income.
 - Aug 9 Palawan expenses logged (Edge-confirmed): food 75 cash, dinner 130 cash, dinner 245 cash, internet (parents' subscription) 1,299 from GoTyme nec vault.
 - Aug 10 expenses logged (Edge-confirmed): fare 100 cash, fare 200 cash, dinner 140 cash, lunch 320 from GoTyme nec vault, fare 95 cash.
 - Aug 11 fare 252 from GoTyme nec vault logged (Edge-confirmed, en route to Manila).

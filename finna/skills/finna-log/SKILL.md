@@ -18,6 +18,19 @@ Read `finna/FINNA.md` before use. Use this skill only for confirmed money activi
 7. Add a concise entry to `finna/AUDIT-LOG.md`; update the account snapshot after material balance changes.
 8. Run `scripts/finna-validate.ps1`, commit, push, and release the lease.
 
+## Quiet push (Windows/PowerShell)
+
+Never merge git stderr into stdout with `2>&1` on a push. Git writes its normal
+progress line ("To https://github.com/edgeclock/finances.git") to stderr, and
+PowerShell turns that into an error record, which flags the exec as failed
+even though the push succeeded. Use instead:
+
+```powershell
+git -C "D:\Personal\Finances" push origin main 2>$null; if ($LASTEXITCODE -ne 0) { throw "git push failed" }
+```
+
+Verify a push landed with `git rev-parse main` == `git ls-remote origin main`.
+
 ## Valid IDs
 
 Use the exact category and wallet rules in `finna/DATA-CONTRACT.md`. Read the existing data before adding a new wallet or category. Never duplicate a transaction with the same date, description, amount, wallet, and type.

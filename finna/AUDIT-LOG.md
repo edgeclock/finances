@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Aug 15, 2026 - Shutdown maintenance (docs + skill sync, no ledger data change)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: self-maintenance per CEO shutdown protocol (Monica, Aug 15). No Edge-reported transactions.
+- Change 1: `finna/skills/finna-log/SKILL.md` gained the "Quiet push (Windows/PowerShell)" section (git push with `2>$null` + `$LASTEXITCODE` check, never `2>&1`). This learning existed only in the workspace skill copy (Aug 5) and is now in the canonical repo skill.
+- Change 2: `finna/docs/ACCOUNT-SNAPSHOT.md` narrative fixed stale GCash wallet figure 2,657.95 -> 2,417.95 (matches ledger after Aug 14 lunch + coffee).
+- Ledger (`index.html`) unchanged: balances verified against audit log (GCash wallet 2,417.95, RCBC 2,043.41, cash 2,960.50). Lease was UNLOCKED at check, acquired for this maintenance, released after push.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 14, 2026 - Logged Aug 14 DeepSeek top-up + cash withdrawal (RCBC)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
