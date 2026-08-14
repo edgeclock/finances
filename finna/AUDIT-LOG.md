@@ -1,5 +1,17 @@
 # Finna Audit Log
 
+## Aug 14, 2026 - Logged Aug 14 DeepSeek top-up + cash withdrawal (RCBC)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via Telegram (Aug 14) - DeepSeek top-up 465 from RCBC; cash withdrawal 2,000 RCBC -> cash (internal transfer, not expense).
+- Ledger change: 3 entries added -
+  - `{ date: "Aug 14", desc: "DeepSeek API top-up", cat: "Subscriptions", amount: 465.00, wallet: "rcbc", type: "expense" }`
+  - `{ date: "Aug 14", desc: "Cash withdrawal", cat: "Transfer", amount: 2000.00, wallet: "rcbc", type: "expense" }`
+  - `{ date: "Aug 14", desc: "Cash withdrawal from RCBC", cat: "Transfer", amount: 2000.00, wallet: "cash", type: "income" }`
+- Balance updates: RCBC savings 4,508.41 -> 2,043.41; Cash on hand 960.50 -> 2,960.50.
+- `lastUpdated` stays Aug 14, 2026.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 14, 2026 - Logged Aug 14 lunch + coffee (GCash)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
