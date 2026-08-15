@@ -11,7 +11,7 @@
 | GCash wallet | PHP 6,981.33 | **NEC jar** - spending |
 | GCash bank | PHP 0.00 | **FFA jar** (10%) - growth buffer (was emergency fund) |
 | RCBC savings | PHP 909.67 | **NEC jar** |
-| Cash on hand | PHP 2,610.50 | **NEC jar** - cash (post travel-expense correction) |
+| Cash on hand | PHP 2,460.50 | **NEC jar** - cash (post travel-expense correction) |
 | GoTyme nec vault | PHP 12,540.68 | **NEC jar** - GoTyme vault (housing/essentials) |
 | GoTyme Professional Development (LTSS) | PHP 5,630.42 | **LTSS jar** (10%) |
 | GoTyme My Go Save (PLAY) | PHP 0.00 | **PLAY jar** (10%) - includes ₱11.85 pre-existing legacy, never booked |
@@ -23,7 +23,7 @@
 | Tonik Bank | PHP 52.66 | Outside system |
 | Alkansya | PHP 479.75 | Outside system - joins the jars later |
 
-**Total assets:** PHP 41,254.14 (jars 40,721.73 + Tonik/Alkansya 532.41)
+**Total assets:** PHP 41,104.14 (jars 40,571.73 + Tonik/Alkansya 532.41)
 **Liabilities:** PHP 15,688.17 (SPayLater - next due Aug bill PHP 6,969.87 on Sep 15, 2026)
 **Receivables:** PHP 3,178.75 (JR PHP 3,010.00 + RJ PHP 166.75 + Bryan PHP 2.00)
 **Ledger net worth formula:** assets + receivables - liabilities.
@@ -40,7 +40,7 @@
 - Percentages: NEC 50%, FFA/LTSS/EDU/PLAY/GIVE 10% each.
 - This period: one-time split of pool 50,673.75 - NEC 50/90 = 28,152.08, FFA/LTSS/EDU/PLAY 10/90 = 5,630.42 each, GIVE 0 (Coins.ph pre-funded). Next period: standard 50/10/10/10/10/10 with GIVE 10%.
 - Pool excluded Tonik, Alkansya, Coins.ph; included cash on hand and GoTrade (GoTrade = already-invested FFA).
-- Dashboard: new "6-jar summary" section shows per-jar balance vs target with OK/LOW/OVER status (tolerance 1.00 for split rounding). Jar balances: NEC 23,042.18 (LOW vs 28,152.08), FFA 1,000.00 (LOW - GCash bank emptied to wallet on Aug 15; GoTrade only), LTSS 5,630.42 (OK), EDU 5,630.42 (OK), PLAY 0.00 (consolidated to GCash wallet Aug 15 - remaining play money 945.87 in wallet), GIVE 5,418.71 (OVER - pre-funded, expected).
+- Dashboard: new "6-jar summary" section shows per-jar balance vs target with OK/LOW/OVER status (tolerance 1.00 for split rounding). Jar balances: NEC 22,892.18 (LOW vs 28,152.08), FFA 1,000.00 (LOW - GCash bank emptied to wallet on Aug 15; GoTrade only), LTSS 5,630.42 (OK), EDU 5,630.42 (OK), PLAY 0.00 (consolidated to GCash wallet Aug 15 - remaining play money 895.87 after water 50), GIVE 5,418.71 (OVER - pre-funded, expected; 100 charity paid from cash).
 
 ## Employment status - no income since Jul 24, 2026
 

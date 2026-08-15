@@ -1,5 +1,18 @@
 # Finna Audit Log
 
+## Aug 15, 2026 - Logged Aug 15 water 50 (PLAY) + charity 100 (GIVE) from cash
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via Monica (Telegram, Aug 15 18:21).
+- Ledger changes:
+  - `{ date: "Aug 15", desc: "Water (MOA day)", cat: "Household", amount: 50.00, wallet: "cash", type: "expense" }` - PLAY jar day expense.
+  - `{ date: "Aug 15", desc: "Charity (MOA day)", cat: "Charity", amount: 100.00, wallet: "cash", type: "expense" }` - GIVE jar expense (NOT PLAY), paid from cash.
+- Balance update: Cash on hand 2,610.50 -> 2,460.50.
+- PLAY running: spent today 6,114 (bus 350 + lunch 415 + matcha 600 + Beyblade 4,699 + water 50); remaining 945.87 - 50 = 895.87.
+- GIVE: 100 charity paid from cash; Coins.ph account unchanged (GIVE jar pre-funded this period). If Edge wants Coins.ph to reimburse cash, that's a separate reconciliation transfer - not booked.
+- `lastUpdated` stays Aug 15, 2026. `monthly.dayOfMonth` stays 15.
+- Validation: `finna-validate.ps1` passed (115 transactions, assets 41,104.14).
+
 ## Aug 15, 2026 - PLAY-day consolidation: reversed morning transfer, interest booked, Beyblade 4,699, PLAY vault emptied to wallet
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
