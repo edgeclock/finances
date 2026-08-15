@@ -9,11 +9,11 @@
 | Account | Balance | Jar / Purpose |
 |---|---:|---|
 | GCash wallet | PHP 3,494.79 | **NEC jar** - spending |
-| GCash bank | PHP 3,138.57 | **FFA jar** (10%) - growth buffer (was emergency fund) |
+| GCash bank | PHP 4,630.41 | **FFA jar** (10%) - growth buffer (was emergency fund) |
 | RCBC savings | PHP 909.67 | **NEC jar** |
 | Cash on hand | PHP 2,610.50 | **NEC jar** - cash (post travel-expense correction) |
 | GoTyme nec vault | PHP 12,540.68 | **NEC jar** - GoTyme vault (housing/essentials) |
-| GoTyme Professional Development (LTSS) | PHP 5,630.42 | **LTSS jar** (10%) |
+| GoTyme Professional Development (LTSS) | PHP 4,138.58 | **LTSS jar** (10%) |
 | GoTyme My Go Save (PLAY) | PHP 5,642.27 | **PLAY jar** (10%) - includes ₱11.85 pre-existing legacy, never booked |
 | Maya bank | PHP 5,630.42 | **EDU jar** (10%) |
 | Maya wallet | PHP 0.00 | Distribution hub |
@@ -40,7 +40,7 @@
 - Percentages: NEC 50%, FFA/LTSS/EDU/PLAY/GIVE 10% each.
 - This period: one-time split of pool 50,673.75 - NEC 50/90 = 28,152.08, FFA/LTSS/EDU/PLAY 10/90 = 5,630.42 each, GIVE 0 (Coins.ph pre-funded). Next period: standard 50/10/10/10/10/10 with GIVE 10%.
 - Pool excluded Tonik, Alkansya, Coins.ph; included cash on hand and GoTrade (GoTrade = already-invested FFA).
-- Dashboard: new "6-jar summary" section shows per-jar balance vs target with OK/LOW/OVER status (tolerance 1.00 for split rounding). Jar balances: NEC 19,555.64 (LOW vs 28,152.08), FFA 4,138.57 (LOW vs 5,630.42 - funded Aug 15 LTSS company expenses), LTSS 5,630.42 (OK), EDU 5,630.42 (OK), PLAY 5,642.27 (OK - running remaining after Aug 15 bus fare 350 + lunch 415: 4,877.27, reconciliation transfer pending), GIVE 5,418.71 (OVER - pre-funded, expected).
+- Dashboard: new "6-jar summary" section shows per-jar balance vs target with OK/LOW/OVER status (tolerance 1.00 for split rounding). Jar balances: NEC 19,555.64 (LOW vs 28,152.08), FFA 5,630.41 (OK - restored via LTSS leg), LTSS 4,138.58 (LOW vs 5,630.42 - funded Aug 15 company expenses: domain 940.80 + Workspace 551.04), EDU 5,630.42 (OK), PLAY 5,642.27 (OK - running remaining after Aug 15 bus fare 350 + lunch 415: 4,877.27, reconciliation transfer pending), GIVE 5,418.71 (OVER - pre-funded, expected).
 
 ## Employment status - no income since Jul 24, 2026
 

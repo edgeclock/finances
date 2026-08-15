@@ -1,5 +1,15 @@
 # Finna Audit Log
 
+## Aug 15, 2026 - Booked LTSS reconciliation leg: GoTyme PD vault -> GCash bank 1,491.84 (Edge screenshot-confirmed)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via Monica (Telegram, Aug 15 12:27 screenshot: +1,491.84 into GCash bank labeled "LTSS company expenses").
+- Ledger change: 2 transfer entries, 1,491.84 each - `gotymeltss` expense leg ("Transfer to GCash bank (LTSS company expenses)") and `gcashsavings` income leg ("Transfer from GoTyme LTSS vault (LTSS company expenses)").
+- Balance updates: GoTyme PD (LTSS) 5,630.42 -> 4,138.58; GCash bank 3,138.57 -> 4,630.41.
+- Completes the Aug 15 LTSS reconciliation: the LTSS jar now bears the company expenses (domain 940.80 + Google Workspace 551.04 = 1,491.84); FFA restored to target; NEC unchanged. Jar status: LTSS now LOW (4,138.58 vs 5,630.42 target), FFA back to OK (5,630.41).
+- `lastUpdated` stays Aug 15, 2026. `monthly.dayOfMonth` stays 15.
+- Validation: `finna-validate.ps1` passed (105 transactions, assets 46,548.44).
+
 ## Aug 15, 2026 - Logged Aug 15 lunch 415 (PLAY-jar expense, GCash)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.

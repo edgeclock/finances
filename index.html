@@ -610,11 +610,11 @@ const DATA = {
   // and GoTrade (GoTrade = already-invested FFA).
   accounts: [
     { label: "GCash wallet",   balance: 3494.79,  tag: "spend",  tagLabel: "NEC jar - spending", jar: "NEC" },
-    { label: "GCash bank",     balance: 3138.57,  tag: "save",   tagLabel: "FFA jar (10%)", jar: "FFA" },
+    { label: "GCash bank",     balance: 4630.41,  tag: "save",   tagLabel: "FFA jar (10%)", jar: "FFA" },
     { label: "RCBC savings",   balance: 909.67,   tag: "spend",  tagLabel: "NEC jar", jar: "NEC" },
     { label: "Cash on hand",   balance: 2610.50,   tag: "cash",   tagLabel: "NEC jar - cash", jar: "NEC" },
     { label: "GoTyme nec vault", balance: 12540.68, tag: "save", tagLabel: "NEC jar - GoTyme vault", jar: "NEC" },
-    { label: "GoTyme Professional Development (LTSS)", balance: 5630.42, tag: "save", tagLabel: "LTSS jar (10%)", jar: "LTSS" },
+    { label: "GoTyme Professional Development (LTSS)", balance: 4138.58, tag: "save", tagLabel: "LTSS jar (10%)", jar: "LTSS" },
     { label: "GoTyme My Go Save (PLAY)", balance: 5642.27, tag: "save", tagLabel: "PLAY jar (10%)", jar: "PLAY" },
     { label: "Maya bank",      balance: 5630.42,  tag: "save",   tagLabel: "EDU jar (10%)", jar: "EDU" },
     { label: "Maya wallet",    balance: 0.00,     tag: "spend",  tagLabel: "distribution hub", jar: null },
@@ -836,7 +836,9 @@ const DATA = {
     { date: "Aug 15", desc: "Transfer to GCash wallet (LTSS company expenses)", cat: "Transfer", amount: 1491.84, wallet: "gcashsavings", type: "expense" },
     { date: "Aug 15", desc: "Transfer from GCash bank (LTSS company expenses)", cat: "Transfer", amount: 1491.84, wallet: "gcash", type: "income"  },
     { date: "Aug 15", desc: "Bus fare (toy convention)", cat: "Transport", amount: 350.00, wallet: "cash", type: "expense" },
-    { date: "Aug 15", desc: "Lunch (toy convention)", cat: "Food & dining", amount: 415.00, wallet: "gcash", type: "expense" }
+    { date: "Aug 15", desc: "Lunch (toy convention)", cat: "Food & dining", amount: 415.00, wallet: "gcash", type: "expense" },
+    { date: "Aug 15", desc: "Transfer to GCash bank (LTSS company expenses)", cat: "Transfer", amount: 1491.84, wallet: "gotymeltss", type: "expense" },
+    { date: "Aug 15", desc: "Transfer from GoTyme LTSS vault (LTSS company expenses)", cat: "Transfer", amount: 1491.84, wallet: "gcashsavings", type: "income"  }
   ],
 
   spaylaterSchedule: [
