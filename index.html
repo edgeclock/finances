@@ -1622,9 +1622,6 @@ setTimeout(function() {
 // PIN auth - change PIN value to personalise
 (function() {
   const PIN = '1245';
-  // Temporary guest code for Edge's friends (expires 2026-08-15 12:23 GMT+8 / 04:23 UTC)
-  const TEMP_PIN = '0000';
-  const TEMP_PIN_EXPIRES = Date.parse('2026-08-15T04:23:00Z');
   const KEY = 'findash_pin_ok';
   const overlay = document.getElementById('pinOverlay');
   const input   = document.getElementById('pinInput');
@@ -1635,7 +1632,7 @@ setTimeout(function() {
   function tryUnlock() {
     errEl.textContent = '';
     if (input.value.length === 0) return;
-    if (input.value === PIN || (input.value === TEMP_PIN && Date.now() < TEMP_PIN_EXPIRES)) {
+    if (input.value === PIN) {
       localStorage.setItem(KEY, '1');
       overlay.style.opacity = '0';
       overlay.style.transition = 'opacity 0.2s';

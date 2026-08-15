@@ -1,5 +1,11 @@
 # Finna Audit Log
 
+## Aug 15, 2026 - Temporary guest PIN removed after expiry
+
+- Runtime: Finna (OpenClaw) - lease handle `claude`.
+- Removed temporary guest PIN `0000` from `index.html` after its expiry (2026-08-15 04:23 UTC). Deleted `TEMP_PIN`, `TEMP_PIN_EXPIRES`, and the guest comment line; unlock condition restored to `input.value === PIN`. Owner PIN `1245` untouched.
+- Validation: `finna-validate.ps1` passed (VALID).
+
 ## Aug 15, 2026 - REVERTED LTSS reconciliation leg (screenshot misread; reconciliation still PENDING)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
