@@ -1,5 +1,15 @@
 # Finna Audit Log
 
+## Aug 15, 2026 - Logged Aug 15 bus fare 350 (PLAY-jar expense, cash)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via Monica (Telegram, Aug 15 08:41 directive): ALL Aug 15 expenses are PLAY-jar (toy convention + matcha fest at MOA); wallet for this one confirmed as cash.
+- Ledger change: `{ date: "Aug 15", desc: "Bus fare (toy convention)", cat: "Transport", amount: 350.00, wallet: "cash", type: "expense" }`.
+- Balance update: Cash on hand 2,960.50 -> 2,610.50.
+- PLAY reconciliation: pending Edge's GoTyme transfer (GoTyme My Go Save -> wallet); PLAY account balance unchanged until the real transfer. Running PLAY remaining (conceptual): 5,642.27 - 350 = 5,292.27.
+- `lastUpdated` stays Aug 15, 2026. `monthly.dayOfMonth` stays 15.
+- Validation: `finna-validate.ps1` passed (102 transactions, assets 46,963.44).
+
 ## Aug 15, 2026 - Corrected DeepSeek amount + logged LTSS company expenses + reconciliation transfer
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
