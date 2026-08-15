@@ -1,5 +1,18 @@
 # Finna Audit Log
 
+## Aug 15, 2026 - Corrected DeepSeek amount + logged LTSS company expenses + reconciliation transfer
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via Monica (Telegram, Aug 15).
+- Correction: Aug 14 DeepSeek API top-up amount 465.00 -> 657.94 (rcbc, Subscriptions). RCBC drops a further 192.94 vs the old entry.
+- New expenses (both LTSS-classified company expenses per Edge):
+  - `{ date: "Aug 15", desc: "Domain purchase edgepossible.com (Squarespace)", cat: "Investments", amount: 940.80, wallet: "rcbc", type: "expense" }` (purchased ~01:10)
+  - `{ date: "Aug 15", desc: "Google Workspace (1 month, company)", cat: "Subscriptions", amount: 551.04, wallet: "gotymenev", type: "expense" }`
+- Reconciliation (per Edge): transfer 1,491.84 (940.80 + 551.04) GCash bank -> GCash wallet, both legs booked as `Transfer`. Jar-flow note: only the confirmed bank->wallet leg is booked, so the FFA jar (GCash bank) currently funds the 1,491.84; the LTSS jar (GoTyme PD vault) is NOT yet debited. The missing leg for true LTSS funding is GoTyme PD (LTSS) -> GCash bank 1,491.84 - PENDING Edge confirmation before booking.
+- Balance updates: RCBC 2,043.41 -> 909.67; GoTyme nec vault 13,091.72 -> 12,540.68; GCash bank 4,630.41 -> 3,138.57; GCash wallet 2,417.95 -> 3,909.79.
+- `lastUpdated` -> Aug 15, 2026. `monthly.dayOfMonth` 13 -> 15.
+- Validation: `finna-validate.ps1` passed (101 transactions, assets 47,313.44).
+
 ## Aug 15, 2026 - Shutdown maintenance (docs + skill sync, no ledger data change)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.

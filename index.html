@@ -600,7 +600,7 @@
 // ================================================================
 const DATA = {
 
-  lastUpdated: "Aug 14, 2026",
+  lastUpdated: "Aug 15, 2026",
 
   // Account balances - 6-jar MM system (T. Harv Eker modified, adopted Aug 8, 2026):
   // NEC 50% | FFA/LTSS/EDU/PLAY/GIVE 10% each. This period used a one-time split (pool
@@ -609,11 +609,11 @@ const DATA = {
   // subcategories of the 6 mains. Pool excluded Tonik, Alkansya, Coins.ph; included cash
   // and GoTrade (GoTrade = already-invested FFA).
   accounts: [
-    { label: "GCash wallet",   balance: 2417.95,  tag: "spend",  tagLabel: "NEC jar - spending", jar: "NEC" },
-    { label: "GCash bank",     balance: 4630.41,  tag: "save",   tagLabel: "FFA jar (10%)", jar: "FFA" },
-    { label: "RCBC savings",   balance: 2043.41,  tag: "spend",  tagLabel: "NEC jar", jar: "NEC" },
+    { label: "GCash wallet",   balance: 3909.79,  tag: "spend",  tagLabel: "NEC jar - spending", jar: "NEC" },
+    { label: "GCash bank",     balance: 3138.57,  tag: "save",   tagLabel: "FFA jar (10%)", jar: "FFA" },
+    { label: "RCBC savings",   balance: 909.67,   tag: "spend",  tagLabel: "NEC jar", jar: "NEC" },
     { label: "Cash on hand",   balance: 2960.50,   tag: "cash",   tagLabel: "NEC jar - cash", jar: "NEC" },
-    { label: "GoTyme nec vault", balance: 13091.72, tag: "save", tagLabel: "NEC jar - GoTyme vault", jar: "NEC" },
+    { label: "GoTyme nec vault", balance: 12540.68, tag: "save", tagLabel: "NEC jar - GoTyme vault", jar: "NEC" },
     { label: "GoTyme Professional Development (LTSS)", balance: 5630.42, tag: "save", tagLabel: "LTSS jar (10%)", jar: "LTSS" },
     { label: "GoTyme My Go Save (PLAY)", balance: 5642.27, tag: "save", tagLabel: "PLAY jar (10%)", jar: "PLAY" },
     { label: "Maya bank",      balance: 5630.42,  tag: "save",   tagLabel: "EDU jar (10%)", jar: "EDU" },
@@ -690,7 +690,7 @@ const DATA = {
     monthStart: "Aug 1",
     monthEnd: "Aug 31",
     nextReset: "Sep 1, 2026",
-    dayOfMonth: 13,
+    dayOfMonth: 15,
     daysInMonth: 31
   },
 
@@ -828,9 +828,13 @@ const DATA = {
     { date: "Aug 13", desc: "Dinner",                              cat: "Food & dining", amount: 190.00,   wallet: "cash",  type: "expense" },
     { date: "Aug 14", desc: "Lunch",                               cat: "Food & dining", amount: 150.00,   wallet: "gcash", type: "expense" },
     { date: "Aug 14", desc: "Coffee",                              cat: "Food & dining", amount: 90.00,    wallet: "gcash", type: "expense" },
-    { date: "Aug 14", desc: "DeepSeek API top-up",                 cat: "Subscriptions", amount: 465.00,   wallet: "rcbc",  type: "expense" },
+    { date: "Aug 14", desc: "DeepSeek API top-up",                 cat: "Subscriptions", amount: 657.94,   wallet: "rcbc",  type: "expense" },
     { date: "Aug 14", desc: "Cash withdrawal",                      cat: "Transfer",      amount: 2000.00,  wallet: "rcbc",  type: "expense" },
-    { date: "Aug 14", desc: "Cash withdrawal from RCBC",            cat: "Transfer",      amount: 2000.00,  wallet: "cash",  type: "income"  }
+    { date: "Aug 14", desc: "Cash withdrawal from RCBC",            cat: "Transfer",      amount: 2000.00,  wallet: "cash",  type: "income"  },
+    { date: "Aug 15", desc: "Domain purchase edgepossible.com (Squarespace)", cat: "Investments", amount: 940.80, wallet: "rcbc", type: "expense" },
+    { date: "Aug 15", desc: "Google Workspace (1 month, company)",  cat: "Subscriptions", amount: 551.04,   wallet: "gotymenev", type: "expense" },
+    { date: "Aug 15", desc: "Transfer to GCash wallet (LTSS company expenses)", cat: "Transfer", amount: 1491.84, wallet: "gcashsavings", type: "expense" },
+    { date: "Aug 15", desc: "Transfer from GCash bank (LTSS company expenses)", cat: "Transfer", amount: 1491.84, wallet: "gcash", type: "income"  }
   ],
 
   spaylaterSchedule: [
