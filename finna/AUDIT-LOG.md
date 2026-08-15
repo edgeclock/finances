@@ -1,5 +1,17 @@
 # Finna Audit Log
 
+## Aug 15, 2026 - Logged Aug 15 fare 25 cash (PLAY jar day)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via Monica (Telegram, Aug 16 00:19 end-of-day).
+- Ledger change: `{ date: "Aug 15", desc: "Fare (MOA day)", cat: "Transport", amount: 25.00, wallet: "cash", type: "expense" }`.
+- Balance update: Cash on hand 2,460.50 -> 2,435.50.
+- PLAY running: spent today 6,139; remaining 870.87 (5,644.87 - 4,699 - 50 - 25 per Monica's formula).
+- Jar audit: Edge acknowledged mixing up jar allocations today; full entry-by-entry audit + proposed jars delivered in session reply, NO reclassification booked yet (waiting Edge's confirmation).
+- Cash physical count still pending; open cash flags remain open (230 snacks refund, 698.25 travel, 500 Bry loan, 2,000 RCBC withdrawal, unreported MOA cash spend).
+- `lastUpdated` stays Aug 15, 2026. `monthly.dayOfMonth` stays 15.
+- Validation: `finna-validate.ps1` passed (116 transactions, assets 41,079.14).
+
 ## Aug 15, 2026 - Logged Aug 15 water 50 (PLAY) + charity 100 (GIVE) from cash
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
