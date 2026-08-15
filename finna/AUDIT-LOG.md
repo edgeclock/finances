@@ -1,5 +1,15 @@
 # Finna Audit Log
 
+## Aug 15, 2026 - Logged Aug 15 matcha 600 (PLAY-jar expense, GCash)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via Monica (Telegram, Aug 15 16:09).
+- Ledger change: `{ date: "Aug 15", desc: "Matcha (matcha fest)", cat: "Food & dining", amount: 600.00, wallet: "gcash", type: "expense" }`.
+- Balance update: GCash wallet 3,494.79 -> 2,894.79 (back below the 3,059 subscription threshold - LOW alert active).
+- PLAY running remaining: 5,642.27 - 350 (bus) - 415 (lunch) - 600 (matcha) = 4,277.27. PLAY reconciliation to GoTyme My Go Save still pending Edge's transfer.
+- `lastUpdated` stays Aug 15, 2026. `monthly.dayOfMonth` stays 15.
+- Validation: `finna-validate.ps1` passed (104 transactions, assets 45,948.44).
+
 ## Aug 15, 2026 - Temporary guest PIN removed after expiry
 
 - Runtime: Finna (OpenClaw) - lease handle `claude`.
