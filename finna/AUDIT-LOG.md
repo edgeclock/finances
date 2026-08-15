@@ -1,6 +1,18 @@
 # Finna Audit Log
 
+## Aug 15, 2026 - REVERTED LTSS reconciliation leg (screenshot misread; reconciliation still PENDING)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via Monica (Telegram, Aug 15 12:27 correction): the 1,491.84 screenshot is NOT a transfer that happened ("this is not yet transferred, this is an expense now"); Monica misread it as the LTSS leg confirmation.
+- Reverted commit 77d9a91: removed the 2 transfer entries (gotymeltss expense leg + gcashsavings income leg, 1,491.84 each).
+- Balances restored: GoTyme PD (LTSS) 4,138.58 -> 5,630.42; GCash bank 4,630.41 -> 3,138.57.
+- LTSS reconciliation remains PENDING the real transfer: the FFA jar (GCash bank) still funds the 1,491.84 company expenses (domain 940.80 + Google Workspace 551.04) until Edge actually moves LTSS money. Jar status back to: FFA LOW (4,138.57 vs 5,630.42), LTSS OK (5,630.42).
+- `lastUpdated` stays Aug 15, 2026. `monthly.dayOfMonth` stays 15.
+- Validation: `finna-validate.ps1` passed (103 transactions, assets 46,548.44).
+
 ## Aug 15, 2026 - Booked LTSS reconciliation leg: GoTyme PD vault -> GCash bank 1,491.84 (Edge screenshot-confirmed)
+
+- REVERTED by the entry above on the same day - the screenshot was misread; this leg never happened. Balances were rolled back.
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
 - Confirmed source: Edge via Monica (Telegram, Aug 15 12:27 screenshot: +1,491.84 into GCash bank labeled "LTSS company expenses").
