@@ -1,5 +1,15 @@
 # Finna Audit Log
 
+## Aug 15, 2026 - Logged Aug 15 lunch 415 (PLAY-jar expense, GCash)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via Monica (Telegram, Aug 15 12:23).
+- Ledger change: `{ date: "Aug 15", desc: "Lunch (toy convention)", cat: "Food & dining", amount: 415.00, wallet: "gcash", type: "expense" }`.
+- Balance update: GCash wallet 3,909.79 -> 3,494.79.
+- PLAY running remaining: 5,642.27 - 350 (bus) - 415 (lunch) = 4,877.27. PLAY reconciliation to GoTyme My Go Save pending Edge's transfer confirmation.
+- `lastUpdated` stays Aug 15, 2026. `monthly.dayOfMonth` stays 15.
+- Validation: `finna-validate.ps1` passed (103 transactions, assets 46,548.44).
+
 ## Aug 15, 2026 - Logged Aug 15 bus fare 350 (PLAY-jar expense, cash)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
