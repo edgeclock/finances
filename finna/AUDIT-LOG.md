@@ -1,5 +1,19 @@
 # Finna Audit Log
 
+## Aug 15, 2026 - PLAY-day consolidation: reversed morning transfer, interest booked, Beyblade 4,699, PLAY vault emptied to wallet
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via Monica (Telegram, Aug 15 16:48).
+- Reversal: this morning's GCash bank -> GCash wallet 1,491.84 legs reversed (Edge confirmed at 12:29 the money never moved - it stayed in GCash bank).
+- Interest income: GCash bank +2.10 (derived: transfer 4,632.51 = booked 3,138.57 + 1,491.84 reversal + 2.10 interest; bank emptied to 0.00 - assumption flagged to Edge, adjust if he kept a remainder); GoTyme My Go Save (PLAY) +2.60 (5,644.87 vs booked 5,642.27, Edge-confirmed).
+- Transfers: GCash bank -> GCash wallet 4,632.51 (bank to 0.00); GoTyme My Go Save (PLAY) -> GCash wallet 5,644.87 (vault to 0.00).
+- Expense: Beyblade (toy convention) 4,699.00 from GCash wallet - PLAY-jar highlight purchase. New category `Entertainment` added to `categoryOrder` (PLAY subcat; no existing category fit).
+- Balance updates: GCash wallet 2,894.79 -> 6,981.33; GCash bank 3,138.57 -> 0.00; GoTyme My Go Save (PLAY) 5,642.27 -> 0.00.
+- PLAY remaining: 5,644.87 - 4,699 = 945.87 (play money now consolidated in GCash wallet).
+- Jar impact: FFA now 1,000 (GoTrade only), PLAY vault 0, NEC 23,042.18.
+- `lastUpdated` stays Aug 15, 2026. `monthly.dayOfMonth` stays 15.
+- Validation: `finna-validate.ps1` passed (113 transactions, assets 41,254.14).
+
 ## Aug 15, 2026 - Logged Aug 15 matcha 600 (PLAY-jar expense, GCash)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.

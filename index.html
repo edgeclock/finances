@@ -609,13 +609,13 @@ const DATA = {
   // subcategories of the 6 mains. Pool excluded Tonik, Alkansya, Coins.ph; included cash
   // and GoTrade (GoTrade = already-invested FFA).
   accounts: [
-    { label: "GCash wallet",   balance: 2894.79,  tag: "spend",  tagLabel: "NEC jar - spending", jar: "NEC" },
-    { label: "GCash bank",     balance: 3138.57,  tag: "save",   tagLabel: "FFA jar (10%)", jar: "FFA" },
+    { label: "GCash wallet",   balance: 6981.33,  tag: "spend",  tagLabel: "NEC jar - spending", jar: "NEC" },
+    { label: "GCash bank",     balance: 0.00,     tag: "save",   tagLabel: "FFA jar (10%)", jar: "FFA" },
     { label: "RCBC savings",   balance: 909.67,   tag: "spend",  tagLabel: "NEC jar", jar: "NEC" },
     { label: "Cash on hand",   balance: 2610.50,   tag: "cash",   tagLabel: "NEC jar - cash", jar: "NEC" },
     { label: "GoTyme nec vault", balance: 12540.68, tag: "save", tagLabel: "NEC jar - GoTyme vault", jar: "NEC" },
     { label: "GoTyme Professional Development (LTSS)", balance: 5630.42, tag: "save", tagLabel: "LTSS jar (10%)", jar: "LTSS" },
-    { label: "GoTyme My Go Save (PLAY)", balance: 5642.27, tag: "save", tagLabel: "PLAY jar (10%)", jar: "PLAY" },
+    { label: "GoTyme My Go Save (PLAY)", balance: 0.00, tag: "save", tagLabel: "PLAY jar (10%)", jar: "PLAY" },
     { label: "Maya bank",      balance: 5630.42,  tag: "save",   tagLabel: "EDU jar (10%)", jar: "EDU" },
     { label: "Maya wallet",    balance: 0.00,     tag: "spend",  tagLabel: "distribution hub", jar: null },
     { label: "GoTyme wallet",  balance: 0.00,     tag: "spend",  tagLabel: "distribution hub", jar: null },
@@ -722,7 +722,7 @@ const DATA = {
     ]
   },
 
-  categoryOrder: ["Food & dining", "Groceries", "Transport", "Travel", "Load / comms", "Subscriptions", "Charity", "Family", "Household", "Bank fees", "Loans", "Debt payment", "Investments"],
+  categoryOrder: ["Food & dining", "Groceries", "Transport", "Travel", "Load / comms", "Subscriptions", "Charity", "Family", "Household", "Bank fees", "Loans", "Debt payment", "Investments", "Entertainment"],
 
   // Deprecated as of 2026-08-03 (monthly monitoring replaced the semi-monthly pay-period cycle —
   // transactions[] now IS the current calendar month, so there's no more mid-month reset to
@@ -837,7 +837,16 @@ const DATA = {
     { date: "Aug 15", desc: "Transfer from GCash bank (LTSS company expenses)", cat: "Transfer", amount: 1491.84, wallet: "gcash", type: "income"  },
     { date: "Aug 15", desc: "Bus fare (toy convention)", cat: "Transport", amount: 350.00, wallet: "cash", type: "expense" },
     { date: "Aug 15", desc: "Lunch (toy convention)", cat: "Food & dining", amount: 415.00, wallet: "gcash", type: "expense" },
-    { date: "Aug 15", desc: "Matcha (matcha fest)", cat: "Food & dining", amount: 600.00, wallet: "gcash", type: "expense" }
+    { date: "Aug 15", desc: "Matcha (matcha fest)", cat: "Food & dining", amount: 600.00, wallet: "gcash", type: "expense" },
+    { date: "Aug 15", desc: "Reversal of transfer to GCash wallet (money stayed in GCash bank)", cat: "Transfer", amount: 1491.84, wallet: "gcashsavings", type: "income"  },
+    { date: "Aug 15", desc: "Reversal of transfer from GCash bank (never received)", cat: "Transfer", amount: 1491.84, wallet: "gcash", type: "expense" },
+    { date: "Aug 15", desc: "Interest earned", cat: "Income", amount: 2.10, wallet: "gcashsavings", type: "income"  },
+    { date: "Aug 15", desc: "Transfer to GCash wallet (PLAY-day consolidation)", cat: "Transfer", amount: 4632.51, wallet: "gcashsavings", type: "expense" },
+    { date: "Aug 15", desc: "Transfer from GCash bank (PLAY-day consolidation)", cat: "Transfer", amount: 4632.51, wallet: "gcash", type: "income"  },
+    { date: "Aug 15", desc: "Beyblade (toy convention)", cat: "Entertainment", amount: 4699.00, wallet: "gcash", type: "expense" },
+    { date: "Aug 15", desc: "Interest earned", cat: "Income", amount: 2.60, wallet: "gotymeplay", type: "income"  },
+    { date: "Aug 15", desc: "Transfer to GCash wallet (PLAY vault)", cat: "Transfer", amount: 5644.87, wallet: "gotymeplay", type: "expense" },
+    { date: "Aug 15", desc: "Transfer from GoTyme My Go Save (PLAY)", cat: "Transfer", amount: 5644.87, wallet: "gcash", type: "income"  }
   ],
 
   spaylaterSchedule: [
