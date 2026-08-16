@@ -1015,7 +1015,7 @@ const avgDailyNec = mo.dayOfMonth > 0 ? necSpent / mo.dayOfMonth : 0;
 const runwayDays = avgDailyNec > 0 ? Math.floor(necBal / avgDailyNec) : null;
 document.getElementById('runwayVal').textContent = runwayDays != null ? runwayDays + ' days' : 'no spend data yet';
 document.getElementById('runwaySub').textContent = 'NEC ' + fmt(necBal) + ' at ' + fmt(avgDailyNec) + '/day essentials burn';
-document.getElementById('runwayNote').textContent = 'Day ' + mo.dayOfMonth + ' of ' + mo.daysInMonth + '; no income since Jul 24. FFA rebuilds at next income (standard 50/10/10/10/10/10 split).';
+document.getElementById('runwayNote').textContent = 'Month window ' + mo.monthStart + ' - ' + mo.monthEnd + ' (day ' + mo.dayOfMonth + ' of ' + mo.daysInMonth + '). Projected NEC spend for the full month: ' + fmt(avgDailyNec * mo.daysInMonth) + '. No income since Jul 24; FFA rebuilds at next income (standard 50/10/10/10/10/10 split).';
 const commitEl = document.getElementById('commitList');
 const moNow = new Date();
 const monthShort = moNow.toLocaleString('en-US', { month: 'short' });
@@ -1154,7 +1154,7 @@ const acctGrid = document.getElementById('accountsGrid');
 const jarColorMap = {};
 Object.keys(DATA.jarSystem.jars).forEach(k => { jarColorMap[k] = DATA.jarSystem.jars[k].color; });
 const outsideClr = 'var(--border)';
-const acctDisplayOrder = ['GCash wallet', 'GCash bank', 'RCBC savings', 'Cash on hand', 'GoTyme nec vault', 'GoTyme Professional Development (LTSS)', 'GoTyme My Go Save (PLAY)', 'GoTyme wallet', 'Maya bank', 'Maya wallet', 'Coins.ph PHP', 'GoTrade', 'Tonik Bank', 'Alkansya'];
+const acctDisplayOrder = ['GCash wallet', 'RCBC savings', 'Cash on hand', 'GoTyme nec vault', 'GCash bank', 'GoTrade', 'GoTyme Professional Development (LTSS)', 'Maya bank', 'GoTyme My Go Save (PLAY)', 'Coins.ph PHP', 'Maya wallet', 'GoTyme wallet', 'Tonik Bank', 'Alkansya'];
 acctDisplayOrder.forEach(label => {
   const idx = DATA.accounts.findIndex(x => x.label === label);
   if (idx < 0) return;
