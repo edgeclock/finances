@@ -1,5 +1,18 @@
 # Finna Audit Log
 
+# Finna Audit Log
+
+## Aug 16, 2026 - Corrected Aug 14 DeepSeek top-up to two charges (Edge-confirmed)
+
+- Runtime: Finna (OpenClaw) - lease handle `claude`.
+- Confirmed source: Edge via Monica (webchat, Aug 16 16:42).
+- Ledger change: replaced single `{ date: "Aug 14", desc: "DeepSeek API top-up", amount: 657.94, wallet: "rcbc" }` with two entries on the same date: 332.19 and 132.88 (total 465.07). This reverses the Aug 15 correction (465 -> 657.94) - the actual charges were 332.19 + 132.88.
+- Balance update: RCBC savings 909.67 -> 1,102.54 (+192.87).
+- Asset impact: total assets 40,048.14 -> 40,241.01. Liabilities/receivables unchanged.
+- Edge confirmed the rest of August's records are correct; no other changes.
+- `lastUpdated` stays Aug 16, 2026. `monthly.dayOfMonth` stays 16.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 16, 2026 - Booked FFA settlement: 3,140.67 GCash wallet -> GCash bank
 
 - Runtime: Finna (OpenClaw) - lease handle `claude`.
