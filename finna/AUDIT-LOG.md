@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Aug 16, 2026 - Logged Aug 16 lunch 159 from GCash wallet (NEC jar)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via Monica (Telegram, Aug 16 11:51).
+- Ledger change: `{ date: "Aug 16", desc: "Lunch", cat: "Food & dining", amount: 159.00, wallet: "gcash", type: "expense" }` - NEC jar (`Food & dining`).
+- Balance update: GCash wallet 6,771.33 -> 6,612.33.
+- `lastUpdated` stays Aug 16, 2026. `monthly.dayOfMonth` stays 16.
+- Validation: `finna-validate.ps1` passed (119 transactions, assets 40,210.14).
+
 ## Aug 16, 2026 - Logged Aug 16 coffee 210 from GCash wallet (NEC jar)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
