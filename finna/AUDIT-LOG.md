@@ -8,7 +8,7 @@
 - Balance update: Coins.ph PHP 5,418.71 -> 4,918.71.
 - `lastUpdated` -> Aug 16, 2026. `monthly.dayOfMonth` -> 16.
 - GIVE jar now 4,918.71 (still OVER vs target 0 - pre-funded this period, expected).
-- Validation: pending.
+- Validation: `finna-validate.ps1` passed (117 transactions, assets 40,579.14).
 
 ## Aug 15, 2026 - Logged Aug 15 fare 25 cash (PLAY jar day)
 
