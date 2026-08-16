@@ -1,5 +1,15 @@
 # Finna Audit Log
 
+## Aug 16, 2026 - Logged Aug 16 loan to RJ 149 from GCash wallet (receivable)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via Monica (Telegram, Aug 16 14:24).
+- Ledger change: `{ date: "Aug 16", desc: "Loan to RJ", cat: "Loans", amount: 149.00, wallet: "gcash", type: "expense" }` - loan given, NOT an expense; creates/receivable increases (DATA-CONTRACT `Loans` rule).
+- Receivable update: RJ 166.75 -> 315.75.
+- Balance update: GCash wallet 6,612.33 -> 6,463.33.
+- `lastUpdated` stays Aug 16, 2026. `monthly.dayOfMonth` stays 16.
+- Validation: `finna-validate.ps1` passed (121 transactions, assets 40,048.14, receivables 3,327.75).
+
 ## Aug 16, 2026 - Logged Aug 16 fare 13 cash (NEC jar)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.

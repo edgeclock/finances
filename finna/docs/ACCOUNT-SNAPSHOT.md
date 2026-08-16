@@ -8,7 +8,7 @@
 
 | Account | Balance | Jar / Purpose |
 |---|---:|---|
-| GCash wallet | PHP 6,612.33 | **NEC jar** - spending |
+| GCash wallet | PHP 6,463.33 | **NEC jar** - spending |
 | GCash bank | PHP 0.00 | **FFA jar** (10%) - growth buffer (was emergency fund) |
 | RCBC savings | PHP 909.67 | **NEC jar** |
 | Cash on hand | PHP 2,422.50 | **NEC jar** - cash (post travel-expense correction) |
@@ -23,9 +23,9 @@
 | Tonik Bank | PHP 52.66 | Outside system |
 | Alkansya | PHP 479.75 | Outside system - joins the jars later |
 
-**Total assets:** PHP 40,197.14 (jars 39,664.73 + Tonik/Alkansya 532.41)
+**Total assets:** PHP 40,048.14 (jars 39,515.73 + Tonik/Alkansya 532.41)
 **Liabilities:** PHP 15,688.17 (SPayLater - next due Aug bill PHP 6,969.87 on Sep 15, 2026)
-**Receivables:** PHP 3,178.75 (JR PHP 3,010.00 + RJ PHP 166.75 + Bryan PHP 2.00)
+**Receivables:** PHP 3,327.75 (JR PHP 3,010.00 + RJ PHP 315.75 + Bryan PHP 2.00)
 **Ledger net worth formula:** assets + receivables - liabilities.
 
 ## 6-jar system (adopted Aug 8, 2026)
