@@ -1,5 +1,15 @@
 # Finna Audit Log
 
+## Aug 16, 2026 - Booked FFA settlement: 3,140.67 GCash wallet -> GCash bank
+
+- Runtime: Finna (OpenClaw) - lease handle `claude`.
+- Confirmed source: Edge via Monica (webchat, Aug 16 16:39) - Edge physically moved the money.
+- Context: settlement model from the PLAY-day overspend review (Aug 16 16:32). Of the 4,632.51 FFA money sitting in GCash wallet, 3,140.67 returns to FFA (GCash bank). The other 1,491.84 (FFA's debt to NEC for the Aug 15 domain 940.80 + Google Workspace 551.04) stays in the wallet, pending Edge's move/decision.
+- Ledger change: two transfer entries - `{ date: "Aug 16", desc: "Transfer to GCash bank (FFA settlement - PLAY-day return)", cat: "Transfer", amount: 3140.67, wallet: "gcash", type: "expense" }` + income side `wallet: "gcashsavings"`.
+- Balance update: GCash wallet 6,463.33 -> 3,322.66; GCash bank 0.00 -> 3,140.67.
+- `lastUpdated` stays Aug 16, 2026. `monthly.dayOfMonth` stays 16.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 16, 2026 - Clarified Aug 15 GCash bank to wallet transfer (Edge confirmation)
 
 - Runtime: Finna (OpenClaw) - lease handle `claude`.

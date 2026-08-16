@@ -2,14 +2,14 @@
 
 **Source:** `index.html`
 **As of:** Aug 16, 2026
-**Status:** MAJOR RESTRUCTURE Aug 8: 6-jar MM system adopted (T. Harv Eker modified). Cash correction (Edge-confirmed): cash on hand 4,001.75 → 3,303.50, difference 698.25 = travel expenses booked (new Travel category). Total assets 54,202.72. Full 6-jar dashboard implemented (jar summary section, per-jar targets/status, account jar mapping). Edge decision: essential monthly expenses = ~₱20,000-21,000 (fixed ~13,000-13,400 + variable ~7,000-8,000), rent excluded (derived ₱7,700 unconfirmed, footnote only). Aug 14: lunch + coffee logged from GCash wallet (240 total); DeepSeek top-up corrected 465 → 657.94 + cash withdrawal 2,000 from RCBC. Aug 15: LTSS company expenses - domain edgepossible.com 940.80 (RCBC) + Google Workspace 551.04 (GoTyme nec vault); reconciliation transfer 1,491.84 GCash bank → GCash wallet (LTSS-funded leg pending Edge confirmation). Aug 16: charity/tithes 500 from Coins.ph (GIVE jar).
+**Status:** MAJOR RESTRUCTURE Aug 8: 6-jar MM system adopted (T. Harv Eker modified). Cash correction (Edge-confirmed): cash on hand 4,001.75 → 3,303.50, difference 698.25 = travel expenses booked (new Travel category). Total assets 54,202.72. Full 6-jar dashboard implemented (jar summary section, per-jar targets/status, account jar mapping). Edge decision: essential monthly expenses = ~₱20,000-21,000 (fixed ~13,000-13,400 + variable ~7,000-8,000), rent excluded (derived ₱7,700 unconfirmed, footnote only). Aug 14: lunch + coffee logged from GCash wallet (240 total); DeepSeek top-up corrected 465 → 657.94 + cash withdrawal 2,000 from RCBC. Aug 15: LTSS company expenses - domain edgepossible.com 940.80 (RCBC) + Google Workspace 551.04 (GoTyme nec vault); reconciliation transfer 1,491.84 GCash bank → GCash wallet (LTSS-funded leg pending Edge confirmation). Aug 16: charity/tithes 500 from Coins.ph (GIVE jar). Aug 16: FFA settlement - 3,140.67 moved GCash wallet -> GCash bank (return of PLAY-day FFA money).
 
 ## Accounts (6-jar structure)
 
 | Account | Balance | Jar / Purpose |
 |---|---:|---|
-| GCash wallet | PHP 6,463.33 | **NEC jar** - spending |
-| GCash bank | PHP 0.00 | **FFA jar** (10%) - growth buffer (was emergency fund) |
+| GCash wallet | PHP 3,322.66 | **NEC jar** - spending |
+| GCash bank | PHP 3,140.67 | **FFA jar** (10%) - growth buffer (was emergency fund) |
 | RCBC savings | PHP 909.67 | **NEC jar** |
 | Cash on hand | PHP 2,422.50 | **NEC jar** - cash (post travel-expense correction) |
 | GoTyme nec vault | PHP 12,540.68 | **NEC jar** - GoTyme vault (housing/essentials) |
@@ -40,7 +40,7 @@
 - Percentages: NEC 50%, FFA/LTSS/EDU/PLAY/GIVE 10% each.
 - This period: one-time split of pool 50,673.75 - NEC 50/90 = 28,152.08, FFA/LTSS/EDU/PLAY 10/90 = 5,630.42 each, GIVE 0 (Coins.ph pre-funded). Next period: standard 50/10/10/10/10/10 with GIVE 10%.
 - Pool excluded Tonik, Alkansya, Coins.ph; included cash on hand and GoTrade (GoTrade = already-invested FFA).
-- Dashboard: new "6-jar summary" section shows per-jar balance vs target with OK/LOW/OVER status (tolerance 1.00 for split rounding). Jar balances: NEC 22,867.18 (LOW vs 28,152.08), FFA 1,000.00 (LOW - GCash bank emptied to wallet on Aug 15; GoTrade only), LTSS 5,630.42 (OK), EDU 5,630.42 (OK), PLAY 0.00 (consolidated to GCash wallet Aug 15 - remaining play money 870.87 after Beyblade 4,699 + water 50 + fare 25), GIVE 4,918.71 (OVER - pre-funded, expected; 100 charity paid from cash Aug 15, 500 tithes from Coins.ph Aug 16).
+- Dashboard: new "6-jar summary" section shows per-jar balance vs target with OK/LOW/OVER status (tolerance 1.00 for split rounding). Jar balances: NEC 19,195.51 (LOW vs 28,152.08), FFA 4,140.67 (LOW vs 5,630.42 - 3,140.67 returned to GCash bank Aug 16, 1,491.84 NEC settlement pending), LTSS 5,630.42 (OK), EDU 5,630.42 (OK), PLAY 0.00 (consolidated to GCash wallet Aug 15 - remaining play money 870.87 after Beyblade 4,699 + water 50 + fare 25), GIVE 4,918.71 (OVER - pre-funded, expected; 100 charity paid from cash Aug 15, 500 tithes from Coins.ph Aug 16).
 
 ## Employment status - no income since Jul 24, 2026
 

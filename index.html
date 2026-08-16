@@ -609,8 +609,8 @@ const DATA = {
   // subcategories of the 6 mains. Pool excluded Tonik, Alkansya, Coins.ph; included cash
   // and GoTrade (GoTrade = already-invested FFA).
   accounts: [
-    { label: "GCash wallet",   balance: 6463.33,  tag: "spend",  tagLabel: "NEC jar - spending", jar: "NEC" },
-    { label: "GCash bank",     balance: 0.00,     tag: "save",   tagLabel: "FFA jar (10%)", jar: "FFA" },
+    { label: "GCash wallet",   balance: 3322.66,  tag: "spend",  tagLabel: "NEC jar - spending", jar: "NEC" },
+    { label: "GCash bank",     balance: 3140.67,  tag: "save",   tagLabel: "FFA jar (10%)", jar: "FFA" },
     { label: "RCBC savings",   balance: 909.67,   tag: "spend",  tagLabel: "NEC jar", jar: "NEC" },
     { label: "Cash on hand",   balance: 2422.50,   tag: "cash",   tagLabel: "NEC jar - cash", jar: "NEC" },
     { label: "GoTyme nec vault", balance: 12540.68, tag: "save", tagLabel: "NEC jar - GoTyme vault", jar: "NEC" },
@@ -854,7 +854,9 @@ const DATA = {
     { date: "Aug 16", desc: "Coffee", cat: "Food & dining", amount: 210.00, wallet: "gcash", type: "expense" },
     { date: "Aug 16", desc: "Lunch", cat: "Food & dining", amount: 159.00, wallet: "gcash", type: "expense" },
     { date: "Aug 16", desc: "Fare", cat: "Transport", amount: 13.00, wallet: "cash", type: "expense" },
-    { date: "Aug 16", desc: "Loan to RJ", cat: "Loans", amount: 149.00, wallet: "gcash", type: "expense" }
+    { date: "Aug 16", desc: "Loan to RJ", cat: "Loans", amount: 149.00, wallet: "gcash", type: "expense" },
+    { date: "Aug 16", desc: "Transfer to GCash bank (FFA settlement - PLAY-day return)", cat: "Transfer", amount: 3140.67, wallet: "gcash", type: "expense" },
+    { date: "Aug 16", desc: "Transfer from GCash wallet (FFA settlement - PLAY-day return)", cat: "Transfer", amount: 3140.67, wallet: "gcashsavings", type: "income" }
   ],
 
   spaylaterSchedule: [
