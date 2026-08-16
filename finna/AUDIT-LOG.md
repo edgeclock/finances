@@ -2,6 +2,18 @@
 
 # Finna Audit Log
 
+# Finna Audit Log
+
+## Aug 16, 2026 - Settled FFA -> NEC 1,491.84 (Edge decision, no transfer needed)
+
+- Runtime: Finna (OpenClaw) - lease handle `claude`.
+- Confirmed source: Edge via Monica (webchat, Aug 16 16:44) - "yes it will be given to NEC as they were the one mainly affected".
+- Context: NEC fronted 1,491.84 on Aug 15 for FFA/business setup - domain edgepossible.com 940.80 (RCBC) + Google Workspace 551.04 (GoTyme nec vault). FFA's debt to NEC.
+- Resolution: of the 4,632.51 FFA money that moved into the GCash wallet Aug 15, 3,140.67 was physically returned to GCash bank (booked 16:39) and the remaining 1,491.84 stays in the wallet, counted as FFA's reimbursement to NEC. The wallet is an NEC jar account, so the money is already in NEC's hands. No physical transfer needed.
+- Ledger change: none (no money moved; current balances already reflect the settled outcome: GCash wallet 3,322.66 [NEC], GCash bank 3,140.67 [FFA]). This entry closes the pending "1,491.84 NEC settlement" item and the earlier pending LTSS reconciliation question (company setup is FFA-funded, not LTSS).
+- `lastUpdated` stays Aug 16, 2026.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 16, 2026 - Corrected Aug 14 DeepSeek top-up to two charges (Edge-confirmed)
 
 - Runtime: Finna (OpenClaw) - lease handle `claude`.
