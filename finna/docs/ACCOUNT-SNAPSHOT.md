@@ -11,7 +11,7 @@
 | GCash wallet | PHP 6,612.33 | **NEC jar** - spending |
 | GCash bank | PHP 0.00 | **FFA jar** (10%) - growth buffer (was emergency fund) |
 | RCBC savings | PHP 909.67 | **NEC jar** |
-| Cash on hand | PHP 2,435.50 | **NEC jar** - cash (post travel-expense correction) |
+| Cash on hand | PHP 2,422.50 | **NEC jar** - cash (post travel-expense correction) |
 | GoTyme nec vault | PHP 12,540.68 | **NEC jar** - GoTyme vault (housing/essentials) |
 | GoTyme Professional Development (LTSS) | PHP 5,630.42 | **LTSS jar** (10%) |
 | GoTyme My Go Save (PLAY) | PHP 0.00 | **PLAY jar** (10%) - includes ₱11.85 pre-existing legacy, never booked |
@@ -23,7 +23,7 @@
 | Tonik Bank | PHP 52.66 | Outside system |
 | Alkansya | PHP 479.75 | Outside system - joins the jars later |
 
-**Total assets:** PHP 40,210.14 (jars 39,677.73 + Tonik/Alkansya 532.41)
+**Total assets:** PHP 40,197.14 (jars 39,664.73 + Tonik/Alkansya 532.41)
 **Liabilities:** PHP 15,688.17 (SPayLater - next due Aug bill PHP 6,969.87 on Sep 15, 2026)
 **Receivables:** PHP 3,178.75 (JR PHP 3,010.00 + RJ PHP 166.75 + Bryan PHP 2.00)
 **Ledger net worth formula:** assets + receivables - liabilities.

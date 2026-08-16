@@ -1,5 +1,14 @@
 # Finna Audit Log
 
+## Aug 16, 2026 - Logged Aug 16 fare 13 cash (NEC jar)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via Monica (webchat, Aug 16 15:14).
+- Ledger change: `{ date: "Aug 16", desc: "Fare", cat: "Transport", amount: 13.00, wallet: "cash", type: "expense" }` - NEC jar (`Transport`).
+- Balance update: Cash on hand 2,435.50 -> 2,422.50.
+- `lastUpdated` stays Aug 16, 2026. `monthly.dayOfMonth` stays 16.
+- Validation: `finna-validate.ps1` passed (120 transactions, assets 40,197.14).
+
 ## Aug 16, 2026 - Logged Aug 16 lunch 159 from GCash wallet (NEC jar)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
