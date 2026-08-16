@@ -474,14 +474,14 @@
     </div>
   </div>
 
-  <!-- Category Chart -->
+  <!-- Spending by Category -->
   <div class="sec">
-    <div class="sec-title">Spending by category · this period</div>
+    <div class="sec-title">Spending by category <span class="src">this period</span></div>
     <div class="card" style="padding:14px">
-      <div id="catLegend" style="display:flex;flex-wrap:wrap;gap:8px 16px;margin-bottom:10px;font-size:11px;color:var(--t2)"></div>
-      <div class="ch" style="height:220px">
-        <canvas id="catChart" role="img" aria-label="Pie chart of spending by category"></canvas>
-      </div>
+      <div id="catRankList"></div>
+      <div id="catJarStrip" style="margin-top:14px"></div>
+      <div id="catFlags" style="margin-top:12px"></div>
+      <div id="catAction" style="margin-top:12px;padding:10px 12px;background:var(--surface2);border-radius:8px;font-size:12px;color:var(--t2)"></div>
       <div id="catEmpty" class="empty" style="display:none">No spending data yet this period.<br>Updates after each check-in.</div>
     </div>
   </div>
@@ -514,17 +514,12 @@
 
   <!-- Salary Period -->
   <div class="sec">
-    <div class="sec-title">Monthly monitoring</div>
+    <div class="sec-title">Monthly monitoring <span class="src">runway mode</span></div>
     <div class="card">
-      <div class="period-meta">
-        <span id="periodRange"></span>
-        <span id="periodDay"></span>
-      </div>
-      <div class="pb"><div class="pb-fill" id="periodBar" style="background:var(--blue)"></div></div>
-      <div class="pb-lbls">
-        <span id="periodReceived"></span>
-        <span id="periodNext"></span>
-      </div>
+      <div class="m-val" id="runwayVal" style="font-size:26px;margin-bottom:2px"></div>
+      <div class="m-sub" id="runwaySub"></div>
+      <div style="margin-top:6px;font-size:11px;color:var(--t3)" id="runwayNote"></div>
+      <div id="commitList" style="margin-top:12px"></div>
     </div>
   </div>
 
@@ -1007,13 +1002,31 @@ if (totalReceivables > 0) {
 // Emergency fund JS ARCHIVED Aug 16, 2026 - section removed; FFA jar is the growth buffer
 // (6-jar MM system adopted Aug 8, 2026). GCash bank + GoTrade = FFA; NEC covers essentials.
 
-// Monthly monitoring (was "Salary period" — see DATA.monthly comment)
-document.getElementById('periodLabel').textContent    = mo.monthStart + ' – ' + mo.monthEnd;
-document.getElementById('periodRange').textContent    = mo.monthStart + ' – ' + mo.monthEnd;
-document.getElementById('periodDay').textContent      = 'Day ' + mo.dayOfMonth + ' of ' + mo.daysInMonth;
-document.getElementById('periodReceived').textContent = 'Month start: ' + mo.monthStart;
-document.getElementById('periodNext').textContent     = 'Resets: ' + mo.nextReset;
-document.getElementById('periodBar').style.width      = pct(mo.dayOfMonth, mo.daysInMonth) + '%';
+// Monthly monitoring (runway mode - no income since Jul 24, 6-jar MM)
+document.getElementById('periodLabel').textContent = mo.monthStart + ' - ' + mo.monthEnd;
+const necSubcats = DATA.jarSystem.subcats.NEC || [];
+const necBal = DATA.accounts.filter(a => a.jar === 'NEC').reduce((s, a) => s + a.balance, 0);
+const necSpent = DATA.transactions.filter(t => t.type === 'expense' && t.cat !== 'Transfer' && necSubcats.indexOf(t.cat) >= 0).reduce((s, t) => s + t.amount, 0);
+const avgDailyNec = mo.dayOfMonth > 0 ? necSpent / mo.dayOfMonth : 0;
+const runwayDays = avgDailyNec > 0 ? Math.floor(necBal / avgDailyNec) : null;
+document.getElementById('runwayVal').textContent = runwayDays != null ? runwayDays + ' days' : 'no spend data yet';
+document.getElementById('runwaySub').textContent = 'NEC ' + fmt(necBal) + ' at ' + fmt(avgDailyNec) + '/day essentials burn';
+document.getElementById('runwayNote').textContent = 'Day ' + mo.dayOfMonth + ' of ' + mo.daysInMonth + '; no income since Jul 24. FFA rebuilds at next income (standard 50/10/10/10/10/10 split).';
+const commitEl = document.getElementById('commitList');
+const moNow = new Date();
+const monthShort = moNow.toLocaleString('en-US', { month: 'short' });
+const wLbl = { gcash: 'GCash', rcbc: 'RCBC', maya: 'Maya', coins: 'Coins.ph', cash: 'Cash' };
+const dues = [];
+DATA.subscriptions.filter(s => !s.paid).forEach(s => dues.push({ name: s.name, amt: s.amount, due: monthShort + ' ' + s.dueDay, wallet: wLbl[s.wallet] || s.wallet }));
+(DATA.recurringCommitments || []).filter(c => !c.paid).forEach(c => dues.push({ name: c.name, amt: c.amount, due: monthShort + ' ' + c.dueDay, wallet: wLbl[c.wallet] || c.wallet }));
+if (DATA.spaylaterSchedule.length > 0) { const n = DATA.spaylaterSchedule[0]; dues.push({ name: 'SPayLater ' + n.month, amt: n.amount, due: n.due, wallet: 'GCash' }); }
+dues.sort((a, b) => a.due.localeCompare(b.due));
+if (dues.length === 0) {
+  commitEl.innerHTML = '<div class="empty">All commitments caught up.</div>';
+} else {
+  commitEl.innerHTML = '<div style="font-size:11px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:6px">Due next</div>' +
+    dues.map(d => '<div class="row"><div><div class="row-name">' + d.name + '</div><div class="row-sub">' + d.due + ' - ' + d.wallet + '</div></div><div class="row-amt">' + fmt(d.amt) + '</div></div>').join('');
+}
 
 // Monthly spending
 document.getElementById('spentTotal').textContent    = totalSpent > 0 ? fmt(totalSpent) : '₱0';
@@ -1132,31 +1145,26 @@ txnLogEl.innerHTML += `
 document.getElementById('txnLogSub').textContent = DATA.transactions.length + ' entries this period';
 document.getElementById('txnLogValue').textContent = fmt(totalSpent);
 
-// Accounts grid - grouped by jar (Aug 16, 2026)
+// Accounts grid - original flat order, jar color accent, same-provider wallets adjacent (Edge, Aug 16)
 const acctGrid = document.getElementById('accountsGrid');
-function acctCardHTML(a, i) {
+const jarColorMap = {};
+Object.keys(DATA.jarSystem.jars).forEach(k => { jarColorMap[k] = DATA.jarSystem.jars[k].color; });
+const outsideClr = 'var(--border)';
+const acctDisplayOrder = ['GCash wallet', 'GCash bank', 'RCBC savings', 'Cash on hand', 'GoTyme nec vault', 'GoTyme Professional Development (LTSS)', 'GoTyme My Go Save (PLAY)', 'GoTyme wallet', 'Maya bank', 'Maya wallet', 'Coins.ph PHP', 'GoTrade', 'Tonik Bank', 'Alkansya'];
+acctDisplayOrder.forEach(label => {
+  const idx = DATA.accounts.findIndex(x => x.label === label);
+  if (idx < 0) return;
+  const a = DATA.accounts[idx];
+  const clr = a.jar ? (jarColorMap[a.jar] || outsideClr) : outsideClr;
   const balDisplay = (a.tag === 'crypto' && a.btcAmount != null) ? `${a.btcAmount} BTC` : fmt(a.balance);
   const subBal = (a.tag === 'crypto' && a.btcAmount != null) ? `<div class="m-sub">- ${fmt(a.balance)}</div>` : '';
-  return `<div class="acct-card" data-acct="${i}">
+  acctGrid.innerHTML += `<div class="acct-card" data-acct="${idx}" style="border-left:3px solid ${clr}">
     <div class="acct-name">${a.label}</div>
     <div class="acct-bal">${balDisplay}</div>
     ${subBal}
     <span class="tag tag-${a.tag}">${a.tagLabel}</span>
   </div>`;
-}
-const jarOrder = ['NEC', 'FFA', 'LTSS', 'EDU', 'PLAY', 'GIVE'];
-const jarNames = { NEC: 'Necessities (50%)', FFA: 'Financial Freedom (10%)', LTSS: 'Long-term savings (10%)', EDU: 'Education (10%)', PLAY: 'Play (10%)', GIVE: 'Give (10%)' };
-jarOrder.forEach(j => {
-  const members = DATA.accounts.filter(x => x.jar === j);
-  if (members.length === 0) return;
-  acctGrid.innerHTML += `<div class="m-sub" style="grid-column:1/-1;margin:14px 2px 2px;font-weight:600;text-transform:uppercase;letter-spacing:0.4px">${j} <span style="color:var(--t3);text-transform:none">${jarNames[j] || ''}</span></div>`;
-  members.forEach(a => { acctGrid.innerHTML += acctCardHTML(a, DATA.accounts.indexOf(a)); });
 });
-const outside = DATA.accounts.filter(x => !x.jar);
-if (outside.length > 0) {
-  acctGrid.innerHTML += `<div class="m-sub" style="grid-column:1/-1;margin:14px 2px 2px;font-weight:600;text-transform:uppercase;letter-spacing:0.4px">Hubs & outside <span style="color:var(--t3);text-transform:none">distribution / non-jar</span></div>`;
-  outside.forEach(a => { acctGrid.innerHTML += acctCardHTML(a, DATA.accounts.indexOf(a)); });
-}
 
 // 6-jar summary - sums account balances per jar, compares against this-period targets
 const jarGridEl = document.getElementById('jarGrid');
@@ -1243,12 +1251,10 @@ function monthCompareAlerts() {
   const prev = reports[1];
   const pct = v => (v >= 0 ? '+' : '') + Math.round(v) + '%';
   const expDelta = prev.expenses > 0 ? ((latest.expenses - prev.expenses) / prev.expenses) * 100 : 0;
-  const incDelta = prev.income > 0 ? ((latest.income - prev.income) / prev.income) * 100 : 0;
   const netDelta = prev.netSavings !== 0 ? ((latest.netSavings - prev.netSavings) / Math.abs(prev.netSavings)) * 100 : 0;
   return [
     { dot: latest.netSavings >= 0 ? 'green' : 'red', title: latest.label + ' vs ' + prev.label, sub: 'Net ' + fmt(latest.netSavings) + ' vs ' + fmt(prev.netSavings) + ' (' + pct(netDelta) + ')' },
-    { dot: latest.expenses > prev.expenses ? 'red' : 'green', title: 'Spending ' + (latest.expenses > prev.expenses ? 'up' : 'down'), sub: fmt(latest.expenses) + ' vs ' + fmt(prev.expenses) + ' (' + pct(expDelta) + ')' },
-    { dot: latest.income > prev.income ? 'green' : 'amber', title: 'Income ' + (latest.income > prev.income ? 'up' : 'down'), sub: fmt(latest.income) + ' vs ' + fmt(prev.income) + ' (' + pct(incDelta) + ')' }
+    { dot: latest.expenses > prev.expenses ? 'red' : 'green', title: 'Spending ' + (latest.expenses > prev.expenses ? 'up' : 'down'), sub: fmt(latest.expenses) + ' vs ' + fmt(prev.expenses) + ' (' + pct(expDelta) + ')' }
   ];
 }
 
@@ -1277,7 +1283,7 @@ const alerts = [
   },
   ...Object.entries(DATA.receivables).filter(([, v]) => v > 0).map(([k, v]) => {
     const nm = { jr: 'JR', sweet: 'Sweet', papa: 'Papa', bryan: 'Bryan', rj: 'RJ' }[k] || k;
-    const sub = k === 'rj' ? 'Lent Jul 26 + Aug 5 + Aug 16; 108 repaid in-kind Aug 6' : k === 'jr' ? 'Lent Jul 30 - no repayment yet' : 'Receivable outstanding';
+    const sub = k === 'rj' ? 'Lent Jul 26 + Aug 5 + Aug 16; 108 repaid in-kind Aug 6' : k === 'jr' ? 'Lent Jul 30 - repayment expected Aug 20 (Edge, Aug 16)' : 'Receivable outstanding';
     return { dot: 'amber', title: nm + ' owes ' + fmt(v), sub: sub };
   })
 ];
@@ -1322,57 +1328,66 @@ new Chart(document.getElementById('allocChart'), {
   }
 });
 
-// Category chart — pie, by category only (not split by wallet)
+// Spending by category - ranked insight panel (redesigned Aug 16, 2026, per Edge)
 const catLabels = DATA.categoryOrder;
 const catTotals = catLabels.map(k => (cats[k].gcash||0)+(cats[k].rcbc||0)+(cats[k].maya||0)+(cats[k].coins||0)+(cats[k].cash||0));
 const hasData   = catTotals.some(v => v > 0);
-const catCanvas = document.getElementById('catChart');
 const catEmpty  = document.getElementById('catEmpty');
 
 if (!hasData) {
-  catCanvas.style.display = 'none';
-  catEmpty.style.display  = 'block';
+  catEmpty.style.display = 'block';
 } else {
-  const catPieColors = {
-    'Food & dining': dark ? '#EF9F27' : '#BA7517',
-    'Groceries':     dark ? '#5DCAA5' : '#1D9E75',
-    'Transport':     dark ? '#85B7EB' : '#378ADD',
-    'Travel':        dark ? '#7DD3FC' : '#0284C7',
-    'Load / comms':  dark ? '#A8A6A0' : '#888780',
-    'Subscriptions': dark ? '#2DD4BF' : '#0D9488',
-    'Charity':       dark ? '#AFA9EC' : '#534AB7',
-    'Family':        dark ? '#F472B6' : '#BE185D',
-    'Household':     dark ? '#94A3B8' : '#64748B',
-    'Loans':         dark ? '#FACC15' : '#CA8A04',
-    'Debt payment':  dark ? '#F09595' : '#E24B4A',
-    'Investments':   dark ? '#818CF8' : '#4F46E5'
-  };
-  const nonZero = catLabels.map((k, i) => ({ k, v: catTotals[i] })).filter(x => x.v > 0);
-  const catTotalSum = nonZero.reduce((s, x) => s + x.v, 0);
-  const catLegend = document.getElementById('catLegend');
-  nonZero.sort((a, b) => b.v - a.v).forEach(x => {
+  const catTotalSum = catTotals.reduce((s, v) => s + v, 0);
+  const nonZero = catLabels.map((k, i) => ({ k, v: catTotals[i] })).filter(x => x.v > 0).sort((a, b) => b.v - a.v);
+  const reports = [...DATA.monthlyReports].sort((a, b) => b.key.localeCompare(a.key));
+  const lastReport = reports.length > 0 ? reports[0] : null;
+  const lastCats = {};
+  if (lastReport) { (lastReport.categoryBreakdown || []).forEach(c => { lastCats[c.cat] = c.amount; }); }
+  const catColors = { 'Food & dining': dark ? '#EF9F27' : '#BA7517', 'Groceries': dark ? '#5DCAA5' : '#1D9E75', 'Transport': dark ? '#85B7EB' : '#378ADD', 'Travel': dark ? '#7DD3FC' : '#0284C7', 'Load / comms': dark ? '#A8A6A0' : '#888780', 'Subscriptions': dark ? '#2DD4BF' : '#0D9488', 'Charity': dark ? '#AFA9EC' : '#534AB7', 'Family': dark ? '#F472B6' : '#BE185D', 'Household': dark ? '#94A3B8' : '#64748B', 'Loans': dark ? '#FACC15' : '#CA8A04', 'Debt payment': dark ? '#F09595' : '#E24B4A', 'Investments': dark ? '#818CF8' : '#4F46E5' };
+  const rankList = document.getElementById('catRankList');
+  const top5 = nonZero.slice(0, 5);
+  const flags = [];
+  top5.forEach(x => {
     const pct = Math.round(x.v / catTotalSum * 100);
-    catLegend.innerHTML += `<span style="display:flex;align-items:center;gap:4px">
-      <span style="width:10px;height:10px;border-radius:2px;background:${catPieColors[x.k] || '#888780'};display:inline-block;flex-shrink:0"></span>${x.k}
-      <span style="color:var(--t1);font-weight:500">${fmt(x.v)}</span><span style="color:var(--t3)">(${pct}%)</span>
-    </span>`;
+    const prev = lastCats[x.k] || 0;
+    const delta = prev > 0 ? Math.round((x.v - prev) / prev * 100) : null;
+    if (pct >= 25) flags.push({ t: x.k + ' is ' + pct + '% of spend', c: 'amber' });
+    if (delta != null && delta >= 50) flags.push({ t: x.k + ' up ' + delta + '% vs ' + (lastReport ? lastReport.label : 'last month'), c: 'red' });
+    if (prev === 0) flags.push({ t: x.k + ' is new this month', c: 'amber' });
+    rankList.innerHTML += `<div style="margin-bottom:8px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:12px;margin-bottom:3px">
+        <span style="color:var(--t1);font-weight:500">${x.k}</span>
+        <span><span style="color:var(--t1);font-weight:600">${fmt(x.v)}</span><span style="color:var(--t3)"> (${pct}%)</span>
+        ${delta != null ? '<span style="color:' + (delta >= 0 ? 'var(--red)' : 'var(--green)') + ';margin-left:6px">' + (delta >= 0 ? '+' : '') + delta + '% vs Jul</span>' : '<span style="color:var(--t3);margin-left:6px">no Jul data</span>'}
+        </span>
+      </div>
+      <div style="background:var(--surface2);border-radius:99px;height:6px;overflow:hidden">
+        <div style="width:${pct}%;height:100%;background:${catColors[x.k] || '#888780'};border-radius:99px"></div>
+      </div>
+    </div>`;
   });
-  new Chart(catCanvas, {
-    type: 'pie',
-    data: {
-      labels: nonZero.map(x => x.k),
-      datasets: [{ data: nonZero.map(x => x.v), backgroundColor: nonZero.map(x => catPieColors[x.k] || '#888780'), borderWidth: 0, hoverOffset: 6 }]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: {
-        legend: { display: false },
-        tooltip: { callbacks: { label: c => ' ' + fmt(c.parsed) + ' (' + Math.round(c.parsed / catTotalSum * 100) + '%)' } }
-      }
-    }
-  });
+  if (nonZero.length > 5) {
+    const rest = nonZero.slice(5);
+    rankList.innerHTML += '<div style="font-size:11px;color:var(--t3)">+ ' + rest.length + ' more categories (' + rest.map(r => r.k).join(', ') + ')</div>';
+  }
+  const jarCat = {};
+  Object.keys(DATA.jarSystem.subcats).forEach(j => { DATA.jarSystem.subcats[j].forEach(c => { jarCat[c] = j; }); });
+  const jarSpend = {};
+  nonZero.forEach(x => { const j = jarCat[x.k] || 'NEC'; jarSpend[j] = (jarSpend[j] || 0) + x.v; });
+  const jarStrip = document.getElementById('catJarStrip');
+  jarStrip.innerHTML = '<div style="font-size:11px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:6px">Spend by jar</div>' +
+    Object.keys(jarSpend).map(j => '<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span style="color:var(--t2)">' + j + ' <span style="color:var(--t3)">' + (DATA.jarSystem.jars[j] ? DATA.jarSystem.jars[j].name : '') + '</span></span><span style="color:var(--t1);font-weight:500">' + fmt(jarSpend[j]) + ' <span style="color:var(--t3);font-weight:400">(' + Math.round(jarSpend[j] / catTotalSum * 100) + '%)</span></span></div>').join('');
+  const flagEl = document.getElementById('catFlags');
+  if (flags.length > 0) {
+    flagEl.innerHTML = '<div style="font-size:11px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:6px">Flags</div>' +
+      flags.map(f => '<div style="display:flex;gap:6px;align-items:center;font-size:12px;margin-bottom:4px"><span class="dot dot-' + f.c + '"></span><span style="color:var(--t2)">' + f.t + '</span></div>').join('');
+  }
+  const top = nonZero[0];
+  const topTxns = DATA.transactions.filter(t => t.type === 'expense' && t.cat === top.k);
+  const biggest = topTxns.reduce((m, t) => t.amount > m.amount ? t : m, { amount: 0, desc: '', date: '' });
+  const act = document.getElementById('catAction');
+  act.innerHTML = '<b>Watch:</b> ' + top.k + ' leads at ' + fmt(top.v) + ' (' + Math.round(top.v / catTotalSum * 100) + '% of spend). Biggest item: ' + (biggest.amount > 0 ? biggest.desc + ' ' + fmt(biggest.amount) + ' on ' + biggest.date : 'n/a') + '. Total spend: ' + fmt(catTotalSum) + '.';
 }
-
 
 // Rounded favicon from volcanis.png
 (function() {

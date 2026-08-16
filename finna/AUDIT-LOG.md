@@ -10,6 +10,20 @@
 
 # Finna Audit Log
 
+# Finna Audit Log
+
+## Aug 16, 2026 - Dashboard round 2: category redesign + runway monitoring + accounts accent (Edge GO)
+
+- Runtime: Finna (OpenClaw) - lease handle `claude`.
+- Confirmed source: Edge via Monica (webchat, Aug 16 17:52 feedback).
+- Changes to `index.html` (rendering only, no DATA changes):
+  1. **Month-vs-month income card removed**: July's "income up" was driven by the Aug 8 reallocation of pre-existing funds, not real income. Comparison now shows Net + Spending only.
+  2. **JR alert updated**: repayment expected Aug 20 (Edge-confirmed).
+  3. **Spending by category redesigned** (Edge GO): pie chart replaced with ranked top-5 bars (amount, % of spend, vs-July delta), spend-by-jar strip, flags (concentration >= 25%, spike >= +50% vs July, new category), and a one-line Watch action (top category, biggest item, total).
+  4. **Monthly monitoring redesigned** (Edge GO): runway mode - NEC balance / avg daily NEC burn = days of essentials left (currently 11 days), "Due next" commitment list (unpaid subscriptions + recurring commitments + next SPayLater installment), income-resume banner.
+  5. **Accounts grid**: reverted to flat original order with jar color accent only (border-left = jar color, gray for hubs/outside); same-provider wallets now adjacent (GoTyme nec/LTSS/PLAY/wallet together, Maya bank/wallet together).
+- Verification: `finna-validate.ps1` passed; node syntax check passed; headless render test passed (runway 11 days, ranked categories render, flags render, no income card, JR Aug 20 present).
+
 ## Aug 16, 2026 - Dashboard overhaul (Edge review session, items 1-4, 6)
 
 - Runtime: Finna (OpenClaw) - lease handle `claude`.
