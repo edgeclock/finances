@@ -612,7 +612,7 @@ const DATA = {
     { label: "GCash wallet",   balance: 3322.66,  tag: "spend",  tagLabel: "NEC jar - spending", jar: "NEC" },
     { label: "GCash bank",     balance: 3140.67,  tag: "save",   tagLabel: "FFA jar (10%)", jar: "FFA" },
     { label: "RCBC savings",   balance: 1102.54,  tag: "spend",  tagLabel: "NEC jar", jar: "NEC" },
-    { label: "Cash on hand",   balance: 2422.50,   tag: "cash",   tagLabel: "NEC jar - cash", jar: "NEC" },
+    { label: "Cash on hand",   balance: 1574.75,   tag: "cash",   tagLabel: "NEC jar - cash", jar: "NEC" },
     { label: "GoTyme nec vault", balance: 12540.68, tag: "save", tagLabel: "NEC jar - GoTyme vault", jar: "NEC" },
     { label: "GoTyme Professional Development (LTSS)", balance: 5630.42, tag: "save", tagLabel: "LTSS jar (10%)", jar: "LTSS" },
     { label: "GoTyme My Go Save (PLAY)", balance: 0.00, tag: "save", tagLabel: "PLAY jar (10%)", jar: "PLAY" },
@@ -857,7 +857,8 @@ const DATA = {
     { date: "Aug 16", desc: "Fare", cat: "Transport", amount: 13.00, wallet: "cash", type: "expense" },
     { date: "Aug 16", desc: "Loan to RJ", cat: "Loans", amount: 149.00, wallet: "gcash", type: "expense" },
     { date: "Aug 16", desc: "Transfer to GCash bank (FFA settlement - PLAY-day return)", cat: "Transfer", amount: 3140.67, wallet: "gcash", type: "expense" },
-    { date: "Aug 16", desc: "Transfer from GCash wallet (FFA settlement - PLAY-day return)", cat: "Transfer", amount: 3140.67, wallet: "gcashsavings", type: "income" }
+    { date: "Aug 16", desc: "Transfer from GCash wallet (FFA settlement - PLAY-day return)", cat: "Transfer", amount: 3140.67, wallet: "gcashsavings", type: "income" },
+    { date: "Aug 16", desc: "Cash reconciliation (physical count 1,574.75 - unrecorded spending, cause forgotten, Edge-confirmed)", cat: "Reconciliation", amount: 847.75, wallet: "cash", type: "adjustment" }
   ],
 
   spaylaterSchedule: [

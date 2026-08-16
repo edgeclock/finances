@@ -4,6 +4,18 @@
 
 # Finna Audit Log
 
+# Finna Audit Log
+
+## Aug 16, 2026 - Cash reconciliation: books 2,422.50 -> 1,574.75 (Edge physical count)
+
+- Runtime: Finna (OpenClaw) - lease handle `claude`.
+- Confirmed source: Edge via Monica (webchat, Aug 16 17:04/17:10) - Edge counted physical cash at 1,574.75 and stated the last fully-correct cash state was the Aug 8 snacks overcharge refund update; his hypothesis is unrecorded spending that is now completely forgotten.
+- Ledger change: cash balance 2,422.50 -> 1,574.75 (-847.75), booked as `{ date: "Aug 16", desc: "Cash reconciliation (physical count 1,574.75 - unrecorded spending, cause forgotten, Edge-confirmed)", cat: "Reconciliation", amount: 847.75, wallet: "cash", type: "adjustment" }` per DATA-CONTRACT (adjustment = verified cash-count reconciliation, wallet cash, cat Reconciliation, excluded from income/spending totals).
+- Asset impact: total assets 40,241.01 -> 39,393.26. NEC jar 19,388.38 -> 18,540.63. Liabilities/receivables unchanged. periodExpenses unchanged (adjustment excluded).
+- The four older cash flags (snacks refund 230, travel 698.25, Bry loan 500, RCBC withdrawal 2,000) were reviewed: Edge's statement that everything up to the snacks refund is correct confirms the refund; the others remain booked as-is with no evidence of error. The 847.75 shortfall is treated as unrecorded spending, per Edge's own hypothesis.
+- `lastUpdated` stays Aug 16, 2026. `monthly.dayOfMonth` stays 16.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 16, 2026 - Settled FFA -> NEC 1,491.84 (Edge decision, no transfer needed)
 
 - Runtime: Finna (OpenClaw) - lease handle `claude`.
