@@ -959,7 +959,7 @@ const gcashWalletBal   = DATA.accounts.find(a => a.label === "GCash wallet").bal
 const ps = DATA.monthlySpending;
 // Derive wallet spending and category breakdown from transactions (single source of truth)
 // "Transfer" and paycheck-distribution "Income"-tagged entries are internal money movement between
-// Edge's own accounts, not discretionary spending — excluded from wallet spent / pace / projections.
+// Edge's own accounts, not discretionary spending - excluded from wallet spent / pace / projections.
 const txExpenses = DATA.transactions.filter(t => t.type === 'expense' && t.cat !== 'Transfer');
 ps.wallets.forEach(w => { w.spent = txExpenses.filter(t => t.wallet === w.id).reduce((s, t) => s + t.amount, 0); });
 const cashTotal = txExpenses.filter(t => t.wallet === 'cash').reduce((s, t) => s + t.amount, 0);
@@ -968,12 +968,16 @@ DATA.categoryOrder.forEach(cat => { cats[cat] = { gcash: 0, rcbc: 0, maya: 0, co
 txExpenses.forEach(t => { if (cats[t.cat]) cats[t.cat][t.wallet] = (cats[t.cat][t.wallet] || 0) + t.amount; });
 const walletSpent = ps.wallets.reduce((s, w) => s + w.spent, 0);
 const totalSpent  = walletSpent + cashTotal;
-const totalBudget = ps.wallets.reduce((s, w) => s + w.budget, 0);
-const remaining   = totalBudget - walletSpent;
 const mo          = DATA.monthly;
-const dailyPace   = mo.dayOfMonth > 0 && totalSpent > 0 ? totalSpent / mo.dayOfMonth : 0;
-const projected   = dailyPace > 0 ? dailyPace * mo.daysInMonth : 0;
-const onTrack     = projected > 0 && projected <= totalBudget;
+// Pace basis (Aug 16, 2026): internal moves (Transfer, already excluded), scheduled debt paydown
+// (Debt payment) and money lent out (Loans, comes back as receivable) are not pace-driven
+// consumption, so they don't push the projection. Compare the projection against NEC funds
+// actually available (the stale 11,000 wallet budget was removed as the benchmark).
+const paceTotal = txExpenses.filter(t => t.cat !== 'Debt payment' && t.cat !== 'Loans').reduce((s, t) => s + t.amount, 0);
+const necFunds  = DATA.accounts.filter(a => a.jar === 'NEC').reduce((s, a) => s + a.balance, 0);
+const dailyPace = mo.dayOfMonth > 0 && paceTotal > 0 ? paceTotal / mo.dayOfMonth : 0;
+const projected = dailyPace > 0 ? dailyPace * mo.daysInMonth : 0;
+const onTrack   = projected > 0 && projected <= necFunds;
 const SUB_THRESHOLD = 3059;
 
 // Theme colors — used in both render and charts sections
@@ -1029,14 +1033,14 @@ if (dues.length === 0) {
 }
 
 // Monthly spending
-document.getElementById('spentTotal').textContent    = totalSpent > 0 ? fmt(totalSpent) : '₱0';
+document.getElementById('spentTotal').textContent    = totalSpent > 0 ? fmt(totalSpent) : '0';
 document.getElementById('dayLabel').textContent      = 'day ' + mo.dayOfMonth + ' of ' + mo.daysInMonth;
-document.getElementById('spentRemaining').textContent = totalSpent > 0 ? fmt(remaining) : '—';
-document.getElementById('spentRemaining').className  = 'metric m-val ' + (remaining < 2000 ? 'c-red' : 'c-green');
-document.getElementById('dailyPace').textContent     = dailyPace > 0 ? fmt(dailyPace) : '—';
-document.getElementById('projTotal').textContent     = projected > 0 ? fmt(projected) : '—';
+document.getElementById('spentRemaining').textContent = fmt(necFunds) + ' NEC';
+document.getElementById('spentRemaining').className  = 'metric m-val ' + (onTrack ? 'c-green' : 'c-red');
+document.getElementById('dailyPace').textContent     = dailyPace > 0 ? fmt(dailyPace) : '-';
+document.getElementById('projTotal').textContent     = projected > 0 ? fmt(projected) : '-';
 document.getElementById('projTotal').className       = 'metric m-val ' + (projected > 0 ? (onTrack ? 'c-green' : 'c-red') : '');
-document.getElementById('projStatus').textContent    = projected > 0 ? (onTrack ? 'under budget' : 'over pace') : 'no data yet';
+document.getElementById('projStatus').textContent    = projected > 0 ? (onTrack ? 'within NEC funds' : 'exceeds NEC funds') : 'no data yet';
 
 // Budget bars (dynamic — all wallets)
 const wKeyClr    = { gcash: blueSolid, rcbc: blueSolid, maya: dark ? '#AFA9EC' : '#534AB7', coins: dark ? '#EF9F27' : '#BA7517' };
@@ -1249,6 +1253,9 @@ function monthCompareAlerts() {
   if (reports.length < 2) return [{ dot: 'gray', title: 'Month vs month', sub: 'Available after the next month closes' }];
   const latest = reports[0];
   const prev = reports[1];
+  if (prev.partial) {
+    return [{ dot: 'gray', title: latest.label + ' vs ' + prev.label, sub: prev.label + ' was partial (' + (prev.partialNote || 'incomplete month') + '). Full-vs-full comparison starts after the current month closes.' }];
+  }
   const pct = v => (v >= 0 ? '+' : '') + Math.round(v) + '%';
   const expDelta = prev.expenses > 0 ? ((latest.expenses - prev.expenses) / prev.expenses) * 100 : 0;
   const netDelta = prev.netSavings !== 0 ? ((latest.netSavings - prev.netSavings) / Math.abs(prev.netSavings)) * 100 : 0;
@@ -1278,8 +1285,8 @@ const alerts = [
   },
   {
     dot: totalSpent > 0 ? (onTrack ? 'green' : 'red') : 'gray',
-    title: totalSpent > 0 ? (onTrack ? 'Spending on pace' : 'Over pace') : 'No spend data yet',
-    sub: totalSpent > 0 ? (fmt(projected) + ' projected this period') : 'Update after next check-in'
+    title: totalSpent > 0 ? (onTrack ? 'Spending pace OK' : 'Spending pace over NEC funds') : 'No spend data yet',
+    sub: totalSpent > 0 ? (fmt(projected) + ' projected (excl. debt/loans/transfers) vs ' + fmt(necFunds) + ' NEC available') : 'Update after next check-in'
   },
   ...Object.entries(DATA.receivables).filter(([, v]) => v > 0).map(([k, v]) => {
     const nm = { jr: 'JR', sweet: 'Sweet', papa: 'Papa', bryan: 'Bryan', rj: 'RJ' }[k] || k;
@@ -1345,16 +1352,8 @@ if (!hasData) {
   if (lastReport) { (lastReport.categoryBreakdown || []).forEach(c => { lastCats[c.cat] = c.amount; }); }
   const catColors = { 'Food & dining': dark ? '#EF9F27' : '#BA7517', 'Groceries': dark ? '#5DCAA5' : '#1D9E75', 'Transport': dark ? '#85B7EB' : '#378ADD', 'Travel': dark ? '#7DD3FC' : '#0284C7', 'Load / comms': dark ? '#A8A6A0' : '#888780', 'Subscriptions': dark ? '#2DD4BF' : '#0D9488', 'Charity': dark ? '#AFA9EC' : '#534AB7', 'Family': dark ? '#F472B6' : '#BE185D', 'Household': dark ? '#94A3B8' : '#64748B', 'Loans': dark ? '#FACC15' : '#CA8A04', 'Debt payment': dark ? '#F09595' : '#E24B4A', 'Investments': dark ? '#818CF8' : '#4F46E5' };
   const rankList = document.getElementById('catRankList');
-  const top5 = nonZero.slice(0, 5);
-  const flags = [];
-  top5.forEach(x => {
-    const pct = Math.round(x.v / catTotalSum * 100);
-    const prev = lastCats[x.k] || 0;
-    const delta = prev > 0 ? Math.round((x.v - prev) / prev * 100) : null;
-    if (pct >= 25) flags.push({ t: x.k + ' is ' + pct + '% of spend', c: 'amber' });
-    if (delta != null && delta >= 50) flags.push({ t: x.k + ' up ' + delta + '% vs ' + (lastReport ? lastReport.label : 'last month'), c: 'red' });
-    if (prev === 0) flags.push({ t: x.k + ' is new this month', c: 'amber' });
-    rankList.innerHTML += `<div style="margin-bottom:8px">
+  function catRowHTML(x, pct, delta) {
+    return `<div style="margin-bottom:8px">
       <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:12px;margin-bottom:3px">
         <span style="color:var(--t1);font-weight:500">${x.k}</span>
         <span><span style="color:var(--t1);font-weight:600">${fmt(x.v)}</span><span style="color:var(--t3)"> (${pct}%)</span>
@@ -1365,10 +1364,33 @@ if (!hasData) {
         <div style="width:${pct}%;height:100%;background:${catColors[x.k] || '#888780'};border-radius:99px"></div>
       </div>
     </div>`;
+  }
+  const top5 = nonZero.slice(0, 5);
+  const flags = [];
+  top5.forEach(x => {
+    const pct = Math.round(x.v / catTotalSum * 100);
+    const prev = lastCats[x.k] || 0;
+    const delta = prev > 0 ? Math.round((x.v - prev) / prev * 100) : null;
+    if (pct >= 25) flags.push({ t: x.k + ' is ' + pct + '% of spend', c: 'amber' });
+    if (delta != null && delta >= 50) flags.push({ t: x.k + ' up ' + delta + '% vs ' + (lastReport ? lastReport.label : 'last month'), c: 'red' });
+    if (prev === 0) flags.push({ t: x.k + ' is new this month', c: 'amber' });
+    rankList.innerHTML += catRowHTML(x, pct, delta);
   });
   if (nonZero.length > 5) {
-    const rest = nonZero.slice(5);
-    rankList.innerHTML += '<div style="font-size:11px;color:var(--t3)">+ ' + rest.length + ' more categories (' + rest.map(r => r.k).join(', ') + ')</div>';
+    const moreWrap = document.createElement('div');
+    moreWrap.id = 'catMore';
+    moreWrap.style.display = 'none';
+    moreWrap.innerHTML = nonZero.slice(5).map(x => { const pct = Math.round(x.v / catTotalSum * 100); const prev = lastCats[x.k] || 0; const delta = prev > 0 ? Math.round((x.v - prev) / prev * 100) : null; return catRowHTML(x, pct, delta); }).join('');
+    rankList.appendChild(moreWrap);
+    const btn = document.createElement('button');
+    btn.textContent = 'Show all ' + nonZero.length + ' categories';
+    btn.style.cssText = 'margin-top:4px;padding:6px 12px;font-size:12px;border:1px solid var(--border);border-radius:99px;background:none;color:var(--t2);cursor:pointer';
+    btn.addEventListener('click', () => {
+      const open = moreWrap.style.display !== 'none';
+      moreWrap.style.display = open ? 'none' : 'block';
+      btn.textContent = open ? 'Show all ' + nonZero.length + ' categories' : 'Show top 5';
+    });
+    rankList.appendChild(btn);
   }
   const jarCat = {};
   Object.keys(DATA.jarSystem.subcats).forEach(j => { DATA.jarSystem.subcats[j].forEach(c => { jarCat[c] = j; }); });

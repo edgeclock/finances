@@ -12,6 +12,19 @@
 
 # Finna Audit Log
 
+# Finna Audit Log
+
+## Aug 16, 2026 - Dashboard round 3: pace fix + partial-month guard + Show all (Edge feedback)
+
+- Runtime: Finna (OpenClaw) - lease handle `claude`.
+- Confirmed source: Edge via Monica (webchat, Aug 16 18:01).
+- Changes to `index.html` (rendering only, no DATA changes):
+  1. **"Spending up" fixed**: June 2026 was a partial month (Jun 25-30 only, 5 days), so July vs June deltas were apples-vs-oranges. Month-vs-month now shows a caveat card when the comparison base is partial; real deltas resume with full-vs-full months (August vs July).
+  2. **"Over pace" diagnosed + fixed**: transfers were already excluded from spend (code filter `cat !== 'Transfer'`). The misleading part was the benchmark: the 11,000 wallet budget (set Aug 7) never covered cash or big items, so the projection always looked over. Pace is now computed excluding scheduled debt paydown (Debt payment) and money lent out (Loans, comes back as receivable), and compared against NEC funds actually available (18,540.63). Alert now reads "Spending pace over NEC funds" with the basis in the sub-line. Monthly spending section: Remaining now shows NEC available; Projected total vs NEC funds.
+  3. **Spending by category**: added a "Show all 13 categories" button (top 5 + expandable full list).
+  4. **6-jar summary targets**: flagged as stale (one-time Aug 8 split artifacts). Replacement proposal written to the plan doc (per-jar purpose metrics: NEC runway days, FFA growth, LTSS debt-paydown progress, EDU/PLAY/GIVE monthly remaining). Awaiting Edge GO.
+- Verification: `finna-validate.ps1` passed; node syntax check passed; headless render test passed (projected 50,381.05 vs NEC 18,540.63 -> over NEC funds; partial-month card renders; button + hidden list present).
+
 ## Aug 16, 2026 - Dashboard round 2: category redesign + runway monitoring + accounts accent (Edge GO)
 
 - Runtime: Finna (OpenClaw) - lease handle `claude`.
