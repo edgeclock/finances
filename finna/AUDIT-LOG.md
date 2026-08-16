@@ -1,5 +1,15 @@
 # Finna Audit Log
 
+## Aug 16, 2026 - Logged Aug 16 charity/tithes 500 from Coins.ph (GIVE jar)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via Monica (Telegram, Aug 16 09:30).
+- Ledger change: `{ date: "Aug 16", desc: "Charity (tithes)", cat: "Charity", amount: 500.00, wallet: "coins", type: "expense" }` - GIVE jar expense, paid from Coins.ph.
+- Balance update: Coins.ph PHP 5,418.71 -> 4,918.71.
+- `lastUpdated` -> Aug 16, 2026. `monthly.dayOfMonth` -> 16.
+- GIVE jar now 4,918.71 (still OVER vs target 0 - pre-funded this period, expected).
+- Validation: pending.
+
 ## Aug 15, 2026 - Logged Aug 15 fare 25 cash (PLAY jar day)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
