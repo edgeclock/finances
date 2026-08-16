@@ -1,5 +1,15 @@
 # Finna Audit Log
 
+## Aug 16, 2026 - Logged Aug 16 coffee 210 from GCash wallet (NEC jar)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via Monica (Telegram, Aug 16 10:48).
+- Ledger change: `{ date: "Aug 16", desc: "Coffee", cat: "Food & dining", amount: 210.00, wallet: "gcash", type: "expense" }` - booked as NEC (`Food & dining`), consistent with all prior coffee entries (Jul 19, Aug 2, Aug 5, Aug 14).
+- Category note: jarSystem subcats list "Coffee" under PLAY conceptually, but no `Coffee` category exists in `categoryOrder`; ledger practice books coffee as `Food & dining` (NEC). Aug 15 jar-audit reclassification proposals still pending Edge's confirmation, so no change to that practice.
+- Balance update: GCash wallet 6,981.33 -> 6,771.33.
+- `lastUpdated` stays Aug 16, 2026. `monthly.dayOfMonth` stays 16.
+- Validation: `finna-validate.ps1` passed (118 transactions, assets 40,369.14).
+
 ## Aug 16, 2026 - Logged Aug 16 charity/tithes 500 from Coins.ph (GIVE jar)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
