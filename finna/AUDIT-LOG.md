@@ -6,6 +6,18 @@
 
 # Finna Audit Log
 
+# Finna Audit Log
+
+## Aug 16, 2026 - Rebooked cash reconciliation as expense (Edge request: show as minus)
+
+- Runtime: Finna (OpenClaw) - lease handle `claude`.
+- Confirmed source: Edge via Monica (webchat, Aug 16 17:22) - "make it minus".
+- Ledger change: the Aug 16 cash reconciliation entry changed `type: "adjustment"` -> `type: "expense"` (cat Reconciliation, wallet cash, amount 847.75, desc unchanged). Cash balance stays 1,574.75 (physical count).
+- Impact: the row now renders as a negative expense in the dashboard. August period expenses 32,802.11 -> 33,649.86 (the 847.75 now counts as spending, consistent with Edge's own explanation that it was unrecorded spending). Assets unchanged 39,393.26.
+- Note: this steps outside the DATA-CONTRACT's adjustment convention (verified count fixes are normally type adjustment, excluded from spending totals) - Edge explicitly chose the minus/expense presentation.
+- `lastUpdated` stays Aug 16, 2026.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 16, 2026 - Cash reconciliation: books 2,422.50 -> 1,574.75 (Edge physical count)
 
 - Runtime: Finna (OpenClaw) - lease handle `claude`.
