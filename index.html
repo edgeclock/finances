@@ -230,6 +230,7 @@
     /* Breakdown modal */
     .metric[data-bd], .acct-card[data-acct] { cursor: pointer; position: relative; }
     .metric[data-bd]::after, .acct-card[data-acct]::after {
+
       content: '↗'; position: absolute; top: 8px; right: 10px;
       font-size: 10px; color: inherit; opacity: 0; transition: opacity 0.15s;
     }
@@ -404,22 +405,8 @@
     <div class="ga" id="alertGrid"></div>
   </div>
 
-  <!-- Emergency Fund (was MacBook Goal) -->
-  <div class="sec">
-    <div class="sec-title">Emergency fund</div>
-    <div class="card">
-      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
-        <span style="font-size:14px;font-weight:500">GCash bank (FFA jar)</span>
-        <span style="font-size:12px;color:var(--t2)" id="mbTargetLabel"></span>
-      </div>
-      <div class="pb"><div class="pb-fill" id="mbBar" style="background:var(--green)"></div></div>
-      <div class="pb-lbls">
-        <span id="mbSaved"></span>
-        <span id="mbRemaining"></span>
-      </div>
-      <div style="margin-top:10px;font-size:12px;color:var(--t2)" id="mbNote"></div>
-    </div>
-  </div>
+  <!-- Emergency fund section ARCHIVED Aug 16, 2026: the 6-jar MM system replaced it.
+       FFA (GCash bank + GoTrade) is the growth buffer; there is no separate emergency fund. -->
 
   <!-- 6-Jar Summary -->
   <div class="sec">
@@ -430,15 +417,6 @@
 
   <!-- Charts -->
   <div class="g2 sec" style="grid-template-columns: 1fr">
-    <div>
-      <div class="sec-title">Income history</div>
-      <div class="card" style="padding:14px">
-        <div class="ch" style="height:190px">
-          <canvas id="salaryChart" role="img" aria-label="Salary trend chart showing actual and projected paychecks"></canvas>
-        </div>
-        <div style="font-size:11px;color:var(--t3);margin-top:8px;text-align:center">Historical record — no income since Jul 24, 2026 (resigned)</div>
-      </div>
-    </div>
     <!-- "Monthly allocation" hidden 2026-08-03 at Edge's request — it's a planned monthly
          budget breakdown that assumes a paycheck, and there's currently no income. Restore by
          removing this comment and the display:none below, and reverting the grid to
@@ -1026,12 +1004,8 @@ if (totalReceivables > 0) {
   document.getElementById('receivableNote').style.color = 'var(--green)';
 }
 
-// FFA jar (was GCash savings emergency fund - repurposed Aug 8, 2026 under the 6-jar system)
-document.getElementById('mbBar').style.width        = '100%';
-document.getElementById('mbTargetLabel').textContent = 'no target set';
-document.getElementById('mbSaved').textContent      = fmt(gcashSavingsBal) + ' in FFA jar';
-document.getElementById('mbRemaining').textContent  = '';
-document.getElementById('mbNote').textContent       = '6-jar MM system adopted Aug 8, 2026 - GCash bank is the FFA jar (10%). NEC jar (50%) covers essentials. No separate emergency fund target; FFA doubles as the growth buffer until income resumes.';
+// Emergency fund JS ARCHIVED Aug 16, 2026 - section removed; FFA jar is the growth buffer
+// (6-jar MM system adopted Aug 8, 2026). GCash bank + GoTrade = FFA; NEC covers essentials.
 
 // Monthly monitoring (was "Salary period" — see DATA.monthly comment)
 document.getElementById('periodLabel').textContent    = mo.monthStart + ' – ' + mo.monthEnd;
@@ -1158,18 +1132,31 @@ txnLogEl.innerHTML += `
 document.getElementById('txnLogSub').textContent = DATA.transactions.length + ' entries this period';
 document.getElementById('txnLogValue').textContent = fmt(totalSpent);
 
-// Accounts grid
+// Accounts grid - grouped by jar (Aug 16, 2026)
 const acctGrid = document.getElementById('accountsGrid');
-DATA.accounts.forEach((a, i) => {
+function acctCardHTML(a, i) {
   const balDisplay = (a.tag === 'crypto' && a.btcAmount != null) ? `${a.btcAmount} BTC` : fmt(a.balance);
-  const subBal    = (a.tag === 'crypto' && a.btcAmount != null) ? `<div class="m-sub">≈ ${fmt(a.balance)}</div>` : '';
-  acctGrid.innerHTML += `<div class="acct-card" data-acct="${i}">
+  const subBal = (a.tag === 'crypto' && a.btcAmount != null) ? `<div class="m-sub">- ${fmt(a.balance)}</div>` : '';
+  return `<div class="acct-card" data-acct="${i}">
     <div class="acct-name">${a.label}</div>
     <div class="acct-bal">${balDisplay}</div>
     ${subBal}
     <span class="tag tag-${a.tag}">${a.tagLabel}</span>
   </div>`;
+}
+const jarOrder = ['NEC', 'FFA', 'LTSS', 'EDU', 'PLAY', 'GIVE'];
+const jarNames = { NEC: 'Necessities (50%)', FFA: 'Financial Freedom (10%)', LTSS: 'Long-term savings (10%)', EDU: 'Education (10%)', PLAY: 'Play (10%)', GIVE: 'Give (10%)' };
+jarOrder.forEach(j => {
+  const members = DATA.accounts.filter(x => x.jar === j);
+  if (members.length === 0) return;
+  acctGrid.innerHTML += `<div class="m-sub" style="grid-column:1/-1;margin:14px 2px 2px;font-weight:600;text-transform:uppercase;letter-spacing:0.4px">${j} <span style="color:var(--t3);text-transform:none">${jarNames[j] || ''}</span></div>`;
+  members.forEach(a => { acctGrid.innerHTML += acctCardHTML(a, DATA.accounts.indexOf(a)); });
 });
+const outside = DATA.accounts.filter(x => !x.jar);
+if (outside.length > 0) {
+  acctGrid.innerHTML += `<div class="m-sub" style="grid-column:1/-1;margin:14px 2px 2px;font-weight:600;text-transform:uppercase;letter-spacing:0.4px">Hubs & outside <span style="color:var(--t3);text-transform:none">distribution / non-jar</span></div>`;
+  outside.forEach(a => { acctGrid.innerHTML += acctCardHTML(a, DATA.accounts.indexOf(a)); });
+}
 
 // 6-jar summary - sums account balances per jar, compares against this-period targets
 const jarGridEl = document.getElementById('jarGrid');
@@ -1183,14 +1170,16 @@ Object.keys(DATA.jarSystem.jars).forEach(key => {
   const status = delta < -1 ? 'LOW' : (delta > 1 ? 'OVER' : 'OK');
   const statusClr = status === 'OK' ? 'var(--green)' : (status === 'LOW' ? 'var(--red)' : 'var(--amber)');
   const subcats = (DATA.jarSystem.subcats[key] || []).join(', ') || 'none yet';
-  jarGridEl.innerHTML += `<div class="acct-card" style="border-top:3px solid ${meta.color}">
+  jarGridEl.innerHTML += `<div class="acct-card" data-jar="${key}" style="border-top:3px solid ${meta.color};cursor:pointer">
     <div class="acct-name">${meta.label} <span class="src">${meta.name}</span></div>
     <div class="acct-bal">${fmt(bal)}</div>
-    <span class="tag tag-save">target ${fmt(target)} · <b style="color:${statusClr}">${status}</b> ${delta !== 0 ? '(' + (delta > 0 ? '+' : '−') + fmt(Math.abs(delta)) + ')' : ''}</span>
+    <span class="tag tag-save">target ${fmt(target)} - <b style="color:${statusClr}">${status}</b> ${delta !== 0 ? '(' + (delta > 0 ? '+' : '-') + fmt(Math.abs(delta)) + ')' : ''}</span>
     <div class="m-sub" style="margin-top:6px">${subcats}</div>
+    <div class="m-sub" style="margin-top:4px;color:var(--t3)">tap to see this month's fund movements</div>
   </div>`;
 });
 document.getElementById('jarNote').textContent = DATA.jarSystem.splitNote;
+
 
 
 // Upcoming payments — unpaid subscriptions this month + any one-off items in DATA.upcomingPayments
@@ -1246,8 +1235,26 @@ document.getElementById('spayTotal').textContent = fmt(DATA.liabilities.spaylate
 document.getElementById('spaySub').textContent = DATA.spaylaterSchedule.length + (DATA.spaylaterSchedule.length === 1 ? ' installment remaining' : ' installments remaining');
 document.getElementById('spayValue').textContent = fmt(DATA.liabilities.spaylater);
 
+// Month vs month comparison (built from compiled monthly reports)
+function monthCompareAlerts() {
+  const reports = [...DATA.monthlyReports].sort((a, b) => b.key.localeCompare(a.key));
+  if (reports.length < 2) return [{ dot: 'gray', title: 'Month vs month', sub: 'Available after the next month closes' }];
+  const latest = reports[0];
+  const prev = reports[1];
+  const pct = v => (v >= 0 ? '+' : '') + Math.round(v) + '%';
+  const expDelta = prev.expenses > 0 ? ((latest.expenses - prev.expenses) / prev.expenses) * 100 : 0;
+  const incDelta = prev.income > 0 ? ((latest.income - prev.income) / prev.income) * 100 : 0;
+  const netDelta = prev.netSavings !== 0 ? ((latest.netSavings - prev.netSavings) / Math.abs(prev.netSavings)) * 100 : 0;
+  return [
+    { dot: latest.netSavings >= 0 ? 'green' : 'red', title: latest.label + ' vs ' + prev.label, sub: 'Net ' + fmt(latest.netSavings) + ' vs ' + fmt(prev.netSavings) + ' (' + pct(netDelta) + ')' },
+    { dot: latest.expenses > prev.expenses ? 'red' : 'green', title: 'Spending ' + (latest.expenses > prev.expenses ? 'up' : 'down'), sub: fmt(latest.expenses) + ' vs ' + fmt(prev.expenses) + ' (' + pct(expDelta) + ')' },
+    { dot: latest.income > prev.income ? 'green' : 'amber', title: 'Income ' + (latest.income > prev.income ? 'up' : 'down'), sub: fmt(latest.income) + ' vs ' + fmt(prev.income) + ' (' + pct(incDelta) + ')' }
+  ];
+}
+
 // Monitoring alerts
 const alerts = [
+  ...monthCompareAlerts(),
   {
     dot: gcashWalletBal >= SUB_THRESHOLD ? 'green' : 'red',
     title: 'GCash ' + (gcashWalletBal >= SUB_THRESHOLD ? 'safe' : 'LOW'),
@@ -1268,21 +1275,11 @@ const alerts = [
     title: totalSpent > 0 ? (onTrack ? 'Spending on pace' : 'Over pace') : 'No spend data yet',
     sub: totalSpent > 0 ? (fmt(projected) + ' projected this period') : 'Update after next check-in'
   },
-  {
-    dot: 'gray',
-    title: 'Month vs month',
-    sub: 'Available after next month closes'
-  },
-  {
-    dot: 'amber',
-    title: 'RJ owes ₱166.75',
-    sub: 'Lent ₱274.75 (Jul 26 lunch ₱149 + laundry ₱113.75, Aug 5 ₱12) − ₱108 repaid in-kind (breakfast) Aug 6'
-  },
-  {
-    dot: 'amber',
-    title: 'JR owes ₱3,010',
-    sub: 'Lent Jul 30 — no repayment yet'
-  }
+  ...Object.entries(DATA.receivables).filter(([, v]) => v > 0).map(([k, v]) => {
+    const nm = { jr: 'JR', sweet: 'Sweet', papa: 'Papa', bryan: 'Bryan', rj: 'RJ' }[k] || k;
+    const sub = k === 'rj' ? 'Lent Jul 26 + Aug 5 + Aug 16; 108 repaid in-kind Aug 6' : k === 'jr' ? 'Lent Jul 30 - no repayment yet' : 'Receivable outstanding';
+    return { dot: 'amber', title: nm + ' owes ' + fmt(v), sub: sub };
+  })
 ];
 const alertGrid = document.getElementById('alertGrid');
 alerts.forEach(a => {
@@ -1300,29 +1297,6 @@ alerts.forEach(a => {
 // ================================================================
 Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
 Chart.defaults.font.size   = 11;
-
-// Income history (was "Salary trend" — no more future projections since resignation)
-new Chart(document.getElementById('salaryChart'), {
-  type: 'bar',
-  data: {
-    labels: DATA.salaryHistory.map(s => s.period),
-    datasets: [
-      { label: 'Actual',    data: DATA.salaryHistory.map(s => s.actual ? s.amount : null), backgroundColor: greenSolid, borderRadius: 4, barPercentage: 0.6 },
-      { label: 'Projected', data: DATA.salaryHistory.map(s => s.actual ? null : s.amount), backgroundColor: dark ? 'rgba(93,202,165,0.25)' : 'rgba(29,158,117,0.2)', borderRadius: 4, barPercentage: 0.6 }
-    ]
-  },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: {
-      legend: { display: true, position: 'top', align: 'end', labels: { color: txtClr, boxWidth: 10, boxHeight: 10, padding: 8 } },
-      tooltip: { callbacks: { label: c => c.parsed.y != null ? ' ' + fmt(c.parsed.y) : ' no data yet' } }
-    },
-    scales: {
-      y: { min: 0, max: 45000, ticks: { callback: v => '₱' + v/1000 + 'K', color: txtClr, maxTicksLimit: 5 }, grid: { color: gridClr }, border: { display: false } },
-      x: { ticks: { color: txtClr, autoSkip: false }, grid: { display: false }, border: { display: false } }
-    }
-  }
-});
 
 // Monthly allocation donut
 const alloc = DATA.monthlyAllocation;
@@ -1625,6 +1599,47 @@ setTimeout(function() {
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
+  const jarWalletMap = { gcash: 'GCash wallet', rcbc: 'RCBC savings', maya: 'Maya wallet', coins: 'Coins.ph PHP', cash: 'Cash on hand', gotyme: 'GoTyme wallet', gcashsavings: 'GCash bank', mayasavings: 'Maya bank', gotymewallet: 'GoTyme wallet', gotrade: 'GoTrade', gotymenev: 'GoTyme nec vault', gotymeltss: 'GoTyme Professional Development (LTSS)', gotymeplay: 'GoTyme My Go Save (PLAY)' };
+  function jarOfWallet(w) { const a = DATA.accounts.find(x => x.label === jarWalletMap[w]); return a ? a.jar : null; }
+
+  function buildJar(key) {
+    const meta = DATA.jarSystem.jars[key];
+    const accounts = DATA.accounts.filter(a => a.jar === key);
+    const subcats = DATA.jarSystem.subcats[key] || [];
+    const bal = accounts.reduce((s, a) => s + a.balance, 0);
+    const target = DATA.jarSystem.targets[key];
+    const delta = bal - target;
+    const status = delta < -1 ? 'LOW' : (delta > 1 ? 'OVER' : 'OK');
+    const rows = [];
+    DATA.transactions.forEach(t => {
+      if (t.type === 'expense' && t.cat !== 'Transfer') {
+        if (subcats.indexOf(t.cat) >= 0 || jarOfWallet(t.wallet) === key) {
+          rows.push({ pos: false, label: t.date + ' - ' + t.desc, sub: t.cat, amt: t.amount });
+        }
+      } else if (t.type === 'income' && t.cat !== 'Transfer' && jarOfWallet(t.wallet) === key) {
+        rows.push({ pos: true, label: t.date + ' - ' + t.desc, sub: t.cat, amt: t.amount });
+      } else if (t.type === 'expense' && t.cat === 'Transfer' && jarOfWallet(t.wallet) === key) {
+        rows.push({ pos: false, label: t.date + ' - ' + t.desc, sub: 'transfer out of jar', amt: t.amount });
+      } else if (t.type === 'income' && t.cat === 'Transfer' && jarOfWallet(t.wallet) === key) {
+        rows.push({ pos: true, label: t.date + ' - ' + t.desc, sub: 'transfer into jar', amt: t.amount });
+      }
+    });
+    rows.reverse();
+    const net = rows.reduce((s, r) => s + (r.pos ? r.amt : -r.amt), 0);
+    document.getElementById('bdTitle').textContent = meta.label + ' jar - ' + meta.name;
+    document.getElementById('bdSub').textContent = 'Balance ' + fmt(bal) + ' vs target ' + fmt(target) + ' (' + status + (delta !== 0 ? ' ' + (delta > 0 ? '+' : '-') + fmt(Math.abs(delta)) : '') + ') - ' + accounts.map(a => a.label).join(', ');
+    const body = document.getElementById('bdBody');
+    body.innerHTML = rows.length === 0
+      ? '<div class="empty">No movements this month yet.</div>'
+      : rows.map(r => '<div class="bd-row' + (r.pos ? ' pos' : '') + '"><span class="bd-row-lbl">' + r.label + ' <span class="log-pill ' + (catPillBd[r.sub] || 'lp-household') + '" style="margin-left:4px">' + r.sub + '</span></span><span class="bd-row-val">' + (r.pos ? '+' : '-') + fmt(r.amt) + '</span></div>').join('') +
+        '<div class="bd-total"><span>Net movement this month</span><span>' + (net >= 0 ? '+' : '-') + fmt(Math.abs(net)) + '</span></div>';
+  }
+  function openJarModal(key) {
+    buildJar(key);
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
   function closeModal() {
     overlay.classList.remove('open');
     document.body.style.overflow = '';
@@ -1635,6 +1650,9 @@ setTimeout(function() {
   });
   document.querySelectorAll('.acct-card[data-acct]').forEach(el => {
     el.addEventListener('click', () => openAccountModal(Number(el.dataset.acct)));
+  });
+  document.querySelectorAll('.acct-card[data-jar]').forEach(el => {
+    el.addEventListener('click', () => openJarModal(el.dataset.jar));
   });
   document.getElementById('bdClose').addEventListener('click', closeModal);
   overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });

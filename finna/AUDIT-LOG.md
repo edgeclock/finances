@@ -8,6 +8,22 @@
 
 # Finna Audit Log
 
+# Finna Audit Log
+
+## Aug 16, 2026 - Dashboard overhaul (Edge review session, items 1-4, 6)
+
+- Runtime: Finna (OpenClaw) - lease handle `claude`.
+- Confirmed source: Edge via Monica (webchat, Aug 16 17:35 review).
+- Changes to `index.html` (rendering only, no DATA changes):
+  1. **Monitoring - month vs month built**: was a placeholder alert ("Available after next month closes"). Now computes July vs June from `monthlyReports` (net, spending, income deltas). Data was sufficient (June partial + July full); the section just had never been built.
+  2. **Receivables alerts fixed**: RJ/JR alert cards were hardcoded (RJ showed stale 166.75). Now dynamic from `DATA.receivables` (RJ 315.75, JR 3,010, Bryan 2). The Net worth receivable note was already live.
+  3. **Emergency fund section ARCHIVED** (removed HTML + JS): 6-jar MM system replaced it. Principle (researched): FFA (GCash bank + GoTrade) is the growth buffer, capital that never gets spent; NEC (50%) covers essentials; there is no separate emergency fund target. Documented in this log + snapshot.
+  4. **Income history section ARCHIVED** (removed HTML + chart): no income since Jul 24, 2026; `salaryHistory` stays in DATA as historical record only.
+  5. **6-jar summary cards are now clickable**: each jar opens a modal with this month's fund movements (spending by category, income, transfers in/out) + net movement, per jar.
+  6. **Accounts grouped by jar**: NEC / FFA / LTSS / EDU / PLAY / GIVE headers + a Hubs & outside group (Maya wallet, GoTyme wallet, Tonik, Alkansya).
+- Verification: `finna-validate.ps1` passed (DATA untouched); node syntax check passed; headless smoke test passed (all sections render, jar modal data wired, alerts live).
+- Pending (separate plans): spending-by-category redesign, monthly monitoring redesign, payment-deadline calendar automation (see plan doc `workspace/plans/2026-08-16-finna-dashboard-improvement-plan.md`).
+
 ## Aug 16, 2026 - Rebooked cash reconciliation as expense (Edge request: show as minus)
 
 - Runtime: Finna (OpenClaw) - lease handle `claude`.
