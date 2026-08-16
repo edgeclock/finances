@@ -15,8 +15,9 @@ Read `finna/FINNA.md` before use. Use this skill only for confirmed money activi
 4. Add confirmed transactions to `DATA.transactions[]`. Internal movements use matching `Transfer` records and are excluded from spending totals.
 5. Update the affected account balances only when money actually moved.
 6. Update `DATA.lastUpdated` and `salary.dayOfPeriod` when applicable.
-7. Add a concise entry to `finna/AUDIT-LOG.md`; update the account snapshot after material balance changes.
-8. Run `scripts/finna-validate.ps1`, commit, push, and release the lease.
+7. Run `scripts/finna-validate.ps1` FIRST and record the real result (transaction count, assets) so the audit entry is accurate on the first write.
+8. Add a concise entry to `finna/AUDIT-LOG.md` WITH the actual validation result; update the account snapshot after material balance changes. One commit per booking - never a "pending" placeholder followed by a second fix-up commit.
+9. Commit, push, and release the lease.
 
 ## Quiet push (Windows/PowerShell)
 
@@ -34,6 +35,10 @@ Verify a push landed with `git rev-parse main` == `git ls-remote origin main`.
 ## Valid IDs
 
 Use the exact category and wallet rules in `finna/DATA-CONTRACT.md`. Read the existing data before adding a new wallet or category. Never duplicate a transaction with the same date, description, amount, wallet, and type.
+
+## Jar attribution overrides
+
+Transactions may carry an optional `jar` field (e.g. `jar: "PLAY"`) when a Chairman ruling assigns a jar that differs from the natural category mapping. Dashboard JS (`buildJar`, spend-by-jar strip, NEC runway) respects `t.jar` when present. See DATA-CONTRACT for the Aug 17, 2026 ruling: PLAY = designated play-day expenses only; non-play-day coffee stays NEC.
 
 ## Response
 

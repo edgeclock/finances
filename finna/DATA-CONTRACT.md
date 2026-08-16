@@ -26,6 +26,7 @@ Each transaction has `date`, `desc`, `cat`, `amount`, `wallet`, and `type`.
 
 - `type` is `income`, `expense`, or `adjustment`.
 - `amount` is greater than zero.
+- Optional `jar` field: a transaction may carry an explicit jar override (`jar: "PLAY"` etc.) when the Chairman's ruling assigns it to a jar that differs from its natural category mapping. When present, the dashboard attributes the transaction to that jar only. Documented ruling (Aug 17, 2026): PLAY = designated play-day expenses only (Aug 15); non-play-day coffee stays `Food & dining`/NEC and is never re-derived into PLAY.
 - Valid categories are every `categoryOrder` value plus `Income`, `Transfer`, `Reconciliation`, and historical `Utilities`, `Misc` (the latter two no longer used for new transactions — `Misc` was retired 2026-08-03, see below; kept valid only so old/historical entries and the frozen June/July `monthlyReports` category breakdowns don't fail validation).
 - `categoryOrder` (as of 2026-08-08): `Food & dining`, `Groceries`, `Transport`, `Travel`, `Load / comms`, `Subscriptions`, `Charity`, `Family`, `Household`, `Loans`, `Debt payment`, `Investments`.
   - `Travel`: trip/transport-adjacent travel costs (added Aug 8, 2026 for the cash-correction travel expense; subcategory of NEC under the jar system).

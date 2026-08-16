@@ -14,6 +14,19 @@
 
 # Finna Audit Log
 
+## Aug 17, 2026 - Chairman ruling applied: coffee stays NEC; Aug 15 PLAY reclassification booked; protocol fix + finna-log skill updated
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Chairman ruling via Monica (webchat, Aug 17 00:25) with FULL AUTONOMY.
+- RULING (recorded, never to be re-derived): PLAY spend = designated play-day expenses ONLY (Aug 15, 2026). Non-play-day coffee (Aug 16, 210) stays `Food & dining`/NEC as booked - NOT swept into any PLAY reclassification. Recorded in `jarSystem.splitNote` and DATA-CONTRACT.
+- Reclassification executed (per Aug 15 jar-audit proposals, now confirmed):
+  - Added `jar: "PLAY"` override to the 6 Aug 15 play expenses: bus 350, lunch 415, matcha 600, Beyblade 4,699, water 50, fare 25 (total 6,139).
+  - Added `jar: "GIVE"` override to Aug 15 charity 100 (GIVE bears the 100 attributionally; Coins.ph unchanged - pre-funded GIVE jar; no Coins.ph->cash transfer booked because physical cash was reconciled to 1,574.75 on Aug 16 - a reimbursement transfer would only be booked if Edge actually moves the money).
+  - JS updated (jar modal `buildJar`, spend-by-jar strip, NEC runway `necSpent`) to respect a per-transaction `t.jar` override when present.
+- NEC-funded play pool shortfall SETTLED: PLAY day spent 6,139 vs pool 5,644.87 = 494.13 NEC-funded. Remaining play money in wallet after the day = 870.87; allocating 494.13 to cover the shortfall leaves 376.74 net remaining play money in the wallet. No transfer booked (PLAY vault empty, money already spent/commingled in wallet) - settlement recorded here and in the snapshot.
+- `lastUpdated` stays Aug 16, 2026. `monthly.dayOfMonth` stays 16.
+- Validation: `finna-validate.ps1` passed (125 transactions, assets 39,393.26).
+
 ## Aug 16, 2026 - Dashboard round 3: pace fix + partial-month guard + Show all (Edge feedback)
 
 - Runtime: Finna (OpenClaw) - lease handle `claude`.

@@ -605,7 +605,7 @@ const DATA = {
   // jarTotals below are computed from the jar targets for the summary section.
   jarSystem: {
     pool: 50673.75,
-    splitNote: "One-time this-period split: NEC 50/90, FFA/LTSS/EDU/PLAY 10/90, GIVE 0 (pre-funded). Next period: standard 50/10/10/10/10/10 with GIVE 10%.",
+    splitNote: "One-time this-period split: NEC 50/90, FFA/LTSS/EDU/PLAY 10/90, GIVE 0 (pre-funded). Next period: standard 50/10/10/10/10/10 with GIVE 10%. RULING Aug 17: PLAY = designated play-day expenses only (Aug 15); non-play-day coffee stays NEC (Food & dining), never re-derived.",
     targets: {
       NEC:  28152.08,
       FFA:  5630.42,
@@ -809,21 +809,21 @@ const DATA = {
     { date: "Aug 15", desc: "Google Workspace (1 month, company)",  cat: "Subscriptions", amount: 551.04,   wallet: "gotymenev", type: "expense" },
     { date: "Aug 15", desc: "Transfer to GCash wallet (LTSS company expenses)", cat: "Transfer", amount: 1491.84, wallet: "gcashsavings", type: "expense" },
     { date: "Aug 15", desc: "Transfer from GCash bank (LTSS company expenses)", cat: "Transfer", amount: 1491.84, wallet: "gcash", type: "income"  },
-    { date: "Aug 15", desc: "Bus fare (toy convention)", cat: "Transport", amount: 350.00, wallet: "cash", type: "expense" },
-    { date: "Aug 15", desc: "Lunch (toy convention)", cat: "Food & dining", amount: 415.00, wallet: "gcash", type: "expense" },
-    { date: "Aug 15", desc: "Matcha (matcha fest)", cat: "Food & dining", amount: 600.00, wallet: "gcash", type: "expense" },
+    { date: "Aug 15", desc: "Bus fare (toy convention)", cat: "Transport", amount: 350.00, wallet: "cash", type: "expense", jar: "PLAY" },
+    { date: "Aug 15", desc: "Lunch (toy convention)", cat: "Food & dining", amount: 415.00, wallet: "gcash", type: "expense", jar: "PLAY" },
+    { date: "Aug 15", desc: "Matcha (matcha fest)", cat: "Food & dining", amount: 600.00, wallet: "gcash", type: "expense", jar: "PLAY" },
     { date: "Aug 15", desc: "Reversal of transfer to GCash wallet (money stayed in GCash bank)", cat: "Transfer", amount: 1491.84, wallet: "gcashsavings", type: "income"  },
     { date: "Aug 15", desc: "Reversal of transfer from GCash bank (never received)", cat: "Transfer", amount: 1491.84, wallet: "gcash", type: "expense" },
     { date: "Aug 15", desc: "Interest earned", cat: "Income", amount: 2.10, wallet: "gcashsavings", type: "income"  },
     { date: "Aug 15", desc: "Transfer to GCash wallet (GCash bank emptied, funded Beyblade)", cat: "Transfer", amount: 4632.51, wallet: "gcashsavings", type: "expense" },
     { date: "Aug 15", desc: "Transfer from GCash bank (emptied, funded Beyblade)", cat: "Transfer", amount: 4632.51, wallet: "gcash", type: "income"  },
-    { date: "Aug 15", desc: "Beyblade (toy convention)", cat: "Entertainment", amount: 4699.00, wallet: "gcash", type: "expense" },
+    { date: "Aug 15", desc: "Beyblade (toy convention)", cat: "Entertainment", amount: 4699.00, wallet: "gcash", type: "expense", jar: "PLAY" },
     { date: "Aug 15", desc: "Interest earned", cat: "Income", amount: 2.60, wallet: "gotymeplay", type: "income"  },
     { date: "Aug 15", desc: "Transfer to GCash wallet (PLAY vault)", cat: "Transfer", amount: 5644.87, wallet: "gotymeplay", type: "expense" },
     { date: "Aug 15", desc: "Transfer from GoTyme My Go Save (PLAY)", cat: "Transfer", amount: 5644.87, wallet: "gcash", type: "income"  },
-    { date: "Aug 15", desc: "Water (MOA day)", cat: "Household", amount: 50.00, wallet: "cash", type: "expense" },
-    { date: "Aug 15", desc: "Charity (MOA day)", cat: "Charity", amount: 100.00, wallet: "cash", type: "expense" },
-    { date: "Aug 15", desc: "Fare (MOA day)", cat: "Transport", amount: 25.00, wallet: "cash", type: "expense" },
+    { date: "Aug 15", desc: "Water (MOA day)", cat: "Household", amount: 50.00, wallet: "cash", type: "expense", jar: "PLAY" },
+    { date: "Aug 15", desc: "Charity (MOA day)", cat: "Charity", amount: 100.00, wallet: "cash", type: "expense", jar: "GIVE" },
+    { date: "Aug 15", desc: "Fare (MOA day)", cat: "Transport", amount: 25.00, wallet: "cash", type: "expense", jar: "PLAY" },
     { date: "Aug 16", desc: "Charity (tithes)", cat: "Charity", amount: 500.00, wallet: "coins", type: "expense" },
     { date: "Aug 16", desc: "Coffee", cat: "Food & dining", amount: 210.00, wallet: "gcash", type: "expense" },
     { date: "Aug 16", desc: "Lunch", cat: "Food & dining", amount: 159.00, wallet: "gcash", type: "expense" },
@@ -1010,7 +1010,7 @@ if (totalReceivables > 0) {
 document.getElementById('periodLabel').textContent = mo.monthStart + ' - ' + mo.monthEnd;
 const necSubcats = DATA.jarSystem.subcats.NEC || [];
 const necBal = DATA.accounts.filter(a => a.jar === 'NEC').reduce((s, a) => s + a.balance, 0);
-const necSpent = DATA.transactions.filter(t => t.type === 'expense' && t.cat !== 'Transfer' && necSubcats.indexOf(t.cat) >= 0).reduce((s, t) => s + t.amount, 0);
+const necSpent = DATA.transactions.filter(t => t.type === 'expense' && t.cat !== 'Transfer' && (t.jar ? t.jar === 'NEC' : necSubcats.indexOf(t.cat) >= 0)).reduce((s, t) => s + t.amount, 0);
 const avgDailyNec = mo.dayOfMonth > 0 ? necSpent / mo.dayOfMonth : 0;
 const runwayDays = avgDailyNec > 0 ? Math.floor(necBal / avgDailyNec) : null;
 document.getElementById('runwayVal').textContent = runwayDays != null ? runwayDays + ' days' : 'no spend data yet';
@@ -1395,7 +1395,12 @@ if (!hasData) {
   const jarCat = {};
   Object.keys(DATA.jarSystem.subcats).forEach(j => { DATA.jarSystem.subcats[j].forEach(c => { jarCat[c] = j; }); });
   const jarSpend = {};
-  nonZero.forEach(x => { const j = jarCat[x.k] || 'NEC'; jarSpend[j] = (jarSpend[j] || 0) + x.v; });
+  DATA.transactions.forEach(t => {
+    if (t.type === 'expense' && t.cat !== 'Transfer') {
+      const j = t.jar || jarCat[t.cat] || 'NEC';
+      jarSpend[j] = (jarSpend[j] || 0) + t.amount;
+    }
+  });
   const jarStrip = document.getElementById('catJarStrip');
   jarStrip.innerHTML = '<div style="font-size:11px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:6px">Spend by jar</div>' +
     Object.keys(jarSpend).map(j => '<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span style="color:var(--t2)">' + j + ' <span style="color:var(--t3)">' + (DATA.jarSystem.jars[j] ? DATA.jarSystem.jars[j].name : '') + '</span></span><span style="color:var(--t1);font-weight:500">' + fmt(jarSpend[j]) + ' <span style="color:var(--t3);font-weight:400">(' + Math.round(jarSpend[j] / catTotalSum * 100) + '%)</span></span></div>').join('');
@@ -1650,7 +1655,7 @@ setTimeout(function() {
     const rows = [];
     DATA.transactions.forEach(t => {
       if (t.type === 'expense' && t.cat !== 'Transfer') {
-        if (subcats.indexOf(t.cat) >= 0 || jarOfWallet(t.wallet) === key) {
+        if (t.jar ? t.jar === key : (subcats.indexOf(t.cat) >= 0 || jarOfWallet(t.wallet) === key)) {
           rows.push({ pos: false, label: t.date + ' - ' + t.desc, sub: t.cat, amt: t.amount });
         }
       } else if (t.type === 'income' && t.cat !== 'Transfer' && jarOfWallet(t.wallet) === key) {
