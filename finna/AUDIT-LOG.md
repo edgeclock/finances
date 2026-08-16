@@ -1,5 +1,17 @@
 # Finna Audit Log
 
+## Aug 16, 2026 - Clarified Aug 15 GCash bank to wallet transfer (Edge confirmation)
+
+- Runtime: Finna (OpenClaw) - lease handle `claude`.
+- Confirmed source: Edge via Monica (webchat, Aug 16 16:20).
+- Ledger change: description-only edit on the two Aug 15 entries, no amounts touched:
+  - `Transfer to GCash wallet (PLAY-day consolidation)` -> `Transfer to GCash wallet (GCash bank emptied, funded Beyblade)` (wallet `gcashsavings`, 4,632.51, expense).
+  - `Transfer from GCash bank (PLAY-day consolidation)` -> `Transfer from GCash bank (emptied, funded Beyblade)` (wallet `gcash`, 4,632.51, income).
+- Edge note: all money in GCash bank was moved to GCash wallet on Aug 15 and used to pay for the Beyblade (4,699). This is why GCash bank is at 0.00 and FFA now holds only GoTrade 1,000.
+- Balances unchanged: assets 40,048.14, receivables 3,327.75, liabilities 15,688.17.
+- `lastUpdated` stays Aug 16, 2026.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 16, 2026 - Logged Aug 16 loan to RJ 149 from GCash wallet (receivable)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
