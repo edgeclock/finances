@@ -14,6 +14,15 @@
 
 # Finna Audit Log
 
+## Aug 17, 2026 - Lunch 180 cash logged
+
+- Runtime: Monica (main agent) - lease handle `claude`.
+- Confirmed source: Edge (Telegram, Aug 17 2026 12:57).
+- Ledger change: added expense Aug 17, Lunch, 180.00, wallet `cash`, cat `Food & dining` (NEC jar).
+- Balance update: Cash on hand 1,574.75 to 1,394.75.
+- `lastUpdated` stays Aug 17, 2026. `monthly.dayOfMonth` stays 17.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 17, 2026 - DeepSeek subscription logged (GoTyme nec vault)
 
 - Runtime: Monica (main agent) - lease handle `claude`.
