@@ -51,3 +51,7 @@ Operating rules adopted from the 6-Jar money management method (modified T. Harv
 Monthly report: each jar gets a rule status line (OK / LOW / OVER vs target, plus rule compliance, e.g. PLAY must-spend flag, FFA untouched).
 
 PENDING (same treatment as the rent figure): whether LTSS vault funds the SPayLater payments. Proposal is to route debt paydown from LTSS instead of NEC, but it stays flagged as a proposal until Edge decides.
+
+## Confirmed recurring subscriptions (Edge, Aug 17, 2026)
+
+KEEP: CapCut (359), Canva Pro (300), Google One (1,100), Claude Pro (1,300, already charged), ChatGPT Plus (999, due Aug 19). Codex cut stays (Aug 18). Fixed stack total ~4,058/mo; DeepSeek is usage-based/variable on top (not part of the fixed stack). Mirrors `DATA.subscriptions` in the ledger exactly; use this list for monthly planning and the 1st-of-month paid-flag reset.

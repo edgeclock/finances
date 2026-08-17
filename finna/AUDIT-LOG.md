@@ -14,6 +14,14 @@
 
 # Finna Audit Log
 
+## Aug 17, 2026 - Confirmed recurring subscription stack (planning docs only, no ledger change)
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via main agent (sessions_send, Aug 17 2026).
+- Decision: KEEP CapCut, Canva Pro, Google One, Claude Pro (already charged), ChatGPT Plus (999, due Aug 19). Codex cut stays (Aug 18).
+- Change: docs update only - added "Confirmed recurring subscriptions" section to `finna/FINNA.md`, added the stack line to `finna/docs/ACCOUNT-SNAPSHOT.md`. No `index.html` DATA change (ledger `DATA.subscriptions` already matches the stack exactly: 359 + 300 + 1,100 + 1,300 + 999 = 4,058/mo; DeepSeek usage-based on top).
+- Validation: `finna-validate.ps1` passed (125 transactions, assets 39,393.26).
+
 ## Aug 17, 2026 - Chairman ruling applied: coffee stays NEC; Aug 15 PLAY reclassification booked; protocol fix + finna-log skill updated
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
