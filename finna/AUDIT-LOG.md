@@ -14,6 +14,15 @@
 
 # Finna Audit Log
 
+## Aug 17, 2026 - Second DeepSeek top-up 657.91 logged (GoTyme nec vault)
+
+- Runtime: Monica (main agent) - lease handle `claude`.
+- Confirmed source: Edge (Telegram, Aug 17 2026 17:54) - confirmed this is a SECOND, separate top-up; wallet = GoTyme nec vault.
+- Ledger change: added expense Aug 17, DeepSeek API top-up (2nd), 657.91, wallet `gotymenev`, cat `Subscriptions` (NEC jar). Distinct description from the first Aug 17 DeepSeek entry so no duplicate is flagged.
+- Balance update: GoTyme nec vault 11,882.77 to 11,224.86.
+- `lastUpdated` stays Aug 17, 2026. `monthly.dayOfMonth` stays 17.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 17, 2026 - Lunch 180 cash logged
 
 - Runtime: Monica (main agent) - lease handle `claude`.
