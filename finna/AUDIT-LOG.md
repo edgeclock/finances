@@ -14,6 +14,15 @@
 
 # Finna Audit Log
 
+## Aug 17, 2026 - DeepSeek subscription logged (GoTyme nec vault)
+
+- Runtime: Monica (main agent) - lease handle `claude`.
+- Confirmed source: Edge (webchat, Aug 17 2026 11:08).
+- Ledger change: added expense Aug 17, DeepSeek subscription, 657.91, wallet `gotymenev`, cat `Subscriptions` (NEC jar). Paid from GoTyme nec vault.
+- Balance update: GoTyme nec vault 12,540.68 to 11,882.77.
+- `lastUpdated` to Aug 17, 2026. `monthly.dayOfMonth` 16 to 17.
+- Validation: `finna-validate.ps1` passed (126 transactions).
+
 ## Aug 17, 2026 - Confirmed recurring subscription stack (planning docs only, no ledger change)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
