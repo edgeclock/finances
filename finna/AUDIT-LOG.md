@@ -1193,4 +1193,13 @@ No account balances changed in this entry (pure reclassification + structural re
 - `lastUpdated` Aug 21, 2026. `monthly.dayOfMonth` 21.
 - Validation: `finna-validate.ps1` passed.
 
+## Aug 21, 2026 - Investment event 2,247.30 Maya EDU logged
+
+- Runtime: Monica (main agent) - lease handle `claude`.
+- Confirmed source: Edge (Telegram, Aug 21 2026 16:48).
+- Ledger change: added expense Aug 21, Investment event, 2,247.30, wallet `maya`, cat `Education` (EDU jar). New `Education` category added to `categoryOrder` (already listed in jar subcats, just not an active category yet).
+- Balance update: Maya bank 5,630.42 to 3,383.12. GoTyme LTSS vault untouched (initial bulk replace also matched its 5,630.42 balance; corrected back and verified before commit).
+- `lastUpdated` Aug 21, 2026. `monthly.dayOfMonth` 21.
+- Validation: `finna-validate.ps1` passed.
+
 Future entries go above this section and must identify the date, runtime, confirmed source, ledger change, and validation result.
