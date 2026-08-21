@@ -1184,4 +1184,13 @@ No account balances changed in this entry (pure reclassification + structural re
 - `lastUpdated` to Aug 21, 2026. `monthly.dayOfMonth` to 21.
 - Validation: `finna-validate.ps1` passed.
 
+## Aug 21, 2026 - Photocopy 10 + Fare 13 cash, Notary 300 gcash logged
+
+- Runtime: Monica (main agent) - lease handle `claude`.
+- Confirmed source: Edge (Telegram, Aug 21 2026 15:43).
+- Ledger change: added expenses Aug 21 - Photocopy of legal papers 10.00 (cash, NEW category `Legal`), Fare 13.00 (cash, `Transport`), Notary 300.00 (gcash, `Legal`). New `Legal` category added to `categoryOrder` per DATA-CONTRACT (business/legal setup costs, no existing fit).
+- Balance updates: Cash on hand 1,291.75 to 1,268.75; GCash wallet 3,322.66 to 3,022.66.
+- `lastUpdated` Aug 21, 2026. `monthly.dayOfMonth` 21.
+- Validation: `finna-validate.ps1` passed.
+
 Future entries go above this section and must identify the date, runtime, confirmed source, ledger change, and validation result.

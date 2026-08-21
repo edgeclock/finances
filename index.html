@@ -582,10 +582,10 @@ const DATA = {
   // subcategories of the 6 mains. Pool excluded Tonik, Alkansya, Coins.ph; included cash
   // and GoTrade (GoTrade = already-invested FFA).
   accounts: [
-    { label: "GCash wallet",   balance: 3322.66,  tag: "spend",  tagLabel: "NEC jar - spending", jar: "NEC" },
+    { label: "GCash wallet",   balance: 3022.66,  tag: "spend",  tagLabel: "NEC jar - spending", jar: "NEC" },
     { label: "GCash bank",     balance: 3140.67,  tag: "save",   tagLabel: "FFA jar (10%)", jar: "FFA" },
     { label: "RCBC savings",   balance: 1102.54,  tag: "spend",  tagLabel: "NEC jar", jar: "NEC" },
-    { label: "Cash on hand",   balance: 1291.75,   tag: "cash",   tagLabel: "NEC jar - cash", jar: "NEC" },
+    { label: "Cash on hand",   balance: 1268.75,   tag: "cash",   tagLabel: "NEC jar - cash", jar: "NEC" },
     { label: "GoTyme nec vault", balance: 11224.86, tag: "save", tagLabel: "NEC jar - GoTyme vault", jar: "NEC" },
     { label: "GoTyme Professional Development (LTSS)", balance: 5630.42, tag: "save", tagLabel: "LTSS jar (10%)", jar: "LTSS" },
     { label: "GoTyme My Go Save (PLAY)", balance: 0.00, tag: "save", tagLabel: "PLAY jar (10%)", jar: "PLAY" },
@@ -695,7 +695,7 @@ const DATA = {
     ]
   },
 
-  categoryOrder: ["Food & dining", "Groceries", "Transport", "Travel", "Load / comms", "Subscriptions", "Charity", "Family", "Household", "Bank fees", "Loans", "Debt payment", "Investments", "Entertainment"],
+  categoryOrder: ["Food & dining", "Groceries", "Transport", "Travel", "Load / comms", "Subscriptions", "Charity", "Family", "Household", "Bank fees", "Loans", "Debt payment", "Investments", "Legal", "Entertainment"],
 
   // Deprecated as of 2026-08-03 (monthly monitoring replaced the semi-monthly pay-period cycle â€”
   // transactions[] now IS the current calendar month, so there's no more mid-month reset to
@@ -836,7 +836,9 @@ const DATA = {
     { date: "Aug 17", desc: "Lunch", cat: "Food & dining", amount: 180.00, wallet: "cash", type: "expense" },
     { date: "Aug 17", desc: "DeepSeek API top-up (2nd)", cat: "Subscriptions", amount: 657.91, wallet: "gotymenev", type: "expense" },
     { date: "Aug 21", desc: "Lunch", cat: "Food & dining", amount: 90.00, wallet: "cash", type: "expense" },
-    { date: "Aug 21", desc: "Fare", cat: "Transport", amount: 13.00, wallet: "cash", type: "expense" }
+    { date: "Aug 21", desc: "Fare", cat: "Transport", amount: 13.00, wallet: "cash", type: "expense" },
+    { date: "Aug 21", desc: "Photocopy of legal papers", cat: "Legal", amount: 10.00, wallet: "cash", type: "expense" },
+    { date: "Aug 21", desc: "Notary", cat: "Legal", amount: 300.00, wallet: "gcash", type: "expense" }
   ],
 
   spaylaterSchedule: [
