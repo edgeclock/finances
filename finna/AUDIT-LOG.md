@@ -1211,4 +1211,13 @@ No account balances changed in this entry (pure reclassification + structural re
 - `lastUpdated` Aug 21, 2026. `monthly.dayOfMonth` 21.
 - Validation: `finna-validate.ps1` passed.
 
+## Aug 21, 2026 - Missionary support 500 Coins.ph logged
+
+- Runtime: Monica (main agent) - lease handle `claude`.
+- Confirmed source: Edge (Telegram, Aug 21 2026 20:28) - 'missionary support sent' (was due Aug 22, paid early).
+- Ledger change: added expense Aug 21, Missionary support, 500.00, wallet `coins`, cat `Charity` (GIVE jar).
+- Balance update: Coins.ph PHP 4,918.71 to 4,418.71.
+- `lastUpdated` Aug 21, 2026. `monthly.dayOfMonth` 21.
+- Validation: `finna-validate.ps1` passed.
+
 Future entries go above this section and must identify the date, runtime, confirmed source, ledger change, and validation result.
