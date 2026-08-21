@@ -1202,4 +1202,13 @@ No account balances changed in this entry (pure reclassification + structural re
 - `lastUpdated` Aug 21, 2026. `monthly.dayOfMonth` 21.
 - Validation: `finna-validate.ps1` passed.
 
+## Aug 21, 2026 - DeepSeek subscription 462.50 GoTyme nec vault logged
+
+- Runtime: Monica (main agent) - lease handle `claude`.
+- Confirmed source: Edge (Telegram, Aug 21 2026 19:46).
+- Ledger change: added expense Aug 21, DeepSeek subscription, 462.50, wallet `gotymenev`, cat `Subscriptions` (NEC jar). Usage-based/variable, not part of the fixed subscription stack.
+- Balance update: GoTyme nec vault 11,224.86 to 10,762.36.
+- `lastUpdated` Aug 21, 2026. `monthly.dayOfMonth` 21.
+- Validation: `finna-validate.ps1` passed.
+
 Future entries go above this section and must identify the date, runtime, confirmed source, ledger change, and validation result.
