@@ -1,4 +1,4 @@
-# Finna Audit Log
+﻿# Finna Audit Log
 
 # Finna Audit Log
 
@@ -551,21 +551,21 @@
 - Dashboard emergency-fund section repurposed: GCash bank is now the FFA jar display; alert text updated.
 - Validation: `finna-validate.ps1` passed.
 
-## Aug 8, 2026 - EDGE DECISION: essential monthly expenses = ~₱20,000-21,000 (no rent)
+## Aug 8, 2026 - EDGE DECISION: essential monthly expenses = ~â‚±20,000-21,000 (no rent)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
 - Confirmed source: Chairman decision via telegram - "he prefers the FIRST estimate... official essential monthly number is 20-21k."
-- Decision: Edge's official essential monthly expenses = **~₱20,000-21,000** (fixed ~₱13,000-13,400 + variable ~₱7,000-8,000), WITHOUT the derived rent figure.
-- Breakdown (computed from ledger Aug 1-8 actuals + fixed commitments): fixed = SPayLater ₱6,969.87 + Google One ₱1,100 + Claude Pro ₱1,300 + ChatGPT Plus ₱999 + DeepSeek ~₱1,300-1,700 + utilities ~₱1,299; variable = food+groceries ~₱6,300-6,600 + transport ~₱300-400 + load ~₱100-300 + household ~₱200-700.
-- Rent: derived estimate ~₱7,700/mo (₱9,000 paycheck-era allocation - ₱1,299 July utilities) kept as a footnote only - **unconfirmed, not part of the official number**. No brothers-billing line exists in the ledger; Edge's actual share never recorded.
-- Watch item (unchanged): GoTyme buffer ₱4,527.84 funds housing now (no income since Jul 24); at ₱9,000/mo allocation it covers roughly half a month. DeepSeek is usage-based and volatile (₱1,319.55 in first 7 days of Aug).
+- Decision: Edge's official essential monthly expenses = **~â‚±20,000-21,000** (fixed ~â‚±13,000-13,400 + variable ~â‚±7,000-8,000), WITHOUT the derived rent figure.
+- Breakdown (computed from ledger Aug 1-8 actuals + fixed commitments): fixed = SPayLater â‚±6,969.87 + Google One â‚±1,100 + Claude Pro â‚±1,300 + ChatGPT Plus â‚±999 + DeepSeek ~â‚±1,300-1,700 + utilities ~â‚±1,299; variable = food+groceries ~â‚±6,300-6,600 + transport ~â‚±300-400 + load ~â‚±100-300 + household ~â‚±200-700.
+- Rent: derived estimate ~â‚±7,700/mo (â‚±9,000 paycheck-era allocation - â‚±1,299 July utilities) kept as a footnote only - **unconfirmed, not part of the official number**. No brothers-billing line exists in the ledger; Edge's actual share never recorded.
+- Watch item (unchanged): GoTyme buffer â‚±4,527.84 funds housing now (no income since Jul 24); at â‚±9,000/mo allocation it covers roughly half a month. DeepSeek is usage-based and volatile (â‚±1,319.55 in first 7 days of Aug).
 - No ledger DATA change - decision documentation only.
 - Validation: `finna-validate.ps1` passed.
 
 ## Aug 8, 2026 - Logged food (cash)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
-- Confirmed source: Edge via telegram - "spent ₱20 cash for food."
+- Confirmed source: Edge via telegram - "spent â‚±20 cash for food."
 - Ledger change: `{ date: "Aug 8", desc: "Food", cat: "Food & dining", amount: 20.00, wallet: "cash", type: "expense" }`.
 - Balance update: Cash on hand 4,447.50 -> 4,427.50.
 - `DATA.lastUpdated` -> Aug 8, 2026; `DATA.monthly.dayOfMonth` -> 8.
@@ -574,36 +574,36 @@
 ## Aug 7, 2026 - Logged food (cash)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
-- Confirmed source: Edge via telegram - "₱100 CASH for food."
+- Confirmed source: Edge via telegram - "â‚±100 CASH for food."
 - Ledger change: `{ date: "Aug 7", desc: "Food", cat: "Food & dining", amount: 100.00, wallet: "cash", type: "expense" }`.
-- Balance update: Cash on hand 4,547.50 → 4,447.50.
+- Balance update: Cash on hand 4,547.50 â†’ 4,447.50.
 - `DATA.lastUpdated` stays Aug 7, 2026; `DATA.monthly.dayOfMonth` stays 7.
 - Validation: `finna-validate.ps1` passed.
 
 ## Aug 7, 2026 - Logged food (GCash wallet)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
-- Confirmed source: Edge via telegram - "₱31 from the GCash WALLET for food (another one)."
+- Confirmed source: Edge via telegram - "â‚±31 from the GCash WALLET for food (another one)."
 - Ledger change: `{ date: "Aug 7", desc: "Food", cat: "Food & dining", amount: 31.00, wallet: "gcash", type: "expense" }`.
-- Balance update: GCash wallet 4,284.45 → 4,253.45.
+- Balance update: GCash wallet 4,284.45 â†’ 4,253.45.
 - `DATA.lastUpdated` stays Aug 7, 2026; `DATA.monthly.dayOfMonth` stays 7.
 - Validation: `finna-validate.ps1` passed.
 
 ## Aug 7, 2026 - Logged food (GCash wallet)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
-- Confirmed source: Edge via telegram - "₱33 from the GCash WALLET for food."
+- Confirmed source: Edge via telegram - "â‚±33 from the GCash WALLET for food."
 - Ledger change: `{ date: "Aug 7", desc: "Food", cat: "Food & dining", amount: 33.00, wallet: "gcash", type: "expense" }`.
-- Balance update: GCash wallet 4,317.45 → 4,284.45.
+- Balance update: GCash wallet 4,317.45 â†’ 4,284.45.
 - `DATA.lastUpdated` stays Aug 7, 2026; `DATA.monthly.dayOfMonth` stays 7.
 - Validation: `finna-validate.ps1` passed.
 
 ## Aug 7, 2026 - Logged dinners (GCash + cash)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
-- Confirmed source: Edge via telegram - "₱435 from the GCash WALLET for dinner... ₱50 CASH for dinner."
-- Ledger change: 2 entries dated Aug 7 - Dinner ₱435 (gcash, Food & dining), Dinner ₱50 (cash, Food & dining).
-- Balance updates: GCash wallet 4,752.45 → 4,317.45. Cash on hand 4,597.50 → 4,547.50.
+- Confirmed source: Edge via telegram - "â‚±435 from the GCash WALLET for dinner... â‚±50 CASH for dinner."
+- Ledger change: 2 entries dated Aug 7 - Dinner â‚±435 (gcash, Food & dining), Dinner â‚±50 (cash, Food & dining).
+- Balance updates: GCash wallet 4,752.45 â†’ 4,317.45. Cash on hand 4,597.50 â†’ 4,547.50.
 - `DATA.lastUpdated` stays Aug 7, 2026; `DATA.monthly.dayOfMonth` stays 7.
 - Validation: `finna-validate.ps1` passed.
 
@@ -612,47 +612,47 @@
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
 - Confirmed source: Chairman decision relayed via Monica - "Edge wants YOU to build the real monthly budget for him (the current monthly budget figures are stale placeholders). Use the actual ledger data, known subscriptions..., income reality (no current income since VA job ended), and realistic categories."
 - Ledger change: `DATA.monthlySpending.wallets[].budget` replaced stale leftovers with real targets:
-  - `gcash` 0 → **6,000** (fixed subs 3,059: CapCut 359 + Canva Pro 300 + Google One 1,100 + Claude Pro 1,300; plus food/groceries/transport/load)
-  - `rcbc` 4,119 → **3,000** (ChatGPT Plus 999 + DeepSeek usage ~1,300 + groceries/meal prep)
+  - `gcash` 0 â†’ **6,000** (fixed subs 3,059: CapCut 359 + Canva Pro 300 + Google One 1,100 + Claude Pro 1,300; plus food/groceries/transport/load)
+  - `rcbc` 4,119 â†’ **3,000** (ChatGPT Plus 999 + DeepSeek usage ~1,300 + groceries/meal prep)
   - `maya` 1,000 (kept: personal, historical 1,000/paycheck - unchanged)
-  - `coins` 1,735 → **1,000** (tithes 500 + missionary support 500)
-- Basis: actual Aug 1-7 spend (7 days of ledger data): food/dining ₱1,552.56, groceries ₱2,093.85 (incl. ₱1,414.35 stock-up), transport ₱496, subs ₱3,078.55 (incl. DeepSeek variable), charity ₱500, household ₱175. DeepSeek usage-based spend was ₱1,319.55 in the first 7 days - volatile; flagged for mid-month rcbc recheck.
+  - `coins` 1,735 â†’ **1,000** (tithes 500 + missionary support 500)
+- Basis: actual Aug 1-7 spend (7 days of ledger data): food/dining â‚±1,552.56, groceries â‚±2,093.85 (incl. â‚±1,414.35 stock-up), transport â‚±496, subs â‚±3,078.55 (incl. DeepSeek variable), charity â‚±500, household â‚±175. DeepSeek usage-based spend was â‚±1,319.55 in the first 7 days - volatile; flagged for mid-month rcbc recheck.
 - Budgets are lean targets drawn from available funds (no income since Jul 24), not paycheck-derived. `monthlyAllocation` donut left untouched (still stale paycheck-era display) - flagged for Edge decision.
 - Validation: `finna-validate.ps1` passed.
 
 ## Aug 7, 2026 - Logged DeepSeek API top-up (RCBC)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
-- Confirmed source: Edge via telegram - "₱657.94 spent from RCBC for a DeepSeek top-up (API credits). This resolves the DeepSeek balance low flag from the morning report."
+- Confirmed source: Edge via telegram - "â‚±657.94 spent from RCBC for a DeepSeek top-up (API credits). This resolves the DeepSeek balance low flag from the morning report."
 - Ledger change: `{ date: "Aug 7", desc: "DeepSeek API top-up", cat: "Subscriptions", amount: 657.94, wallet: "rcbc", type: "expense" }`.
-- Balance update: RCBC savings 5,166.35 → 4,508.41.
+- Balance update: RCBC savings 5,166.35 â†’ 4,508.41.
 - `DATA.lastUpdated` stays Aug 7, 2026; `DATA.monthly.dayOfMonth` stays 7.
 - Validation: `finna-validate.ps1` passed.
 
 ## Aug 7, 2026 - Logged GCash fare (Transport)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
-- Confirmed source: Edge via telegram - "₱251 spent from the GCash WALLET for fare (transportation)."
+- Confirmed source: Edge via telegram - "â‚±251 spent from the GCash WALLET for fare (transportation)."
 - Ledger change: `{ date: "Aug 7", desc: "Fare", cat: "Transport", amount: 251.00, wallet: "gcash", type: "expense" }`.
-- Balance update: GCash wallet 5,003.45 → 4,752.45.
+- Balance update: GCash wallet 5,003.45 â†’ 4,752.45.
 - `DATA.lastUpdated` stays Aug 7, 2026; `DATA.monthly.dayOfMonth` stays 7.
 - Validation: `finna-validate.ps1` passed.
 
 ## Aug 7, 2026 - Logged cash fare (Transport)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
-- Confirmed source: Edge via telegram - "₱175 CASH spent for fare (transportation - he typed 'fate', clearly means fare)."
+- Confirmed source: Edge via telegram - "â‚±175 CASH spent for fare (transportation - he typed 'fate', clearly means fare)."
 - Ledger change: `{ date: "Aug 7", desc: "Fare", cat: "Transport", amount: 175.00, wallet: "cash", type: "expense" }`.
-- Balance update: Cash on hand 4,772.50 → 4,597.50.
+- Balance update: Cash on hand 4,772.50 â†’ 4,597.50.
 - `DATA.lastUpdated` stays Aug 7, 2026; `DATA.monthly.dayOfMonth` stays 7.
 - Validation: `finna-validate.ps1` passed.
 
 ## Aug 7, 2026 - CORRECTION (3rd pass): Transfer fee charged to GCash wallet, not GCash Bank
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
-- Confirmed source: Edge correction relayed via telegram - "the ₱10 transfer fee was charged to the GCASH WALLET, not the GCash Bank account. Restore the ₱10 back to GCash savings and charge the ₱10 fee to the GCash wallet."
-- Ledger change: fee entry wallet `gcashsavings` → `gcash`, desc updated to "Transfer fee (GCash to RCBC)": `{ date: "Aug 7", desc: "Transfer fee (GCash to RCBC)", cat: "Bank fees", amount: 10.00, wallet: "gcash", type: "expense" }`.
-- Balance updates: GCash savings 30,150.13 → 30,160.13 (+10 restored). GCash wallet 5,013.45 → 5,003.45 (−10 fee). RCBC 5,166.35 and cash 4,772.50 unchanged; transfer pair stays ₱6,000.
+- Confirmed source: Edge correction relayed via telegram - "the â‚±10 transfer fee was charged to the GCASH WALLET, not the GCash Bank account. Restore the â‚±10 back to GCash savings and charge the â‚±10 fee to the GCash wallet."
+- Ledger change: fee entry wallet `gcashsavings` â†’ `gcash`, desc updated to "Transfer fee (GCash to RCBC)": `{ date: "Aug 7", desc: "Transfer fee (GCash to RCBC)", cat: "Bank fees", amount: 10.00, wallet: "gcash", type: "expense" }`.
+- Balance updates: GCash savings 30,150.13 â†’ 30,160.13 (+10 restored). GCash wallet 5,013.45 â†’ 5,003.45 (âˆ’10 fee). RCBC 5,166.35 and cash 4,772.50 unchanged; transfer pair stays â‚±6,000.
 - This corrects the Aug 7 2nd-pass entry (commit 3b9a620) which had charged the fee to `gcashsavings`.
 - `DATA.lastUpdated` stays Aug 7, 2026; `DATA.monthly.dayOfMonth` stays 7.
 - Validation: `finna-validate.ps1` passed.
@@ -660,125 +660,125 @@
 ## Aug 7, 2026 - Logged Aug 6 groceries (GCash wallet)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
-- Confirmed source: Edge via telegram - "₱354.50 spent from the GCash WALLET for groceries" dated yesterday (Aug 6).
+- Confirmed source: Edge via telegram - "â‚±354.50 spent from the GCash WALLET for groceries" dated yesterday (Aug 6).
 - Ledger change: `{ date: "Aug 6", desc: "Groceries", cat: "Groceries", amount: 354.50, wallet: "gcash", type: "expense" }` - dated Aug 6 per Edge.
-- Balance update: GCash wallet 5,367.95 → 5,013.45.
+- Balance update: GCash wallet 5,367.95 â†’ 5,013.45.
 - `DATA.lastUpdated` stays Aug 7, 2026; `DATA.monthly.dayOfMonth` stays 7.
 - Validation: `finna-validate.ps1` passed.
 
 ## Aug 7, 2026 - Logged Google One subscription (GCash wallet)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
-- Confirmed source: Edge via telegram - "₱1,100 spent from the GCash WALLET for his Google subscription (the Google One sub that was flagged due today)."
-- Ledger change: `{ date: "Aug 7", desc: "Google One", cat: "Subscriptions", amount: 1100.00, wallet: "gcash", type: "expense" }`; `subscriptions` Google One `paid: false → true`.
-- Balance update: GCash wallet 6,467.95 → 5,367.95.
+- Confirmed source: Edge via telegram - "â‚±1,100 spent from the GCash WALLET for his Google subscription (the Google One sub that was flagged due today)."
+- Ledger change: `{ date: "Aug 7", desc: "Google One", cat: "Subscriptions", amount: 1100.00, wallet: "gcash", type: "expense" }`; `subscriptions` Google One `paid: false â†’ true`.
+- Balance update: GCash wallet 6,467.95 â†’ 5,367.95.
 - `DATA.lastUpdated` stays Aug 7, 2026; `DATA.monthly.dayOfMonth` stays 7.
 - Validation: `finna-validate.ps1` passed.
 
 ## Aug 7, 2026 - Logged phone load (GCash wallet)
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
-- Confirmed source: Edge via telegram - "₱99 spent from the GCash WALLET for phone load (mobile load/credits)."
+- Confirmed source: Edge via telegram - "â‚±99 spent from the GCash WALLET for phone load (mobile load/credits)."
 - Ledger change: `{ date: "Aug 7", desc: "Phone load", cat: "Load / comms", amount: 99.00, wallet: "gcash", type: "expense" }`.
-- Balance update: GCash wallet 6,566.95 → 6,467.95.
+- Balance update: GCash wallet 6,566.95 â†’ 6,467.95.
 - `DATA.lastUpdated` stays Aug 7, 2026; `DATA.monthly.dayOfMonth` stays 7.
 - Validation: `finna-validate.ps1` passed.
 
-## Aug 7, 2026 - CORRECTION (2nd pass): Davao transfer was ₱6,000 + ₱10 fee; plus ₱3,000 RCBC cash withdrawal
+## Aug 7, 2026 - CORRECTION (2nd pass): Davao transfer was â‚±6,000 + â‚±10 fee; plus â‚±3,000 RCBC cash withdrawal
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
-- Confirmed source: Edge correction relayed via telegram - "the amount transferred to RCBC was ₱6,000, and an ADDITIONAL ₱10 was charged to GCash Bank as the transfer fee. GCash Bank total debit = ₱6,010... RCBC credit = ₱6,000, not ₱5,990. New transaction: cash withdrawal of ₱3,000 from RCBC (for the Davao trip)."
-- Ledger change: transfer pair amount corrected 5,990 → 6,000 (both legs), fee stays ₱10 (gcashsavings), plus new transfer pair for the cash withdrawal:
+- Confirmed source: Edge correction relayed via telegram - "the amount transferred to RCBC was â‚±6,000, and an ADDITIONAL â‚±10 was charged to GCash Bank as the transfer fee. GCash Bank total debit = â‚±6,010... RCBC credit = â‚±6,000, not â‚±5,990. New transaction: cash withdrawal of â‚±3,000 from RCBC (for the Davao trip)."
+- Ledger change: transfer pair amount corrected 5,990 â†’ 6,000 (both legs), fee stays â‚±10 (gcashsavings), plus new transfer pair for the cash withdrawal:
   - `{ date: "Aug 7", desc: "Transfer to RCBC savings (Davao trip budget)", cat: "Transfer", amount: 6000.00, wallet: "gcashsavings", type: "expense" }`
   - `{ date: "Aug 7", desc: "Transfer from GCash Bank (Davao trip budget)", cat: "Transfer", amount: 6000.00, wallet: "rcbc", type: "income" }`
   - `{ date: "Aug 7", desc: "Transfer fee (GCash Bank to RCBC)", cat: "Bank fees", amount: 10.00, wallet: "gcashsavings", type: "expense" }`
   - `{ date: "Aug 7", desc: "Cash withdrawal (Davao trip budget)", cat: "Transfer", amount: 3000.00, wallet: "rcbc", type: "expense" }`
   - `{ date: "Aug 7", desc: "Cash withdrawal from RCBC (Davao trip)", cat: "Transfer", amount: 3000.00, wallet: "cash", type: "income" }`
-- Balance updates: GCash savings 30,160.13 → 30,150.13 (−6,010: 6,000 transfer + 10 fee). RCBC 8,156.35 → 5,166.35 (+6,000 transfer − 3,000 withdrawal). Cash on hand 1,772.50 → 4,772.50 (+3,000 withdrawal − 18 fare).
-- This corrects the Aug 7 first-pass entry (commit 7b91da7) which had booked a ₱5,990 transfer pair.
+- Balance updates: GCash savings 30,160.13 â†’ 30,150.13 (âˆ’6,010: 6,000 transfer + 10 fee). RCBC 8,156.35 â†’ 5,166.35 (+6,000 transfer âˆ’ 3,000 withdrawal). Cash on hand 1,772.50 â†’ 4,772.50 (+3,000 withdrawal âˆ’ 18 fare).
+- This corrects the Aug 7 first-pass entry (commit 7b91da7) which had booked a â‚±5,990 transfer pair.
 - `DATA.lastUpdated` stays Aug 7, 2026; `DATA.monthly.dayOfMonth` stays 7.
 - Validation: `finna-validate.ps1` passed.
 
 ## Aug 7, 2026 - CORRECTION: Davao transfer came from GCash Bank (savings), not GCash wallet
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
-- Confirmed source: Edge correction relayed via telegram - "the ₱6,000 transfer came from his GCash BANK account, NOT from the GCash wallet. Source is GCash Bank (debit ₱6,000 + ₱10 fee from there), restore the GCash wallet balance... RCBC credit of ₱5,990 stays."
+- Confirmed source: Edge correction relayed via telegram - "the â‚±6,000 transfer came from his GCash BANK account, NOT from the GCash wallet. Source is GCash Bank (debit â‚±6,000 + â‚±10 fee from there), restore the GCash wallet balance... RCBC credit of â‚±5,990 stays."
 - Rebooked the Aug 7 transfer pair + fee so the source is `gcashsavings` instead of `gcash`:
   - `{ date: "Aug 7", desc: "Transfer to RCBC savings (Davao trip budget)", cat: "Transfer", amount: 5990.00, wallet: "gcashsavings", type: "expense" }`
   - `{ date: "Aug 7", desc: "Transfer from GCash Bank (Davao trip budget)", cat: "Transfer", amount: 5990.00, wallet: "rcbc", type: "income" }`
   - `{ date: "Aug 7", desc: "Transfer fee (GCash Bank to RCBC)", cat: "Bank fees", amount: 10.00, wallet: "gcashsavings", type: "expense" }`
-- Balance updates: GCash wallet restored 566.95 → 6,566.95. GCash savings 36,160.13 → 30,160.13 (−6,000: 5,990 transfer + 10 fee). RCBC savings stays 8,156.35. Cash on hand stays 1,772.50 (fare unchanged).
+- Balance updates: GCash wallet restored 566.95 â†’ 6,566.95. GCash savings 36,160.13 â†’ 30,160.13 (âˆ’6,000: 5,990 transfer + 10 fee). RCBC savings stays 8,156.35. Cash on hand stays 1,772.50 (fare unchanged).
 - This corrects the earlier Aug 7 entry (commit 4ebf62a) which had wrongly debited the GCash wallet.
 - `DATA.lastUpdated` stays Aug 7, 2026; `DATA.monthly.dayOfMonth` stays 7.
 - Validation: `finna-validate.ps1` passed.
 
-## Aug 7, 2026 - Logged GCash→RCBC transfer (Davao trip budget) + fee + cash fare
+## Aug 7, 2026 - Logged GCashâ†’RCBC transfer (Davao trip budget) + fee + cash fare
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
-- Confirmed source: Edge via telegram (relayed from Monica session) - "Transfer ₱6,000 from GCash to RCBC, with ₱10 transfer fee. Purpose: Davao trip budget and allowance... Cash spent: ₱18 for fare (transportation), paid in cash."
+- Confirmed source: Edge via telegram (relayed from Monica session) - "Transfer â‚±6,000 from GCash to RCBC, with â‚±10 transfer fee. Purpose: Davao trip budget and allowance... Cash spent: â‚±18 for fare (transportation), paid in cash."
 - Ledger change: 4 entries dated Aug 7:
   - `{ date: "Aug 7", desc: "Transfer to RCBC savings (Davao trip budget)", cat: "Transfer", amount: 5990.00, wallet: "gcash", type: "expense" }`
   - `{ date: "Aug 7", desc: "Transfer from GCash wallet (Davao trip budget)", cat: "Transfer", amount: 5990.00, wallet: "rcbc", type: "income" }`
   - `{ date: "Aug 7", desc: "Transfer fee (GCash to RCBC)", cat: "Bank fees", amount: 10.00, wallet: "gcash", type: "expense" }`
   - `{ date: "Aug 7", desc: "Fare", cat: "Transport", amount: 18.00, wallet: "cash", type: "expense" }`
-- Balance updates: GCash wallet 6,566.95 → 566.95 (−6,000 total: 5,990 transfer + 10 fee). RCBC savings 2,166.35 → 8,156.35 (+5,990). Cash on hand 1,790.50 → 1,772.50 (−18 fare).
-- Transfer booked as ₱5,990 pair per Edge's stated end state (GCash −6,000, RCBC +5,990) - the ₱10 fee is an expense, matching the Aug 6 transfer-fee convention.
-- `DATA.lastUpdated` → Aug 7, 2026; `DATA.monthly.dayOfMonth` 6 → 7.
+- Balance updates: GCash wallet 6,566.95 â†’ 566.95 (âˆ’6,000 total: 5,990 transfer + 10 fee). RCBC savings 2,166.35 â†’ 8,156.35 (+5,990). Cash on hand 1,790.50 â†’ 1,772.50 (âˆ’18 fare).
+- Transfer booked as â‚±5,990 pair per Edge's stated end state (GCash âˆ’6,000, RCBC +5,990) - the â‚±10 fee is an expense, matching the Aug 6 transfer-fee convention.
+- `DATA.lastUpdated` â†’ Aug 7, 2026; `DATA.monthly.dayOfMonth` 6 â†’ 7.
 - Validation: `finna-validate.ps1` passed.
 
 ## Aug 6, 2026 - CORRECTION: RJ repayment was in-kind, not cash
 
-- Runtime: Finna (OpenClaw) — lease handle `codex`.
-- Confirmed source: Edge correction relayed via telegram — "There was NO cash intake. RJ 'paid' the loan by treating Edge to breakfast (~₱108)."
+- Runtime: Finna (OpenClaw) â€” lease handle `codex`.
+- Confirmed source: Edge correction relayed via telegram â€” "There was NO cash intake. RJ 'paid' the loan by treating Edge to breakfast (~â‚±108)."
 - Re-booked the Aug 6 RJ repayment as a **net-zero pair** (zero cash movement):
   - `{ date: "Aug 6", desc: "Breakfast (RJ treat)", cat: "Food & dining", amount: 108.00, wallet: "cash", type: "expense" }`
   - `{ date: "Aug 6", desc: "RJ loan repayment (in-kind)", cat: "Income", amount: 108.00, wallet: "cash", type: "income" }`
-- This replaces the earlier entry (which incorrectly booked a cash inflow with `cat: "Loans"` — per DATA-CONTRACT, repayments must be `cat: "Income"`).
-- Balance changes: **Cash on hand unchanged** at 1,790.50 (reverted from 1,898.50). Receivable `rj` stands at **166.75** (₱274.75 lent − ₱108 in-kind repayment). Total assets back to 59,912.93.
-- Note: the ₱108 breakfast now counts as spending (Food & dining) in monthly totals, offset by the repayment income — net zero, per Edge's instruction to record it as expense-covered-by-loan-repayment.
+- This replaces the earlier entry (which incorrectly booked a cash inflow with `cat: "Loans"` â€” per DATA-CONTRACT, repayments must be `cat: "Income"`).
+- Balance changes: **Cash on hand unchanged** at 1,790.50 (reverted from 1,898.50). Receivable `rj` stands at **166.75** (â‚±274.75 lent âˆ’ â‚±108 in-kind repayment). Total assets back to 59,912.93.
+- Note: the â‚±108 breakfast now counts as spending (Food & dining) in monthly totals, offset by the repayment income â€” net zero, per Edge's instruction to record it as expense-covered-by-loan-repayment.
 - Validation: `finna-validate.ps1` passed.
 
-## Aug 6, 2026 - Logged RJ loan repayment (approx. ₱108)
+## Aug 6, 2026 - Logged RJ loan repayment (approx. â‚±108)
 
-- Runtime: Finna (OpenClaw) — lease handle `codex`.
-- Confirmed source: Edge (Chairman), relayed via telegram direct session — "RJ paid his loan, about ₱108 (received 2026-08-06)". Amount recorded as ₱108.00 but is **approximate** per Edge's note; exact figure unconfirmed.
-- Ledger change: added transaction dated Aug 6 — "RJ loan repayment" ₱108 (cash, Loans, type income). Cash on hand 1,790.50 → 1,898.50.
-- Receivables: `rj` 274.75 → 166.75 (₱274.75 lent − ₱108 repaid). This also **resolves the flagged RJ discrepancy**: the alert card's ₱262.75 was stale text predating the Aug 5 ₱12 loan (Jul 26 lunch ₱149 + laundry ₱113.75 + Aug 5 ₱12 = ₱274.75, matching the ledger). Alert updated to ₱166.75 with corrected sub-note.
-- Payment channel assumed cash (consistent with RJ's prior Jul 31 ₱500 repayment being cash); flag for Edge to confirm if received via e-wallet instead.
+- Runtime: Finna (OpenClaw) â€” lease handle `codex`.
+- Confirmed source: Edge (Chairman), relayed via telegram direct session â€” "RJ paid his loan, about â‚±108 (received 2026-08-06)". Amount recorded as â‚±108.00 but is **approximate** per Edge's note; exact figure unconfirmed.
+- Ledger change: added transaction dated Aug 6 â€” "RJ loan repayment" â‚±108 (cash, Loans, type income). Cash on hand 1,790.50 â†’ 1,898.50.
+- Receivables: `rj` 274.75 â†’ 166.75 (â‚±274.75 lent âˆ’ â‚±108 repaid). This also **resolves the flagged RJ discrepancy**: the alert card's â‚±262.75 was stale text predating the Aug 5 â‚±12 loan (Jul 26 lunch â‚±149 + laundry â‚±113.75 + Aug 5 â‚±12 = â‚±274.75, matching the ledger). Alert updated to â‚±166.75 with corrected sub-note.
+- Payment channel assumed cash (consistent with RJ's prior Jul 31 â‚±500 repayment being cash); flag for Edge to confirm if received via e-wallet instead.
 - `DATA.lastUpdated` already Aug 6, 2026.
 - Validation: `finna-validate.ps1` passed.
 
 ## Aug 6, 2026 - Logged DeepSeek API top-up
 
-- Runtime: Monica (OpenClaw) — lease handle `claude` (lock script agent set).
+- Runtime: Monica (OpenClaw) â€” lease handle `claude` (lock script agent set).
 - Confirmed source: Edge, direct chat request.
-- `{ date: "Aug 6", desc: "DeepSeek API top-up", cat: "Subscriptions", amount: 331.14, wallet: "rcbc", type: "expense" }` — RCBC savings 2,497.49 → 2,166.35.
+- `{ date: "Aug 6", desc: "DeepSeek API top-up", cat: "Subscriptions", amount: 331.14, wallet: "rcbc", type: "expense" }` â€” RCBC savings 2,497.49 â†’ 2,166.35.
 - `DATA.lastUpdated` already Aug 6, 2026; `DATA.monthly.dayOfMonth` already 6.
 - Validation: `finna-validate.ps1` passed.
 
-## Aug 6, 2026 - Logged GCash→RCBC transfer + fee
+## Aug 6, 2026 - Logged GCashâ†’RCBC transfer + fee
 
-- Runtime: Monica (OpenClaw) — lease handle `claude` (lock script agent set).
+- Runtime: Monica (OpenClaw) â€” lease handle `claude` (lock script agent set).
 - Confirmed source: Edge, direct chat request.
-- Ledger change: 3 entries dated Aug 6 — Transfer ₱2,000 GCash→RCBC (matching Transfer expense/income pair), plus ₱10 transfer fee (gcash, new category **Bank fees** added to `categoryOrder`).
-- Balance updates: GCash wallet 8,576.95 → 6,566.95 (−2,010). RCBC savings 497.49 → 2,497.49 (+2,000).
-- `DATA.lastUpdated` → Aug 6, 2026; `DATA.monthly.dayOfMonth` 5 → 6.
+- Ledger change: 3 entries dated Aug 6 â€” Transfer â‚±2,000 GCashâ†’RCBC (matching Transfer expense/income pair), plus â‚±10 transfer fee (gcash, new category **Bank fees** added to `categoryOrder`).
+- Balance updates: GCash wallet 8,576.95 â†’ 6,566.95 (âˆ’2,010). RCBC savings 497.49 â†’ 2,497.49 (+2,000).
+- `DATA.lastUpdated` â†’ Aug 6, 2026; `DATA.monthly.dayOfMonth` 5 â†’ 6.
 - Validation: `finna-validate.ps1` passed.
 
 ## Aug 5, 2026 - Logged grocery + RJ loan (cash)
 
-- Runtime: Monica (OpenClaw) — lease handle `claude` (lock script agent set).
+- Runtime: Monica (OpenClaw) â€” lease handle `claude` (lock script agent set).
 - Confirmed source: Edge, direct chat request.
-- Ledger change: added 2 transactions dated Aug 5 — Grocery ₱65 (cash, Groceries) and RJ loan ₱12 (cash, Loans). Cash on hand 1,867.50 → 1,790.50.
-- Receivables: `rj` 262.75 → 274.75 (Loans rule: money lent out creates a receivables entry).
+- Ledger change: added 2 transactions dated Aug 5 â€” Grocery â‚±65 (cash, Groceries) and RJ loan â‚±12 (cash, Loans). Cash on hand 1,867.50 â†’ 1,790.50.
+- Receivables: `rj` 262.75 â†’ 274.75 (Loans rule: money lent out creates a receivables entry).
 - `DATA.lastUpdated` already Aug 5, 2026; `DATA.monthly.dayOfMonth` already 5.
 - Validation: `finna-validate.ps1` passed.
 
 ## Aug 5, 2026 - Logged coffee expense (cash)
 
-- Runtime: Monica (OpenClaw) — lease handle `claude` (lock script agent set).
+- Runtime: Monica (OpenClaw) â€” lease handle `claude` (lock script agent set).
 - Confirmed source: Edge, direct chat request.
-- `{ date: "Aug 5", desc: "Coffee", cat: "Food & dining", amount: 210.00, wallet: "cash", type: "expense" }` — Cash on hand 2,077.50 → 1,867.50.
+- `{ date: "Aug 5", desc: "Coffee", cat: "Food & dining", amount: 210.00, wallet: "cash", type: "expense" }` â€” Cash on hand 2,077.50 â†’ 1,867.50.
 - Updated `DATA.lastUpdated` to Aug 5, 2026 and `DATA.monthly.dayOfMonth` to 5.
 - Validation: `finna-validate.ps1` passed.
 
@@ -786,7 +786,7 @@
 
 - Runtime: Claude Code.
 - Confirmed source: Edge, direct chat request.
-- `{ date: "Aug 4", desc: "DeepSeek API tokens", cat: "Subscriptions", amount: 330.47, wallet: "rcbc", type: "expense" }` — RCBC savings 827.96 → 497.49.
+- `{ date: "Aug 4", desc: "DeepSeek API tokens", cat: "Subscriptions", amount: 330.47, wallet: "rcbc", type: "expense" }` â€” RCBC savings 827.96 â†’ 497.49.
 - Updated `DATA.lastUpdated` to Aug 4, 2026 and `DATA.monthly.dayOfMonth` to 4.
 - Validated: `transactions=20 assets=60,541.07 liabilities=15,688.17 receivables=3,274.75 periodExpenses=11,611.12`.
 
@@ -794,138 +794,138 @@
 
 - Runtime: Claude Code.
 - Confirmed source: Edge, direct chat request, several follow-ups in the same session.
-- Hid the "Monthly allocation" donut chart section (`display:none` on its wrapper, grid reverted to single column) — it's a planned monthly budget breakdown that assumes a paycheck, and there's currently no income. Left the underlying JS/canvas/DATA untouched so it can be restored later by removing the wrapper's `display:none` (see inline HTML comment).
+- Hid the "Monthly allocation" donut chart section (`display:none` on its wrapper, grid reverted to single column) â€” it's a planned monthly budget breakdown that assumes a paycheck, and there's currently no income. Left the underlying JS/canvas/DATA untouched so it can be restored later by removing the wrapper's `display:none` (see inline HTML comment).
 - Converted "Spending by category" from a horizontal stacked bar chart (segregated by wallet: GCash/RCBC/Maya/Coins.ph/Cash) to a `pie` chart of category totals only, no wallet split. Legend now shows both peso value and percentage per category, sorted descending by value.
-- Upgraded the collapsed (closed) visual of Transaction log, Upcoming payments, SPayLater schedule, and Monthly History rows to a card-style summary (`.card-summary`/`.cs-*` CSS) matching the Accounts section's look — label + sub-line + prominent value — instead of plain text with a chevron. Each still expands inline on click via the existing `<details>/<summary>` pattern; no new JS needed for open/close.
+- Upgraded the collapsed (closed) visual of Transaction log, Upcoming payments, SPayLater schedule, and Monthly History rows to a card-style summary (`.card-summary`/`.cs-*` CSS) matching the Accounts section's look â€” label + sub-line + prominent value â€” instead of plain text with a chevron. Each still expands inline on click via the existing `<details>/<summary>` pattern; no new JS needed for open/close.
   - Transaction log: entry count + total spent this period.
   - Upcoming payments: item count + total due.
   - SPayLater schedule: installment count + total outstanding.
   - Monthly History rows: "Net positive"/"Net negative"/"Partial month" sub-label + net savings figure (already had green/red coloring, kept).
-- No `DATA` fields changed — pure presentation.
+- No `DATA` fields changed â€” pure presentation.
 - Verified in browser: no console errors, Monthly allocation confirmed hidden (Income history chart now full-width), pie chart renders with 7 non-zero categories and correct value+percentage legend, all 4 card-style summaries show correct label/sub/value, clicking Upcoming payments expands inline correctly (regression-checked).
 
 ## Aug 3, 2026 - Replaced "Monthly Reports" grid+popup with collapsible "Monthly History" list (planned via plan mode)
 
 - Runtime: Claude Code.
-- Confirmed source: Edge, direct chat request, explicitly asked for plan mode for this feature — plan approved before implementation (plan file: `C:\Users\PC\.claude\plans\tranquil-brewing-corbato.md`).
-- Replaced the 12-tile grid (`#monthGrid`, black/grey/green tiles for Jan-Dec 2026, click a colored tile to open a modal popup) with a collapsible list (`#monthHistoryList`, native `<details>/<summary>`, same pattern as the other 3 sections made collapsible earlier today). Most-recent-first ordering. Each row's collapsed summary shows the month label + net savings figure (green/red) at a glance; expanding shows the full report inline (income/expenses/category breakdown/goals & net worth/notable events) — no popup.
-- Refactored `buildMonthReport(key)` (previously wrote into the shared modal's `bodyEl`) into `renderMonthReportHTML(r)`, a pure function returning an HTML string, reusing the existing `row()`/`sectionHead()` helpers rather than duplicating them. Removed `openMonthModal()` and its `.mt-ready[data-month]` click-listener registration — the shared `bdOverlay` modal system stays intact for Net worth/Total assets/Total liabilities/Account cards, only the month-click-opens-modal path was removed.
+- Confirmed source: Edge, direct chat request, explicitly asked for plan mode for this feature â€” plan approved before implementation (plan file: `C:\Users\PC\.claude\plans\tranquil-brewing-corbato.md`).
+- Replaced the 12-tile grid (`#monthGrid`, black/grey/green tiles for Jan-Dec 2026, click a colored tile to open a modal popup) with a collapsible list (`#monthHistoryList`, native `<details>/<summary>`, same pattern as the other 3 sections made collapsible earlier today). Most-recent-first ordering. Each row's collapsed summary shows the month label + net savings figure (green/red) at a glance; expanding shows the full report inline (income/expenses/category breakdown/goals & net worth/notable events) â€” no popup.
+- Refactored `buildMonthReport(key)` (previously wrote into the shared modal's `bodyEl`) into `renderMonthReportHTML(r)`, a pure function returning an HTML string, reusing the existing `row()`/`sectionHead()` helpers rather than duplicating them. Removed `openMonthModal()` and its `.mt-ready[data-month]` click-listener registration â€” the shared `bdOverlay` modal system stays intact for Net worth/Total assets/Total liabilities/Account cards, only the month-click-opens-modal path was removed.
 - Removed unused CSS (`.month-tile`, `.mt-name`, `.mt-status`, `.mt-black` + dark-mode variant, `.mt-grey`, `.mt-ready`, `.mt-ready.mt-partial`) and stripped `.mt-ready` out of the 3 shared hover-affordance selectors. Added `.month-history-row`/`.month-history-summary`/`.month-history-net` CSS.
-- No `DATA` fields changed — pure presentation, reusing `DATA.monthlyReports` as-is.
-- Verified in browser per the plan's verification steps: exactly 2 rows (July 2026 first, −₱7,402.00 red; June 2026 second, marked partial, +₱22,610.46 green), both collapsed by default, both expand correctly on click with full report content matching what the old modal showed, "no report yet" note present, and — regression check — Net worth/Total assets/Account-card clicks still correctly open the shared modal. No console errors.
+- No `DATA` fields changed â€” pure presentation, reusing `DATA.monthlyReports` as-is.
+- Verified in browser per the plan's verification steps: exactly 2 rows (July 2026 first, âˆ’â‚±7,402.00 red; June 2026 second, marked partial, +â‚±22,610.46 green), both collapsed by default, both expand correctly on click with full report content matching what the old modal showed, "no report yet" note present, and â€” regression check â€” Net worth/Total assets/Account-card clicks still correctly open the shared modal. No console errors.
 
 ## Aug 3, 2026 - Archived Cash log, made 3 sections collapsible (UI only, no data change)
 
 - Runtime: Claude Code.
 - Confirmed source: Edge, direct chat request.
-- Archived "Cash log" (already redundant with the Accounts section's click-to-view history for Cash on hand) — folded into the same already-hidden `.g2` wrapper as "Budget vs actual" from the previous entry. Both DOM elements kept intact (just `display:none`) so their populating JS doesn't error.
-- Made "Transaction log · this period", "Upcoming payments", and "SPayLater schedule" collapsible using native `<details>/<summary>` — collapsed by default, click to expand. Added `.sec-collapsible` CSS (custom chevron marker, hides the native disclosure triangle, matches existing `.sec-title` styling).
-- No `DATA` fields changed — pure presentation. Verified in browser: all three default closed, expand on click, no console errors.
+- Archived "Cash log" (already redundant with the Accounts section's click-to-view history for Cash on hand) â€” folded into the same already-hidden `.g2` wrapper as "Budget vs actual" from the previous entry. Both DOM elements kept intact (just `display:none`) so their populating JS doesn't error.
+- Made "Transaction log Â· this period", "Upcoming payments", and "SPayLater schedule" collapsible using native `<details>/<summary>` â€” collapsed by default, click to expand. Added `.sec-collapsible` CSS (custom chevron marker, hides the native disclosure triangle, matches existing `.sec-title` styling).
+- No `DATA` fields changed â€” pure presentation. Verified in browser: all three default closed, expand on click, no console errors.
 
 ## Aug 3, 2026 - Hid "Budget vs actual" section (UI only, no data change)
 
 - Runtime: Claude Code.
 - Confirmed source: Edge, direct chat request.
 - Change: hid the "Budget vs actual" card on the dashboard (`display: none`, left in the DOM with a comment explaining how to restore it) since `DATA.monthlySpending.wallets[].budget` figures are stale leftovers from the last paycheck and don't reflect a real monthly plan. Adjusted the containing grid to single-column so the adjacent "Cash log" card fills the space cleanly instead of leaving a blank gap.
-- No `DATA` fields changed — pure presentation. `finna-validate.ps1` re-run as a sanity check regardless (unchanged figures, as expected).
-- To restore: remove the `display:none` and the explanatory comment in `index.html`, and revert the grid to `grid-template-columns: 1fr 1fr` (or just drop the inline style) — do this once Edge sets real monthly budget figures.
+- No `DATA` fields changed â€” pure presentation. `finna-validate.ps1` re-run as a sanity check regardless (unchanged figures, as expected).
+- To restore: remove the `display:none` and the explanatory comment in `index.html`, and revert the grid to `grid-template-columns: 1fr 1fr` (or just drop the inline style) â€” do this once Edge sets real monthly budget figures.
 
 ## Aug 3, 2026 - Logged 7 more Aug 3 transactions
 
 - Runtime: Claude Code.
 - Confirmed source: Edge, direct chat report.
-- Ledger changes: Lunch ₱115.00 (cash), Fare ₱26.00 (cash), Meal prep ₱65.00 (cash), Fare ₱13.00 (cash), Grocery ₱1,414.35 (gcash), Canva Pro ₱300.00 (gcash, Subscriptions), Meal prep ₱425.56 (rcbc).
+- Ledger changes: Lunch â‚±115.00 (cash), Fare â‚±26.00 (cash), Meal prep â‚±65.00 (cash), Fare â‚±13.00 (cash), Grocery â‚±1,414.35 (gcash), Canva Pro â‚±300.00 (gcash, Subscriptions), Meal prep â‚±425.56 (rcbc).
 - Canva Pro subscription marked `paid: true` for this cycle (dueDay 3, matches today).
-- Balance updates: Cash on hand ₱2,296.50 → ₱2,077.50. GCash wallet ₱10,291.30 → ₱8,576.95. RCBC savings ₱1,253.52 → ₱827.96.
+- Balance updates: Cash on hand â‚±2,296.50 â†’ â‚±2,077.50. GCash wallet â‚±10,291.30 â†’ â‚±8,576.95. RCBC savings â‚±1,253.52 â†’ â‚±827.96.
 - Validation: `finna-validate.ps1` passed.
 
 ## Aug 3, 2026 - Correction: Aug 3 breakfast was gcash, not cash
 
 - Runtime: Claude Code.
 - Confirmed source: Edge, direct chat correction.
-- Fix: "Breakfast" ₱110.00 (Aug 3, Food & dining) changed from `wallet: "cash"` to `wallet: "gcash"`.
-- Balance update: GCash wallet ₱10,401.30 → ₱10,291.30. Cash on hand ₱2,186.50 → ₱2,296.50.
+- Fix: "Breakfast" â‚±110.00 (Aug 3, Food & dining) changed from `wallet: "cash"` to `wallet: "gcash"`.
+- Balance update: GCash wallet â‚±10,401.30 â†’ â‚±10,291.30. Cash on hand â‚±2,186.50 â†’ â‚±2,296.50.
 - Validation: `finna-validate.ps1` passed.
 
-## Aug 3, 2026 - MAJOR: three-part restructure — month-scoped transactions, monthly monitoring, retired "Misc" category
+## Aug 3, 2026 - MAJOR: three-part restructure â€” month-scoped transactions, monthly monitoring, retired "Misc" category
 
 - Runtime: Claude Code.
 - Confirmed source: Edge, direct chat instructions, three related requests handled together.
 
 ### 1. Accounts section now shows only the current month
-- `DATA.transactions[]` held a mix of July (Jul 24-31) and August (Aug 1-3) entries — all of July's data had already been captured in the July `monthlyReports` entry (see recompute below), so it was redundant to keep live. Removed all Jul-dated entries from `transactions[]`; it now holds only the 12 August entries.
-- `DATA.monthArchive` was already empty (the monthly-report-compile task had cleared it). Marked it **deprecated** in a code comment — it's no longer needed once `transactions[]` itself is month-scoped (see part 2). Left in place as `[]` only because the account-history modal JS references it defensively.
+- `DATA.transactions[]` held a mix of July (Jul 24-31) and August (Aug 1-3) entries â€” all of July's data had already been captured in the July `monthlyReports` entry (see recompute below), so it was redundant to keep live. Removed all Jul-dated entries from `transactions[]`; it now holds only the 12 August entries.
+- `DATA.monthArchive` was already empty (the monthly-report-compile task had cleared it). Marked it **deprecated** in a code comment â€” it's no longer needed once `transactions[]` itself is month-scoped (see part 2). Left in place as `[]` only because the account-history modal JS references it defensively.
 - **New rule, documented in `finna/DATA-CONTRACT.md`:** `transactions[]` = current calendar month only. Reset happens once a month (by `monthly-report-compile`), not mid-month.
 
 ### 2. Switched from semi-monthly pay-period tracking to monthly monitoring
 Edge: "since i have left my work... we will stop the pay period rule and now be monthly monitoring starting now."
-- Renamed `DATA.salary` → **`DATA.monthly`**: `periodStart/periodEnd/dayOfPeriod/totalDays/nextDate` → `monthStart/monthEnd/dayOfMonth/daysInMonth/nextReset`. Current values: monthStart "Aug 1", monthEnd "Aug 31", dayOfMonth 3, daysInMonth 31, nextReset "Sep 1, 2026". `recent` → `lastIncome`/`lastIncomeDate` (historical only, Jul 24 2026 — do not treat as current).
-- Renamed `DATA.periodSpending` → **`DATA.monthlySpending`** (same `wallets[]` shape, budgets left at their stale Jul 24-paycheck values — flagged to Edge, needs his input on real monthly budget amounts, not invented here).
-- Updated every JS reference (`sal.*` → `mo.*`, `DATA.salary` → `DATA.monthly`) — dailyPace/projected/onTrack/daysLeft math all now runs off day-of-month instead of day-of-pay-period. Verified in browser: renders "Aug 1 – Aug 31", "Day 3 of 31" correctly, no console errors.
-- Section titles: "Salary period" → "Monthly monitoring", "Period spending" → "Monthly spending", "of period budget" → "of monthly budget", "Salary trend" → "Income history" (caption changed from "Faded = projected · updates each paycheck" to a note that there's no income since Jul 24).
-- `DATA.salaryHistory`: removed the two placeholder future entries (Aug 10/25, ₱37,000 `actual: false`) — there's no paycheck to project. Chart is now a pure historical record ending at Jul 25, 2026.
-- Updated the `monthly-report-compile` scheduled task substantially: it now ALSO clears `DATA.transactions` at month-end (previously only cleared `monthArchive`, since a separate period-reset routine handled `transactions[]` — that routine no longer exists). Also updated its `goalContribution` label logic ("MacBook fund" → "Emergency fund (GCash savings)") and added the shared lease/validate protocol it was missing. `monthly-subscription-reset` task checked — no stale salary/period references, left as-is.
+- Renamed `DATA.salary` â†’ **`DATA.monthly`**: `periodStart/periodEnd/dayOfPeriod/totalDays/nextDate` â†’ `monthStart/monthEnd/dayOfMonth/daysInMonth/nextReset`. Current values: monthStart "Aug 1", monthEnd "Aug 31", dayOfMonth 3, daysInMonth 31, nextReset "Sep 1, 2026". `recent` â†’ `lastIncome`/`lastIncomeDate` (historical only, Jul 24 2026 â€” do not treat as current).
+- Renamed `DATA.periodSpending` â†’ **`DATA.monthlySpending`** (same `wallets[]` shape, budgets left at their stale Jul 24-paycheck values â€” flagged to Edge, needs his input on real monthly budget amounts, not invented here).
+- Updated every JS reference (`sal.*` â†’ `mo.*`, `DATA.salary` â†’ `DATA.monthly`) â€” dailyPace/projected/onTrack/daysLeft math all now runs off day-of-month instead of day-of-pay-period. Verified in browser: renders "Aug 1 â€“ Aug 31", "Day 3 of 31" correctly, no console errors.
+- Section titles: "Salary period" â†’ "Monthly monitoring", "Period spending" â†’ "Monthly spending", "of period budget" â†’ "of monthly budget", "Salary trend" â†’ "Income history" (caption changed from "Faded = projected Â· updates each paycheck" to a note that there's no income since Jul 24).
+- `DATA.salaryHistory`: removed the two placeholder future entries (Aug 10/25, â‚±37,000 `actual: false`) â€” there's no paycheck to project. Chart is now a pure historical record ending at Jul 25, 2026.
+- Updated the `monthly-report-compile` scheduled task substantially: it now ALSO clears `DATA.transactions` at month-end (previously only cleared `monthArchive`, since a separate period-reset routine handled `transactions[]` â€” that routine no longer exists). Also updated its `goalContribution` label logic ("MacBook fund" â†’ "Emergency fund (GCash savings)") and added the shared lease/validate protocol it was missing. `monthly-subscription-reset` task checked â€” no stale salary/period references, left as-is.
 - `finna/DATA-CONTRACT.md` rewritten with a "Monthly monitoring" section documenting all of this for future sessions/Codex.
 - `financial_plan` and `dashboard_setup` memory updated to match (separate memory edit, see below).
 
-### 3. Retired the "Misc" category — recategorized everything
+### 3. Retired the "Misc" category â€” recategorized everything
 Edge: "i would love to remove the category others or misc... if they cannot be added to the existing categories make a new category distinct for them."
-- New categories added to `categoryOrder`: **Household** (water, laundry, small household items), **Loans** (money lent out — creates a receivable), **Debt payment** (paying down liabilities, e.g. SPayLater), **Investments** (investment-related costs like GoTrade fees — NOT the investment principal itself, which stays `cat: "Transfer"`). New CSS pill styles added (`.lp-household`, `.lp-loan`, `.lp-debt`, `.lp-invest`) plus `.lp-recon` for the new `Reconciliation` category.
+- New categories added to `categoryOrder`: **Household** (water, laundry, small household items), **Loans** (money lent out â€” creates a receivable), **Debt payment** (paying down liabilities, e.g. SPayLater), **Investments** (investment-related costs like GoTrade fees â€” NOT the investment principal itself, which stays `cat: "Transfer"`). New CSS pill styles added (`.lp-household`, `.lp-loan`, `.lp-debt`, `.lp-invest`) plus `.lp-recon` for the new `Reconciliation` category.
 - Reclassified all 12 live `Misc`/adjustment transactions:
-  - GoTrade transfer fee ₱29.57 → Investments
-  - Lent to Bryan (lunch) ₱139.00, Lent to RJ (lunch) ₱149.00, Lent to RJ (laundry) ₱113.75, Lent to RJ ₱500.00, Lent to JR ₱3,010.00 → Loans (₱3,911.75 total)
-  - Laundry ₱192.50 (Jul 26), Water ₱100.00, Umbrella ₱140.00, Laundry ₱175.00 (Aug 1) → Household (₱607.50 total)
-  - SPayLater payment (July) ₱6,985.74 → Debt payment
-  - Cash reconciliation: blessings ₱5.00 (adjustment-type) → **Reconciliation** (new category specifically for adjustment entries, replacing Misc in that role)
-- **Recomputed the July 2026 monthlyReport's categoryBreakdown** to split out the July-dated portion of the old Misc bucket: Investments ₱29.57, Loans ₱3,911.75, Household ₱432.50 pulled out of the old ₱26,748.10 Misc total, leaving a residual **₱22,374.28** labeled `"Misc (legacy, pre-Aug-3 recategorization — itemized detail no longer available for entries before Jul 24)"` — this portion's underlying transactions were already archived/compiled before this change (in `monthArchive`, which gets cleared after each report compile) and can't be itemized anymore. Income/expenses/netSavings/savingsRate/netWorthEnd unchanged (recategorizing doesn't change totals). June 2026's report (₱1,453.46 Misc) has the same limitation and was left untouched — its raw data was reconstructed from git history months ago and isn't itemized enough to split further.
+  - GoTrade transfer fee â‚±29.57 â†’ Investments
+  - Lent to Bryan (lunch) â‚±139.00, Lent to RJ (lunch) â‚±149.00, Lent to RJ (laundry) â‚±113.75, Lent to RJ â‚±500.00, Lent to JR â‚±3,010.00 â†’ Loans (â‚±3,911.75 total)
+  - Laundry â‚±192.50 (Jul 26), Water â‚±100.00, Umbrella â‚±140.00, Laundry â‚±175.00 (Aug 1) â†’ Household (â‚±607.50 total)
+  - SPayLater payment (July) â‚±6,985.74 â†’ Debt payment
+  - Cash reconciliation: blessings â‚±5.00 (adjustment-type) â†’ **Reconciliation** (new category specifically for adjustment entries, replacing Misc in that role)
+- **Recomputed the July 2026 monthlyReport's categoryBreakdown** to split out the July-dated portion of the old Misc bucket: Investments â‚±29.57, Loans â‚±3,911.75, Household â‚±432.50 pulled out of the old â‚±26,748.10 Misc total, leaving a residual **â‚±22,374.28** labeled `"Misc (legacy, pre-Aug-3 recategorization â€” itemized detail no longer available for entries before Jul 24)"` â€” this portion's underlying transactions were already archived/compiled before this change (in `monthArchive`, which gets cleared after each report compile) and can't be itemized anymore. Income/expenses/netSavings/savingsRate/netWorthEnd unchanged (recategorizing doesn't change totals). June 2026's report (â‚±1,453.46 Misc) has the same limitation and was left untouched â€” its raw data was reconstructed from git history months ago and isn't itemized enough to split further.
 - `scripts/finna-validate.ps1`: added `Reconciliation` to `$validCategories`; changed the adjustment-type rule from requiring `cat -eq 'Misc'` to `cat -eq 'Reconciliation'`.
 - `finna/DATA-CONTRACT.md` documents the full new category list and the "Misc retirement" rationale/limitation.
 - Validated in browser: account-history modal shows correct new category pills (Household, Debt payment, Transfer) with no console errors.
 
 ### Net effect
-No account balances changed in this entry (pure reclassification + structural rename) — total assets stayed exactly ₱63,230.45, liabilities ₱15,688.17, receivables ₱3,274.75. Validation passed both before AND after each sub-change, cross-checked independently.
+No account balances changed in this entry (pure reclassification + structural rename) â€” total assets stayed exactly â‚±63,230.45, liabilities â‚±15,688.17, receivables â‚±3,274.75. Validation passed both before AND after each sub-change, cross-checked independently.
 
-## Aug 3, 2026 - MAJOR: Edge resigned from his job — GCash savings repurposed as emergency fund; SPayLater July bill paid
+## Aug 3, 2026 - MAJOR: Edge resigned from his job â€” GCash savings repurposed as emergency fund; SPayLater July bill paid
 
 - Runtime: Claude Code.
 - Confirmed source: Edge, direct chat report.
-- **Life event:** Edge resigned from his VA job. No income currently. This invalidates several standing assumptions in `finna/FINNA.md`/[[financial-plan]]/[[user_profile]] memory — flagged to Edge, not yet fully reworked (see below).
+- **Life event:** Edge resigned from his VA job. No income currently. This invalidates several standing assumptions in `finna/FINNA.md`/[[financial-plan]]/[[user_profile]] memory â€” flagged to Edge, not yet fully reworked (see below).
 - Ledger changes:
-  - Transfer to GCash wallet (emergency fund draw) ₱10,000 (gcashsavings, expense, Transfer) / Transfer from GCash savings ₱10,000 (gcash, income, Transfer)
-  - SPayLater payment (July) ₱6,985.74 (gcash, expense, cat Misc)
-- Balance updates: GCash wallet ₱7,387.04 → ₱10,401.30. GCash savings ₱46,160.13 → ₱36,160.13. `liabilities.spaylater` ₱22,673.91 → ₱15,688.17 (July bill paid; removed the "Jul bill" entry from `spaylaterSchedule`, next due is the Aug bill ₱6,969.87 on Sep 15).
-- **Account repurposed:** GCash savings `tagLabel` changed "MacBook fund" → "Emergency fund (was MacBook fund)". Edge's own words: "this bank/saving for macbook will now be considered emergency fund until i find new work."
-- **Dashboard section reworked:** "MacBook Pro M5 goal" section renamed **"Emergency fund"**. Removed the target/percentage/shortfall framing (was based on a ₱145,000 MacBook target and ongoing paycheck contributions — both now inapplicable) since no new target has been set; now just shows the GCash savings balance plainly with a note explaining the repurpose and that there are no paycheck contributions until income resumes. `DATA.macbook` object left in place as historical data but nothing in the JS reads it anymore.
-- Monitoring alert "MacBook — reduced pace" replaced with "No active income" reflecting the resignation and emergency-fund status.
-- **NOT done — flagged to Edge, needs his direction rather than assumptions:**
-  - `DATA.salaryHistory`'s future entries (Aug 10, Aug 25, etc.) still show placeholder ₱37,000/`actual: false` — these are now almost certainly wrong (no job = no paycheck), but left untouched since Edge hasn't confirmed whether/when he expects any income.
-  - `DATA.monthlyAllocation` (donut chart) still shows a "MacBook savings ₱10,000/mo" line and other paycheck-based planning figures — now stale, not updated pending Edge's direction on how he wants monthly planning framed with no income.
-  - `finna/FINNA.md`, `financial_plan` memory, and `user_profile` memory all describe an active paycheck/distribution-formula routine that no longer applies — memory updated with this event (see separate memory edit) but the operating docs (`finna/FINNA.md`) were not restructured this session; the semi-monthly period-reset/distribution routine should probably pause until Edge has income again.
+  - Transfer to GCash wallet (emergency fund draw) â‚±10,000 (gcashsavings, expense, Transfer) / Transfer from GCash savings â‚±10,000 (gcash, income, Transfer)
+  - SPayLater payment (July) â‚±6,985.74 (gcash, expense, cat Misc)
+- Balance updates: GCash wallet â‚±7,387.04 â†’ â‚±10,401.30. GCash savings â‚±46,160.13 â†’ â‚±36,160.13. `liabilities.spaylater` â‚±22,673.91 â†’ â‚±15,688.17 (July bill paid; removed the "Jul bill" entry from `spaylaterSchedule`, next due is the Aug bill â‚±6,969.87 on Sep 15).
+- **Account repurposed:** GCash savings `tagLabel` changed "MacBook fund" â†’ "Emergency fund (was MacBook fund)". Edge's own words: "this bank/saving for macbook will now be considered emergency fund until i find new work."
+- **Dashboard section reworked:** "MacBook Pro M5 goal" section renamed **"Emergency fund"**. Removed the target/percentage/shortfall framing (was based on a â‚±145,000 MacBook target and ongoing paycheck contributions â€” both now inapplicable) since no new target has been set; now just shows the GCash savings balance plainly with a note explaining the repurpose and that there are no paycheck contributions until income resumes. `DATA.macbook` object left in place as historical data but nothing in the JS reads it anymore.
+- Monitoring alert "MacBook â€” reduced pace" replaced with "No active income" reflecting the resignation and emergency-fund status.
+- **NOT done â€” flagged to Edge, needs his direction rather than assumptions:**
+  - `DATA.salaryHistory`'s future entries (Aug 10, Aug 25, etc.) still show placeholder â‚±37,000/`actual: false` â€” these are now almost certainly wrong (no job = no paycheck), but left untouched since Edge hasn't confirmed whether/when he expects any income.
+  - `DATA.monthlyAllocation` (donut chart) still shows a "MacBook savings â‚±10,000/mo" line and other paycheck-based planning figures â€” now stale, not updated pending Edge's direction on how he wants monthly planning framed with no income.
+  - `finna/FINNA.md`, `financial_plan` memory, and `user_profile` memory all describe an active paycheck/distribution-formula routine that no longer applies â€” memory updated with this event (see separate memory edit) but the operating docs (`finna/FINNA.md`) were not restructured this session; the semi-monthly period-reset/distribution routine should probably pause until Edge has income again.
 - Validation: `finna-validate.ps1` passed.
 
 ## Aug 3, 2026 - Logged Jul 28 - Aug 3 backlog (17 transactions); recomputed July monthly report
 
 - Runtime: Claude Code.
-- Confirmed source: Edge, direct chat report across a multi-day batch. Clarified two ambiguous items before logging: Aug 1 groceries wallet (confirmed gcash), and CapCut's billing wallet (confirmed it's now billed via GCash, not RCBC as previously recorded — updated `DATA.subscriptions` accordingly).
-- Ledger changes — 17 transactions added:
-  - Jul 28: Water ₱100 (cash, expense), Lent to RJ ₱500 (cash, expense)
-  - Jul 30: Lent to JR ₱3,010 (gcash, expense), Fare ₱13 (cash, expense), Umbrella ₱140 (cash, expense)
-  - Jul 31: RJ loan repayment ₱500 (cash, income), Tofu food ₱250 (cash, expense)
-  - Aug 1: Groceries ₱260 (gcash, expense), Laundry ₱175 (gcash, expense)
-  - Aug 2: Fare ₱13 (cash, expense), Tithes (Victory LB) ₱500 (coins, expense), Coffee ₱210 (gcash, expense), Lunch ₱100 (gcash, expense), Dinner ₱209 (gcash, expense)
-  - Aug 3: Breakfast ₱110 (cash, expense), CapCut ₱359 (gcash, expense, Subscriptions)
-- Receivables: `jr` ₱0 → ₱3,010.00 (Jul 30 loan, not yet repaid). `rj` net unchanged at ₱262.75 (Jul 28 ₱500 loan fully repaid Jul 31 — both legs logged for the audit trail, they net to zero). Added a monitoring alert for JR's ₱3,010.
-- CapCut subscription entry: `wallet` changed `rcbc` → `gcash`, `paid` set to `true` for this cycle (was reset `false` by the Aug 1/3 monthly reset).
-- Balance updates: GCash wallet ₱11,710.04 → ₱7,387.04. Cash on hand ₱2,812.50 → ₱2,186.50. Coins.ph ₱5,918.71 → ₱5,418.71.
-- `salary.dayOfPeriod` corrected 6 → 11 (was stale from the Jul 29 Codex entry; Aug 3 is day 11 of the Jul 24 - Aug 10 period).
+- Confirmed source: Edge, direct chat report across a multi-day batch. Clarified two ambiguous items before logging: Aug 1 groceries wallet (confirmed gcash), and CapCut's billing wallet (confirmed it's now billed via GCash, not RCBC as previously recorded â€” updated `DATA.subscriptions` accordingly).
+- Ledger changes â€” 17 transactions added:
+  - Jul 28: Water â‚±100 (cash, expense), Lent to RJ â‚±500 (cash, expense)
+  - Jul 30: Lent to JR â‚±3,010 (gcash, expense), Fare â‚±13 (cash, expense), Umbrella â‚±140 (cash, expense)
+  - Jul 31: RJ loan repayment â‚±500 (cash, income), Tofu food â‚±250 (cash, expense)
+  - Aug 1: Groceries â‚±260 (gcash, expense), Laundry â‚±175 (gcash, expense)
+  - Aug 2: Fare â‚±13 (cash, expense), Tithes (Victory LB) â‚±500 (coins, expense), Coffee â‚±210 (gcash, expense), Lunch â‚±100 (gcash, expense), Dinner â‚±209 (gcash, expense)
+  - Aug 3: Breakfast â‚±110 (cash, expense), CapCut â‚±359 (gcash, expense, Subscriptions)
+- Receivables: `jr` â‚±0 â†’ â‚±3,010.00 (Jul 30 loan, not yet repaid). `rj` net unchanged at â‚±262.75 (Jul 28 â‚±500 loan fully repaid Jul 31 â€” both legs logged for the audit trail, they net to zero). Added a monitoring alert for JR's â‚±3,010.
+- CapCut subscription entry: `wallet` changed `rcbc` â†’ `gcash`, `paid` set to `true` for this cycle (was reset `false` by the Aug 1/3 monthly reset).
+- Balance updates: GCash wallet â‚±11,710.04 â†’ â‚±7,387.04. Cash on hand â‚±2,812.50 â†’ â‚±2,186.50. Coins.ph â‚±5,918.71 â†’ â‚±5,418.71.
+- `salary.dayOfPeriod` corrected 6 â†’ 11 (was stale from the Jul 29 Codex entry; Aug 3 is day 11 of the Jul 24 - Aug 10 period).
 - **Recomputed the July 2026 monthly report** (`DATA.monthlyReports`, key `2026-07`) since it had already auto-compiled on Aug 3 before these Jul 28-31 entries were known, making it materially incomplete:
-  - Income ₱53,637.96 → ₱54,137.96 (+₱500 RJ repayment)
-  - Expenses ₱57,526.96 → ₱61,539.96 (+₱4,013: water, both loans given, fare, umbrella, tofu)
-  - Net savings ₱−3,889.00 → **₱−7,402.00** (savings rate −7.3% → −13.7%)
-  - Category breakdown: Misc ₱22,998.10 → ₱26,748.10, Food & dining ₱6,613.19 → ₱6,863.19, Transport ₱4,844.44 → ₱4,857.44 (others unchanged)
-  - Net worth (month end) ₱53,256.03 → ₱52,753.03 (−₱503 = the real expenses only; both loans are net-worth-neutral, cash converting to a receivable)
-  - `notableEvents` unchanged — JR's ₱3,010 loan doesn't crack the existing top-5 (all ≥ ₱5,000)
-- Validation: `finna-validate.ps1` passed (assets=70,216.19 receivables=3,274.75, cross-verified by independently summing all 12 account balances — matched exactly).
+  - Income â‚±53,637.96 â†’ â‚±54,137.96 (+â‚±500 RJ repayment)
+  - Expenses â‚±57,526.96 â†’ â‚±61,539.96 (+â‚±4,013: water, both loans given, fare, umbrella, tofu)
+  - Net savings â‚±âˆ’3,889.00 â†’ **â‚±âˆ’7,402.00** (savings rate âˆ’7.3% â†’ âˆ’13.7%)
+  - Category breakdown: Misc â‚±22,998.10 â†’ â‚±26,748.10, Food & dining â‚±6,613.19 â†’ â‚±6,863.19, Transport â‚±4,844.44 â†’ â‚±4,857.44 (others unchanged)
+  - Net worth (month end) â‚±53,256.03 â†’ â‚±52,753.03 (âˆ’â‚±503 = the real expenses only; both loans are net-worth-neutral, cash converting to a receivable)
+  - `notableEvents` unchanged â€” JR's â‚±3,010 loan doesn't crack the existing top-5 (all â‰¥ â‚±5,000)
+- Validation: `finna-validate.ps1` passed (assets=70,216.19 receivables=3,274.75, cross-verified by independently summing all 12 account balances â€” matched exactly).
 
 ## Aug 3, 2026 - Monthly subscription/commitment reset
 
@@ -964,49 +964,49 @@ No account balances changed in this entry (pure reclassification + structural re
 
 - Runtime: Claude Code.
 - Confirmed source: Edge, direct chat status update.
-- No balance change — the ₱1,000 already sitting in GoTrade was used within the app to buy $15.17 USD (the currency GoTrade trades in). Edge has NOT yet bought the S&P 500 ETF — his account is still pending approval for that step.
+- No balance change â€” the â‚±1,000 already sitting in GoTrade was used within the app to buy $15.17 USD (the currency GoTrade trades in). Edge has NOT yet bought the S&P 500 ETF â€” his account is still pending approval for that step.
 - Updated the GoTrade account's `tagLabel` from "USDT P2P -> S&P 500 (long-term)" to "$15.17 USD bought, S&P 500 pending approval" so the dashboard reflects current status. Update this again once the S&P 500 purchase actually goes through.
 - Validation: `finna-validate.ps1` passed.
 
-## Jul 26, 2026 - Correction: the "unaccounted" ₱145 was Jul 25 lunch
+## Jul 26, 2026 - Correction: the "unaccounted" â‚±145 was Jul 25 lunch
 
 - Runtime: Claude Code.
 - Confirmed source: Edge remembered shortly after the previous entry was logged.
-- Fix: updated the ₱145 cash transaction from "Unaccounted cash expense (forgotten)" (cat Misc, dated Jul 26) to "Lunch" (cat Food & dining, dated Jul 25) — same amount, same wallet, no balance change.
+- Fix: updated the â‚±145 cash transaction from "Unaccounted cash expense (forgotten)" (cat Misc, dated Jul 26) to "Lunch" (cat Food & dining, dated Jul 25) â€” same amount, same wallet, no balance change.
 - Validation: `finna-validate.ps1` passed.
 
 ## Jul 26, 2026 - Unaccounted cash expense logged as-is (not guessed)
 
 - Runtime: Claude Code.
-- Confirmed source: Edge, direct chat report — he noticed ₱145 cash missing from what the ledger would otherwise show, but doesn't remember what it was spent on.
-- Ledger change: added "Unaccounted cash expense (forgotten)" ₱145.00, wallet cash, cat Misc, expense. Logged honestly as unknown rather than guessing a category or description — per `finna/FINNA.md`, "do not create transactions from assumptions."
-- Balance update: Cash on hand ₱3,146.50 → ₱3,001.50.
+- Confirmed source: Edge, direct chat report â€” he noticed â‚±145 cash missing from what the ledger would otherwise show, but doesn't remember what it was spent on.
+- Ledger change: added "Unaccounted cash expense (forgotten)" â‚±145.00, wallet cash, cat Misc, expense. Logged honestly as unknown rather than guessing a category or description â€” per `finna/FINNA.md`, "do not create transactions from assumptions."
+- Balance update: Cash on hand â‚±3,146.50 â†’ â‚±3,001.50.
 - Validation: `finna-validate.ps1` passed.
 
 ## Jul 26, 2026 - Bank interest + GoTyme wallet swept back to savings
 
 - Runtime: Claude Code.
 - Confirmed source: Edge, direct chat report.
-- Ledger changes: Interest earned ₱44.16 (gcashsavings, income), Interest earned ₱1.26 (mayasavings, income), Transfer to GoTyme savings ₱27.84 (gotymewallet, expense) / Transfer from GoTyme wallet ₱27.84 (gotyme, income).
-- Balance updates: GCash savings 46,115.97 → 46,160.13. Maya savings 487.17 → 488.43. GoTyme wallet 27.84 → 0.00. GoTyme savings 4,500.00 → 4,527.84.
+- Ledger changes: Interest earned â‚±44.16 (gcashsavings, income), Interest earned â‚±1.26 (mayasavings, income), Transfer to GoTyme savings â‚±27.84 (gotymewallet, expense) / Transfer from GoTyme wallet â‚±27.84 (gotyme, income).
+- Balance updates: GCash savings 46,115.97 â†’ 46,160.13. Maya savings 487.17 â†’ 488.43. GoTyme wallet 27.84 â†’ 0.00. GoTyme savings 4,500.00 â†’ 4,527.84.
 - Validation: `finna-validate.ps1` passed.
 
-## Jul 26, 2026 - Correction: GoTrade transfer fee ₱15.33 → ₱29.57
+## Jul 26, 2026 - Correction: GoTrade transfer fee â‚±15.33 â†’ â‚±29.57
 
 - Runtime: Claude Code.
 - Confirmed source: Edge, direct chat correction.
-- Fix: the actual GCash → GoTrade transfer fee was ₱29.57, not the ₱15.33 first reported. Updated the transaction amount.
-- Balance update: GCash wallet ₱11,724.28 → ₱11,710.04 (additional ₱14.24 deduction).
+- Fix: the actual GCash â†’ GoTrade transfer fee was â‚±29.57, not the â‚±15.33 first reported. Updated the transaction amount.
+- Balance update: GCash wallet â‚±11,724.28 â†’ â‚±11,710.04 (additional â‚±14.24 deduction).
 - Validation: `finna-validate.ps1` passed.
 
-## Jul 26, 2026 - Logged 18 Jul 26 transactions — daily spending, two new loans, ATM withdrawal
+## Jul 26, 2026 - Logged 18 Jul 26 transactions â€” daily spending, two new loans, ATM withdrawal
 
 - Runtime: Claude Code.
 - Confirmed source: Edge, direct chat report (18 items).
-- Ledger changes: Fare ₱13 (cash), Tithes (Victory LB) ₱500 (coins), Coffee ₱210 (gcash), Lunch ₱210 (gcash), Lent to Bryan (lunch) ₱139 (gcash), Lent to RJ (lunch) ₱149 (gcash), Bryan loan repayment ₱137 (cash, income), Laundry ₱192.50 (gcash), Lent to RJ (laundry) ₱113.75 (gcash), Fare ₱24 (cash), Meal prep ₱1,015.78 (gcash), Groceries ₱716.25 (gcash), Meal prep ₱276.00 (cash), Groceries ₱39.00 (cash), Meal prep ₱60.00 (cash), ATM withdrawal ₱3,000 (rcbc expense / cash income, Transfer), Fare ₱13 (cash), Fare ₱25 (cash).
-- New receivables: `bryan` ₱2.00 (loaned ₱139, repaid ₱137 same day — not fully settled), `rj` ₱262.75 (₱149 lunch + ₱113.75 laundry, both Jul 26, no repayment yet). Added both to `DATA.receivables`, added `bryan`/`rj` to the `receivableLabels` maps (net worth modal + header note, header note is now built dynamically from whichever receivables are >0 instead of a hardcoded "(JR)" string). Added a monitoring alert for RJ's ₱262.75 (Bryan's ₱2.00 was too small to warrant its own alert card).
-- Balance updates: GCash wallet 14,470.56 → 11,724.28. Cash on hand 459.50 → 3,146.50. Coins.ph 6,418.71 → 5,918.71. RCBC savings 4,253.52 → 1,253.52.
-- `lastUpdated` → Jul 26, 2026. `salary.dayOfPeriod` 2 → 3.
+- Ledger changes: Fare â‚±13 (cash), Tithes (Victory LB) â‚±500 (coins), Coffee â‚±210 (gcash), Lunch â‚±210 (gcash), Lent to Bryan (lunch) â‚±139 (gcash), Lent to RJ (lunch) â‚±149 (gcash), Bryan loan repayment â‚±137 (cash, income), Laundry â‚±192.50 (gcash), Lent to RJ (laundry) â‚±113.75 (gcash), Fare â‚±24 (cash), Meal prep â‚±1,015.78 (gcash), Groceries â‚±716.25 (gcash), Meal prep â‚±276.00 (cash), Groceries â‚±39.00 (cash), Meal prep â‚±60.00 (cash), ATM withdrawal â‚±3,000 (rcbc expense / cash income, Transfer), Fare â‚±13 (cash), Fare â‚±25 (cash).
+- New receivables: `bryan` â‚±2.00 (loaned â‚±139, repaid â‚±137 same day â€” not fully settled), `rj` â‚±262.75 (â‚±149 lunch + â‚±113.75 laundry, both Jul 26, no repayment yet). Added both to `DATA.receivables`, added `bryan`/`rj` to the `receivableLabels` maps (net worth modal + header note, header note is now built dynamically from whichever receivables are >0 instead of a hardcoded "(JR)" string). Added a monitoring alert for RJ's â‚±262.75 (Bryan's â‚±2.00 was too small to warrant its own alert card).
+- Balance updates: GCash wallet 14,470.56 â†’ 11,724.28. Cash on hand 459.50 â†’ 3,146.50. Coins.ph 6,418.71 â†’ 5,918.71. RCBC savings 4,253.52 â†’ 1,253.52.
+- `lastUpdated` â†’ Jul 26, 2026. `salary.dayOfPeriod` 2 â†’ 3.
 - Validation: `finna-validate.ps1` passed.
 
 ## Jul 26, 2026 - Applied Jul 24 paycheck distribution under a new formula (fixed Maya, new GoTrade investment wallet)
@@ -1014,74 +1014,74 @@ No account balances changed in this entry (pure reclassification + structural re
 - Runtime: Claude Code.
 - Confirmed source: Edge, direct chat instructions across several turns.
 - **Formula change:** Maya wallet's allocation changed from a formula remainder to a **fixed PHP 1,000/paycheck**. Added a **new fixed PHP 1,000/paycheck "Investments" allocation**, going to a renamed account.
-- **Account rename:** "Bitget BTC" (liquidated Jul 23, was sitting at PHP 0.00) renamed to **"GoTrade"**, tag changed `crypto` -> new `invest` tag (added `.tag-invest` CSS, purple-family color reusing `--purple`). Purpose: Edge's plan is to buy USDT via P2P then buy S&P 500 exposure through GoTrade — his chosen long-term investment vehicle going forward, replacing crypto. Added `gotrade` as a new valid wallet ID in `finna/DATA-CONTRACT.md`, `scripts/finna-validate.ps1`, and the dashboard's account-history `walletMap`.
-- **This period only (Edge's explicit choice):** GCash wallet gets PHP 0 new allocation — its share stays in RCBC instead, since GCash wallet is already flush from the Jul 23 Bitget liquidation (PHP 14,485.89 balance). Not a standing change — confirm with Edge before assuming this applies to future periods too.
-- **Real-world routing note:** the PHP 1,000 investment allocation was routed RCBC -> GCash wallet -> GoTrade (not RCBC -> GoTrade directly), because GoTrade funding apparently requires GCash as the intermediary. A PHP 15.33 fee was charged to GCash wallet for that GCash -> GoTrade transfer specifically (logged as `cat: "Misc"`, not `"Transfer"`, since it's a real cost, not internal movement) — this is the ONLY net worth impact of this whole distribution event; everything else nets to zero across the combined accounts.
-- Ledger changes — transactions added (all dated Jul 26, the date Edge confirmed sending):
-  - Distribute to GCash savings ₱5,000 (rcbc, expense) / Paycheck savings allocation ₱5,000 (gcashsavings, income)
-  - Distribute to GCash wallet (investment passthrough) ₱1,000 (rcbc, expense) / Investment allocation (passthrough) ₱1,000 (gcash, income)
-  - Transfer to GoTrade ₱1,000 (gcash, expense) / Investment transfer from GCash ₱1,000 (gotrade, income)
-  - GoTrade transfer fee ₱15.33 (gcash, expense, cat Misc)
-  - Distribute to GoTyme savings ₱4,500 (rcbc, expense) / Paycheck rent/utilities allocation ₱4,500 (gotyme, income)
-  - Distribute to Maya wallet ₱1,000 (rcbc, expense) / Paycheck personal allocation (fixed) ₱1,000 (maya, income)
-  - Distribute to Coins.ph ₱1,735.42 (rcbc, expense) / Paycheck charity allocation ₱1,735.42 (coins, income)
-- Balance updates: GCash wallet 14,485.89 → 14,470.56 (net −15.33, the fee, since the ₱1,000 passed straight through). GCash savings 41,115.97 → 46,115.97. RCBC 17,488.94 → 4,253.52. GoTyme 0.00 → 4,500.00. Maya wallet 261.61 → 1,261.61. Coins.ph 4,683.29 → 6,418.71. GoTrade 0.00 → 1,000.00.
-- `periodSpending.wallets[].budget` updated to match the new allocations: gcash 0, rcbc 4119, maya 1000, coins 1735 (GoTrade not added to this array — it's an investment account, not a day-to-day spending wallet, matching how GCash savings/Maya savings/GoTyme savings are also excluded).
-- Total assets impact: exactly −₱15.33 (the GoTrade transfer fee) — everything else is internal movement, confirmed by recomputing total assets before/after.
+- **Account rename:** "Bitget BTC" (liquidated Jul 23, was sitting at PHP 0.00) renamed to **"GoTrade"**, tag changed `crypto` -> new `invest` tag (added `.tag-invest` CSS, purple-family color reusing `--purple`). Purpose: Edge's plan is to buy USDT via P2P then buy S&P 500 exposure through GoTrade â€” his chosen long-term investment vehicle going forward, replacing crypto. Added `gotrade` as a new valid wallet ID in `finna/DATA-CONTRACT.md`, `scripts/finna-validate.ps1`, and the dashboard's account-history `walletMap`.
+- **This period only (Edge's explicit choice):** GCash wallet gets PHP 0 new allocation â€” its share stays in RCBC instead, since GCash wallet is already flush from the Jul 23 Bitget liquidation (PHP 14,485.89 balance). Not a standing change â€” confirm with Edge before assuming this applies to future periods too.
+- **Real-world routing note:** the PHP 1,000 investment allocation was routed RCBC -> GCash wallet -> GoTrade (not RCBC -> GoTrade directly), because GoTrade funding apparently requires GCash as the intermediary. A PHP 15.33 fee was charged to GCash wallet for that GCash -> GoTrade transfer specifically (logged as `cat: "Misc"`, not `"Transfer"`, since it's a real cost, not internal movement) â€” this is the ONLY net worth impact of this whole distribution event; everything else nets to zero across the combined accounts.
+- Ledger changes â€” transactions added (all dated Jul 26, the date Edge confirmed sending):
+  - Distribute to GCash savings â‚±5,000 (rcbc, expense) / Paycheck savings allocation â‚±5,000 (gcashsavings, income)
+  - Distribute to GCash wallet (investment passthrough) â‚±1,000 (rcbc, expense) / Investment allocation (passthrough) â‚±1,000 (gcash, income)
+  - Transfer to GoTrade â‚±1,000 (gcash, expense) / Investment transfer from GCash â‚±1,000 (gotrade, income)
+  - GoTrade transfer fee â‚±15.33 (gcash, expense, cat Misc)
+  - Distribute to GoTyme savings â‚±4,500 (rcbc, expense) / Paycheck rent/utilities allocation â‚±4,500 (gotyme, income)
+  - Distribute to Maya wallet â‚±1,000 (rcbc, expense) / Paycheck personal allocation (fixed) â‚±1,000 (maya, income)
+  - Distribute to Coins.ph â‚±1,735.42 (rcbc, expense) / Paycheck charity allocation â‚±1,735.42 (coins, income)
+- Balance updates: GCash wallet 14,485.89 â†’ 14,470.56 (net âˆ’15.33, the fee, since the â‚±1,000 passed straight through). GCash savings 41,115.97 â†’ 46,115.97. RCBC 17,488.94 â†’ 4,253.52. GoTyme 0.00 â†’ 4,500.00. Maya wallet 261.61 â†’ 1,261.61. Coins.ph 4,683.29 â†’ 6,418.71. GoTrade 0.00 â†’ 1,000.00.
+- `periodSpending.wallets[].budget` updated to match the new allocations: gcash 0, rcbc 4119, maya 1000, coins 1735 (GoTrade not added to this array â€” it's an investment account, not a day-to-day spending wallet, matching how GCash savings/Maya savings/GoTyme savings are also excluded).
+- Total assets impact: exactly âˆ’â‚±15.33 (the GoTrade transfer fee) â€” everything else is internal movement, confirmed by recomputing total assets before/after.
 - Validation: `finna-validate.ps1` passed.
 
 ## Jul 25, 2026 - Period reset: new salary period, salary notably reduced
 
 - Runtime: Claude Code.
 - Confirmed source: Edge, direct chat report ("received salary 17,354.21 rcbc" dated Jul 24).
-- Period reset performed (10th/25th boundary): appended the outgoing Jul 11-25 period's 79 transactions to `DATA.monthArchive[]` (still within July, so appended not cleared). Cleared `DATA.transactions[]`, seeded it with the new "Salary received" ₱17,354.21 income entry (wallet rcbc), dated Jul 24.
-- Balance update: RCBC savings ₱134.73 → ₱17,488.94.
-- `DATA.salary` updated: recent ₱17,354.21, periodStart "Jul 24", periodEnd/nextDate "Aug 10, 2026", dayOfPeriod 2, totalDays 18 (calendar days Jul 24 - Aug 10 inclusive).
-- `DATA.salaryHistory`: "Jul 25" entry updated from placeholder ₱37,000 (actual: false) to confirmed ₱17,354.21 (actual: true).
-- `lastUpdated` → Jul 25, 2026.
-- **Not done, needs Edge's input:** `DATA.periodSpending.wallets[].budget` (GCash/RCBC/Maya/Coins) were left at their prior-period values — this salary is far below the usual ₱25K-40K range (well below even the ₱21,976.52 two periods ago), so the standard distribution formula in `finna/FINNA.md`/dashboard_setup memory would likely break the same way it did at ₱21,976.52 (Maya allocation going negative), only worse. Also no updated account-balance screenshots were given for GCash savings/GCash wallet/GoTyme/Coins.ph/Maya wallet — cannot log the actual paycheck distribution transactions until Edge confirms how this smaller paycheck was split. Flagged to Edge in chat; do not guess a distribution.
-- Flag: this may be the part-time income reduction landing earlier than the Aug 10 date noted in [[user_profile]]/[[financial-plan]] memory — worth confirming with Edge rather than assuming.
-- **Script fix:** `scripts/finna-validate.ps1` threw `PropertyNotFoundStrict` on `Measure-Object -Sum` when a filtered collection was empty (exactly this period reset's situation — `transactions[]` freshly reset to a single income entry, zero expenses). Under `Set-StrictMode -Version Latest`, `Measure-Object` over an empty pipeline doesn't produce a `.Sum` property to read. Fixed by adding a `Get-SafeSum` helper that returns 0 for empty/null input instead of piping straight into `Measure-Object`. This will recur every period reset otherwise (transactions[] often starts a new period with income-only entries), so worth having fixed now rather than hitting it again in two weeks.
+- Period reset performed (10th/25th boundary): appended the outgoing Jul 11-25 period's 79 transactions to `DATA.monthArchive[]` (still within July, so appended not cleared). Cleared `DATA.transactions[]`, seeded it with the new "Salary received" â‚±17,354.21 income entry (wallet rcbc), dated Jul 24.
+- Balance update: RCBC savings â‚±134.73 â†’ â‚±17,488.94.
+- `DATA.salary` updated: recent â‚±17,354.21, periodStart "Jul 24", periodEnd/nextDate "Aug 10, 2026", dayOfPeriod 2, totalDays 18 (calendar days Jul 24 - Aug 10 inclusive).
+- `DATA.salaryHistory`: "Jul 25" entry updated from placeholder â‚±37,000 (actual: false) to confirmed â‚±17,354.21 (actual: true).
+- `lastUpdated` â†’ Jul 25, 2026.
+- **Not done, needs Edge's input:** `DATA.periodSpending.wallets[].budget` (GCash/RCBC/Maya/Coins) were left at their prior-period values â€” this salary is far below the usual â‚±25K-40K range (well below even the â‚±21,976.52 two periods ago), so the standard distribution formula in `finna/FINNA.md`/dashboard_setup memory would likely break the same way it did at â‚±21,976.52 (Maya allocation going negative), only worse. Also no updated account-balance screenshots were given for GCash savings/GCash wallet/GoTyme/Coins.ph/Maya wallet â€” cannot log the actual paycheck distribution transactions until Edge confirms how this smaller paycheck was split. Flagged to Edge in chat; do not guess a distribution.
+- Flag: this may be the part-time income reduction landing earlier than the Aug 10 date noted in [[user_profile]]/[[financial-plan]] memory â€” worth confirming with Edge rather than assuming.
+- **Script fix:** `scripts/finna-validate.ps1` threw `PropertyNotFoundStrict` on `Measure-Object -Sum` when a filtered collection was empty (exactly this period reset's situation â€” `transactions[]` freshly reset to a single income entry, zero expenses). Under `Set-StrictMode -Version Latest`, `Measure-Object` over an empty pipeline doesn't produce a `.Sum` property to read. Fixed by adding a `Get-SafeSum` helper that returns 0 for empty/null input instead of piping straight into `Measure-Object`. This will recur every period reset otherwise (transactions[] often starts a new period with income-only entries), so worth having fixed now rather than hitting it again in two weeks.
 - Validation: `finna-validate.ps1` passed after the script fix (VALID accounts=12 transactions=105 assets=79,542.62 liabilities=22,673.91 receivables=0.00 periodExpenses=0.00).
 
 ## Jul 23, 2026 - Correction: all tithes so far were to Victory LB
 
 - Runtime: Claude Code.
 - Confirmed source: Edge, direct chat correction.
-- Fix: standardized the description on the Jul 5 and Jul 12 tithe entries from "Tithes (Coins.ph)" to "Tithes (Victory LB)", matching the Jul 19 entry and confirming all tithes logged so far went to the same recipient (Victory LB). No amounts or balances changed — description only.
+- Fix: standardized the description on the Jul 5 and Jul 12 tithe entries from "Tithes (Coins.ph)" to "Tithes (Victory LB)", matching the Jul 19 entry and confirming all tithes logged so far went to the same recipient (Victory LB). No amounts or balances changed â€” description only.
 - Validation: `finna-validate.ps1` passed.
 
-## Jul 23, 2026 - Correction: name spelling "Even Tolorio" → "Evan Tolorio"
+## Jul 23, 2026 - Correction: name spelling "Even Tolorio" â†’ "Evan Tolorio"
 
 - Runtime: Claude Code.
 - Confirmed source: Edge, direct chat correction, flagged from the dashboard's Upcoming Payments view.
-- Fix: corrected the recipient's name in the Jul 22 "Missionary support" transaction and in `DATA.recurringCommitments[]`, plus in this audit log's own prior entries referencing the same name. No amounts or balances changed — spelling only.
+- Fix: corrected the recipient's name in the Jul 22 "Missionary support" transaction and in `DATA.recurringCommitments[]`, plus in this audit log's own prior entries referencing the same name. No amounts or balances changed â€” spelling only.
 - Validation: `finna-validate.ps1` passed.
 
 ## Jul 23, 2026 - Logged Jul 19 tithes (retroactive)
 
 - Runtime: Claude Code.
 - Confirmed source: Edge, direct chat report.
-- Ledger change: added expense "Tithes (Victory LB)" ₱500.00, wallet coins, cat Charity, dated Jul 19.
-- Balance update: Coins.ph PHP ₱5,183.29 → ₱4,683.29.
+- Ledger change: added expense "Tithes (Victory LB)" â‚±500.00, wallet coins, cat Charity, dated Jul 19.
+- Balance update: Coins.ph PHP â‚±5,183.29 â†’ â‚±4,683.29.
 - Validation: `finna-validate.ps1` passed.
 
 ## Jul 23, 2026 - Correction: duplicate Jul 22 breakfast entry
 
 - Runtime: Claude Code.
 - Confirmed source: Edge, direct chat correction, flagged from the dashboard's transaction log view.
-- Audit finding: the Jul 22 "Breakfast" ₱60.00 had been logged twice — once as `wallet: "cash"` (from an earlier same-day report) and once as `wallet: "gcash"` (from a later, more detailed batch report). Edge confirmed it was actually gcash both times — the cash-tagged entry was a genuine duplicate, not a second breakfast.
-- Fix: removed the duplicate `wallet: "cash"` entry, kept the correct `wallet: "gcash"` entry. Refunded the erroneous ₱60.00 deduction back to Cash on hand.
-- Balance update: Cash on hand ₱399.50 → ₱459.50. No change to GCash wallet (its entry was already correct).
+- Audit finding: the Jul 22 "Breakfast" â‚±60.00 had been logged twice â€” once as `wallet: "cash"` (from an earlier same-day report) and once as `wallet: "gcash"` (from a later, more detailed batch report). Edge confirmed it was actually gcash both times â€” the cash-tagged entry was a genuine duplicate, not a second breakfast.
+- Fix: removed the duplicate `wallet: "cash"` entry, kept the correct `wallet: "gcash"` entry. Refunded the erroneous â‚±60.00 deduction back to Cash on hand.
+- Balance update: Cash on hand â‚±399.50 â†’ â‚±459.50. No change to GCash wallet (its entry was already correct).
 - Validation: `finna-validate.ps1` passed.
 
 ## Jul 23, 2026 - Bitget BTC fully liquidated to GCash wallet
 
 - Runtime: Claude Code.
-- Confirmed source: Edge, direct chat report. Edge's stated reasoning: needs liquid cash; crypto had been informally functioning as his emergency buffer; plans (not yet decided/actioned) to redirect future monthly investing toward something like S&P 500 instead of crypto starting next pay period — noted for context, no ledger structure created for this yet since it's still a plan, not a confirmed transaction.
-- Ledger change: added transaction "Bitget BTC liquidation" ₱13,198.26, wallet gcash, type income, cat **Transfer** (not "Income") — this is an internal asset conversion (crypto → cash within Edge's own accounts), not new external income, so it's excluded from the monthly report's income total, consistent with the Income-vs-Transfer rule in `finna/DATA-CONTRACT.md` / dashboard_setup memory.
-- Balance updates: Bitget BTC ₱11,840.45 (0.003287 BTC) → ₱0.00 (0 BTC), tagLabel updated to "liquidated Jul 23". GCash wallet ₱1,287.63 → ₱14,485.89.
-- Note: did not split out the ₱1,357.81 difference between the last recorded Bitget balance and the actual liquidation proceeds as a separate "gain" entry — Edge reported only the total proceeds, not a cost basis or gain figure, so no gain/loss breakdown was assumed. Net worth is unaffected by this choice (total assets already reflect the full swap correctly either way); only the monthly report's income/expense split would change if a breakdown were added later.
+- Confirmed source: Edge, direct chat report. Edge's stated reasoning: needs liquid cash; crypto had been informally functioning as his emergency buffer; plans (not yet decided/actioned) to redirect future monthly investing toward something like S&P 500 instead of crypto starting next pay period â€” noted for context, no ledger structure created for this yet since it's still a plan, not a confirmed transaction.
+- Ledger change: added transaction "Bitget BTC liquidation" â‚±13,198.26, wallet gcash, type income, cat **Transfer** (not "Income") â€” this is an internal asset conversion (crypto â†’ cash within Edge's own accounts), not new external income, so it's excluded from the monthly report's income total, consistent with the Income-vs-Transfer rule in `finna/DATA-CONTRACT.md` / dashboard_setup memory.
+- Balance updates: Bitget BTC â‚±11,840.45 (0.003287 BTC) â†’ â‚±0.00 (0 BTC), tagLabel updated to "liquidated Jul 23". GCash wallet â‚±1,287.63 â†’ â‚±14,485.89.
+- Note: did not split out the â‚±1,357.81 difference between the last recorded Bitget balance and the actual liquidation proceeds as a separate "gain" entry â€” Edge reported only the total proceeds, not a cost basis or gain figure, so no gain/loss breakdown was assumed. Net worth is unaffected by this choice (total assets already reflect the full swap correctly either way); only the monthly report's income/expense split would change if a breakdown were added later.
 - Validation: `finna-validate.ps1` passed.
 
 ## Jul 23, 2026 - Logged Jul 21-22 activity; JR loan cleared; new recurring charity commitment
@@ -1089,64 +1089,64 @@ No account balances changed in this entry (pure reclassification + structural re
 - Runtime: Claude Code.
 - Confirmed source: Edge, direct chat report.
 - Ledger changes (7 transactions):
-  - Jul 21: Water ₱100.00 (cash, expense)
-  - Jul 22: Groceries ₱1,095.74 (gcash, expense)
-  - Jul 22: Dinner ₱215.00 (gcash, expense)
-  - Jul 22: Breakfast ₱60.00 (gcash, expense)
-  - Jul 22: Missionary support (Evan Tolorio) ₱500.00 (coins, expense, Charity)
-  - Jul 22: Shopee order ₱207.00 (rcbc, expense)
-  - Jul 22: JR loan repayment ₱562.00 (gcash, income)
-- Balance updates: Cash ₱499.50 → ₱399.50. GCash wallet ₱2,096.37 → ₱1,287.63. RCBC savings ₱341.73 → ₱134.73. Coins.ph PHP ₱5,683.29 → ₱5,183.29.
-- Receivables: `jr` ₱562.00 → ₱0 (fully repaid, all receivables now clear). Removed "JR owes" monitoring alert.
-- New: added `DATA.recurringCommitments[]` — Missionary support (Evan Tolorio) ₱500/month via Coins.ph, dueDay 22, same paid/reset mechanism as `subscriptions` but tracked separately (not a "Subscriptions"-category cost). Updated `finna/DATA-CONTRACT.md` to document this new collection. Extended the `monthly-subscription-reset` scheduled task to also reset `recurringCommitments` each month and to follow the dual-runtime lease protocol.
-- `lastUpdated` → Jul 23, 2026. `salary.dayOfPeriod` 12 → 13.
-- Flag: RCBC now very low (₱134.73) — 2 days left until Jul 25 payday.
+  - Jul 21: Water â‚±100.00 (cash, expense)
+  - Jul 22: Groceries â‚±1,095.74 (gcash, expense)
+  - Jul 22: Dinner â‚±215.00 (gcash, expense)
+  - Jul 22: Breakfast â‚±60.00 (gcash, expense)
+  - Jul 22: Missionary support (Evan Tolorio) â‚±500.00 (coins, expense, Charity)
+  - Jul 22: Shopee order â‚±207.00 (rcbc, expense)
+  - Jul 22: JR loan repayment â‚±562.00 (gcash, income)
+- Balance updates: Cash â‚±499.50 â†’ â‚±399.50. GCash wallet â‚±2,096.37 â†’ â‚±1,287.63. RCBC savings â‚±341.73 â†’ â‚±134.73. Coins.ph PHP â‚±5,683.29 â†’ â‚±5,183.29.
+- Receivables: `jr` â‚±562.00 â†’ â‚±0 (fully repaid, all receivables now clear). Removed "JR owes" monitoring alert.
+- New: added `DATA.recurringCommitments[]` â€” Missionary support (Evan Tolorio) â‚±500/month via Coins.ph, dueDay 22, same paid/reset mechanism as `subscriptions` but tracked separately (not a "Subscriptions"-category cost). Updated `finna/DATA-CONTRACT.md` to document this new collection. Extended the `monthly-subscription-reset` scheduled task to also reset `recurringCommitments` each month and to follow the dual-runtime lease protocol.
+- `lastUpdated` â†’ Jul 23, 2026. `salary.dayOfPeriod` 12 â†’ 13.
+- Flag: RCBC now very low (â‚±134.73) â€” 2 days left until Jul 25 payday.
 - Validation: `finna-validate.ps1` passed.
 
 ## Jul 22, 2026 - Logged breakfast
 
 - Runtime: Claude Code.
 - Confirmed source: Edge, direct chat report.
-- Ledger change: added expense "Breakfast" ₱60.00, wallet cash, dated Jul 22.
-- Balance update: Cash on hand ₱559.50 → ₱499.50.
-- `lastUpdated` → Jul 22, 2026. `salary.dayOfPeriod` 10 → 12.
+- Ledger change: added expense "Breakfast" â‚±60.00, wallet cash, dated Jul 22.
+- Balance update: Cash on hand â‚±559.50 â†’ â‚±499.50.
+- `lastUpdated` â†’ Jul 22, 2026. `salary.dayOfPeriod` 10 â†’ 12.
 - Validation: `finna-validate.ps1` passed.
 
 ## Jul 20, 2026 - New recurring subscription: ChatGPT Plus
 
 - Runtime: Claude Code.
 - Confirmed source: Edge, direct chat report.
-- Ledger change: added expense "ChatGPT Plus" ₱999.00, wallet rcbc, cat Subscriptions, dated Jul 19. Added as a new entry in `DATA.subscriptions[]` (dueDay 19, paid: true this cycle) so it's tracked for future monthly resets alongside CapCut/Canva/Google One/Claude Pro.
-- Balance update: RCBC savings ₱1,340.73 → ₱341.73.
-- `monthlyAllocation` "Subscriptions" planning figure updated ₱3,059 → ₱4,058 to include the new recurring cost.
+- Ledger change: added expense "ChatGPT Plus" â‚±999.00, wallet rcbc, cat Subscriptions, dated Jul 19. Added as a new entry in `DATA.subscriptions[]` (dueDay 19, paid: true this cycle) so it's tracked for future monthly resets alongside CapCut/Canva/Google One/Claude Pro.
+- Balance update: RCBC savings â‚±1,340.73 â†’ â‚±341.73.
+- `monthlyAllocation` "Subscriptions" planning figure updated â‚±3,059 â†’ â‚±4,058 to include the new recurring cost.
 - Validation: `finna-validate.ps1` passed.
-- Flag: RCBC balance is now low (₱341.73) against its period budget — worth noting to Edge.
+- Flag: RCBC balance is now low (â‚±341.73) against its period budget â€” worth noting to Edge.
 
 ## Jul 20, 2026 - Logged Jul 19 laundry (retroactive)
 
 - Runtime: Claude Code.
-- Confirmed source: Edge, direct chat report. Edge initially wrote "June 19" — confirmed with him before logging that he meant July 19, rather than guessing.
-- Ledger change: added expense "Laundry" ₱175.00, wallet gcash, dated Jul 19.
-- Balance update: GCash wallet ₱2,271.37 → ₱2,096.37.
-- `lastUpdated` → Jul 20, 2026. `salary.dayOfPeriod` 9 → 10.
+- Confirmed source: Edge, direct chat report. Edge initially wrote "June 19" â€” confirmed with him before logging that he meant July 19, rather than guessing.
+- Ledger change: added expense "Laundry" â‚±175.00, wallet gcash, dated Jul 19.
+- Balance update: GCash wallet â‚±2,271.37 â†’ â‚±2,096.37.
+- `lastUpdated` â†’ Jul 20, 2026. `salary.dayOfPeriod` 9 â†’ 10.
 - Validation: `finna-validate.ps1` passed.
 
 ## Jul 19, 2026 - Papa's loan fully repaid
 
 - Runtime: Claude Code.
 - Confirmed source: Edge, direct chat report.
-- Ledger change: added income transaction "Papa loan repayment" ₱1,500.00 to GCash wallet, Jul 19.
-- Balance update: GCash wallet ₱771.37 → ₱2,271.37.
-- Receivables: `papa` ₱1,500.00 → ₱0 (fully repaid — Jul 15 loan ₱3,500, repaid ₱2,000 Jul 17 + ₱1,500 Jul 19). Removed the "Papa owes" monitoring alert and updated the receivable note to JR-only.
+- Ledger change: added income transaction "Papa loan repayment" â‚±1,500.00 to GCash wallet, Jul 19.
+- Balance update: GCash wallet â‚±771.37 â†’ â‚±2,271.37.
+- Receivables: `papa` â‚±1,500.00 â†’ â‚±0 (fully repaid â€” Jul 15 loan â‚±3,500, repaid â‚±2,000 Jul 17 + â‚±1,500 Jul 19). Removed the "Papa owes" monitoring alert and updated the receivable note to JR-only.
 - Validation: `finna-validate.ps1` passed.
 
 ## Jul 19, 2026 - Logged 6 expenses (fare x2, coffee, groceries, meal prep x2)
 
 - Runtime: Claude Code.
 - Confirmed source: Edge, direct chat report.
-- Ledger change: added 6 transactions dated Jul 19 — Fare ₱13 (cash) x2, Coffee ₱210 (gcash), Groceries ₱580.75 (gcash), Meal prep ₱579.41 (gcash), Meal prep ₱405.00 (cash). Total GCash spend ₱1,370.16, total Cash spend ₱431.00.
-- Balance updates: GCash wallet ₱2,141.53 → ₱771.37. Cash on hand ₱990.50 → ₱559.50.
-- `lastUpdated` → Jul 19, 2026. `salary.dayOfPeriod` 8 → 9 (day 9 of Jul 11–25 period).
+- Ledger change: added 6 transactions dated Jul 19 â€” Fare â‚±13 (cash) x2, Coffee â‚±210 (gcash), Groceries â‚±580.75 (gcash), Meal prep â‚±579.41 (gcash), Meal prep â‚±405.00 (cash). Total GCash spend â‚±1,370.16, total Cash spend â‚±431.00.
+- Balance updates: GCash wallet â‚±2,141.53 â†’ â‚±771.37. Cash on hand â‚±990.50 â†’ â‚±559.50.
+- `lastUpdated` â†’ Jul 19, 2026. `salary.dayOfPeriod` 8 â†’ 9 (day 9 of Jul 11â€“25 period).
 - Validation: `finna-validate.ps1` passed.
 
 ## Jul 19, 2026 - Edge reversed the privacy migration: repo public, GitHub Pages restored
@@ -1154,7 +1154,7 @@ No account balances changed in this entry (pure reclassification + structural re
 - Runtime: Claude Code.
 - Confirmed source: Edge, direct instruction in chat, after Finna explained the practical tradeoff (private+local-only breaks his phone PWA/home-screen access to the dashboard).
 - Change: `edgeclock/finances` set back to **public** visibility (`gh repo edit --visibility public`). GitHub Pages re-enabled on `main` / `/root` (`gh api repos/edgeclock/finances/pages`), confirmed `status: building`, `html_url: https://edgeclock.github.io/finances/`.
-- This directly reverses the "Made the GitHub repository private and disabled GitHub Pages" line in the migration entry below. Edge made this call knowingly — do not re-apply the private/local-only setting without asking him again first.
+- This directly reverses the "Made the GitHub repository private and disabled GitHub Pages" line in the migration entry below. Edge made this call knowingly â€” do not re-apply the private/local-only setting without asking him again first.
 - Updated `finna/FINNA.md` and `finna/CLAUDE-CODE-HANDOVER.md` "Current State" to reflect public + Pages-enabled as the current state, so this isn't re-flipped by mistake in a future session (either runtime).
 - No ledger (`index.html`) data changed. `finna-validate.ps1` run as a sanity check regardless, per the shared write protocol.
 
@@ -1173,6 +1173,15 @@ No account balances changed in this entry (pure reclassification + structural re
 - Ledger change: corrected the existing Jul 25 cash lunch expense from PHP 145.00 to PHP 150.00; no duplicate transaction added.
 - Balance update: Cash on hand PHP 3,001.50 to PHP 2,996.50.
 - `lastUpdated` to Jul 28, 2026. `salary.dayOfPeriod` 3 to 5.
+- Validation: `finna-validate.ps1` passed.
+
+## Aug 21, 2026 - Lunch 90 + Fare 13 cash logged
+
+- Runtime: Monica (main agent) - lease handle `claude`.
+- Confirmed source: Edge (Telegram, Aug 21 2026 14:37).
+- Ledger change: added expenses Aug 21, Lunch 90.00 and Fare 13.00, wallet `cash`, cats `Food & dining` / `Transport` (NEC jar).
+- Balance update: Cash on hand 1,394.75 to 1,291.75.
+- `lastUpdated` to Aug 21, 2026. `monthly.dayOfMonth` to 21.
 - Validation: `finna-validate.ps1` passed.
 
 Future entries go above this section and must identify the date, runtime, confirmed source, ledger change, and validation result.
