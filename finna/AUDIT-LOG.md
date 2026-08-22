@@ -1226,7 +1226,7 @@ No account balances changed in this entry (pure reclassification + structural re
 - Confirmed source: Edge (Telegram, Aug 22 2026 07:38).
 - Ledger change: added expenses - Aug 21 Lunch 50.00 (cash, `Food & dining`), Aug 22 Breakfast 100.00 (cash, `Food & dining`). Both NEC jar.
 - Balance update: Cash on hand 1,268.75 to 1,118.75.
-- FLAG: Aug 21 already had a logged Lunch 90.00 (cash) from an earlier report - the new 50.00 is logged as a separate entry; awaiting Edge confirmation whether these are distinct meals or a correction.
+- FLAG (RESOLVED Aug 22 12:29, Edge): Aug 21 Lunch 90.00 and Lunch 50.00 are distinct meals - both entries stand as logged.
 - `lastUpdated` Aug 22, 2026. `monthly.dayOfMonth` 22.
 - Validation: `finna-validate.ps1` passed.
 
