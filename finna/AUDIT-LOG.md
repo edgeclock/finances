@@ -1220,6 +1220,15 @@ No account balances changed in this entry (pure reclassification + structural re
 - `lastUpdated` Aug 21, 2026. `monthly.dayOfMonth` 21.
 - Validation: `finna-validate.ps1` passed.
 
+## Aug 22, 2026 - Dinner 140 cash + 189 gcash logged
+
+- Runtime: Monica (main agent) - lease handle `claude`.
+- Confirmed source: Edge (Telegram, Aug 22 2026 18:29).
+- Ledger change: added expenses - Aug 22 Dinner 140.00 (cash, `Food & dining`), Aug 22 Dinner 189.00 (gcash, `Food & dining`). Both NEC jar.
+- Balance updates: Cash on hand 1,118.75 to 978.75; GCash wallet 3,022.66 to 2,833.66.
+- `lastUpdated` Aug 22, 2026. `monthly.dayOfMonth` 22.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 22, 2026 - Lunch 50 + Breakfast 100 cash logged
 
 - Runtime: Monica (main agent) - lease handle `claude`.
