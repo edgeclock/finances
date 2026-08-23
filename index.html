@@ -1191,7 +1191,7 @@ const acctGrid = document.getElementById('accountsGrid');
 const jarColorMap = {};
 Object.keys(DATA.jarSystem.jars).forEach(k => { jarColorMap[k] = DATA.jarSystem.jars[k].color; });
 const outsideClr = 'var(--border)';
-const acctDisplayOrder = ['GCash wallet', 'RCBC savings', 'Cash on hand', 'GoTyme nec vault', 'GCash bank', 'GoTrade', 'GoTyme Professional Development (LTSS)', 'Maya bank', 'GoTyme My Go Save (PLAY)', 'Coins.ph PHP', 'Maya wallet', 'GoTyme wallet', 'Tonik Bank', 'Alkansya'];
+const acctDisplayOrder = ['GCash wallet', 'RCBC savings', 'Cash on hand', 'GoTyme nec vault', 'Starbucks app', 'GCash bank', 'GoTrade', 'GoTyme Professional Development (LTSS)', 'Maya bank', 'GoTyme My Go Save (PLAY)', 'Coins.ph PHP', 'Maya wallet', 'GoTyme wallet', 'Tonik Bank', 'Alkansya'];
 acctDisplayOrder.forEach(label => {
   const idx = DATA.accounts.findIndex(x => x.label === label);
   if (idx < 0) return;
