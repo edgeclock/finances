@@ -1698,12 +1698,12 @@ setTimeout(function() {
     rows.reverse();
     const net = rows.reduce((s, r) => s + (r.pos ? r.amt : -r.amt), 0);
     document.getElementById('bdTitle').textContent = meta.label + ' jar - ' + meta.name;
-    document.getElementById('bdSub').textContent = 'Balance ' + fmt(bal) + ' vs target ' + fmt(target) + ' (' + status + (delta !== 0 ? ' ' + (delta > 0 ? '+' : '-') + fmt(Math.abs(delta)) : '') + ') - ' + accounts.map(a => a.label).join(', ');
+    document.getElementById('bdSub').textContent = 'Balance ' + fmt(bal) + ' vs target ' + fmt(target) + ' (' + status + (delta !== 0 ? ' ' + (delta > 0 ? '+' : '−') + fmt(Math.abs(delta)) : '') + ') - ' + accounts.map(a => a.label).join(', ');
     const body = document.getElementById('bdBody');
     body.innerHTML = rows.length === 0
       ? '<div class="empty">No movements this month yet.</div>'
-      : rows.map(r => '<div class="bd-row' + (r.pos ? ' pos' : '') + '"><span class="bd-row-lbl">' + r.label + ' <span class="log-pill ' + (catPillBd[r.sub] || 'lp-household') + '" style="margin-left:4px">' + r.sub + '</span></span><span class="bd-row-val">' + (r.pos ? '+' : '-') + fmt(r.amt) + '</span></div>').join('') +
-        '<div class="bd-total"><span>Net movement this month</span><span>' + (net >= 0 ? '+' : '-') + fmt(Math.abs(net)) + '</span></div>';
+      : rows.map(r => '<div class="bd-row' + (r.pos ? ' pos' : '') + '"><span class="bd-row-lbl">' + r.label + ' <span class="log-pill ' + (catPillBd[r.sub] || 'lp-household') + '" style="margin-left:4px">' + r.sub + '</span></span><span class="bd-row-val">' + (r.pos ? '+' : '−') + fmt(r.amt) + '</span></div>').join('') +
+        '<div class="bd-total"><span>Net movement this month</span><span>' + (net >= 0 ? '+' : '−') + fmt(Math.abs(net)) + '</span></div>';
   }
   function openJarModal(key) {
     buildJar(key);
