@@ -76,14 +76,14 @@
     /* Section */
     .sec { margin-bottom: 28px; }
     .sec-title { font-size: 11px; font-weight: 500; color: var(--t3); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 12px; }
-    /* Collapsible sections â€” native <details>/<summary>, collapsed by default */
+    /* Collapsible sections — native <details>/<summary>, collapsed by default */
     details.sec-collapsible summary.sec-title {
       cursor: pointer; user-select: none; list-style: none;
       display: flex; align-items: center; gap: 6px; margin-bottom: 12px;
     }
     details.sec-collapsible summary.sec-title::-webkit-details-marker { display: none; }
     details.sec-collapsible summary.sec-title::before {
-      content: 'â–¸'; display: inline-block; font-size: 9px; transition: transform 0.15s ease; color: var(--t3);
+      content: '▸'; display: inline-block; font-size: 9px; transition: transform 0.15s ease; color: var(--t3);
     }
     details.sec-collapsible[open] > summary.sec-title::before { transform: rotate(90deg); }
     details.sec-collapsible summary.sec-title:hover { color: var(--t2); }
@@ -145,7 +145,7 @@
     .month-history-net.pos { color: var(--green); }
     .month-history-net.neg { color: var(--red); }
 
-    /* Card-style collapsible summaries â€” collapsed state looks like an account card
+    /* Card-style collapsible summaries — collapsed state looks like an account card
        (label + big value), expands inline on click, matches Accounts section visual weight */
     details.sec-collapsible summary.card-summary {
       background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--rl);
@@ -231,7 +231,7 @@
     .metric[data-bd], .acct-card[data-acct] { cursor: pointer; position: relative; }
     .metric[data-bd]::after, .acct-card[data-acct]::after {
 
-      content: 'â†—'; position: absolute; top: 8px; right: 10px;
+      content: '↔'; position: absolute; top: 8px; right: 10px;
       font-size: 10px; color: inherit; opacity: 0; transition: opacity 0.15s;
     }
     .metric[data-bd]:hover::after, .acct-card[data-acct]:hover::after { opacity: 0.6; }
@@ -321,7 +321,7 @@
       }
     }
 
-    /* === MOBILE â‰¤600px === */
+    /* === MOBILE ≤600px === */
     @media (max-width: 600px) {
       body      { overflow-x: hidden; }
       .wrap     { padding: 16px 12px 32px; }
@@ -351,7 +351,7 @@
   <div id="pinBox">
     <div id="pinTitle">FinDash</div>
     <div id="pinSub">Enter PIN to continue</div>
-    <input id="pinInput" type="password" inputmode="numeric" maxlength="4" autofocus placeholder="â€¢â€¢â€¢â€¢">
+    <input id="pinInput" type="password" inputmode="numeric" maxlength="4" autofocus placeholder="••••">
     <div id="pinError"></div>
     <button id="pinBtn">Enter</button>
     <button id="pinReset" onclick="localStorage.removeItem('findash_pin_ok'); location.reload()">Forget this device</button>
@@ -372,7 +372,7 @@
 <div class="wrap">
 
   <div class="hdr">
-    <div class="hdr-title">Edge Â· Finance Dashboard</div>
+    <div class="hdr-title">Edge · Finance Dashboard</div>
     <div class="hdr-meta" id="lastUpdated"></div>
   </div>
 
@@ -417,7 +417,7 @@
 
   <!-- Charts -->
   <div class="g2 sec" style="grid-template-columns: 1fr">
-    <!-- "Monthly allocation" hidden 2026-08-03 at Edge's request â€” it's a planned monthly
+    <!-- "Monthly allocation" hidden 2026-08-03 at Edge's request — it's a planned monthly
          budget breakdown that assumes a paycheck, and there's currently no income. Restore by
          removing this comment and the display:none below, and reverting the grid to
          grid-template-columns: 1fr 1fr on the wrapping div above. -->
@@ -434,7 +434,7 @@
 
   <!-- Period Spending -->
   <div class="sec">
-    <div class="sec-title">Monthly spending Â· <span id="periodLabel"></span></div>
+    <div class="sec-title">Monthly spending · <span id="periodLabel"></span></div>
     <div class="g4" style="margin-bottom:12px">
       <div class="metric">
         <div class="m-lbl">Spent so far</div>
@@ -457,8 +457,8 @@
         <div class="m-sub" id="projStatus"></div>
       </div>
     </div>
-    <!-- "Budget vs actual" archived 2026-08-03 â€” wallet budgets are stale leftovers from the
-         last paycheck, not a real monthly plan yet. "Cash log" archived same day â€” redundant
+    <!-- "Budget vs actual" archived 2026-08-03 — wallet budgets are stale leftovers from the
+         last paycheck, not a real monthly plan yet. "Cash log" archived same day — redundant
          with the Accounts section's click-to-view transaction history for Cash on hand.
          Restore either by removing display:none on this div (both) or on an individual card
          below (just one). DOM elements kept intact so the JS that populates them doesn't error. -->
@@ -560,7 +560,7 @@
   </div>
 
   <div class="footer">
-    <span>Edge Â· Personal Finance Dashboard</span>
+    <span>Edge · Personal Finance Dashboard</span>
     <span id="footerDate"></span>
   </div>
 
@@ -569,7 +569,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
 // ================================================================
-// DATA â€” update this block each check-in
+// DATA — update this block each check-in
 // ================================================================
 const DATA = {
 
@@ -652,11 +652,11 @@ const DATA = {
     shortfall: 53884
   },
 
-  // Monthly monitoring (replaced the semi-monthly pay-period cycle on 2026-08-03 â€” Edge resigned,
+  // Monthly monitoring (replaced the semi-monthly pay-period cycle on 2026-08-03 — Edge resigned,
   // no more paychecks to anchor a "period" to). monthStart/monthEnd/dayOfMonth/daysInMonth drive
   // the "Monthly monitoring" section and the monthly spending pace/projection math, the same way
   // periodStart/dayOfPeriod/totalDays used to. lastIncome is historical only (Jul 24 was the last
-  // confirmed paycheck) â€” do not treat it as a current income figure.
+  // confirmed paycheck) — do not treat it as a current income figure.
   monthly: {
     lastIncome: 17354.21,
     lastIncomeDate: "Jul 24, 2026",
@@ -667,7 +667,7 @@ const DATA = {
     daysInMonth: 31
   },
 
-  // Historical income record. Stopped adding future placeholder entries on 2026-08-03 â€”
+  // Historical income record. Stopped adding future placeholder entries on 2026-08-03 —
   // Edge resigned, there's no paycheck to project. Add a new entry only when actual income
   // resumes; don't guess a projection until Edge confirms an amount/date.
   salaryHistory: [
@@ -683,7 +683,7 @@ const DATA = {
   // drawn from available funds, not paycheck-derived. gcash 6,000 (fixed subs 3,059: CapCut/
   // Canva/Google One/Claude Pro + food/groceries/transport/load), rcbc 3,000 (ChatGPT Plus 999
   // + DeepSeek usage ~1,300 + groceries/meal prep), maya 1,000 (personal), coins 1,000
-  // (tithes 500 + missionary 500). DeepSeek is usage-based and volatile (â‚±1,319.55 in first
+  // (tithes 500 + missionary 500). DeepSeek is usage-based and volatile (₱1,319.55 in first
   // 7 days of Aug) - rcbc may need a mid-month recheck. monthlyAllocation donut below is still
   // stale paycheck-era display; awaiting Edge decision on whether to update it.
   monthlySpending: {
@@ -697,13 +697,13 @@ const DATA = {
 
   categoryOrder: ["Food & dining", "Groceries", "Transport", "Travel", "Load / comms", "Subscriptions", "Charity", "Family", "Household", "Bank fees", "Loans", "Debt payment", "Investments", "Education", "Legal", "Entertainment"],
 
-  // Deprecated as of 2026-08-03 (monthly monitoring replaced the semi-monthly pay-period cycle â€”
+  // Deprecated as of 2026-08-03 (monthly monitoring replaced the semi-monthly pay-period cycle —
   // transactions[] now IS the current calendar month, so there's no more mid-month reset to
   // archive around). Left in place, always empty, only because the account-history modal's JS
   // still references it defensively (monthArchive || []). Do not write to this array.
   monthArchive: [],
 
-  // All transactions this period â€” type: "income" | "expense"
+  // All transactions this period — type: "income" | "expense"
   // wallet: "gcash" | "rcbc" | "maya" | "coins" | "cash"
   // cat must match a value in categoryOrder (or "Income" for income entries)
   transactions: [
@@ -863,7 +863,7 @@ const DATA = {
 
   upcomingPayments: [],
 
-  // Recurring monthly subscriptions â€” the fixed catalog (not Gemini API, which is usage-based/variable).
+  // Recurring monthly subscriptions — the fixed catalog (not Gemini API, which is usage-based/variable).
   // `paid` tracks whether this month's charge has already been logged as a transaction.
   // Reset every subscription's `paid` to false on the 1st of each month, then flip to true
   // as each one gets logged during the month (see dashboard_setup.md check-in routine).
@@ -876,14 +876,14 @@ const DATA = {
   ],
 
   // Recurring monthly commitments that are NOT "Subscriptions" category (e.g. ongoing charity
-  // giving) â€” same paid/dueDay reset mechanism as `subscriptions`, but tracked separately so the
+  // giving) — same paid/dueDay reset mechanism as `subscriptions`, but tracked separately so the
   // "Subscriptions / month" total doesn't get polluted with non-subscription spending.
   // Reset every entry's `paid` to false on the 1st of each month, same as subscriptions.
   recurringCommitments: [
     { name: "Missionary support (Evan Tolorio)", amount: 500.00, wallet: "coins", dueDay: 22, paid: false, cat: "Charity" }
   ],
 
-  // Monthly reports â€” one entry per month that has been compiled. Compiled automatically on the
+  // Monthly reports — one entry per month that has been compiled. Compiled automatically on the
   // 1st of each month (scheduled task "monthly-report-compile") from that month's transactions,
   // BEFORE monthArchive gets cleared for the new month. See dashboard_setup.md for the exact procedure.
   monthlyReports: [
@@ -891,7 +891,7 @@ const DATA = {
       key: "2026-06",
       label: "June 2026",
       partial: true,
-      partialNote: "Jun 25â€“30 only â€” dashboard tracking began this cycle",
+      partialNote: "Jun 25–30 only — dashboard tracking began this cycle",
       income: 27869.92,
       expenses: 5259.46,
       netSavings: 22610.46,
@@ -920,7 +920,7 @@ const DATA = {
       netSavings: -7402.00,
       savingsRate: -13.7,
       categoryBreakdown: [
-        { cat: "Misc (legacy, pre-Aug-3 recategorization â€” itemized detail no longer available for entries before Jul 24)", amount: 22374.28 },
+        { cat: "Misc (legacy, pre-Aug-3 recategorization — itemized detail no longer available for entries before Jul 24)", amount: 22374.28 },
         { cat: "Family",        amount: 11031.16 },
         { cat: "Loans",         amount: 3911.75 },
         { cat: "Food & dining", amount: 6863.19 },
@@ -998,7 +998,7 @@ const projected = dailyPace > 0 ? dailyPace * mo.daysInMonth : 0;
 const onTrack   = projected > 0 && projected <= necFunds;
 const SUB_THRESHOLD = 3059;
 
-// Theme colors â€” used in both render and charts sections
+// Theme colors — used in both render and charts sections
 const dark       = window.matchMedia('(prefers-color-scheme: dark)').matches;
 const txtClr     = dark ? '#888780' : '#9a9893';
 const gridClr    = dark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.06)';
@@ -1006,7 +1006,7 @@ const greenSolid = dark ? '#5DCAA5' : '#1D9E75';
 const blueSolid  = dark ? '#85B7EB' : '#378ADD';
 
 // ================================================================
-// RENDER â€” Static fields
+// RENDER — Static fields
 // ================================================================
 document.getElementById('lastUpdated').textContent   = 'Last updated: ' + DATA.lastUpdated;
 document.getElementById('footerDate').textContent    = DATA.lastUpdated;
@@ -1060,7 +1060,7 @@ document.getElementById('projTotal').textContent     = projected > 0 ? fmt(proje
 document.getElementById('projTotal').className       = 'metric m-val ' + (projected > 0 ? (onTrack ? 'c-green' : 'c-red') : '');
 document.getElementById('projStatus').textContent    = projected > 0 ? (onTrack ? 'within NEC funds' : 'exceeds NEC funds') : 'no data yet';
 
-// Budget bars (dynamic â€” all wallets)
+// Budget bars (dynamic — all wallets)
 const wKeyClr    = { gcash: blueSolid, rcbc: blueSolid, maya: dark ? '#AFA9EC' : '#534AB7', coins: dark ? '#EF9F27' : '#BA7517' };
 const budgetBarsEl = document.getElementById('budgetBars');
 
@@ -1095,8 +1095,8 @@ ps.wallets.forEach(w => {
       </div>
       <div class="b-track"><div class="b-fill" style="width:${wPct}%;background:${barClr}"></div></div>
       <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--t3);margin-top:3px">
-        <span>${wPct}% used Â· ${daysLeft(mo.dayOfMonth)} days left</span>
-        <span>${wPace > 0 ? fmt(wPace) + '/day Â· proj ' + fmt(wProj) : 'â€”'}</span>
+        <span>${wPct}% used · ${daysLeft(mo.dayOfMonth)} days left</span>
+        <span>${wPace > 0 ? fmt(wPace) + '/day · proj ' + fmt(wProj) : '—'}</span>
       </div>
       ${catHtml}
     </div>`;
@@ -1109,7 +1109,7 @@ budgetBarsEl.innerHTML += `
       <span class="b-nums">${fmt(cashTotal)} logged</span>
     </div>
     <div class="b-track"><div class="b-fill" style="width:100%;background:var(--gray)"></div></div>
-    <div class="b-sub">no cap Â· tracking only</div>
+    <div class="b-sub">no cap · tracking only</div>
   </div>`;
 
 // Cash log (derived from transactions where wallet === 'cash')
@@ -1153,7 +1153,7 @@ txnLogEl.innerHTML = [...DATA.transactions].reverse().map(t => {
       </div>
     </div>
     <div class="row-amt" style="color:${isPositive ? 'var(--green)' : 'var(--t1)'}">
-      ${isPositive ? '+' : 'âˆ’'}${fmt(t.amount)}
+      ${isPositive ? '+' : '−'}${fmt(t.amount)}
     </div>
   </div>`;
 }).join('');
@@ -1212,7 +1212,7 @@ document.getElementById('jarNote').textContent = DATA.jarSystem.splitNote;
 
 
 
-// Upcoming payments â€” unpaid subscriptions this month + any one-off items in DATA.upcomingPayments
+// Upcoming payments — unpaid subscriptions this month + any one-off items in DATA.upcomingPayments
 const upList = document.getElementById('upcomingList');
 const today = new Date();
 const monthName = today.toLocaleString('en-US', { month: 'short' });
@@ -1224,7 +1224,7 @@ unpaidSubs.concat(unpaidCommitments).forEach(s => {
   upList.innerHTML += `<div class="row">
     <div>
       <div class="row-name">${s.name}</div>
-      <div class="row-sub" style="${overdue ? 'color:var(--red)' : ''}">${monthName} ${s.dueDay}${overdue ? ' â€” overdue' : ''}</div>
+      <div class="row-sub" style="${overdue ? 'color:var(--red)' : ''}">${monthName} ${s.dueDay}${overdue ? ' — overdue' : ''}</div>
     </div>
     <div class="row-amt" style="${overdue ? 'color:var(--red)' : ''}">${fmt(s.amount)}</div>
   </div>`;
@@ -1233,13 +1233,13 @@ DATA.upcomingPayments.forEach(p => {
   upList.innerHTML += `<div class="row">
     <div>
       <div class="row-name">${p.name}</div>
-      <div class="row-sub" style="${p.urgent ? 'color:var(--red)' : ''}">${p.due}${p.urgent ? ' â€” urgent' : ''}</div>
+      <div class="row-sub" style="${p.urgent ? 'color:var(--red)' : ''}">${p.due}${p.urgent ? ' — urgent' : ''}</div>
     </div>
     <div class="row-amt" style="${p.urgent ? 'color:var(--red)' : ''}">${fmt(p.amount)}</div>
   </div>`;
 });
 if (unpaidSubs.length === 0 && unpaidCommitments.length === 0 && DATA.upcomingPayments.length === 0) {
-  upList.innerHTML = '<div class="empty">All caught up â€” nothing due right now.</div>';
+  upList.innerHTML = '<div class="empty">All caught up — nothing due right now.</div>';
 }
 const subTotal = DATA.subscriptions.reduce((s, p) => s + p.amount, 0);
 document.getElementById('subTotal').textContent = fmt(subTotal) + '/mo';
@@ -1289,7 +1289,7 @@ const alerts = [
   {
     dot: gcashWalletBal >= SUB_THRESHOLD ? 'green' : 'red',
     title: 'GCash ' + (gcashWalletBal >= SUB_THRESHOLD ? 'safe' : 'LOW'),
-    sub: fmt(gcashWalletBal) + ' â€” ' + (gcashWalletBal >= SUB_THRESHOLD ? 'above â‚±3,059 sub threshold' : 'below subscription minimum!')
+    sub: fmt(gcashWalletBal) + ' — ' + (gcashWalletBal >= SUB_THRESHOLD ? 'above ₱3,059 sub threshold' : 'below subscription minimum!')
   },
   {
     dot: 'amber',
@@ -1299,7 +1299,7 @@ const alerts = [
   {
     dot: 'amber',
     title: 'SPayLater due',
-    sub: fmt(DATA.spaylaterSchedule[0].amount) + ' Â· ' + DATA.spaylaterSchedule[0].due
+    sub: fmt(DATA.spaylaterSchedule[0].amount) + ' · ' + DATA.spaylaterSchedule[0].due
   },
   {
     dot: totalSpent > 0 ? (onTrack ? 'green' : 'red') : 'gray',
@@ -1498,7 +1498,7 @@ setTimeout(function() {
 }, 300);
 
 // ================================================================
-// BREAKDOWN MODAL â€” net worth / assets / liabilities computation
+// BREAKDOWN MODAL — net worth / assets / liabilities computation
 // ================================================================
 (function() {
   const receivableLabels = { jr: 'JR', sweet: 'Sweet', papa: 'Papa', bryan: 'Bryan', rj: 'RJ' };
@@ -1518,7 +1518,7 @@ setTimeout(function() {
   function buildAssets() {
     titleEl.textContent = 'Total assets';
     subEl.textContent   = 'Sum of every account balance + cash on hand';
-    let html = DATA.accounts.map(a => row(a.label + (a.tagLabel ? ' Â· ' + a.tagLabel : ''), a.balance)).join('');
+    let html = DATA.accounts.map(a => row(a.label + (a.tagLabel ? ' · ' + a.tagLabel : ''), a.balance)).join('');
     html += '<div class="bd-total"><span>Total assets</span><span>' + fmt(totalAssets) + '</span></div>';
     bodyEl.innerHTML = html;
   }
@@ -1528,14 +1528,14 @@ setTimeout(function() {
     subEl.textContent   = 'Outstanding debts owed';
     let html = '';
     html += row('SPayLater balance', DATA.liabilities.spaylater);
-    html += row('Bike debt (Bryan) â€” paid off', 0, { cls: 'pos' });
+    html += row('Bike debt (Bryan) — paid off', 0, { cls: 'pos' });
     html += '<div class="bd-total"><span>Total liabilities</span><span>' + fmt(totalLiabilities) + '</span></div>';
     bodyEl.innerHTML = html;
   }
 
   function buildNetWorth() {
     titleEl.textContent = 'Net worth';
-    subEl.textContent   = 'Assets + receivables âˆ’ liabilities';
+    subEl.textContent   = 'Assets + receivables − liabilities';
     let html = '';
     html += row('Total assets', totalAssets, { op: '' });
     const receivables = DATA.receivables || {};
@@ -1544,7 +1544,7 @@ setTimeout(function() {
         html += row((receivableLabels[k] || k) + ' owes', receivables[k], { op: '+', cls: 'pos' });
       }
     });
-    html += row('Total liabilities', totalLiabilities, { op: 'âˆ’', cls: 'neg' });
+    html += row('Total liabilities', totalLiabilities, { op: '−', cls: 'neg' });
     html += '<div class="bd-total"><span>Net worth</span><span>' + fmt(netWorth) + '</span></div>';
     bodyEl.innerHTML = html;
   }
@@ -1578,21 +1578,21 @@ setTimeout(function() {
     const monthTxns = (DATA.monthArchive || []).concat(DATA.transactions);
     const txns = monthTxns.filter(t => t.wallet === walletId);
     const monthName = new Date().toLocaleString('en-US', { month: 'long' });
-    subEl.textContent = 'All ' + monthName + ' transactions Â· balance ' + fmt(a.balance);
+    subEl.textContent = 'All ' + monthName + ' transactions · balance ' + fmt(a.balance);
     if (txns.length === 0) {
       bodyEl.innerHTML = '<div class="empty">No transactions logged against this account yet this month.</div>';
       return;
     }
     let html = txns.map(t => {
       const isPositive = t.type === 'income' || t.type === 'adjustment';
-      const sign = isPositive ? '+' : 'âˆ’';
+      const sign = isPositive ? '+' : '−';
       const cls  = isPositive ? 'pos' : '';
-      return '<div class="bd-row ' + cls + '"><span class="bd-row-lbl">' + t.date + ' Â· ' + t.desc +
+      return '<div class="bd-row ' + cls + '"><span class="bd-row-lbl">' + t.date + ' · ' + t.desc +
         ' <span class="log-pill ' + (catPillBd[t.cat] || 'lp-household') + '" style="margin-left:4px">' + t.cat + '</span></span>' +
         '<span class="bd-row-val">' + sign + fmt(t.amount) + '</span></div>';
     }).join('');
     const net = txns.reduce((s, t) => s + ((t.type === 'income' || t.type === 'adjustment') ? t.amount : -t.amount), 0);
-    html += '<div class="bd-total"><span>Net this month</span><span>' + (net >= 0 ? '+' : 'âˆ’') + fmt(Math.abs(net)) + '</span></div>';
+    html += '<div class="bd-total"><span>Net this month</span><span>' + (net >= 0 ? '+' : '−') + fmt(Math.abs(net)) + '</span></div>';
     bodyEl.innerHTML = html;
   }
 
@@ -1604,7 +1604,7 @@ setTimeout(function() {
     let html = sectionHead('Income & spending');
     html += row('Income', r.income, { cls: 'pos', op: '' });
     html += row('Expenses', r.expenses, { cls: 'neg', op: '' });
-    html += '<div class="bd-total"><span>Net savings (' + r.savingsRate + '% rate)</span><span>' + (r.netSavings >= 0 ? '+' : 'âˆ’') + fmt(Math.abs(r.netSavings)) + '</span></div>';
+    html += '<div class="bd-total"><span>Net savings (' + r.savingsRate + '% rate)</span><span>' + (r.netSavings >= 0 ? '+' : '−') + fmt(Math.abs(r.netSavings)) + '</span></div>';
 
     html += sectionHead('Category breakdown');
     html += r.categoryBreakdown.map(c => row(c.cat, c.amount)).join('');
@@ -1614,9 +1614,9 @@ setTimeout(function() {
     html += row('Net worth (month end)', r.netWorthEnd);
     if (r.netWorthStart != null) {
       const nwChange = r.netWorthEnd - r.netWorthStart;
-      html += row('Net worth change', Math.abs(nwChange), { op: nwChange >= 0 ? '+' : 'âˆ’', cls: nwChange >= 0 ? 'pos' : 'neg' });
+      html += row('Net worth change', Math.abs(nwChange), { op: nwChange >= 0 ? '+' : '−', cls: nwChange >= 0 ? 'pos' : 'neg' });
     }
-    if (r.liabilitiesPaidDown > 0) html += row('Liabilities paid down', r.liabilitiesPaidDown, { cls: 'pos', op: 'âˆ’' });
+    if (r.liabilitiesPaidDown > 0) html += row('Liabilities paid down', r.liabilitiesPaidDown, { cls: 'pos', op: '−' });
 
     if (r.notableEvents && r.notableEvents.length > 0) {
       html += sectionHead('Notable this month');
@@ -1626,7 +1626,7 @@ setTimeout(function() {
     return html;
   }
 
-  // Monthly history â€” collapsible list, most recent first
+  // Monthly history — collapsible list, most recent first
   const monthHistoryEl = document.getElementById('monthHistoryList');
   const sortedReports = [...DATA.monthlyReports].sort((a, b) => b.key.localeCompare(a.key));
   sortedReports.forEach(r => {
@@ -1637,13 +1637,13 @@ setTimeout(function() {
           <span class="cs-label">${r.label}</span>
           <span class="cs-sub">${r.partial ? 'Partial month' : (r.netSavings >= 0 ? 'Net positive' : 'Net negative')}</span>
         </span>
-        <span class="cs-value month-history-net ${netCls}">${r.netSavings >= 0 ? '+' : 'âˆ’'}${fmt(Math.abs(r.netSavings))}</span>
+        <span class="cs-value month-history-net ${netCls}">${r.netSavings >= 0 ? '+' : '−'}${fmt(Math.abs(r.netSavings))}</span>
       </summary>
       <div class="card">${renderMonthReportHTML(r)}</div>
     </details>`;
   });
   if (sortedReports.length === 0) monthHistoryEl.innerHTML = '<div class="empty">No monthly reports yet.</div>';
-  monthHistoryEl.innerHTML += '<div style="font-size:11px;color:var(--t3);margin-top:10px">No report for Janâ€“May 2026 (before tracking started) or the current month in progress â€” new reports appear here automatically once compiled.</div>';
+  monthHistoryEl.innerHTML += '<div style="font-size:11px;color:var(--t3);margin-top:10px">No report for Jan–May 2026 (before tracking started) or the current month in progress — new reports appear here automatically once compiled.</div>';
 
   const builders = { assets: buildAssets, liabilities: buildLiabilities, networth: buildNetWorth };
 
@@ -1738,7 +1738,7 @@ setTimeout(function() {
       overlay.style.transition = 'opacity 0.2s';
       setTimeout(function() { overlay.remove(); }, 200);
     } else {
-      errEl.textContent = 'Incorrect PIN â€” try again';
+      errEl.textContent = 'Incorrect PIN — try again';
       input.value = '';
       input.focus();
     }
