@@ -889,7 +889,7 @@ const DATA = {
     { name: "Canva Pro",  amount: 300.00,  wallet: "gcash", dueDay: 3,  paid: true  },
     { name: "Google One", amount: 1100.00, wallet: "gcash", dueDay: 7,  paid: true  },
     { name: "Claude Pro", amount: 1300.00, wallet: "gcash", dueDay: 10, paid: true  },
-    { name: "ChatGPT Plus", amount: 999.00, wallet: "rcbc", dueDay: 19, paid: false }
+    { name: "ChatGPT Plus", amount: 999.00, wallet: "rcbc", dueDay: 19, paid: true }
   ],
 
   // Recurring monthly commitments that are NOT "Subscriptions" category (e.g. ongoing charity
@@ -897,7 +897,7 @@ const DATA = {
   // "Subscriptions / month" total doesn't get polluted with non-subscription spending.
   // Reset every entry's `paid` to false on the 1st of each month, same as subscriptions.
   recurringCommitments: [
-    { name: "Missionary support (Evan Tolorio)", amount: 500.00, wallet: "coins", dueDay: 22, paid: false, cat: "Charity" }
+    { name: "Missionary support (Evan Tolorio)", amount: 500.00, wallet: "coins", dueDay: 22, paid: true, cat: "Charity" }
   ],
 
   // Monthly reports — one entry per month that has been compiled. Compiled automatically on the
