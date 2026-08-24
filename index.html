@@ -572,407 +572,1847 @@
 // DATA — update this block each check-in
 // ================================================================
 const DATA = {
-
-  lastUpdated: "Aug 23, 2026",
-
-  // Account balances - 6-jar MM system (T. Harv Eker modified, adopted Aug 8, 2026):
-  // NEC 50% | FFA/LTSS/EDU/PLAY/GIVE 10% each. This period used a one-time split (pool
-  // 50,673.75): NEC 50/90, FFA/LTSS/EDU/PLAY 10/90, GIVE 0 (Coins.ph pre-funded).
-  // Next period: standard 50/10/10/10/10/10 with GIVE 10%. Existing ledger categories are
-  // subcategories of the 6 mains. Pool excluded Tonik, Alkansya, Coins.ph; included cash
-  // and GoTrade (GoTrade = already-invested FFA).
-  accounts: [
-    { label: "GCash wallet",   balance: 2252.16,  tag: "spend",  tagLabel: "NEC jar - spending", jar: "NEC" },
-    { label: "GCash bank",     balance: 3140.67,  tag: "save",   tagLabel: "FFA jar (10%)", jar: "FFA" },
-    { label: "RCBC savings",   balance: 36.04,  tag: "spend",  tagLabel: "NEC jar", jar: "NEC" },
-    { label: "Cash on hand",   balance: 905.75,   tag: "cash",   tagLabel: "NEC jar - cash", jar: "NEC" },
-    { label: "GoTyme nec vault", balance: 4471.59, tag: "save", tagLabel: "NEC jar - GoTyme vault", jar: "NEC" },
-    { label: "Starbucks app",   balance: 500.00,  tag: "spend",  tagLabel: "NEC jar - Starbucks", jar: "NEC" },
-    { label: "GoTyme Professional Development (LTSS)", balance: 5630.42, tag: "save", tagLabel: "LTSS jar (10%)", jar: "LTSS" },
-    { label: "GoTyme My Go Save (PLAY)", balance: 0.00, tag: "save", tagLabel: "PLAY jar (10%)", jar: "PLAY" },
-    { label: "Maya bank",      balance: 2488.59,  tag: "save",   tagLabel: "EDU jar (10%)", jar: "EDU" },
-    { label: "Maya wallet",    balance: 0.00,     tag: "spend",  tagLabel: "distribution hub", jar: null },
-    { label: "GoTyme wallet",  balance: 0.00,     tag: "spend",  tagLabel: "distribution hub", jar: null },
-    { label: "Coins.ph PHP",   balance: 3918.71,  tag: "save",   tagLabel: "GIVE jar - charity/tithes", jar: "GIVE" },
-    { label: "GoTrade",        balance: 1000.00,  tag: "invest", tagLabel: "FFA jar - SPY (invested)", jar: "FFA" },
-    { label: "Tonik Bank",     balance: 52.66,    tag: "save",   tagLabel: "outside system", jar: null },
-    { label: "Alkansya",       balance: 479.75,   tag: "save",   tagLabel: "outside system - joins later", jar: null }
+  "lastUpdated": "Aug 24, 2026",
+  "accounts": [
+    {
+      "label": "GCash wallet",
+      "balance": 2252.16,
+      "tag": "spend",
+      "tagLabel": "NEC jar - spending",
+      "jar": "NEC"
+    },
+    {
+      "label": "GCash bank",
+      "balance": 3140.67,
+      "tag": "save",
+      "tagLabel": "FFA jar (10%)",
+      "jar": "FFA"
+    },
+    {
+      "label": "RCBC savings",
+      "balance": 36.04,
+      "tag": "spend",
+      "tagLabel": "NEC jar",
+      "jar": "NEC"
+    },
+    {
+      "label": "Cash on hand",
+      "balance": 755.75,
+      "tag": "cash",
+      "tagLabel": "NEC jar - cash",
+      "jar": "NEC"
+    },
+    {
+      "label": "GoTyme nec vault",
+      "balance": 4471.59,
+      "tag": "save",
+      "tagLabel": "NEC jar - GoTyme vault",
+      "jar": "NEC"
+    },
+    {
+      "label": "Starbucks app",
+      "balance": 500,
+      "tag": "spend",
+      "tagLabel": "NEC jar - Starbucks",
+      "jar": "NEC"
+    },
+    {
+      "label": "GoTyme Professional Development (LTSS)",
+      "balance": 5630.42,
+      "tag": "save",
+      "tagLabel": "LTSS jar (10%)",
+      "jar": "LTSS"
+    },
+    {
+      "label": "GoTyme My Go Save (PLAY)",
+      "balance": 0,
+      "tag": "save",
+      "tagLabel": "PLAY jar (10%)",
+      "jar": "PLAY"
+    },
+    {
+      "label": "Maya bank",
+      "balance": 2488.59,
+      "tag": "save",
+      "tagLabel": "EDU jar (10%)",
+      "jar": "EDU"
+    },
+    {
+      "label": "Maya wallet",
+      "balance": 0,
+      "tag": "spend",
+      "tagLabel": "distribution hub",
+      "jar": null
+    },
+    {
+      "label": "GoTyme wallet",
+      "balance": 0,
+      "tag": "spend",
+      "tagLabel": "distribution hub",
+      "jar": null
+    },
+    {
+      "label": "Coins.ph PHP",
+      "balance": 3918.71,
+      "tag": "save",
+      "tagLabel": "GIVE jar - charity/tithes",
+      "jar": "GIVE"
+    },
+    {
+      "label": "GoTrade",
+      "balance": 1000,
+      "tag": "invest",
+      "tagLabel": "FFA jar - SPY (invested)",
+      "jar": "FFA"
+    },
+    {
+      "label": "Tonik Bank",
+      "balance": 52.66,
+      "tag": "save",
+      "tagLabel": "outside system",
+      "jar": null
+    },
+    {
+      "label": "Alkansya",
+      "balance": 479.75,
+      "tag": "save",
+      "tagLabel": "outside system - joins later",
+      "jar": null
+    }
   ],
-
-  // 6-jar MM system (adopted Aug 8, 2026). Jars are the 6 MAIN categories; existing
-  // categories are subcategories. This period used a one-time split of pool 50,673.75:
-  // NEC 50/90 = 28,152.08, FFA/LTSS/EDU/PLAY 10/90 = 5,630.42 each, GIVE 0 (pre-funded).
-  // NEXT period returns to standard 50/10/10/10/10/10 with GIVE 10%.
-  // jarTotals below are computed from the jar targets for the summary section.
-  jarSystem: {
-    pool: 50673.75,
-    splitNote: "One-time this-period split: NEC 50/90, FFA/LTSS/EDU/PLAY 10/90, GIVE 0 (pre-funded). Next period: standard 50/10/10/10/10/10 with GIVE 10%. RULING Aug 17: PLAY = designated play-day expenses only (Aug 15); non-play-day coffee stays NEC (Food & dining), never re-derived.",
-    targets: {
-      NEC:  28152.08,
-      FFA:  5630.42,
-      LTSS: 5630.42,
-      EDU:  5630.42,
-      PLAY: 5630.42,
-      GIVE: 0
+  "jarSystem": {
+    "pool": 50673.75,
+    "splitNote": "One-time this-period split: NEC 50/90, FFA/LTSS/EDU/PLAY 10/90, GIVE 0 (pre-funded). Next period: standard 50/10/10/10/10/10 with GIVE 10%. RULING Aug 17: PLAY = designated play-day expenses only (Aug 15); non-play-day coffee stays NEC (Food & dining), never re-derived.",
+    "targets": {
+      "NEC": 28152.08,
+      "FFA": 5630.42,
+      "LTSS": 5630.42,
+      "EDU": 5630.42,
+      "PLAY": 5630.42,
+      "GIVE": 0
     },
-    jars: {
-      NEC:  { label: "NEC",  name: "Necessities",        color: "#378ADD" },
-      FFA:  { label: "FFA",  name: "Financial Freedom",  color: "#1D9E75" },
-      LTSS: { label: "LTSS", name: "Long-Term Savings",  color: "#534AB7" },
-      EDU:  { label: "EDU",  name: "Education",          color: "#0D9488" },
-      PLAY: { label: "PLAY", name: "Play",               color: "#BA7517" },
-      GIVE: { label: "GIVE", name: "Give",               color: "#E24B4A" }
+    "jars": {
+      "NEC": {
+        "label": "NEC",
+        "name": "Necessities",
+        "color": "#378ADD"
+      },
+      "FFA": {
+        "label": "FFA",
+        "name": "Financial Freedom",
+        "color": "#1D9E75"
+      },
+      "LTSS": {
+        "label": "LTSS",
+        "name": "Long-Term Savings",
+        "color": "#534AB7"
+      },
+      "EDU": {
+        "label": "EDU",
+        "name": "Education",
+        "color": "#0D9488"
+      },
+      "PLAY": {
+        "label": "PLAY",
+        "name": "Play",
+        "color": "#BA7517"
+      },
+      "GIVE": {
+        "label": "GIVE",
+        "name": "Give",
+        "color": "#E24B4A"
+      }
     },
-    subcats: {
-      NEC:  ["Food & dining", "Groceries", "Household", "Transport", "Travel", "Utilities", "Load / comms", "Debt payment", "Subscriptions", "Rent"],
-      FFA:  ["Investments"],
-      LTSS: ["Long-term savings"],
-      EDU:  ["Education", "Books", "Courses"],
-      PLAY: ["Entertainment", "Eating out", "Coffee", "Fun"],
-      GIVE: ["Tithes", "Charity", "Missionary support"]
+    "subcats": {
+      "NEC": [
+        "Food & dining",
+        "Groceries",
+        "Household",
+        "Transport",
+        "Travel",
+        "Utilities",
+        "Load / comms",
+        "Debt payment",
+        "Subscriptions",
+        "Rent"
+      ],
+      "FFA": [
+        "Investments"
+      ],
+      "LTSS": [
+        "Long-term savings"
+      ],
+      "EDU": [
+        "Education",
+        "Books",
+        "Courses"
+      ],
+      "PLAY": [
+        "Entertainment",
+        "Eating out",
+        "Coffee",
+        "Fun"
+      ],
+      "GIVE": [
+        "Tithes",
+        "Charity",
+        "Missionary support"
+      ]
     }
   },
-
-  liabilities: {
-    spaylater: 15688.17,
-    bike: 0
+  "liabilities": {
+    "spaylater": 15688.17,
+    "bike": 0
   },
-
-  receivables: {
-    jr: 3010.00,
-    sweet: 0,
-    papa: 0,
-    bryan: 2.00,
-    rj: 315.75
+  "receivables": {
+    "jr": 3010,
+    "sweet": 0,
+    "papa": 0,
+    "bryan": 2,
+    "rj": 315.75
   },
-
-  macbook: {
-    target: 145000,
-    targetDate: "Dec 12, 2026",
-    perPaycheck: 5000,
-    shortfall: 53884
+  "macbook": {
+    "target": 145000,
+    "targetDate": "Dec 12, 2026",
+    "perPaycheck": 5000,
+    "shortfall": 53884
   },
-
-  // Monthly monitoring (replaced the semi-monthly pay-period cycle on 2026-08-03 — Edge resigned,
-  // no more paychecks to anchor a "period" to). monthStart/monthEnd/dayOfMonth/daysInMonth drive
-  // the "Monthly monitoring" section and the monthly spending pace/projection math, the same way
-  // periodStart/dayOfPeriod/totalDays used to. lastIncome is historical only (Jul 24 was the last
-  // confirmed paycheck) — do not treat it as a current income figure.
-  monthly: {
-    lastIncome: 17354.21,
-    lastIncomeDate: "Jul 24, 2026",
-    monthStart: "Aug 1",
-    monthEnd: "Aug 31",
-    nextReset: "Sep 1, 2026",
-    dayOfMonth: 22,
-    daysInMonth: 31
+  "monthly": {
+    "lastIncome": 17354.21,
+    "lastIncomeDate": "Jul 24, 2026",
+    "monthStart": "Aug 1",
+    "monthEnd": "Aug 31",
+    "nextReset": "Sep 1, 2026",
+    "dayOfMonth": 23,
+    "daysInMonth": 31
   },
-
-  // Historical income record. Stopped adding future placeholder entries on 2026-08-03 —
-  // Edge resigned, there's no paycheck to project. Add a new entry only when actual income
-  // resumes; don't guess a projection until Edge confirms an amount/date.
-  salaryHistory: [
-    { period: "Jun 10", amount: 37000, actual: true  },
-    { period: "Jun 25", amount: 27856.36, actual: true  },
-    { period: "Jul 10", amount: 21976.52, actual: true  },
-    { period: "Jul 25", amount: 17354.21, actual: true  }
+  "salaryHistory": [
+    {
+      "period": "Jun 10",
+      "amount": 37000,
+      "actual": true
+    },
+    {
+      "period": "Jun 25",
+      "amount": 27856.36,
+      "actual": true
+    },
+    {
+      "period": "Jul 10",
+      "amount": 21976.52,
+      "actual": true
+    },
+    {
+      "period": "Jul 25",
+      "amount": 17354.21,
+      "actual": true
+    }
   ],
-
-  // Update from transaction history each check-in - add spent amounts per wallet.
-  // NOTE (2026-08-07): REAL monthly budgets set from Aug ledger actuals + fixed commitments
-  // (Edge decision via all-hands). No income since Jul 24 - budgets are lean monthly targets
-  // drawn from available funds, not paycheck-derived. gcash 6,000 (fixed subs 3,059: CapCut/
-  // Canva/Google One/Claude Pro + food/groceries/transport/load), rcbc 3,000 (ChatGPT Plus 999
-  // + DeepSeek usage ~1,300 + groceries/meal prep), maya 1,000 (personal), coins 1,000
-  // (tithes 500 + missionary 500). DeepSeek is usage-based and volatile (₱1,319.55 in first
-  // 7 days of Aug) - rcbc may need a mid-month recheck. monthlyAllocation donut below is still
-  // stale paycheck-era display; awaiting Edge decision on whether to update it.
-  monthlySpending: {
-    wallets: [
-      { id: "gcash",  label: "GCash wallet",  src: "txn history", budget: 6000 },
-      { id: "rcbc",   label: "RCBC savings",  src: "txn history", budget: 3000 },
-      { id: "maya",   label: "Maya wallet",   src: "txn history", budget: 1000 },
-      { id: "coins",  label: "Coins.ph PHP",  src: "txn history", budget: 1000 }
+  "monthlySpending": {
+    "wallets": [
+      {
+        "id": "gcash",
+        "label": "GCash wallet",
+        "src": "txn history",
+        "budget": 6000
+      },
+      {
+        "id": "rcbc",
+        "label": "RCBC savings",
+        "src": "txn history",
+        "budget": 3000
+      },
+      {
+        "id": "maya",
+        "label": "Maya wallet",
+        "src": "txn history",
+        "budget": 1000
+      },
+      {
+        "id": "coins",
+        "label": "Coins.ph PHP",
+        "src": "txn history",
+        "budget": 1000
+      }
     ]
   },
-
-  categoryOrder: ["Food & dining", "Groceries", "Transport", "Travel", "Load / comms", "Subscriptions", "Charity", "Family", "Household", "Bank fees", "Loans", "Debt payment", "Investments", "Education", "Legal", "Entertainment"],
-
-  // Deprecated as of 2026-08-03 (monthly monitoring replaced the semi-monthly pay-period cycle —
-  // transactions[] now IS the current calendar month, so there's no more mid-month reset to
-  // archive around). Left in place, always empty, only because the account-history modal's JS
-  // still references it defensively (monthArchive || []). Do not write to this array.
-  monthArchive: [],
-
-  // All transactions this period — type: "income" | "expense"
-  // wallet: "gcash" | "rcbc" | "maya" | "coins" | "cash"
-  // cat must match a value in categoryOrder (or "Income" for income entries)
-  transactions: [
-    { date: "Aug 1",  desc: "Groceries",              cat: "Groceries",    amount: 260.00,   wallet: "gcash", type: "expense" },
-    { date: "Aug 1",  desc: "Laundry",                cat: "Household",    amount: 175.00,   wallet: "gcash", type: "expense" },
-    { date: "Aug 2",  desc: "Fare",                   cat: "Transport",    amount: 13.00,    wallet: "cash",  type: "expense" },
-    { date: "Aug 2",  desc: "Tithes (Victory LB)",    cat: "Charity",      amount: 500.00,   wallet: "coins", type: "expense" },
-    { date: "Aug 2",  desc: "Coffee",                 cat: "Food & dining",amount: 210.00,   wallet: "gcash", type: "expense" },
-    { date: "Aug 2",  desc: "Lunch",                  cat: "Food & dining",amount: 100.00,   wallet: "gcash", type: "expense" },
-    { date: "Aug 2",  desc: "Dinner",                 cat: "Food & dining",amount: 209.00,   wallet: "gcash", type: "expense" },
-    { date: "Aug 3",  desc: "Breakfast",               cat: "Food & dining",amount: 110.00,  wallet: "gcash", type: "expense" },
-    { date: "Aug 3",  desc: "CapCut",                  cat: "Subscriptions",amount: 359.00,  wallet: "gcash", type: "expense" },
-    { date: "Aug 3",  desc: "Transfer to GCash wallet (emergency fund draw)", cat: "Transfer", amount: 10000.00, wallet: "gcashsavings", type: "expense" },
-    { date: "Aug 3",  desc: "Transfer from GCash savings", cat: "Transfer", amount: 10000.00, wallet: "gcash",  type: "income"  },
-    { date: "Aug 3",  desc: "SPayLater payment (July)",  cat: "Debt payment", amount: 6985.74, wallet: "gcash",  type: "expense" },
-    { date: "Aug 3",  desc: "Lunch",                   cat: "Food & dining", amount: 115.00,   wallet: "cash",  type: "expense" },
-    { date: "Aug 3",  desc: "Fare",                    cat: "Transport",     amount: 26.00,    wallet: "cash",  type: "expense" },
-    { date: "Aug 3",  desc: "Meal prep",               cat: "Food & dining", amount: 65.00,    wallet: "cash",  type: "expense" },
-    { date: "Aug 3",  desc: "Fare",                    cat: "Transport",     amount: 13.00,    wallet: "cash",  type: "expense" },
-    { date: "Aug 3",  desc: "Grocery",                 cat: "Groceries",     amount: 1414.35,  wallet: "gcash", type: "expense" },
-    { date: "Aug 3",  desc: "Canva Pro",               cat: "Subscriptions", amount: 300.00,   wallet: "gcash", type: "expense" },
-    { date: "Aug 3",  desc: "Meal prep",               cat: "Food & dining", amount: 425.56,   wallet: "rcbc",  type: "expense" },
-    { date: "Aug 4",  desc: "DeepSeek API tokens",      cat: "Subscriptions", amount: 330.47,   wallet: "rcbc",  type: "expense" },
-    { date: "Aug 5",  desc: "Coffee",                   cat: "Food & dining", amount: 210.00,   wallet: "cash",  type: "expense" },
-    { date: "Aug 5",  desc: "Grocery",                   cat: "Groceries",     amount: 65.00,    wallet: "cash",  type: "expense" },
-    { date: "Aug 5",  desc: "RJ loan",                   cat: "Loans",         amount: 12.00,    wallet: "cash",  type: "expense" },
-    { date: "Aug 6",  desc: "Transfer to RCBC savings",    cat: "Transfer",      amount: 2000.00,  wallet: "gcash", type: "expense" },
-    { date: "Aug 6",  desc: "Transfer from GCash wallet",  cat: "Transfer",      amount: 2000.00,  wallet: "rcbc",  type: "income"  },
-    { date: "Aug 6",  desc: "Transfer fee (GCash to RCBC)", cat: "Bank fees",    amount: 10.00,    wallet: "gcash", type: "expense" },
-    { date: "Aug 6",  desc: "DeepSeek API top-up",          cat: "Subscriptions", amount: 331.14,   wallet: "rcbc",  type: "expense" },
-    { date: "Aug 6",  desc: "Breakfast (RJ treat)",          cat: "Food & dining", amount: 108.00,   wallet: "cash",  type: "expense" },
-    { date: "Aug 6",  desc: "RJ loan repayment (in-kind)",    cat: "Income",        amount: 108.00,   wallet: "cash",  type: "income"  },
-    { date: "Aug 6",  desc: "Groceries",                         cat: "Groceries",     amount: 354.50,   wallet: "gcash", type: "expense" },
-    { date: "Aug 7",  desc: "Transfer to RCBC savings (Davao trip budget)", cat: "Transfer", amount: 6000.00, wallet: "gcashsavings", type: "expense" },
-    { date: "Aug 7",  desc: "Transfer from GCash Bank (Davao trip budget)", cat: "Transfer", amount: 6000.00, wallet: "rcbc",  type: "income"  },
-    { date: "Aug 7",  desc: "Transfer fee (GCash to RCBC)",          cat: "Bank fees",     amount: 10.00,    wallet: "gcash", type: "expense" },
-    { date: "Aug 7",  desc: "Fare",                                cat: "Transport",    amount: 18.00,    wallet: "cash",  type: "expense" },
-    { date: "Aug 7",  desc: "Cash withdrawal (Davao trip budget)",        cat: "Transfer",     amount: 3000.00,  wallet: "rcbc",  type: "expense" },
-    { date: "Aug 7",  desc: "Cash withdrawal from RCBC (Davao trip)",     cat: "Transfer",     amount: 3000.00,  wallet: "cash",  type: "income"  },
-    { date: "Aug 7",  desc: "Phone load",                            cat: "Load / comms", amount: 99.00,    wallet: "gcash", type: "expense" },
-    { date: "Aug 7",  desc: "Google One",                             cat: "Subscriptions",amount: 1100.00,  wallet: "gcash", type: "expense" },
-    { date: "Aug 7",  desc: "Fare",                                cat: "Transport",    amount: 175.00,   wallet: "cash",  type: "expense" },
-    { date: "Aug 7",  desc: "Fare",                                cat: "Transport",    amount: 251.00,   wallet: "gcash", type: "expense" },
-    { date: "Aug 7",  desc: "DeepSeek API top-up",                    cat: "Subscriptions",amount: 657.94,   wallet: "rcbc",  type: "expense" },
-    { date: "Aug 7",  desc: "Dinner",                                cat: "Food & dining",amount: 435.00,   wallet: "gcash", type: "expense" },
-    { date: "Aug 7",  desc: "Dinner",                                cat: "Food & dining",amount: 50.00,    wallet: "cash",  type: "expense" },
-    { date: "Aug 7",  desc: "Food",                                 cat: "Food & dining",amount: 33.00,    wallet: "gcash", type: "expense" },
-    { date: "Aug 7",  desc: "Food",                                 cat: "Food & dining",amount: 31.00,    wallet: "gcash", type: "expense" },
-    { date: "Aug 7",  desc: "Food",                                 cat: "Food & dining",amount: 100.00,   wallet: "cash",  type: "expense" },
-    { date: "Aug 8",  desc: "Food",                                 cat: "Food & dining",amount: 20.00,    wallet: "cash",  type: "expense" },
-    { date: "Aug 8",  desc: "Interest earned",                        cat: "Income",       amount: 41.76,    wallet: "gcashsavings", type: "income"  },
-    { date: "Aug 8",  desc: "Interest earned",                        cat: "Income",       amount: 0.75,     wallet: "mayasavings",  type: "income"  },
-    { date: "Aug 8",  desc: "Interest earned",                        cat: "Income",       amount: 3.87,     wallet: "gotyme",       type: "income"  },
-    { date: "Aug 8",  desc: "Claude Pro",                            cat: "Subscriptions",amount: 1300.00,  wallet: "gcash",  type: "expense" },
-    { date: "Aug 8",  desc: "Dinner",                                cat: "Food & dining",amount: 140.00,   wallet: "cash",   type: "expense" },
-    { date: "Aug 8",  desc: "Snacks",                                cat: "Food & dining",amount: 515.75,   wallet: "cash",   type: "expense" },
-    { date: "Aug 8",  desc: "Snacks overcharge refund",              cat: "Income",       amount: 230.00,   wallet: "cash",   type: "income"  },
-    { date: "Aug 8",  desc: "Transfer to GCash wallet (6-jar setup)", cat: "Transfer",    amount: 25571.48, wallet: "gcashsavings", type: "expense" },
-    { date: "Aug 8",  desc: "Transfer from GCash bank (6-jar setup)", cat: "Transfer",    amount: 25571.48, wallet: "gcash",       type: "income"  },
-    { date: "Aug 8",  desc: "Transfer to GoTyme (6-jar setup)",       cat: "Transfer",    amount: 25581.48, wallet: "gcash",       type: "expense" },
-    { date: "Aug 8",  desc: "Transfer from GCash wallet (6-jar setup)", cat: "Transfer",  amount: 25581.48, wallet: "gotyme",      type: "income"  },
-    { date: "Aug 8",  desc: "Transfer to Maya wallet (6-jar setup)",  cat: "Transfer",    amount: 3879.63,  wallet: "gotyme",      type: "expense" },
-    { date: "Aug 8",  desc: "Transfer from GoTyme (6-jar setup)",     cat: "Transfer",    amount: 3879.63,  wallet: "maya",        type: "income"  },
-    { date: "Aug 8",  desc: "Transfer to Maya bank (EDU jar)",        cat: "Transfer",    amount: 5141.24,  wallet: "maya",        type: "expense" },
-    { date: "Aug 8",  desc: "Transfer from Maya wallet (EDU jar)",    cat: "Transfer",    amount: 5141.24,  wallet: "mayasavings", type: "income"  },
-    { date: "Aug 8",  desc: "Transfer to My Go Save (PLAY jar)",      cat: "Transfer",    amount: 5630.42,  wallet: "gotyme",      type: "expense" },
-    { date: "Aug 8",  desc: "Transfer from GoTyme (PLAY jar)",        cat: "Transfer",    amount: 5630.42,  wallet: "gotymeplay",  type: "income"  },
-    { date: "Aug 8",  desc: "Transfer to nec vault (NEC jar)",        cat: "Transfer",    amount: 14962.72, wallet: "gotyme",      type: "expense" },
-    { date: "Aug 8",  desc: "Transfer from GoTyme (NEC jar)",         cat: "Transfer",    amount: 14962.72, wallet: "gotymenev",   type: "income"  },
-    { date: "Aug 8",  desc: "Transfer to Professional Development (LTSS jar)", cat: "Transfer", amount: 1098.71, wallet: "gotyme", type: "expense" },
-    { date: "Aug 8",  desc: "Transfer from GoTyme (LTSS jar)",        cat: "Transfer",    amount: 1098.71,  wallet: "gotymeltss",  type: "income"  },
-    { date: "Aug 8",  desc: "Travel expenses",                        cat: "Travel",       amount: 698.25,   wallet: "cash",    type: "expense" },
-    { date: "Aug 9",  desc: "Food",                                 cat: "Food & dining",amount: 30.00,    wallet: "cash",  type: "expense" },
-    { date: "Aug 9",  desc: "Food",                                 cat: "Food & dining",amount: 75.00,    wallet: "cash",  type: "expense" },
-    { date: "Aug 9",  desc: "Dinner",                               cat: "Food & dining",amount: 130.00,   wallet: "cash",  type: "expense" },
-    { date: "Aug 9",  desc: "Dinner",                               cat: "Food & dining",amount: 245.00,   wallet: "cash",  type: "expense" },
-    { date: "Aug 9",  desc: "Internet (parents' subscription, Palawan)", cat: "Load / comms", amount: 1299.00, wallet: "gotymenev", type: "expense" },
-    { date: "Aug 10", desc: "Fare",                                cat: "Transport",    amount: 100.00,   wallet: "cash",  type: "expense" },
-    { date: "Aug 10", desc: "Fare",                                cat: "Transport",    amount: 200.00,   wallet: "cash",  type: "expense" },
-    { date: "Aug 10", desc: "Dinner",                              cat: "Food & dining",amount: 140.00,  wallet: "cash",  type: "expense" },
-    { date: "Aug 10", desc: "Lunch",                               cat: "Food & dining",amount: 320.00,  wallet: "gotymenev", type: "expense" },
-    { date: "Aug 10", desc: "Fare",                                cat: "Transport",    amount: 95.00,    wallet: "cash",  type: "expense" },
-    { date: "Aug 11", desc: "Fare",                                cat: "Transport",    amount: 252.00,   wallet: "gotymenev", type: "expense" },
-    { date: "Aug 11", desc: "Breakfast",                           cat: "Food & dining", amount: 203.00,   wallet: "gcash",  type: "expense" },
-    { date: "Aug 11", desc: "Fare",                                cat: "Transport",    amount: 195.00,   wallet: "cash",  type: "expense" },
-    { date: "Aug 11", desc: "Food",                                 cat: "Food & dining", amount: 45.00,    wallet: "cash",  type: "expense" },
-    { date: "Aug 11", desc: "Fare",                                cat: "Transport",    amount: 175.00,   wallet: "cash",  type: "expense" },
-    { date: "Aug 11", desc: "Fare",                                cat: "Transport",    amount: 13.00,    wallet: "cash",  type: "expense" },
-    { date: "Aug 11", desc: "Lunch",                               cat: "Food & dining", amount: 210.00,   wallet: "cash",  type: "expense" },
-    { date: "Aug 12", desc: "Lunch",                               cat: "Food & dining", amount: 210.00,   wallet: "gcash", type: "expense" },
-    { date: "Aug 12", desc: "Loan to Bry",                          cat: "Loans",         amount: 500.00,   wallet: "cash",  type: "expense" },
-    { date: "Aug 13", desc: "Bry loan repayment",                   cat: "Income",        amount: 500.00,   wallet: "gcash", type: "income"  },
-    { date: "Aug 13", desc: "Laundry",                             cat: "Household",     amount: 192.50,   wallet: "gcash", type: "expense" },
-    { date: "Aug 13", desc: "Earned",                              cat: "Income",        amount: 100.00,   wallet: "gcash", type: "income"  },
-    { date: "Aug 13", desc: "Dinner",                              cat: "Food & dining", amount: 190.00,   wallet: "cash",  type: "expense" },
-    { date: "Aug 14", desc: "Lunch",                               cat: "Food & dining", amount: 150.00,   wallet: "gcash", type: "expense" },
-    { date: "Aug 14", desc: "Coffee",                              cat: "Food & dining", amount: 90.00,    wallet: "gcash", type: "expense" },
-    { date: "Aug 14", desc: "DeepSeek API top-up",                 cat: "Subscriptions", amount: 332.19,   wallet: "rcbc",  type: "expense" },
-    { date: "Aug 14", desc: "DeepSeek API top-up",                 cat: "Subscriptions", amount: 132.88,   wallet: "rcbc",  type: "expense" },
-    { date: "Aug 14", desc: "Cash withdrawal",                      cat: "Transfer",      amount: 2000.00,  wallet: "rcbc",  type: "expense" },
-    { date: "Aug 14", desc: "Cash withdrawal from RCBC",            cat: "Transfer",      amount: 2000.00,  wallet: "cash",  type: "income"  },
-    { date: "Aug 15", desc: "Domain purchase edgepossible.com (Squarespace)", cat: "Investments", amount: 940.80, wallet: "rcbc", type: "expense" },
-    { date: "Aug 15", desc: "Google Workspace (1 month, company)",  cat: "Subscriptions", amount: 551.04,   wallet: "gotymenev", type: "expense" },
-    { date: "Aug 15", desc: "Transfer to GCash wallet (LTSS company expenses)", cat: "Transfer", amount: 1491.84, wallet: "gcashsavings", type: "expense" },
-    { date: "Aug 15", desc: "Transfer from GCash bank (LTSS company expenses)", cat: "Transfer", amount: 1491.84, wallet: "gcash", type: "income"  },
-    { date: "Aug 15", desc: "Bus fare (toy convention)", cat: "Transport", amount: 350.00, wallet: "cash", type: "expense", jar: "PLAY" },
-    { date: "Aug 15", desc: "Lunch (toy convention)", cat: "Food & dining", amount: 415.00, wallet: "gcash", type: "expense", jar: "PLAY" },
-    { date: "Aug 15", desc: "Matcha (matcha fest)", cat: "Food & dining", amount: 600.00, wallet: "gcash", type: "expense", jar: "PLAY" },
-    { date: "Aug 15", desc: "Reversal of transfer to GCash wallet (money stayed in GCash bank)", cat: "Transfer", amount: 1491.84, wallet: "gcashsavings", type: "income"  },
-    { date: "Aug 15", desc: "Reversal of transfer from GCash bank (never received)", cat: "Transfer", amount: 1491.84, wallet: "gcash", type: "expense" },
-    { date: "Aug 15", desc: "Interest earned", cat: "Income", amount: 2.10, wallet: "gcashsavings", type: "income"  },
-    { date: "Aug 15", desc: "Transfer to GCash wallet (GCash bank emptied, funded Beyblade)", cat: "Transfer", amount: 4632.51, wallet: "gcashsavings", type: "expense" },
-    { date: "Aug 15", desc: "Transfer from GCash bank (emptied, funded Beyblade)", cat: "Transfer", amount: 4632.51, wallet: "gcash", type: "income"  },
-    { date: "Aug 15", desc: "Beyblade (toy convention)", cat: "Entertainment", amount: 4699.00, wallet: "gcash", type: "expense", jar: "PLAY" },
-    { date: "Aug 15", desc: "Interest earned", cat: "Income", amount: 2.60, wallet: "gotymeplay", type: "income"  },
-    { date: "Aug 15", desc: "Transfer to GCash wallet (PLAY vault)", cat: "Transfer", amount: 5644.87, wallet: "gotymeplay", type: "expense" },
-    { date: "Aug 15", desc: "Transfer from GoTyme My Go Save (PLAY)", cat: "Transfer", amount: 5644.87, wallet: "gcash", type: "income"  },
-    { date: "Aug 15", desc: "Water (MOA day)", cat: "Household", amount: 50.00, wallet: "cash", type: "expense", jar: "PLAY" },
-    { date: "Aug 15", desc: "Charity (MOA day)", cat: "Charity", amount: 100.00, wallet: "cash", type: "expense", jar: "GIVE" },
-    { date: "Aug 15", desc: "Fare (MOA day)", cat: "Transport", amount: 25.00, wallet: "cash", type: "expense", jar: "PLAY" },
-    { date: "Aug 16", desc: "Charity (tithes)", cat: "Charity", amount: 500.00, wallet: "coins", type: "expense" },
-    { date: "Aug 16", desc: "Coffee", cat: "Food & dining", amount: 210.00, wallet: "gcash", type: "expense" },
-    { date: "Aug 16", desc: "Lunch", cat: "Food & dining", amount: 159.00, wallet: "gcash", type: "expense" },
-    { date: "Aug 16", desc: "Fare", cat: "Transport", amount: 13.00, wallet: "cash", type: "expense" },
-    { date: "Aug 16", desc: "Loan to RJ", cat: "Loans", amount: 149.00, wallet: "gcash", type: "expense" },
-    { date: "Aug 16", desc: "Transfer to GCash bank (FFA settlement - PLAY-day return)", cat: "Transfer", amount: 3140.67, wallet: "gcash", type: "expense" },
-    { date: "Aug 16", desc: "Transfer from GCash wallet (FFA settlement - PLAY-day return)", cat: "Transfer", amount: 3140.67, wallet: "gcashsavings", type: "income" },
-    { date: "Aug 16", desc: "Cash reconciliation (physical count 1,574.75 - unrecorded spending, cause forgotten, Edge-confirmed)", cat: "Reconciliation", amount: 847.75, wallet: "cash", type: "expense" },
-    { date: "Aug 17", desc: "DeepSeek subscription", cat: "Subscriptions", amount: 657.91, wallet: "gotymenev", type: "expense" },
-    { date: "Aug 17", desc: "Lunch", cat: "Food & dining", amount: 180.00, wallet: "cash", type: "expense" },
-    { date: "Aug 17", desc: "DeepSeek API top-up (2nd)", cat: "Subscriptions", amount: 657.91, wallet: "gotymenev", type: "expense" },
-    { date: "Aug 21", desc: "Lunch", cat: "Food & dining", amount: 90.00, wallet: "cash", type: "expense" },
-    { date: "Aug 21", desc: "Fare", cat: "Transport", amount: 13.00, wallet: "cash", type: "expense" },
-    { date: "Aug 21", desc: "Photocopy of legal papers", cat: "Legal", amount: 10.00, wallet: "cash", type: "expense" },
-    { date: "Aug 21", desc: "Notary", cat: "Legal", amount: 300.00, wallet: "gcash", type: "expense" },
-    { date: "Aug 21", desc: "Investment event", cat: "Education", amount: 2247.30, wallet: "mayasavings", type: "expense" },
-    { date: "Aug 21", desc: "DeepSeek subscription", cat: "Subscriptions", amount: 462.50, wallet: "gotymenev", type: "expense" },
-    { date: "Aug 21", desc: "Missionary support", cat: "Charity", amount: 500.00, wallet: "coins", type: "expense" },
-    { date: "Aug 21", desc: "Lunch", cat: "Food & dining", amount: 50.00, wallet: "cash", type: "expense" },
-    { date: "Aug 18", desc: "DeepSeek subscription", cat: "Subscriptions", amount: 658.97, wallet: "gotymenev", type: "expense" },
-    { date: "Aug 18", desc: "Transfer from GoTyme NEC vault to RCBC", cat: "Transfer", amount: 131.80, wallet: "gotymenev", type: "expense" },
-    { date: "Aug 18", desc: "Transfer to RCBC savings (from GoTyme NEC)", cat: "Transfer", amount: 131.80, wallet: "rcbc", type: "income" },
-    { date: "Aug 18", desc: "DeepSeek subscription", cat: "Subscriptions", amount: 131.80, wallet: "rcbc", type: "expense" },
-    { date: "Aug 19", desc: "Codex subscription", cat: "Subscriptions", amount: 999.00, wallet: "rcbc", type: "expense" },
-    { date: "Aug 19", desc: "Transfer from GoTyme NEC vault to RCBC", cat: "Transfer", amount: 2000.00, wallet: "gotymenev", type: "expense" },
-    { date: "Aug 19", desc: "Transfer to RCBC savings (from GoTyme NEC)", cat: "Transfer", amount: 2000.00, wallet: "rcbc", type: "income" },
-    { date: "Aug 19", desc: "Shopee purchase", cat: "Household", amount: 164.00, wallet: "rcbc", type: "expense" },
-    { date: "Aug 20", desc: "Breakfast", cat: "Food & dining", amount: 204.00, wallet: "gcash", type: "expense" },
-    { date: "Aug 20", desc: "Transfer from GoTyme NEC vault to RCBC", cat: "Transfer", amount: 3000.00, wallet: "gotymenev", type: "expense" },
-    { date: "Aug 20", desc: "Transfer to RCBC savings (from GoTyme NEC)", cat: "Transfer", amount: 3000.00, wallet: "rcbc", type: "income" },
-    { date: "Aug 20", desc: "Lawyer fees", cat: "Legal", amount: 3000.00, wallet: "rcbc", type: "expense" },
-    { date: "Aug 22", desc: "Breakfast", cat: "Food & dining", amount: 100.00, wallet: "cash", type: "expense" },
-    { date: "Aug 22", desc: "Dinner", cat: "Food & dining", amount: 140.00, wallet: "cash", type: "expense" },
-    { date: "Aug 22", desc: "Dinner", cat: "Food & dining", amount: 189.00, wallet: "gcash", type: "expense" },
-    { date: "Aug 22", desc: "Starbucks app top-up", cat: "Household", amount: 500.00, wallet: "gotymenev", type: "expense" },
-    { date: "Aug 23", desc: "Breakfast", cat: "Food & dining", amount: 60.00, wallet: "cash", type: "expense" },
-    { date: "Aug 23", desc: "Fare", cat: "Transport", amount: 13.00, wallet: "cash", type: "expense" },
-    { date: "Aug 23", desc: "Tithes", cat: "Charity", amount: 500.00, wallet: "coins", type: "expense" },
-    { date: "Aug 23", desc: "Spiritual Foundation Course", cat: "Education", amount: 900.00, wallet: "mayasavings", type: "expense" },
-    { date: "Aug 23", desc: "Laundry", cat: "Household", amount: 157.50, wallet: "gcash", type: "expense" },
-    { date: "Aug 23", desc: "Funeral flowers (charity)", cat: "Charity", amount: 500.00, wallet: "gcash", type: "expense" },
-    { date: "Aug 23", desc: "Groceries", cat: "Groceries", amount: 875.50, wallet: "rcbc", type: "expense" },
-    { date: "Aug 23", desc: "Groceries", cat: "Groceries", amount: 1027.50, wallet: "rcbc", type: "expense" },
-    { date: "Aug 23", desc: "Tithes (double charge suspect)", cat: "Charity", amount: 500.00, wallet: "coins", type: "expense" }
+  "categoryOrder": [
+    "Food & dining",
+    "Groceries",
+    "Transport",
+    "Travel",
+    "Load / comms",
+    "Subscriptions",
+    "Charity",
+    "Family",
+    "Household",
+    "Bank fees",
+    "Loans",
+    "Debt payment",
+    "Investments",
+    "Education",
+    "Legal",
+    "Entertainment"
   ],
-
-  spaylaterSchedule: [
-    { month: "Aug bill", amount: 6969.87, due: "Sep 15, 2026",  urgent: false },
-    { month: "Sep bill", amount: 6969.87, due: "Oct 15, 2026",  urgent: false },
-    { month: "Oct bill", amount: 994.89,  due: "Nov 15, 2026",  urgent: false },
-    { month: "Nov bill", amount: 293.93,  due: "Dec 15, 2026",  urgent: false },
-    { month: "Dec bill", amount: 294.01,  due: "Jan 15, 2027",  urgent: false },
-    { month: "Jan bill", amount: 165.60,  due: "Feb 15, 2027",  urgent: false }
-  ],
-
-  upcomingPayments: [],
-
-  // Recurring monthly subscriptions — the fixed catalog (not Gemini API, which is usage-based/variable).
-  // `paid` tracks whether this month's charge has already been logged as a transaction.
-  // Reset every subscription's `paid` to false on the 1st of each month, then flip to true
-  // as each one gets logged during the month (see dashboard_setup.md check-in routine).
-  subscriptions: [
-    { name: "CapCut",     amount: 359.00,  wallet: "gcash", dueDay: 3,  paid: true  },
-    { name: "Canva Pro",  amount: 300.00,  wallet: "gcash", dueDay: 3,  paid: true  },
-    { name: "Google One", amount: 1100.00, wallet: "gcash", dueDay: 7,  paid: true  },
-    { name: "Claude Pro", amount: 1300.00, wallet: "gcash", dueDay: 10, paid: true  },
-    { name: "ChatGPT Plus", amount: 999.00, wallet: "rcbc", dueDay: 19, paid: true }
-  ],
-
-  // Recurring monthly commitments that are NOT "Subscriptions" category (e.g. ongoing charity
-  // giving) — same paid/dueDay reset mechanism as `subscriptions`, but tracked separately so the
-  // "Subscriptions / month" total doesn't get polluted with non-subscription spending.
-  // Reset every entry's `paid` to false on the 1st of each month, same as subscriptions.
-  recurringCommitments: [
-    { name: "Missionary support (Evan Tolorio)", amount: 500.00, wallet: "coins", dueDay: 22, paid: true, cat: "Charity" }
-  ],
-
-  // Monthly reports — one entry per month that has been compiled. Compiled automatically on the
-  // 1st of each month (scheduled task "monthly-report-compile") from that month's transactions,
-  // BEFORE monthArchive gets cleared for the new month. See dashboard_setup.md for the exact procedure.
-  monthlyReports: [
+  "monthArchive": [],
+  "transactions": [
     {
-      key: "2026-06",
-      label: "June 2026",
-      partial: true,
-      partialNote: "Jun 25–30 only — dashboard tracking began this cycle",
-      income: 27869.92,
-      expenses: 5259.46,
-      netSavings: 22610.46,
-      savingsRate: 81.1,
-      categoryBreakdown: [
-        { cat: "Food & dining", amount: 2075.00 },
-        { cat: "Misc",          amount: 1453.46 },
-        { cat: "Charity",       amount: 1000.00 },
-        { cat: "Groceries",     amount: 625.00 },
-        { cat: "Transport",     amount: 106.00 }
+      "date": "Aug 1",
+      "desc": "Groceries",
+      "cat": "Groceries",
+      "amount": 260,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 1",
+      "desc": "Laundry",
+      "cat": "Household",
+      "amount": 175,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 2",
+      "desc": "Fare",
+      "cat": "Transport",
+      "amount": 13,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 2",
+      "desc": "Tithes (Victory LB)",
+      "cat": "Charity",
+      "amount": 500,
+      "wallet": "coins",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 2",
+      "desc": "Coffee",
+      "cat": "Food & dining",
+      "amount": 210,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 2",
+      "desc": "Lunch",
+      "cat": "Food & dining",
+      "amount": 100,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 2",
+      "desc": "Dinner",
+      "cat": "Food & dining",
+      "amount": 209,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 3",
+      "desc": "Breakfast",
+      "cat": "Food & dining",
+      "amount": 110,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 3",
+      "desc": "CapCut",
+      "cat": "Subscriptions",
+      "amount": 359,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 3",
+      "desc": "Transfer to GCash wallet (emergency fund draw)",
+      "cat": "Transfer",
+      "amount": 10000,
+      "wallet": "gcashsavings",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 3",
+      "desc": "Transfer from GCash savings",
+      "cat": "Transfer",
+      "amount": 10000,
+      "wallet": "gcash",
+      "type": "income"
+    },
+    {
+      "date": "Aug 3",
+      "desc": "SPayLater payment (July)",
+      "cat": "Debt payment",
+      "amount": 6985.74,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 3",
+      "desc": "Lunch",
+      "cat": "Food & dining",
+      "amount": 115,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 3",
+      "desc": "Fare",
+      "cat": "Transport",
+      "amount": 26,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 3",
+      "desc": "Meal prep",
+      "cat": "Food & dining",
+      "amount": 65,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 3",
+      "desc": "Fare",
+      "cat": "Transport",
+      "amount": 13,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 3",
+      "desc": "Grocery",
+      "cat": "Groceries",
+      "amount": 1414.35,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 3",
+      "desc": "Canva Pro",
+      "cat": "Subscriptions",
+      "amount": 300,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 3",
+      "desc": "Meal prep",
+      "cat": "Food & dining",
+      "amount": 425.56,
+      "wallet": "rcbc",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 4",
+      "desc": "DeepSeek API tokens",
+      "cat": "Subscriptions",
+      "amount": 330.47,
+      "wallet": "rcbc",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 5",
+      "desc": "Coffee",
+      "cat": "Food & dining",
+      "amount": 210,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 5",
+      "desc": "Grocery",
+      "cat": "Groceries",
+      "amount": 65,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 5",
+      "desc": "RJ loan",
+      "cat": "Loans",
+      "amount": 12,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 6",
+      "desc": "Transfer to RCBC savings",
+      "cat": "Transfer",
+      "amount": 2000,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 6",
+      "desc": "Transfer from GCash wallet",
+      "cat": "Transfer",
+      "amount": 2000,
+      "wallet": "rcbc",
+      "type": "income"
+    },
+    {
+      "date": "Aug 6",
+      "desc": "Transfer fee (GCash to RCBC)",
+      "cat": "Bank fees",
+      "amount": 10,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 6",
+      "desc": "DeepSeek API top-up",
+      "cat": "Subscriptions",
+      "amount": 331.14,
+      "wallet": "rcbc",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 6",
+      "desc": "Breakfast (RJ treat)",
+      "cat": "Food & dining",
+      "amount": 108,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 6",
+      "desc": "RJ loan repayment (in-kind)",
+      "cat": "Income",
+      "amount": 108,
+      "wallet": "cash",
+      "type": "income"
+    },
+    {
+      "date": "Aug 6",
+      "desc": "Groceries",
+      "cat": "Groceries",
+      "amount": 354.5,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 7",
+      "desc": "Transfer to RCBC savings (Davao trip budget)",
+      "cat": "Transfer",
+      "amount": 6000,
+      "wallet": "gcashsavings",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 7",
+      "desc": "Transfer from GCash Bank (Davao trip budget)",
+      "cat": "Transfer",
+      "amount": 6000,
+      "wallet": "rcbc",
+      "type": "income"
+    },
+    {
+      "date": "Aug 7",
+      "desc": "Transfer fee (GCash to RCBC)",
+      "cat": "Bank fees",
+      "amount": 10,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 7",
+      "desc": "Fare",
+      "cat": "Transport",
+      "amount": 18,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 7",
+      "desc": "Cash withdrawal (Davao trip budget)",
+      "cat": "Transfer",
+      "amount": 3000,
+      "wallet": "rcbc",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 7",
+      "desc": "Cash withdrawal from RCBC (Davao trip)",
+      "cat": "Transfer",
+      "amount": 3000,
+      "wallet": "cash",
+      "type": "income"
+    },
+    {
+      "date": "Aug 7",
+      "desc": "Phone load",
+      "cat": "Load / comms",
+      "amount": 99,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 7",
+      "desc": "Google One",
+      "cat": "Subscriptions",
+      "amount": 1100,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 7",
+      "desc": "Fare",
+      "cat": "Transport",
+      "amount": 175,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 7",
+      "desc": "Fare",
+      "cat": "Transport",
+      "amount": 251,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 7",
+      "desc": "DeepSeek API top-up",
+      "cat": "Subscriptions",
+      "amount": 657.94,
+      "wallet": "rcbc",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 7",
+      "desc": "Dinner",
+      "cat": "Food & dining",
+      "amount": 435,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 7",
+      "desc": "Dinner",
+      "cat": "Food & dining",
+      "amount": 50,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 7",
+      "desc": "Food",
+      "cat": "Food & dining",
+      "amount": 33,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 7",
+      "desc": "Food",
+      "cat": "Food & dining",
+      "amount": 31,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 7",
+      "desc": "Food",
+      "cat": "Food & dining",
+      "amount": 100,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 8",
+      "desc": "Food",
+      "cat": "Food & dining",
+      "amount": 20,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 8",
+      "desc": "Interest earned",
+      "cat": "Income",
+      "amount": 41.76,
+      "wallet": "gcashsavings",
+      "type": "income"
+    },
+    {
+      "date": "Aug 8",
+      "desc": "Interest earned",
+      "cat": "Income",
+      "amount": 0.75,
+      "wallet": "mayasavings",
+      "type": "income"
+    },
+    {
+      "date": "Aug 8",
+      "desc": "Interest earned",
+      "cat": "Income",
+      "amount": 3.87,
+      "wallet": "gotyme",
+      "type": "income"
+    },
+    {
+      "date": "Aug 8",
+      "desc": "Claude Pro",
+      "cat": "Subscriptions",
+      "amount": 1300,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 8",
+      "desc": "Dinner",
+      "cat": "Food & dining",
+      "amount": 140,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 8",
+      "desc": "Snacks",
+      "cat": "Food & dining",
+      "amount": 515.75,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 8",
+      "desc": "Snacks overcharge refund",
+      "cat": "Income",
+      "amount": 230,
+      "wallet": "cash",
+      "type": "income"
+    },
+    {
+      "date": "Aug 8",
+      "desc": "Transfer to GCash wallet (6-jar setup)",
+      "cat": "Transfer",
+      "amount": 25571.48,
+      "wallet": "gcashsavings",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 8",
+      "desc": "Transfer from GCash bank (6-jar setup)",
+      "cat": "Transfer",
+      "amount": 25571.48,
+      "wallet": "gcash",
+      "type": "income"
+    },
+    {
+      "date": "Aug 8",
+      "desc": "Transfer to GoTyme (6-jar setup)",
+      "cat": "Transfer",
+      "amount": 25581.48,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 8",
+      "desc": "Transfer from GCash wallet (6-jar setup)",
+      "cat": "Transfer",
+      "amount": 25581.48,
+      "wallet": "gotyme",
+      "type": "income"
+    },
+    {
+      "date": "Aug 8",
+      "desc": "Transfer to Maya wallet (6-jar setup)",
+      "cat": "Transfer",
+      "amount": 3879.63,
+      "wallet": "gotyme",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 8",
+      "desc": "Transfer from GoTyme (6-jar setup)",
+      "cat": "Transfer",
+      "amount": 3879.63,
+      "wallet": "maya",
+      "type": "income"
+    },
+    {
+      "date": "Aug 8",
+      "desc": "Transfer to Maya bank (EDU jar)",
+      "cat": "Transfer",
+      "amount": 5141.24,
+      "wallet": "maya",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 8",
+      "desc": "Transfer from Maya wallet (EDU jar)",
+      "cat": "Transfer",
+      "amount": 5141.24,
+      "wallet": "mayasavings",
+      "type": "income"
+    },
+    {
+      "date": "Aug 8",
+      "desc": "Transfer to My Go Save (PLAY jar)",
+      "cat": "Transfer",
+      "amount": 5630.42,
+      "wallet": "gotyme",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 8",
+      "desc": "Transfer from GoTyme (PLAY jar)",
+      "cat": "Transfer",
+      "amount": 5630.42,
+      "wallet": "gotymeplay",
+      "type": "income"
+    },
+    {
+      "date": "Aug 8",
+      "desc": "Transfer to nec vault (NEC jar)",
+      "cat": "Transfer",
+      "amount": 14962.72,
+      "wallet": "gotyme",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 8",
+      "desc": "Transfer from GoTyme (NEC jar)",
+      "cat": "Transfer",
+      "amount": 14962.72,
+      "wallet": "gotymenev",
+      "type": "income"
+    },
+    {
+      "date": "Aug 8",
+      "desc": "Transfer to Professional Development (LTSS jar)",
+      "cat": "Transfer",
+      "amount": 1098.71,
+      "wallet": "gotyme",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 8",
+      "desc": "Transfer from GoTyme (LTSS jar)",
+      "cat": "Transfer",
+      "amount": 1098.71,
+      "wallet": "gotymeltss",
+      "type": "income"
+    },
+    {
+      "date": "Aug 8",
+      "desc": "Travel expenses",
+      "cat": "Travel",
+      "amount": 698.25,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 9",
+      "desc": "Food",
+      "cat": "Food & dining",
+      "amount": 30,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 9",
+      "desc": "Food",
+      "cat": "Food & dining",
+      "amount": 75,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 9",
+      "desc": "Dinner",
+      "cat": "Food & dining",
+      "amount": 130,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 9",
+      "desc": "Dinner",
+      "cat": "Food & dining",
+      "amount": 245,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 9",
+      "desc": "Internet (parents' subscription, Palawan)",
+      "cat": "Load / comms",
+      "amount": 1299,
+      "wallet": "gotymenev",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 10",
+      "desc": "Fare",
+      "cat": "Transport",
+      "amount": 100,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 10",
+      "desc": "Fare",
+      "cat": "Transport",
+      "amount": 200,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 10",
+      "desc": "Dinner",
+      "cat": "Food & dining",
+      "amount": 140,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 10",
+      "desc": "Lunch",
+      "cat": "Food & dining",
+      "amount": 320,
+      "wallet": "gotymenev",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 10",
+      "desc": "Fare",
+      "cat": "Transport",
+      "amount": 95,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 11",
+      "desc": "Fare",
+      "cat": "Transport",
+      "amount": 252,
+      "wallet": "gotymenev",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 11",
+      "desc": "Breakfast",
+      "cat": "Food & dining",
+      "amount": 203,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 11",
+      "desc": "Fare",
+      "cat": "Transport",
+      "amount": 195,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 11",
+      "desc": "Food",
+      "cat": "Food & dining",
+      "amount": 45,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 11",
+      "desc": "Fare",
+      "cat": "Transport",
+      "amount": 175,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 11",
+      "desc": "Fare",
+      "cat": "Transport",
+      "amount": 13,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 11",
+      "desc": "Lunch",
+      "cat": "Food & dining",
+      "amount": 210,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 12",
+      "desc": "Lunch",
+      "cat": "Food & dining",
+      "amount": 210,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 12",
+      "desc": "Loan to Bry",
+      "cat": "Loans",
+      "amount": 500,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 13",
+      "desc": "Bry loan repayment",
+      "cat": "Income",
+      "amount": 500,
+      "wallet": "gcash",
+      "type": "income"
+    },
+    {
+      "date": "Aug 13",
+      "desc": "Laundry",
+      "cat": "Household",
+      "amount": 192.5,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 13",
+      "desc": "Earned",
+      "cat": "Income",
+      "amount": 100,
+      "wallet": "gcash",
+      "type": "income"
+    },
+    {
+      "date": "Aug 13",
+      "desc": "Dinner",
+      "cat": "Food & dining",
+      "amount": 190,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 14",
+      "desc": "Lunch",
+      "cat": "Food & dining",
+      "amount": 150,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 14",
+      "desc": "Coffee",
+      "cat": "Food & dining",
+      "amount": 90,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 14",
+      "desc": "DeepSeek API top-up",
+      "cat": "Subscriptions",
+      "amount": 332.19,
+      "wallet": "rcbc",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 14",
+      "desc": "DeepSeek API top-up",
+      "cat": "Subscriptions",
+      "amount": 132.88,
+      "wallet": "rcbc",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 14",
+      "desc": "Cash withdrawal",
+      "cat": "Transfer",
+      "amount": 2000,
+      "wallet": "rcbc",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 14",
+      "desc": "Cash withdrawal from RCBC",
+      "cat": "Transfer",
+      "amount": 2000,
+      "wallet": "cash",
+      "type": "income"
+    },
+    {
+      "date": "Aug 15",
+      "desc": "Domain purchase edgepossible.com (Squarespace)",
+      "cat": "Investments",
+      "amount": 940.8,
+      "wallet": "rcbc",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 15",
+      "desc": "Google Workspace (1 month, company)",
+      "cat": "Subscriptions",
+      "amount": 551.04,
+      "wallet": "gotymenev",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 15",
+      "desc": "Transfer to GCash wallet (LTSS company expenses)",
+      "cat": "Transfer",
+      "amount": 1491.84,
+      "wallet": "gcashsavings",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 15",
+      "desc": "Transfer from GCash bank (LTSS company expenses)",
+      "cat": "Transfer",
+      "amount": 1491.84,
+      "wallet": "gcash",
+      "type": "income"
+    },
+    {
+      "date": "Aug 15",
+      "desc": "Bus fare (toy convention)",
+      "cat": "Transport",
+      "amount": 350,
+      "wallet": "cash",
+      "type": "expense",
+      "jar": "PLAY"
+    },
+    {
+      "date": "Aug 15",
+      "desc": "Lunch (toy convention)",
+      "cat": "Food & dining",
+      "amount": 415,
+      "wallet": "gcash",
+      "type": "expense",
+      "jar": "PLAY"
+    },
+    {
+      "date": "Aug 15",
+      "desc": "Matcha (matcha fest)",
+      "cat": "Food & dining",
+      "amount": 600,
+      "wallet": "gcash",
+      "type": "expense",
+      "jar": "PLAY"
+    },
+    {
+      "date": "Aug 15",
+      "desc": "Reversal of transfer to GCash wallet (money stayed in GCash bank)",
+      "cat": "Transfer",
+      "amount": 1491.84,
+      "wallet": "gcashsavings",
+      "type": "income"
+    },
+    {
+      "date": "Aug 15",
+      "desc": "Reversal of transfer from GCash bank (never received)",
+      "cat": "Transfer",
+      "amount": 1491.84,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 15",
+      "desc": "Interest earned",
+      "cat": "Income",
+      "amount": 2.1,
+      "wallet": "gcashsavings",
+      "type": "income"
+    },
+    {
+      "date": "Aug 15",
+      "desc": "Transfer to GCash wallet (GCash bank emptied, funded Beyblade)",
+      "cat": "Transfer",
+      "amount": 4632.51,
+      "wallet": "gcashsavings",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 15",
+      "desc": "Transfer from GCash bank (emptied, funded Beyblade)",
+      "cat": "Transfer",
+      "amount": 4632.51,
+      "wallet": "gcash",
+      "type": "income"
+    },
+    {
+      "date": "Aug 15",
+      "desc": "Beyblade (toy convention)",
+      "cat": "Entertainment",
+      "amount": 4699,
+      "wallet": "gcash",
+      "type": "expense",
+      "jar": "PLAY"
+    },
+    {
+      "date": "Aug 15",
+      "desc": "Interest earned",
+      "cat": "Income",
+      "amount": 2.6,
+      "wallet": "gotymeplay",
+      "type": "income"
+    },
+    {
+      "date": "Aug 15",
+      "desc": "Transfer to GCash wallet (PLAY vault)",
+      "cat": "Transfer",
+      "amount": 5644.87,
+      "wallet": "gotymeplay",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 15",
+      "desc": "Transfer from GoTyme My Go Save (PLAY)",
+      "cat": "Transfer",
+      "amount": 5644.87,
+      "wallet": "gcash",
+      "type": "income"
+    },
+    {
+      "date": "Aug 15",
+      "desc": "Water (MOA day)",
+      "cat": "Household",
+      "amount": 50,
+      "wallet": "cash",
+      "type": "expense",
+      "jar": "PLAY"
+    },
+    {
+      "date": "Aug 15",
+      "desc": "Charity (MOA day)",
+      "cat": "Charity",
+      "amount": 100,
+      "wallet": "cash",
+      "type": "expense",
+      "jar": "GIVE"
+    },
+    {
+      "date": "Aug 15",
+      "desc": "Fare (MOA day)",
+      "cat": "Transport",
+      "amount": 25,
+      "wallet": "cash",
+      "type": "expense",
+      "jar": "PLAY"
+    },
+    {
+      "date": "Aug 16",
+      "desc": "Charity (tithes)",
+      "cat": "Charity",
+      "amount": 500,
+      "wallet": "coins",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 16",
+      "desc": "Coffee",
+      "cat": "Food & dining",
+      "amount": 210,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 16",
+      "desc": "Lunch",
+      "cat": "Food & dining",
+      "amount": 159,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 16",
+      "desc": "Fare",
+      "cat": "Transport",
+      "amount": 13,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 16",
+      "desc": "Loan to RJ",
+      "cat": "Loans",
+      "amount": 149,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 16",
+      "desc": "Transfer to GCash bank (FFA settlement - PLAY-day return)",
+      "cat": "Transfer",
+      "amount": 3140.67,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 16",
+      "desc": "Transfer from GCash wallet (FFA settlement - PLAY-day return)",
+      "cat": "Transfer",
+      "amount": 3140.67,
+      "wallet": "gcashsavings",
+      "type": "income"
+    },
+    {
+      "date": "Aug 16",
+      "desc": "Cash reconciliation (physical count 1,574.75 - unrecorded spending, cause forgotten, Edge-confirmed)",
+      "cat": "Reconciliation",
+      "amount": 847.75,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 17",
+      "desc": "DeepSeek subscription",
+      "cat": "Subscriptions",
+      "amount": 657.91,
+      "wallet": "gotymenev",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 17",
+      "desc": "Lunch",
+      "cat": "Food & dining",
+      "amount": 180,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 17",
+      "desc": "DeepSeek API top-up (2nd)",
+      "cat": "Subscriptions",
+      "amount": 657.91,
+      "wallet": "gotymenev",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 21",
+      "desc": "Lunch",
+      "cat": "Food & dining",
+      "amount": 90,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 21",
+      "desc": "Fare",
+      "cat": "Transport",
+      "amount": 13,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 21",
+      "desc": "Photocopy of legal papers",
+      "cat": "Legal",
+      "amount": 10,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 21",
+      "desc": "Notary",
+      "cat": "Legal",
+      "amount": 300,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 21",
+      "desc": "Investment event",
+      "cat": "Education",
+      "amount": 2247.3,
+      "wallet": "mayasavings",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 21",
+      "desc": "DeepSeek subscription",
+      "cat": "Subscriptions",
+      "amount": 462.5,
+      "wallet": "gotymenev",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 21",
+      "desc": "Missionary support",
+      "cat": "Charity",
+      "amount": 500,
+      "wallet": "coins",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 21",
+      "desc": "Lunch",
+      "cat": "Food & dining",
+      "amount": 50,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 18",
+      "desc": "DeepSeek subscription",
+      "cat": "Subscriptions",
+      "amount": 658.97,
+      "wallet": "gotymenev",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 18",
+      "desc": "Transfer from GoTyme NEC vault to RCBC",
+      "cat": "Transfer",
+      "amount": 131.8,
+      "wallet": "gotymenev",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 18",
+      "desc": "Transfer to RCBC savings (from GoTyme NEC)",
+      "cat": "Transfer",
+      "amount": 131.8,
+      "wallet": "rcbc",
+      "type": "income"
+    },
+    {
+      "date": "Aug 18",
+      "desc": "DeepSeek subscription",
+      "cat": "Subscriptions",
+      "amount": 131.8,
+      "wallet": "rcbc",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 19",
+      "desc": "Codex subscription",
+      "cat": "Subscriptions",
+      "amount": 999,
+      "wallet": "rcbc",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 19",
+      "desc": "Transfer from GoTyme NEC vault to RCBC",
+      "cat": "Transfer",
+      "amount": 2000,
+      "wallet": "gotymenev",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 19",
+      "desc": "Transfer to RCBC savings (from GoTyme NEC)",
+      "cat": "Transfer",
+      "amount": 2000,
+      "wallet": "rcbc",
+      "type": "income"
+    },
+    {
+      "date": "Aug 19",
+      "desc": "Shopee purchase",
+      "cat": "Household",
+      "amount": 164,
+      "wallet": "rcbc",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 20",
+      "desc": "Breakfast",
+      "cat": "Food & dining",
+      "amount": 204,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 20",
+      "desc": "Transfer from GoTyme NEC vault to RCBC",
+      "cat": "Transfer",
+      "amount": 3000,
+      "wallet": "gotymenev",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 20",
+      "desc": "Transfer to RCBC savings (from GoTyme NEC)",
+      "cat": "Transfer",
+      "amount": 3000,
+      "wallet": "rcbc",
+      "type": "income"
+    },
+    {
+      "date": "Aug 20",
+      "desc": "Lawyer fees",
+      "cat": "Legal",
+      "amount": 3000,
+      "wallet": "rcbc",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 22",
+      "desc": "Breakfast",
+      "cat": "Food & dining",
+      "amount": 100,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 22",
+      "desc": "Dinner",
+      "cat": "Food & dining",
+      "amount": 140,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 22",
+      "desc": "Dinner",
+      "cat": "Food & dining",
+      "amount": 189,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 22",
+      "desc": "Starbucks app top-up",
+      "cat": "Household",
+      "amount": 500,
+      "wallet": "gotymenev",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 23",
+      "desc": "Breakfast",
+      "cat": "Food & dining",
+      "amount": 60,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 23",
+      "desc": "Fare",
+      "cat": "Transport",
+      "amount": 13,
+      "wallet": "cash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 23",
+      "desc": "Tithes",
+      "cat": "Charity",
+      "amount": 500,
+      "wallet": "coins",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 23",
+      "desc": "Spiritual Foundation Course",
+      "cat": "Education",
+      "amount": 900,
+      "wallet": "mayasavings",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 23",
+      "desc": "Laundry",
+      "cat": "Household",
+      "amount": 157.5,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 23",
+      "desc": "Funeral flowers (charity)",
+      "cat": "Charity",
+      "amount": 500,
+      "wallet": "gcash",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 23",
+      "desc": "Groceries",
+      "cat": "Groceries",
+      "amount": 875.5,
+      "wallet": "rcbc",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 23",
+      "desc": "Groceries",
+      "cat": "Groceries",
+      "amount": 1027.5,
+      "wallet": "rcbc",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 23",
+      "desc": "Tithes (double charge suspect)",
+      "cat": "Charity",
+      "amount": 500,
+      "wallet": "coins",
+      "type": "expense"
+    },
+    {
+      "date": "Aug 23",
+      "desc": "Water",
+      "cat": "Household",
+      "amount": 150,
+      "wallet": "cash",
+      "type": "expense"
+    }
+  ],
+  "spaylaterSchedule": [
+    {
+      "month": "Aug bill",
+      "amount": 6969.87,
+      "due": "Sep 15, 2026",
+      "urgent": false
+    },
+    {
+      "month": "Sep bill",
+      "amount": 6969.87,
+      "due": "Oct 15, 2026",
+      "urgent": false
+    },
+    {
+      "month": "Oct bill",
+      "amount": 994.89,
+      "due": "Nov 15, 2026",
+      "urgent": false
+    },
+    {
+      "month": "Nov bill",
+      "amount": 293.93,
+      "due": "Dec 15, 2026",
+      "urgent": false
+    },
+    {
+      "month": "Dec bill",
+      "amount": 294.01,
+      "due": "Jan 15, 2027",
+      "urgent": false
+    },
+    {
+      "month": "Jan bill",
+      "amount": 165.6,
+      "due": "Feb 15, 2027",
+      "urgent": false
+    }
+  ],
+  "upcomingPayments": [],
+  "subscriptions": [
+    {
+      "name": "CapCut",
+      "amount": 359,
+      "wallet": "gcash",
+      "dueDay": 3,
+      "paid": true
+    },
+    {
+      "name": "Canva Pro",
+      "amount": 300,
+      "wallet": "gcash",
+      "dueDay": 3,
+      "paid": true
+    },
+    {
+      "name": "Google One",
+      "amount": 1100,
+      "wallet": "gcash",
+      "dueDay": 7,
+      "paid": true
+    },
+    {
+      "name": "Claude Pro",
+      "amount": 1300,
+      "wallet": "gcash",
+      "dueDay": 10,
+      "paid": true
+    },
+    {
+      "name": "ChatGPT Plus",
+      "amount": 999,
+      "wallet": "rcbc",
+      "dueDay": 19,
+      "paid": true
+    }
+  ],
+  "recurringCommitments": [
+    {
+      "name": "Missionary support (Evan Tolorio)",
+      "amount": 500,
+      "wallet": "coins",
+      "dueDay": 22,
+      "paid": true,
+      "cat": "Charity"
+    }
+  ],
+  "monthlyReports": [
+    {
+      "key": "2026-06",
+      "label": "June 2026",
+      "partial": true,
+      "partialNote": "Jun 25–30 only — dashboard tracking began this cycle",
+      "income": 27869.92,
+      "expenses": 5259.46,
+      "netSavings": 22610.46,
+      "savingsRate": 81.1,
+      "categoryBreakdown": [
+        {
+          "cat": "Food & dining",
+          "amount": 2075
+        },
+        {
+          "cat": "Misc",
+          "amount": 1453.46
+        },
+        {
+          "cat": "Charity",
+          "amount": 1000
+        },
+        {
+          "cat": "Groceries",
+          "amount": 625
+        },
+        {
+          "cat": "Transport",
+          "amount": 106
+        }
       ],
-      goalContribution: { label: "MacBook fund (GCash savings)", amount: 10000.00 },
-      netWorthEnd: 47702.79,
-      netWorthStart: null,
-      liabilitiesPaidDown: 0,
-      notableEvents: [
-        { desc: "Salary received", amount: 27856.36 }
+      "goalContribution": {
+        "label": "MacBook fund (GCash savings)",
+        "amount": 10000
+      },
+      "netWorthEnd": 47702.79,
+      "netWorthStart": null,
+      "liabilitiesPaidDown": 0,
+      "notableEvents": [
+        {
+          "desc": "Salary received",
+          "amount": 27856.36
+        }
       ]
     },
     {
-      key: "2026-07",
-      label: "July 2026",
-      partial: false,
-      income: 54137.96,
-      expenses: 61539.96,
-      netSavings: -7402.00,
-      savingsRate: -13.7,
-      categoryBreakdown: [
-        { cat: "Misc (legacy, pre-Aug-3 recategorization — itemized detail no longer available for entries before Jul 24)", amount: 22374.28 },
-        { cat: "Family",        amount: 11031.16 },
-        { cat: "Loans",         amount: 3911.75 },
-        { cat: "Food & dining", amount: 6863.19 },
-        { cat: "Transport",     amount: 4857.44 },
-        { cat: "Groceries",     amount: 4183.07 },
-        { cat: "Subscriptions", amount: 4058.00 },
-        { cat: "Charity",       amount: 2500.00 },
-        { cat: "Utilities",     amount: 1299.00 },
-        { cat: "Household",     amount: 432.50 },
-        { cat: "Investments",   amount: 29.57 }
+      "key": "2026-07",
+      "label": "July 2026",
+      "partial": false,
+      "income": 54137.96,
+      "expenses": 61539.96,
+      "netSavings": -7402,
+      "savingsRate": -13.7,
+      "categoryBreakdown": [
+        {
+          "cat": "Misc (legacy, pre-Aug-3 recategorization — itemized detail no longer available for entries before Jul 24)",
+          "amount": 22374.28
+        },
+        {
+          "cat": "Family",
+          "amount": 11031.16
+        },
+        {
+          "cat": "Loans",
+          "amount": 3911.75
+        },
+        {
+          "cat": "Food & dining",
+          "amount": 6863.19
+        },
+        {
+          "cat": "Transport",
+          "amount": 4857.44
+        },
+        {
+          "cat": "Groceries",
+          "amount": 4183.07
+        },
+        {
+          "cat": "Subscriptions",
+          "amount": 4058
+        },
+        {
+          "cat": "Charity",
+          "amount": 2500
+        },
+        {
+          "cat": "Utilities",
+          "amount": 1299
+        },
+        {
+          "cat": "Household",
+          "amount": 432.5
+        },
+        {
+          "cat": "Investments",
+          "amount": 29.57
+        }
       ],
-      goalContribution: { label: "MacBook fund (GCash savings)", amount: 15000.00 },
-      netWorthEnd: 52753.03,
-      netWorthStart: 47702.79,
-      liabilitiesPaidDown: 7059.16,
-      notableEvents: [
-        { desc: "Salary received",       amount: 21976.52 },
-        { desc: "Salary received",       amount: 17354.21 },
-        { desc: "SPayLater payment",     amount: 7059.16 },
-        { desc: "MMI VIP ticket (Davao)", amount: 6529.00 },
-        { desc: "Lent to Sweet",         amount: 5000.00 }
+      "goalContribution": {
+        "label": "MacBook fund (GCash savings)",
+        "amount": 15000
+      },
+      "netWorthEnd": 52753.03,
+      "netWorthStart": 47702.79,
+      "liabilitiesPaidDown": 7059.16,
+      "notableEvents": [
+        {
+          "desc": "Salary received",
+          "amount": 21976.52
+        },
+        {
+          "desc": "Salary received",
+          "amount": 17354.21
+        },
+        {
+          "desc": "SPayLater payment",
+          "amount": 7059.16
+        },
+        {
+          "desc": "MMI VIP ticket (Davao)",
+          "amount": 6529
+        },
+        {
+          "desc": "Lent to Sweet",
+          "amount": 5000
+        }
       ]
     }
   ],
-
-  monthlyAllocation: [
-    { label: "MacBook savings", amount: 10000, color: "#1D9E75" },
-    { label: "RCBC spending",   amount: 18500, color: "#888780" },
-    { label: "GoTyme rent",     amount: 9000,  color: "#378ADD" },
-    { label: "Personal funds",  amount: 10600, color: "#5DCAA5" },
-    { label: "SPayLater",       amount: 7059,  color: "#E24B4A" },
-    { label: "Charity",         amount: 7400,  color: "#534AB7" },
-    { label: "Subscriptions",   amount: 4058,  color: "#BA7517" }
+  "monthlyAllocation": [
+    {
+      "label": "MacBook savings",
+      "amount": 10000,
+      "color": "#1D9E75"
+    },
+    {
+      "label": "RCBC spending",
+      "amount": 18500,
+      "color": "#888780"
+    },
+    {
+      "label": "GoTyme rent",
+      "amount": 9000,
+      "color": "#378ADD"
+    },
+    {
+      "label": "Personal funds",
+      "amount": 10600,
+      "color": "#5DCAA5"
+    },
+    {
+      "label": "SPayLater",
+      "amount": 7059,
+      "color": "#E24B4A"
+    },
+    {
+      "label": "Charity",
+      "amount": 7400,
+      "color": "#534AB7"
+    },
+    {
+      "label": "Subscriptions",
+      "amount": 4058,
+      "color": "#BA7517"
+    }
   ]
 };
 

@@ -1,6 +1,13 @@
 ﻿# Finna Audit Log
 
-# Finna Audit Log
+## Aug 24, 2026 - Water 150 cash logged (Aug 23 transaction)
+
+- Runtime: Monica (main agent) - lease handle claude.
+- Confirmed source: Edge (Telegram, Aug 24 2026 07:31) - spent 150 cash yesterday (Aug 23) for water.
+- Ledger change: added expense Aug 23, Water, 150.00, wallet cash, cat Household (NEC jar).
+- Balance update: Cash on hand 905.75 to 755.75.
+- lastUpdated set to Aug 24, 2026. monthly.dayOfMonth set to 23.
+- Validation: inna-validate.ps1 passed.
 
 # Finna Audit Log
 
