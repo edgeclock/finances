@@ -1,5 +1,14 @@
 ﻿# Finna Audit Log
 
+## Aug 28, 2026 - Snacks 20 cash logged (Aug 27 transaction)
+
+- Runtime: Monica (main agent) - lease handle `codex`.
+- Confirmed source: Edge (Telegram, Aug 28 2026 14:48) - spent 20 cash for snacks yesterday.
+- Ledger change: added one expense entry dated Aug 27: Snacks, 20.00, wallet `cash`, category Food & dining (NEC jar).
+- Balance update: Cash on hand 660.75 to 640.75.
+- `lastUpdated` set to Aug 28, 2026. `monthly.dayOfMonth` remains 27.
+- Validation: `finna-validate.ps1` passed (165 transactions, assets 24,548.34, liabilities 15,688.17, receivables 3,327.75, period expenses 49,586.75).
+
 ## Aug 27, 2026 - Groceries logged from GCash and cash
 
 - Runtime: Monica (main agent) - lease handle `codex`.
