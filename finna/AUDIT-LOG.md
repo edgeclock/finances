@@ -1,5 +1,14 @@
 ﻿# Finna Audit Log
 
+## Aug 27, 2026 - Groceries logged from GCash and cash
+
+- Runtime: Monica (main agent) - lease handle `codex`.
+- Confirmed source: Edge (Telegram, Aug 27 2026) - spent 63 GCash and 95 cash for groceries.
+- Ledger change: added two expense entries dated Aug 27: Groceries, 63.00, wallet `gcash`; Groceries, 95.00, wallet `cash`; category Groceries (NEC jar).
+- Balance update: GCash wallet 2,252.16 to 2,189.16. Cash on hand 755.75 to 660.75.
+- `lastUpdated` set to Aug 27, 2026. `monthly.dayOfMonth` set to 27.
+- Validation: `finna-validate.ps1` passed (164 transactions, assets 24,568.34).
+
 ## Aug 24, 2026 - Water 150 cash logged (Aug 23 transaction)
 
 - Runtime: Monica (main agent) - lease handle claude.
