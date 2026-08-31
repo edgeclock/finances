@@ -1291,4 +1291,13 @@ No account balances changed in this entry (pure reclassification + structural re
 - `lastUpdated` Aug 31, 2026. `monthly.dayOfMonth` 31.
 - Validation: `finna-validate.ps1` passed.
 
+## Aug 31, 2026 - Dinner 210 GCash logged
+
+- Runtime: Codex (main agent) - lease handle `codex`.
+- Confirmed source: Edge (Telegram, Aug 31 2026).
+- Ledger change: added expense - Aug 31 Dinner 210.00 (GCash wallet, `Food & dining`).
+- Balance update: GCash wallet 2,189.16 to 1,979.16.
+- `lastUpdated` Aug 31, 2026. `monthly.dayOfMonth` 31.
+- Validation: `finna-validate.ps1` passed.
+
 Future entries go above this section and must identify the date, runtime, confirmed source, ledger change, and validation result.
