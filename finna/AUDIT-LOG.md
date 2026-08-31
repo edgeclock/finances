@@ -1264,6 +1264,15 @@ No account balances changed in this entry (pure reclassification + structural re
 - `lastUpdated` Aug 22, 2026. `monthly.dayOfMonth` 22.
 - Validation: `finna-validate.ps1` passed.
 
+## Aug 31, 2026 - Charity/give/tithes 500 Coins.ph logged
+
+- Runtime: Codex (main agent) - lease handle `codex`.
+- Confirmed source: Edge (Telegram, Aug 31 2026).
+- Ledger change: added expense - Aug 31 Charity/give/tithes 500.00 (Coins.ph, `Charity`).
+- Balance update: Coins.ph PHP 3,918.71 to 3,418.71.
+- `lastUpdated` Aug 31, 2026. `monthly.dayOfMonth` 31.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 31, 2026 - Fare 13 cash logged
 
 - Runtime: Codex (main agent) - lease handle `codex`.
