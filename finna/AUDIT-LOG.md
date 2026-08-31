@@ -1300,4 +1300,13 @@ No account balances changed in this entry (pure reclassification + structural re
 - `lastUpdated` Aug 31, 2026. `monthly.dayOfMonth` 31.
 - Validation: `finna-validate.ps1` passed.
 
+## Aug 31, 2026 - Fare count corrected to three instances
+
+- Runtime: Codex (main agent) - lease handle `codex`.
+- Confirmed source: Edge (Telegram, Aug 31 2026).
+- Ledger correction: confirmed the Aug 31 fare report represents three separate expenses of 13.00 each (cash, `Transport`); added two previously missing entries.
+- Balance correction: Cash on hand 537.75 to 511.75.
+- `lastUpdated` Aug 31, 2026. `monthly.dayOfMonth` 31.
+- Validation: `finna-validate.ps1` passed.
+
 Future entries go above this section and must identify the date, runtime, confirmed source, ledger change, and validation result.
