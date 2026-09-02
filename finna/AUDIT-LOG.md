@@ -1,5 +1,13 @@
 ﻿# Finna Audit Log
 
+## Sep 2, 2026 - Fare and food expenses logged from cash
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via main agent (Telegram, Sep 2, 2026) - spent 25 cash for fare and 5 cash for food.
+- Ledger change: added two expense entries dated Sep 2: Fare, 25.00, wallet `cash`, category Transport; Food, 5.00, wallet `cash`, category Food & dining.
+- Balance update: Cash on hand 511.75 to 481.75.
+- Validation: `finna-validate.ps1` passed.
+
 ## Aug 28, 2026 - Snacks 20 cash logged (Aug 27 transaction)
 
 - Runtime: Monica (main agent) - lease handle `codex`.
