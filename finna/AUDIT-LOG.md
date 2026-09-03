@@ -37,6 +37,14 @@
 
 # Finna Audit Log
 
+## Sep 3, 2026 - Dinner and subscription logged from GCash
+
+- Runtime: Finna (OpenClaw), lease handle `codex`.
+- Confirmed source: Edge via Telegram, Sep 3, 2026 - spent 82.25 GCash for dinner yesterday and 359 GCash for a subscription.
+- Ledger change: added Sep 2 Dinner, 82.25, wallet `gcash`, category `Food & dining`; added Sep 3 Subscription, 359.00, wallet `gcash`, category `Subscriptions`.
+- Balance update: GCash wallet PHP 1,809.16 to PHP 1,367.91.
+- Validation: `finna-validate.ps1` passed (176 transactions, assets PHP 23,068.09, liabilities PHP 15,688.17, receivables PHP 3,327.75, period expenses PHP 51,067.00).
+
 ## Sep 2, 2026 - Lunch logged
 
 - Runtime: Finna (OpenClaw), lease handle `codex`.
