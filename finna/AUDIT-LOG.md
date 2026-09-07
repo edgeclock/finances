@@ -64,6 +64,15 @@
 
 # Finna Audit Log
 
+## Sep 7, 2026 - GoTyme NEC to GCash transfer and Google One expense
+
+- Runtime: Finna (OpenClaw), lease handle `codex`.
+- Confirmed source: Edge via main agent, Sep 7, 2026.
+- Added internal transfer of PHP 1,500 from GoTyme NEC to GCash. Recorded as paired Transfer expense/income entries, not spending.
+- Added Google One subscription expense of PHP 1,100 from GCash.
+- Resulting balances: GoTyme NEC PHP 2,971.59; GCash wallet PHP 1,702.91.
+- Validation: `finna-validate.ps1` passed (180 transactions, assets PHP 21,903.09, liabilities PHP 15,688.17, receivables PHP 3,327.75).
+
 # Finna Audit Log
 
 # Finna Audit Log
