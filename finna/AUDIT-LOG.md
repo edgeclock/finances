@@ -37,6 +37,14 @@
 
 # Finna Audit Log
 
+## Sep 9, 2026 - Breakfast logged from GCash
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via main agent (Telegram, Sep 9, 2026) - spent PHP 190 from GCash for breakfast.
+- Ledger change: added one expense entry dated Sep 9: Breakfast, PHP 190.00, wallet `gcash`, category Food & dining (NEC jar).
+- Balance update: GCash wallet PHP 1,702.91 to PHP 1,512.91.
+- Validation: `finna-validate.ps1` passed.
+
 ## Sep 3, 2026 - Lunch logged from GCash
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
