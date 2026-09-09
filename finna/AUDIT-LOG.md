@@ -37,6 +37,14 @@
 
 # Finna Audit Log
 
+## Sep 9, 2026 - Claude Pro subscription logged from GoTyme NEC
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via main agent (Telegram, Sep 9, 2026) - paid PHP 1,300 for Claude Pro from GoTyme NEC.
+- Ledger change: added one expense entry dated Sep 9: Claude Pro, PHP 1,300, wallet `gotymenev`, category Subscriptions. No transfer recorded.
+- Balance update: GoTyme NEC PHP 2,971.59 to PHP 1,671.59.
+- Validation: `finna-validate.ps1` passed (182 transactions, assets PHP 20,413.09, liabilities PHP 15,688.17, receivables PHP 3,327.75).
+
 ## Sep 9, 2026 - Breakfast logged from GCash
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
