@@ -53,6 +53,14 @@
 
 # Finna Audit Log
 
+## Sep 12, 2026 - Pickleball expense logged from GCash
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via main agent (Telegram, Sep 12, 2026) - spent 50 GCash for a pickleball game.
+- Ledger change: added one expense entry dated Sep 12: Pickleball game, 50.00, wallet `gcash`, category Entertainment.
+- Balance update: GCash wallet 1,717.91 to 1,667.91.
+- Validation: `finna-validate.ps1` passed (188 transactions, assets 20,055.09, liabilities 15,688.17, receivables 3,327.75, period expenses 54,080.00).
+
 ## Sep 12, 2026 - Lunch logged from GCash
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
