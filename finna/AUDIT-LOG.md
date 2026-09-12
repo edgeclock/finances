@@ -1,5 +1,13 @@
 ﻿# Finna Audit Log
 
+## Sep 11, 2026 - Fare logged from cash
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via main agent (Telegram, Sep 11, 2026) - spent 13 cash for fare.
+- Ledger change: added one expense entry dated Sep 11: Fare, 13.00, wallet `cash`, category Transport.
+- Balance update: Cash on hand 481.75 to 468.75.
+- Validation: `finna-validate.ps1` passed.
+
 ## Sep 11, 2026 - Lunch logged from GCash
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
