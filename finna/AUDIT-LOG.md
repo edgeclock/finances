@@ -53,6 +53,14 @@
 
 # Finna Audit Log
 
+## Sep 12, 2026 - Internal transfer from GoTyme NEC to GCash
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via main agent (Telegram, Sep 12, 2026) - transferred 500 from GoTyme NEC to GCash.
+- Ledger change: added paired internal transfer entries dated Sep 12: 500 out of `gotymenev` and 500 into `gcash`; classified as Transfer, not an expense.
+- Balance update: GoTyme NEC 1,671.59 to 1,171.59; GCash wallet 1,397.91 to 1,897.91.
+- Validation: `finna-validate.ps1` passed.
+
 ## Sep 9, 2026 - Claude Pro subscription logged from GoTyme NEC
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
