@@ -53,6 +53,15 @@
 
 # Finna Audit Log
 
+## Sep 13, 2026 - Pickleball expense from GoTyme NEC; balance mismatch flagged
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via main agent (Telegram, Sep 13, 2026) - spent 112.50 from GoTyme NEC for pickleball.
+- Ledger change: added one expense entry dated Sep 13: Pickleball game, 112.50, wallet `gotymenev`, category Entertainment.
+- Balance update: authoritative `index.html` GoTyme nec vault field 1,171.59 to 1,059.09.
+- Reconciliation flag: the prior Sep 13 PHP 500 LTSS-to-NEC transfer entries exist, but the account field had not reflected the incoming transfer. The previously reported PHP 1,671.59 NEC balance conflicts with the authoritative ledger field; no further balance correction is inferred here.
+- Validation: `finna-validate.ps1` passed.
+
 ## Sep 13, 2026 - Internal transfer from LTSS to NEC
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.

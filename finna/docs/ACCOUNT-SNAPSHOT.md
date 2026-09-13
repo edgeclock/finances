@@ -14,7 +14,7 @@
 | GCash bank | PHP 3,140.67 | **FFA jar** (10%) - growth buffer (was emergency fund) |
 | RCBC savings | PHP 1,102.54 | **NEC jar** |
 | Cash on hand | PHP 978.75 | **NEC jar** - cash |
-| GoTyme nec vault | PHP 1,671.59 | **NEC jar** - GoTyme vault (housing/essentials) |
+| GoTyme nec vault | PHP 1,059.09 | **NEC jar** - GoTyme vault (housing/essentials) |
 | GoTyme Professional Development (LTSS) | PHP 4,130.42 | **LTSS jar** (10%) |
 | GoTyme My Go Save (PLAY) | PHP 0.00 | **PLAY jar** (10%) - includes ₱11.85 pre-existing legacy, never booked |
 | Maya bank | PHP 3,383.12 | **EDU jar** (10%) |
