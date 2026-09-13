@@ -53,6 +53,15 @@
 
 # Finna Audit Log
 
+## Sep 13, 2026 - Internal transfer from LTSS to NEC
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via main agent (Telegram, Sep 13, 2026) - transferred 500 from GoTyme LTSS to GoTyme NEC.
+- Ledger change: added paired internal Transfer entries dated Sep 13. No expense was recorded.
+- Balance update: GoTyme Professional Development (LTSS) 4,630.42 to 4,130.42; GoTyme nec vault 1,171.59 to 1,671.59.
+- Existing PHP 1,000 LTSS-funded GIVE reconciliation remains pending and unchanged.
+- Validation: `finna-validate.ps1` passed.
+
 ## Sep 13, 2026 - Give/tithes/charity logged from Coins.ph
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
