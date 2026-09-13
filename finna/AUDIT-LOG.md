@@ -53,6 +53,15 @@
 
 # Finna Audit Log
 
+## Sep 13, 2026 - Give/tithes/charity logged from Coins.ph
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via main agent (Telegram, Sep 13, 2026) - spent PHP 500 from Coins.ph for Give/tithes/charity.
+- Ledger change: added one expense dated Sep 13: Give/tithes/charity, PHP 500.00, wallet `coins`, category Charity, with `jar: "GIVE"` override.
+- Balance update: Coins.ph PHP 3,418.71 to PHP 2,918.71.
+- Reconciliation: no new mismatch. The existing PHP 1,000 LTSS-funded GIVE contribution remains pending reconciliation.
+- Validation: `finna-validate.ps1` passed.
+
 ## Sep 13, 2026 - Fare logged from cash
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
