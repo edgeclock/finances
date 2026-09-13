@@ -53,6 +53,15 @@
 
 # Finna Audit Log
 
+## Sep 13, 2026 - Give/org contribution paid from LTSS wallet
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via main agent (Telegram, Sep 13, 2026) - sent PHP 1,000 from the GoTyme LTSS wallet for a Give/org contribution.
+- Ledger change: added one expense dated Sep 13: Give/org contribution, PHP 1,000.00, wallet `gotymeltss`, category `Charity`, with `jar: "GIVE"` override.
+- Balance update: GoTyme Professional Development (LTSS) PHP 5,630.42 to PHP 4,630.42. No GIVE wallet movement was booked.
+- Reconciliation flag: source account remains designated LTSS, while the spending purpose is GIVE. The transaction is attributed to GIVE for reporting, but the LTSS account is now PHP 1,000 below its prior balance. Pending reconciliation: move funds from a GIVE-designated wallet or decide whether this LTSS-funded contribution should remain as recorded. No transfer or account reclassification is assumed.
+- Validation: `finna-validate.ps1` passed.
+
 ## Sep 12, 2026 - Dinner logged from GCash
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
