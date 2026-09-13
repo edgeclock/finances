@@ -53,6 +53,15 @@
 
 # Finna Audit Log
 
+## Sep 13, 2026 - Fare logged from cash
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via main agent (Telegram, Sep 13, 2026) - spent PHP 12 cash for fare.
+- Ledger change: added one expense dated Sep 13: Fare, PHP 12.00, wallet `cash`, category Transport.
+- Balance update: Cash on hand PHP 468.75 to PHP 456.75.
+- The prior Sep 13 LTSS-funded Give/org contribution reconciliation remains pending and unchanged.
+- Validation: `finna-validate.ps1` passed.
+
 ## Sep 13, 2026 - Give/org contribution paid from LTSS wallet
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
