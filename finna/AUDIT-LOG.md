@@ -53,6 +53,14 @@
 
 # Finna Audit Log
 
+## Sep 14, 2026 - Internal transfer and breakfast logged
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via main agent (Telegram, Sep 14, 2026).
+- Ledger change: added paired internal Transfer entries for PHP 387.50 from GoTyme NEC to GCash, plus breakfast expense PHP 180 from GCash under Food & dining.
+- Balance update: GoTyme NEC PHP 1,059.09 to PHP 671.59; GCash PHP 1,517.91 to PHP 1,725.41.
+- Validation: `finna-validate.ps1` passed.
+
 ## Sep 13, 2026 - Pickleball expense from GoTyme NEC; balance mismatch flagged
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
