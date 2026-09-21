@@ -53,6 +53,14 @@
 
 # Finna Audit Log
 
+## Sep 21, 2026 - Dinner logged from cash
+
+- Runtime: Finna (OpenClaw) - lease handle `codex`.
+- Confirmed source: Edge via main agent (Telegram, Sep 21, 2026) - spent PHP 92 cash for dinner.
+- Ledger change: added one expense entry dated Sep 21: Dinner, PHP 92.00, wallet `cash`, category Food & dining.
+- Balance update: Cash on hand PHP 456.75 to PHP 364.75.
+- Validation: `finna-validate.ps1` passed.
+
 ## Sep 14, 2026 - Internal transfer and breakfast logged
 
 - Runtime: Finna (OpenClaw) - lease handle `codex`.
